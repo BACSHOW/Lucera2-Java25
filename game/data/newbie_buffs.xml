@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<list>
+    <warrior max_level="76">
+        <buff skill_id="4322" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4323" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4324" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4325" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4326" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4327" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4338" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="271" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="274" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="264" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="267" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="268" skill_level="1" min_level="1" max_level="76"/>
+    </warrior>
+    <mage max_level="76">
+        <buff skill_id="4322" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4323" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4328" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4329" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4330" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4331" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="4338" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="273" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="276" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="264" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="267" skill_level="1" min_level="1" max_level="76"/>
+        <buff skill_id="268" skill_level="1" min_level="1" max_level="76"/>
+    </mage>
+</list>

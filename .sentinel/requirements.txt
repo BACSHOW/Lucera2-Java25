@@ -1,0 +1,4 @@
+turbovec>=1.0.0
+sentence-transformers>=2.7
+watchdog>=4.0
+numpy>=1.24

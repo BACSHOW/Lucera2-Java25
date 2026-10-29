@@ -1,0 +1,303 @@
+{
+  "tables": [
+    {
+      "name": "account_log",
+      "collate": "utf8_general_ci",
+      "engine": "InnoDB",
+      "comment": "",
+      "columns": [
+        {
+          "name": "time",
+          "ordinal": 1,
+          "isNullable": false,
+          "dataType": "INT",
+          "type": "int(11)",
+          "isAutoIncrement": false
+        },
+        {
+          "name": "login",
+          "ordinal": 2,
+          "isNullable": false,
+          "dataType": "VARCHAR",
+          "charset": "utf8",
+          "collation": "utf8_general_ci",
+          "type": "varchar(32)",
+          "isAutoIncrement": false,
+          "key": "MUL"
+        },
+        {
+          "name": "ip",
+          "ordinal": 3,
+          "isNullable": false,
+          "dataType": "VARCHAR",
+          "charset": "utf8",
+          "collation": "utf8_general_ci",
+          "type": "varchar(15)",
+          "isAutoIncrement": false,
+          "key": "MUL"
+        }
+      ],
+      "indexes": {
+        "login": {
+          "name": "login",
+          "isUnique": false,
+          "columns": [
+            "login"
+          ]
+        },
+        "ip": {
+          "name": "ip",
+          "isUnique": false,
+          "columns": [
+            "ip"
+          ]
+        }
+      },
+      "constrains": [],
+      "initialData": []
+    },
+    {
+      "name": "accounts",
+      "collate": "utf8_general_ci",
+      "engine": "MyISAM",
+      "comment": "",
+      "columns": [
+        {
+          "name": "login",
+          "ordinal": 1,
+          "isNullable": false,
+          "dataType": "VARCHAR",
+          "charset": "utf8",
+          "collation": "utf8_general_ci",
+          "type": "varchar(32)",
+          "isAutoIncrement": false,
+          "key": "PRI"
+        },
+        {
+          "name": "password",
+          "ordinal": 2,
+          "isNullable": false,
+          "dataType": "VARCHAR",
+          "charset": "utf8",
+          "collation": "utf8_general_ci",
+          "type": "varchar(255)",
+          "isAutoIncrement": false
+        },
+        {
+          "name": "lastactive",
+          "ordinal": 3,
+          "isNullable": true,
+          "dataType": "INT",
+          "type": "int(11)",
+          "isAutoIncrement": false
+        },
+        {
+          "name": "accessLevel",
+          "ordinal": 4,
+          "isNullable": true,
+          "dataType": "TINYINT",
+          "type": "tinyint(6)",
+          "isAutoIncrement": false
+        },
+        {
+          "name": "lastIP",
+          "ordinal": 5,
+          "isNullable": true,
+          "dataType": "VARCHAR",
+          "charset": "utf8",
+          "collation": "utf8_general_ci",
+          "type": "varchar(15)",
+          "isAutoIncrement": false,
+          "key": "MUL"
+        },
+        {
+          "name": "lastServerId",
+          "ordinal": 6,
+          "isNullable": true,
+          "dataType": "INT",
+          "type": "int(4)",
+          "isAutoIncrement": false
+        },
+        {
+          "name": "ban_expire",
+          "ordinal": 7,
+          "defaultValue": "0",
+          "isNullable": false,
+          "dataType": "INT",
+          "type": "int(11)",
+          "isAutoIncrement": false
+        },
+        {
+          "name": "allow_ip",
+          "ordinal": 8,
+          "defaultValue": "",
+          "isNullable": false,
+          "dataType": "VARCHAR",
+          "charset": "utf8",
+          "collation": "utf8_general_ci",
+          "type": "varchar(255)",
+          "isAutoIncrement": false
+        },
+        {
+          "name": "l2email",
+          "ordinal": 9,
+          "isNullable": true,
+          "dataType": "VARCHAR",
+          "charset": "utf8",
+          "collation": "utf8_general_ci",
+          "type": "varchar(45)",
+          "isAutoIncrement": false
+        },
+        {
+          "name": "privatekey",
+          "ordinal": 10,
+          "isNullable": true,
+          "dataType": "VARCHAR",
+          "charset": "utf8",
+          "collation": "utf8_general_ci",
+          "type": "varchar(18)",
+          "isAutoIncrement": false
+        }
+      ],
+      "indexes": {
+        "PRIMARY": {
+          "name": "PRIMARY",
+          "isUnique": true,
+          "columns": [
+            "login"
+          ]
+        },
+        "last_ip": {
+          "name": "last_ip",
+          "isUnique": false,
+          "columns": [
+            "lastIP"
+          ]
+        }
+      },
+      "constrains": [],
+      "initialData": []
+    },
+    {
+      "name": "gameservers",
+      "collate": "utf8_general_ci",
+      "engine": "InnoDB",
+      "comment": "",
+      "columns": [
+        {
+          "name": "server_id",
+          "ordinal": 1,
+          "isNullable": false,
+          "dataType": "INT",
+          "type": "int(11)",
+          "isAutoIncrement": false,
+          "key": "PRI"
+        },
+        {
+          "name": "host",
+          "ordinal": 2,
+          "isNullable": false,
+          "dataType": "VARCHAR",
+          "charset": "utf8",
+          "collation": "utf8_general_ci",
+          "type": "varchar(255)",
+          "isAutoIncrement": false
+        }
+      ],
+      "indexes": {
+        "PRIMARY": {
+          "name": "PRIMARY",
+          "isUnique": true,
+          "columns": [
+            "server_id"
+          ]
+        }
+      },
+      "constrains": [],
+      "initialData": []
+    }
+  ],
+  "routines": [
+    {
+      "name": "lip_AccountCreate",
+      "type": "PROCEDURE",
+      "definition": "BEGIN\n    INSERT LOW_PRIORITY INTO `accounts` (\n        `login`,\n        `password`\n    ) VALUES (\n        sAccountName,\n        sAccountPasswordHash\n    );\nEND",
+      "isDeterministic": false,
+      "securityType": "DEFINER",
+      "comment": "",
+      "parameters": [
+        {
+          "name": "sAccountName",
+          "mode": "IN",
+          "type": "varchar(32)"
+        },
+        {
+          "name": "sAccountPasswordHash",
+          "mode": "IN",
+          "type": "varchar(255)"
+        }
+      ]
+    },
+    {
+      "name": "lip_AccountLoad",
+      "type": "PROCEDURE",
+      "definition": "BEGIN\n    SELECT \n        `a`.`password` AS `password`, \n        `a`.`accessLevel` AS `accessLevel`, \n        `a`.`lastServerId` AS `lastServerId`, \n        `a`.`lastIP` AS `lastIP`, \n        `a`.`lastactive` AS `lastactive`, \n        `a`.`l2email` AS `email`\n    FROM \n        `accounts` `a` \n    WHERE \n        `a`.`login` \u003d sAccountName;\nEND",
+      "isDeterministic": false,
+      "securityType": "DEFINER",
+      "comment": "",
+      "parameters": [
+        {
+          "name": "sAccountName",
+          "mode": "IN",
+          "type": "varchar(32)"
+        }
+      ]
+    },
+    {
+      "name": "lip_AccountUpdate",
+      "type": "PROCEDURE",
+      "definition": "BEGIN\n    UPDATE LOW_PRIORITY \n        `accounts` \n    SET\n        `password` \u003d sAccountPasswordHash,\n        `accessLevel` \u003d iAccessLevel,\n        `lastServerId` \u003d iLastServerId,\n        `lastIP` \u003d sLastIp,\n        `lastactive` \u003d iLastActive,\n        `l2email` \u003d sEmail\n    WHERE\n        `login` \u003d sAccountName\n    LIMIT 1;\nEND",
+      "isDeterministic": false,
+      "securityType": "DEFINER",
+      "comment": "",
+      "parameters": [
+        {
+          "name": "sAccountName",
+          "mode": "IN",
+          "type": "varchar(32)"
+        },
+        {
+          "name": "sAccountPasswordHash",
+          "mode": "IN",
+          "type": "varchar(255)"
+        },
+        {
+          "name": "iAccessLevel",
+          "mode": "IN",
+          "type": "tinyint(6)"
+        },
+        {
+          "name": "iLastServerId",
+          "mode": "IN",
+          "type": "int(4)"
+        },
+        {
+          "name": "sLastIp",
+          "mode": "IN",
+          "type": "varchar(15)"
+        },
+        {
+          "name": "iLastActive",
+          "mode": "IN",
+          "type": "int(11)"
+        },
+        {
+          "name": "sEmail",
+          "mode": "IN",
+          "type": "varchar(45)"
+        }
+      ]
+    }
+  ],
+  "dbVersion": "4c0f613d388921d3f83ab4c3854289b1"
+}

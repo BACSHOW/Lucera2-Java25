@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE list SYSTEM "pcparams.dtd">
+<list>
+    <pcparams classId="28" classType="elemental_summoner" name="Elemental Summoner">
+        <male> <!-- Male Elemental Summoner -->
+            <items> <!-- Starting Items -->
+                <item id="5588" amount="1"/>
+                <item id="425" amount="1" equipped="true" enchant="0"/>
+                <item id="461" amount="1" equipped="true" enchant="0"/>
+                <item id="6" amount="1" equipped="true" enchant="0"/>
+            </items>
+            <spawn x="46182" y="41198" z="-3440"/> <!-- Spawn start coordinates -->
+            <stats> <!-- Base Stats like pAtkSpd, CON, DEX and etc -->
+                <set name="baseSTR" value="21"/>
+                <set name="baseCON" value="25"/>
+                <set name="baseDEX" value="24"/>
+                <set name="baseINT" value="37"/>
+                <set name="baseWIT" value="23"/>
+                <set name="baseMEN" value="40"/>
+                <set name="basePAtk" value="2"/>
+                <set name="basePDef" value="54"/>
+                <set name="baseMAtk" value="6"/>
+                <set name="baseMDef" value="54"/>
+                <set name="basePAtkSpd" value="312"/>
+                <set name="baseMAtkSpd" value="333"/>
+                <set name="baseCritRate" value="41"/>
+                <set name="baseRunSpd" value="122"/>
+                <set name="baseWalkSpd" value="85"/>
+                <set name="baseAtkRange" value="20"/>
+                <set name="baseShldDef" value="0"/>
+                <set name="baseShldRate" value="0"/>
+                <set name="baseExp" value="2"/>
+                <set name="collision_radius" value="7.5"/>
+                <set name="collision_height" value="24.0"/>
+                <set name="baseHpMax" value="0"/>
+                <set name="baseCpMax" value="0"/>
+                <set name="baseMpMax" value="0"/>
+                <set name="baseHpReg" value="0.01"/>
+                <set name="baseCpReg" value="0.01"/>
+                <set name="baseMpReg" value="0.01"/>
+            </stats>
+        </male>
+        <female> <!-- Female Elemental Summoner -->
+            <items> <!-- Starting Items -->
+                <item id="5588" amount="1"/>
+                <item id="425" amount="1" equipped="true" enchant="0"/>
+                <item id="461" amount="1" equipped="true" enchant="0"/>
+                <item id="6" amount="1" equipped="true" enchant="0"/>
+            </items>
+            <spawn x="46182" y="41198" z="-3440"/> <!-- Spawn start coordinates -->
+            <stats> <!-- Base Stats like pAtkSpd, CON, DEX and etc -->
+                <set name="baseSTR" value="21"/>
+                <set name="baseCON" value="25"/>
+                <set name="baseDEX" value="24"/>
+                <set name="baseINT" value="37"/>
+                <set name="baseWIT" value="23"/>
+                <set name="baseMEN" value="40"/>
+                <set name="basePAtk" value="2"/>
+                <set name="basePDef" value="54"/>
+                <set name="baseMAtk" value="6"/>
+                <set name="baseMDef" value="54"/>
+                <set name="basePAtkSpd" value="312"/>
+                <set name="baseMAtkSpd" value="333"/>
+                <set name="baseCritRate" value="41"/>
+                <set name="baseRunSpd" value="122"/>
+                <set name="baseWalkSpd" value="85"/>
+                <set name="baseAtkRange" value="20"/>
+                <set name="baseShldDef" value="0"/>
+                <set name="baseShldRate" value="0"/>
+                <set name="baseExp" value="2"/>
+                <set name="collision_radius" value="7.5"/>
+                <set name="collision_height" value="23.0"/>
+                <set name="baseHpMax" value="0"/>
+                <set name="baseCpMax" value="0"/>
+                <set name="baseMpMax" value="0"/>
+                <set name="baseHpReg" value="0.01"/>
+                <set name="baseCpReg" value="0.01"/>
+                <set name="baseMpReg" value="0.01"/>
+            </stats>
+        </female>
+    </pcparams>
+</list>

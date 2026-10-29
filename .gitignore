@@ -1,0 +1,69 @@
+# Build outputs
+build/
+bin/
+dist/
+out/
+target/
+*.class
+*.jar
+!libs/*.jar
+
+# Gradle / Maven / IDE
+.gradle/
+.idea/
+*.iml
+*.iws
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+*.pid
+
+# Sentinel (local AI index)
+.sentinel/venv/
+.sentinel/venv.*/
+.sentinel/turbovec_index.tvim*
+.sentinel/sentinel-map.db*
+.sentinel/*.log
+.sentinel/*.pid
+.sentinel/__pycache__/
+.sentinel/backups/
+.sentinel/venv
+
+# Geodata (binary L2J pathfinding data, too large for git)
+**/geodata/*.l2j
+**/geodata/*.l2g
+**/geodata/*.l2d
+**/geodata/*_conv.dat
+**/geodata/*.bin
+**/geodata/*.idx
+**/geodata/*.exe
+**/geodata/*.ini
+**/geodata/conv/
+**/geodata/geoindex
+**/geodata/geo_index.txt
+**/geodata/pathnode*
+
+# Opus 5 worktrees (temporary agent workspaces)
+.claude/worktrees/
+
+# Logs & temp
+log/
+logs/
+*.log
+*.tmp
+
+# PGO profiling artifacts
+*.iprof
+pgo/
+
+# Runtime SQLite database + WAL/SHM sidecars
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-wal
+*.db-shm
+hexid.txt
+backup/

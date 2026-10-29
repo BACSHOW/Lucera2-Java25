@@ -1,0 +1,4 @@
+[
+  ["com.sun.jna.platform.mac.SystemB"],
+  ["oshi.jna.platform.mac.SystemB"]
+]

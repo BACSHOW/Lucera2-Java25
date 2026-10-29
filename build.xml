@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="L2JLucera2" default="all" basedir=".">
+    <description>Compila o servidor e os scripts recuperados usando Java 8 e Apache Ant.</description>
+
+    <property name="source.dir" value="java"/>
+    <property name="bin.dir" value="bin"/>
+    <property name="build.dir" value="build"/>
+    <property name="libs.dir" value="libs"/>
+    <property name="database.dir" value="database"/>
+    <property name="encoding" value="UTF-8"/>
+    <property environment="env"/>
+
+    <path id="compile.classpath">
+        <fileset dir="${libs.dir}" includes="*.jar"/>
+    </path>
+
+    <target name="clean" description="Remove classes e JARs gerados">
+        <delete dir="${bin.dir}"/>
+        <delete dir="${build.dir}"/>
+        <delete file="${libs.dir}/server.jar"/>
+        <delete file="${libs.dir}/scripts.jar"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${bin.dir}"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compila todos os fontes recuperados">
+        <javac srcdir="${source.dir}"
+               destdir="${bin.dir}"
+               source="1.8"
+               target="1.8"
+               encoding="${encoding}"
+               fork="true"
+               
+               includeantruntime="false"
+               debug="true"
+               failonerror="true">
+            <compilerarg value="-Xlint:-options"/>
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="5000"/>
+            <classpath refid="compile.classpath"/>
+        </javac>
+        <copy file="${database.dir}/authd.json" todir="${bin.dir}"/>
+        <copy file="${database.dir}/gamed.json" todir="${bin.dir}"/>
+    </target>
+
+    <target name="jar-server" depends="compile" description="Gera libs/server.jar">
+        <jar destfile="${libs.dir}/server.jar">
+            <fileset dir="${bin.dir}" includes="l2/**,authd.json,gamed.json"/>
+            <manifest>
+                <attribute name="Manifest-Version" value="1.0"/>
+                <attribute name="Created-By" value="Projeto recuperado com Vineflower e CFR"/>
+                <attribute name="Implementation-Version" value="1.0-recovered"/>
+                <attribute name="Class-Path" value="ehcache-core-2.4.3.jar gson-2.8.6.jar commons-math-2.2.jar logback-core-1.2.9.jar org.napile.primitive.jar netty-3.2.3.jar mysql-connector-java-5.1.48.jar mesp-1.02.jar dbmsstruct-1.0.jar logback-classic-1.2.9.jar commons-lang3-3.9.jar ecj-3.7.jar slf4j-api-1.7.32.jar dom4j-2.1.1.jar trove-2.1.0.jar commons-io-2.0.1.jar commons-pool-1.5.6.jar jacksum-1.7.0.jar"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="jar-scripts" depends="compile" description="Gera libs/scripts.jar">
+        <jar destfile="${libs.dir}/scripts.jar">
+            <fileset dir="${bin.dir}" excludes="l2/**,authd.json,gamed.json"/>
+            <manifest>
+                <attribute name="Manifest-Version" value="1.0"/>
+                <attribute name="Created-By" value="Projeto recuperado com Vineflower e CFR"/>
+                <attribute name="Implementation-Version" value="1.0-recovered"/>
+                <attribute name="Class-Path" value="server.jar ehcache-core-2.4.3.jar gson-2.8.6.jar commons-math-2.2.jar logback-core-1.2.9.jar org.napile.primitive.jar netty-3.2.3.jar mysql-connector-java-5.1.48.jar mesp-1.02.jar dbmsstruct-1.0.jar logback-classic-1.2.9.jar commons-lang3-3.9.jar ecj-3.7.jar slf4j-api-1.7.32.jar dom4j-2.1.1.jar trove-2.1.0.jar commons-io-2.0.1.jar commons-pool-1.5.6.jar jacksum-1.7.0.jar"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="dist" depends="jar-server,jar-scripts" description="Gera os dois JARs em libs"/>
+    <target name="all" depends="clean,dist" description="Limpa, compila e gera todos os JARs"/>
+</project>

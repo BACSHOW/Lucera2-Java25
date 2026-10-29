@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE list SYSTEM "spawn.dtd">
+<list>
+    <!-- Custom spawn for Services -->
+    <!-- Giran -->
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="178292 -85585 -7216 0" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="82369 148413 -3472 0" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="82376 148799 -3472 60699" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="82103 149059 -3472 0" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="82102 148155 -3472 63477" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="83458 147910 -3400 16383" />
+</spawn>
+
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="-114632 -180136 -6752 46930" />
+</spawn>
+
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="-114799 -180135 -6752 47669" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="9668 15481 -4568 62432" />
+</spawn>
+
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="115076 -178206 -912 3355" />
+</spawn>
+
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="46890 51502 -2976 49151" />
+</spawn>
+
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="-45259 -112400 -240 63477" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="-84174 244669 -3728 44315" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="-80714 149813 -3040 24575" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="117110 76972 -2704 37604" />
+</spawn>
+
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="43867 -47672 -792 49151" />
+</spawn>
+
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="15738 142884 -2704 16383" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="-12793 122811 -3120 49151" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="111340 219402 -3544 49151" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="146727 25862 -2008 63477" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="148028 -55236 -2728 44315" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="83000 53111 -1488 32767" />
+</spawn>
+
+<spawn name="[custom_spawn]">
+<npc id="40025" count="1" respawn="60" pos="87139 -143449 -1288 16383" />
+</spawn>
+
+</list>

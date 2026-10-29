@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+    <name>L2JLucera2</name>
+    <comment>Projeto L2JLucera2 preparado pra jav 8</comment>
+    <projects></projects>
+    <buildSpec>
+        <buildCommand>
+            <name>org.eclipse.jdt.core.javabuilder</name>
+            <arguments></arguments>
+        </buildCommand>
+    </buildSpec>
+    <natures>
+        <nature>org.eclipse.jdt.core.javanature</nature>
+    </natures>
+</projectDescription>

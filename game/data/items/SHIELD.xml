@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE list SYSTEM "item.dtd">
+
+<list>
+ 	<weapon id="9400" name="Dusk Shield">
+    <!-- [Dusk Shield] -->
+    <set name="crystal_count" value="188"/>
+    <set name="crystal_type" value="S"/>
+    <set name="crystallizable" value="true"/>
+    <set name="icon" value="Old_ShieldIcons.imperial_i00"/>
+    <set name="price" value="3760000"/>
+    <set name="rnd_dam" value="0"/>
+    <set name="soulshots" value="0"/>
+    <set name="spiritshots" value="0"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1170"/>
+    <equip>
+      <slot id="LEFT_HAND"/>
+    </equip>
+    <for>
+      <add stat="sDef" order="0x10" value="290"/>
+      <add stat="rShld" order="0x10" value="20"/>
+      <add stat="rEvas" order="0x10" value="-8.0000"/>
+      <enchant stat="sDef" order="0x0C" value="0"/>
+    </for>
+  </weapon>
+  	<weapon id="9401" name="Zombie Shield">
+    <!-- [Zombie Shield] -->
+    <set name="crystal_count" value="188"/>
+    <set name="crystal_type" value="S"/>
+    <set name="crystallizable" value="true"/>
+    <set name="icon" value="Old_ShieldIcons.nephilim_i00"/>
+    <set name="price" value="3760000"/>
+    <set name="rnd_dam" value="0"/>
+    <set name="soulshots" value="0"/>
+    <set name="spiritshots" value="0"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1170"/>
+    <equip>
+      <slot id="LEFT_HAND"/>
+    </equip>
+    <for>
+      <add stat="sDef" order="0x10" value="290"/>
+      <add stat="rShld" order="0x10" value="20"/>
+      <add stat="rEvas" order="0x10" value="-8.0000"/>
+      <enchant stat="sDef" order="0x0C" value="0"/>
+    </for>
+  </weapon>                                                                                                               
+  </list>

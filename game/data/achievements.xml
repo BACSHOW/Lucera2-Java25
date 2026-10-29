@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE achievements SYSTEM "achievements.dtd">
+<achievements enabled="True" voice_commands="achiv">
+     <!-- Daily -->
+    <category name="daily" title_address="daily_title" />
+    <achievement id="8" name_address="daily_mob_killer_Monas" category="daily" type="NPC_KILL" expire_cron="30 6 * * *" icon="Icon.skill4299">
+        <conds>
+            <cond name="self_target_max_lvl_diff" value="9" /> <!-- Maximum level diff for mob kill -->
+            <cond name="npc_id_in_list" value="22129" />
+            <cond name="npc_id_in_list" value="22130" />
+            <cond name="npc_id_in_list" value="22131" />
+            <cond name="npc_id_in_list" value="22132" />
+            <cond name="npc_id_in_list" value="22133" />
+            <cond name="npc_id_in_list" value="22134" />
+            <cond name="npc_id_in_list" value="22135" />
+        </conds>
+        <stage level="1" value="300" desc_address="daily_mob_killer_Monas1">
+            <rewards>
+                <reward item_id="8069" min="1000" max="1000" chance="100"/>
+            </rewards>
+        </stage>
+        <stage level="2" value="1000" desc_address="daily_mob_killer_Monas2">
+            <rewards>
+                <reward item_id="8069" min="4000" max="4000" chance="100"/>
+            </rewards>
+        </stage>
+    </achievement>
+
+       <achievement id="9" name_address="daily_mob_killer_Pagans" category="daily" type="NPC_KILL" expire_cron="30 6 * * *" icon="Icon.skill4299">
+        <conds>
+            <cond name="target_npc_min_hate_to_me" value="1" /> <!-- Minimum damage for Achievement get-->
+            <cond name="npc_id_in_list" value="22136" />  <!-- ID MOB DE PAGANS -->
+            <cond name="npc_id_in_list" value="22137" />
+            <cond name="npc_id_in_list" value="22138" />
+            <cond name="npc_id_in_list" value="22139" />
+            <cond name="npc_id_in_list" value="22140" />
+            <cond name="npc_id_in_list" value="22141" />
+            <cond name="npc_id_in_list" value="22142" />
+            <cond name="npc_id_in_list" value="22143" />
+            <cond name="npc_id_in_list" value="22144" />
+            <cond name="npc_id_in_list" value="22145" />
+            <cond name="npc_id_in_list" value="22146" />
+            <cond name="npc_id_in_list" value="22147" />
+            <cond name="npc_id_in_list" value="22148" />
+            <cond name="npc_id_in_list" value="22149" />
+			<cond name="npc_id_in_list" value="22150" />
+            <cond name="npc_id_in_list" value="22151" />
+            <cond name="npc_id_in_list" value="22152" />
+            <cond name="npc_id_in_list" value="22153" />
+            <cond name="npc_id_in_list" value="22154" />
+            <cond name="npc_id_in_list" value="22155" />
+            <cond name="npc_id_in_list" value="22156" />
+            <cond name="npc_id_in_list" value="22157" />
+            <cond name="npc_id_in_list" value="22158" />
+            <cond name="npc_id_in_list" value="22159" />
+			<cond name="npc_id_in_list" value="22160" />
+            <cond name="npc_id_in_list" value="22161" />
+            <cond name="npc_id_in_list" value="22162" />
+            <cond name="npc_id_in_list" value="22163" />
+            <cond name="npc_id_in_list" value="22164" />
+            <cond name="npc_id_in_list" value="22165" />
+            <cond name="npc_id_in_list" value="22166" />
+            <cond name="npc_id_in_list" value="22167" />
+            <cond name="npc_id_in_list" value="22168" />
+            <cond name="npc_id_in_list" value="22169" />
+			<cond name="npc_id_in_list" value="22170" />
+            <cond name="npc_id_in_list" value="22171" />
+            <cond name="npc_id_in_list" value="22172" />
+            <cond name="npc_id_in_list" value="22173" />
+            <cond name="npc_id_in_list" value="22174" />
+            <cond name="npc_id_in_list" value="22175" />
+            <cond name="npc_id_in_list" value="22176" />
+            <cond name="npc_id_in_list" value="22177" />
+            <cond name="npc_id_in_list" value="22178" />
+            <cond name="npc_id_in_list" value="22179" />
+			<cond name="npc_id_in_list" value="22180" />
+            <cond name="npc_id_in_list" value="22181" />
+            <cond name="npc_id_in_list" value="22182" />
+            <cond name="npc_id_in_list" value="22183" />
+            <cond name="npc_id_in_list" value="22184" />
+            <cond name="npc_id_in_list" value="22185" />
+            <cond name="npc_id_in_list" value="22186" />
+            <cond name="npc_id_in_list" value="22187" />
+            <cond name="npc_id_in_list" value="22188" />
+            <cond name="npc_id_in_list" value="22189" />
+			<cond name="npc_id_in_list" value="22190" />
+            <cond name="npc_id_in_list" value="22191" />
+            <cond name="npc_id_in_list" value="22192" />
+            <cond name="npc_id_in_list" value="22193" />
+            <cond name="npc_id_in_list" value="22194" />
+        </conds>
+        <stage level="1" value="300" desc_address="daily_mob_killer_Pagans1">
+            <rewards>
+                <reward item_id="8068" min="1000" max="1000" chance="100"/>
+            </rewards>
+        </stage>
+         <stage level="2" value="1000" desc_address="daily_mob_killer_Pagans2">
+            <rewards>
+                <reward item_id="8068" min="4000" max="4000" chance="100"/>
+            </rewards>
+        </stage>
+    </achievement>
+    
+
+    <!-- PvP -->
+    <category name="pvp" title_address="player_killer_title" />
+    <achievement id="10" name_address="player_killer_name" category="pvp" type="PVP_KILL" expire_cron="30 6 * * *" icon="Icon.skill0297">
+        <stage level="1" value="10" desc_address="player_killer_stage1">
+            <rewards>
+                <reward item_id="5592" min="300" max="300" chance="100"/>
+                <reward item_id="9156" min="1" max="1" chance="100"/>
+            </rewards>
+        </stage>
+        <stage level="2" value="100" desc_address="player_killer_stage2" >
+            <rewards>
+                <reward item_id="5592" min="1000" max="1000" chance="100"/>
+                <reward item_id="9156" min="10" max="10" chance="100"/>
+            </rewards>
+        </stage>
+    </achievement>
+    <achievement id="11" name_address="pk_player_killer_name" category="pvp" type="PVP_KILL" expire_cron="30 6 * * *" icon="Icon.skill4336">
+        <conds>
+            <cond name="is_karma_player" value="true" />
+        </conds>
+        <stage level="1" value="10" desc_address="pk_player_killer_stage1">
+            <rewards>
+                <reward item_id="5592" min="300" max="300" chance="100"/>
+                <reward item_id="9156" min="1" max="1" chance="100"/>
+            </rewards>
+        </stage>
+        <stage level="2" value="100" desc_address="pk_player_killer_stage2" >
+            <rewards>
+                <reward item_id="5592" min="1000" max="1000" chance="100"/>
+                <reward item_id="9156" min="10" max="10" chance="100"/>
+
+            </rewards>
+        </stage>
+    </achievement>
+
+    <!-- Olympiad -->
+    <category name="olympiad" title_address="olympiad_event_title" />
+
+    <achievement id="12" name_address="oly_reg_name" category="olympiad" type="OLYMPIAD" expire_cron="30 6 * * *" icon="L2UI_CH3.bloodhood_icon03">
+        <stage level="1" value="10" desc_address="oly_reg_stage1">
+            <rewards>
+                <reward item_id="6651" min="5000" max="5000" chance="100"/>
+            </rewards>
+        </stage>
+        <stage level="2" value="20" desc_address="oly_reg_stage2" >
+            <rewards>
+                <reward item_id="6651" min="10000" max="10000" chance="100"/>
+            </rewards>
+        </stage>
+    </achievement>
+    <achievement id="13" name_address="oly_winner_name" category="olympiad" type="OLYMPIAD" expire_cron="30 6 * * *" icon="L2UI_CH3.bloodhood_icon04">
+        <conds>
+            <cond name="is_oly_winner" value="true" />
+        </conds>
+        <stage level="1" value="10" desc_address="oly_winner_stage1">
+            <rewards>
+                <reward item_id="6651" min="5000" max="5000" chance="100"/>
+            </rewards>
+        </stage>
+        <stage level="2" value="20" desc_address="oly_winner_stage2" >
+            <rewards>
+                <reward item_id="6651" min="10000" max="10000" chance="100"/>
+            </rewards>
+        </stage>
+    </achievement>
+
+
+
+</achievements>

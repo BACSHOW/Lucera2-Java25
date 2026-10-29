@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE list SYSTEM "item.dtd">
+
+
+<list>
+  <armor id="9600" name="TT HEAVY">
+    <!-- [TITANIUM HEAVY ARMOR] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="durability" value="30"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1004_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9601" name="TT LIGHT">
+    <!-- [TITANIUM LIGHT ARMOR] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1005_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9602" name="TT ROBE">
+    <!-- [TITANIUM ROBE ARMOR] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9603" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9604" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9605" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9606" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9607" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9608" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9609" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9610" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9611" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9612" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9613" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9614" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+    <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9615" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+      <armor id="9616" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+      <armor id="9617" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+      <armor id="9618" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+      <armor id="9619" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+      <armor id="9620" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9621" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+      <armor id="9622" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+      <armor id="9623" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+
+      <armor id="9624" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9625" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9626" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9627" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9628" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9629" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9630" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9631" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9632" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9633" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9634" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9635" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9636" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9637" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9638" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9639" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9640" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9641" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9642" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9643" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9644" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9645" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9646" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9647" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9648" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9649" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9650" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9651" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9652" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9653" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9654" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9655" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9656" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9657" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9658" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9659" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+    <armor id="9660" name="Dark Guard">
+    <!-- [Dark Guard] -->
+    <set name="tradeable" value="true"/>
+    <set name="dropable" value="true"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t1006_ul_i00"/>
+    <set name="price" value="1"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+  </armor>
+
+
+
+</list>
+

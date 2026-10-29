@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE list SYSTEM "pcparams.dtd">
+<list>
+    <pcparams classId="56" classType="artisan" name="Artisan">
+        <male> <!-- Male Artisan -->
+            <items> <!-- Starting Items -->
+                <item id="5588" amount="1"/>
+                <item id="1147" amount="1" equipped="true" enchant="0"/>
+                <item id="1146" amount="1" equipped="true" enchant="0"/>
+                <item id="2370" amount="1" equipped="true" enchant="0"/>
+            </items>
+            <spawn x="108512" y="-174026" z="-400"/> <!-- Spawn start coordinates -->
+            <stats> <!-- Base Stats like pAtkSpd, CON, DEX and etc -->
+                <set name="baseSTR" value="39"/>
+                <set name="baseCON" value="45"/>
+                <set name="baseDEX" value="29"/>
+                <set name="baseINT" value="20"/>
+                <set name="baseWIT" value="10"/>
+                <set name="baseMEN" value="27"/>
+                <set name="basePAtk" value="4"/>
+                <set name="basePDef" value="72"/>
+                <set name="baseMAtk" value="3"/>
+                <set name="baseMDef" value="48"/>
+                <set name="basePAtkSpd" value="327"/>
+                <set name="baseMAtkSpd" value="333"/>
+                <set name="baseCritRate" value="43"/>
+                <set name="baseRunSpd" value="115"/>
+                <set name="baseWalkSpd" value="80"/>
+                <set name="baseAtkRange" value="20"/>
+                <set name="baseShldDef" value="0"/>
+                <set name="baseShldRate" value="0"/>
+                <set name="baseExp" value="1"/>
+                <set name="collision_radius" value="9.0"/>
+                <set name="collision_height" value="18.0"/>
+                <set name="baseHpMax" value="0"/>
+                <set name="baseCpMax" value="0"/>
+                <set name="baseMpMax" value="0"/>
+                <set name="baseHpReg" value="0.01"/>
+                <set name="baseCpReg" value="0.01"/>
+                <set name="baseMpReg" value="0.01"/>
+            </stats>
+        </male>
+        <female> <!-- Female Artisan -->
+            <items> <!-- Starting Items -->
+                <item id="5588" amount="1"/>
+                <item id="1147" amount="1" equipped="true" enchant="0"/>
+                <item id="1146" amount="1" equipped="true" enchant="0"/>
+                <item id="2370" amount="1" equipped="true" enchant="0"/>
+            </items>
+            <spawn x="108512" y="-174026" z="-400"/> <!-- Spawn start coordinates -->
+            <stats> <!-- Base Stats like pAtkSpd, CON, DEX and etc -->
+                <set name="baseSTR" value="39"/>
+                <set name="baseCON" value="45"/>
+                <set name="baseDEX" value="29"/>
+                <set name="baseINT" value="20"/>
+                <set name="baseWIT" value="10"/>
+                <set name="baseMEN" value="27"/>
+                <set name="basePAtk" value="4"/>
+                <set name="basePDef" value="72"/>
+                <set name="baseMAtk" value="3"/>
+                <set name="baseMDef" value="48"/>
+                <set name="basePAtkSpd" value="327"/>
+                <set name="baseMAtkSpd" value="333"/>
+                <set name="baseCritRate" value="43"/>
+                <set name="baseRunSpd" value="115"/>
+                <set name="baseWalkSpd" value="80"/>
+                <set name="baseAtkRange" value="20"/>
+                <set name="baseShldDef" value="0"/>
+                <set name="baseShldRate" value="0"/>
+                <set name="baseExp" value="1"/>
+                <set name="collision_radius" value="5.0"/>
+                <set name="collision_height" value="19.0"/>
+                <set name="baseHpMax" value="0"/>
+                <set name="baseCpMax" value="0"/>
+                <set name="baseMpMax" value="0"/>
+                <set name="baseHpReg" value="0.01"/>
+                <set name="baseCpReg" value="0.01"/>
+                <set name="baseMpReg" value="0.01"/>
+            </stats>
+        </female>
+    </pcparams>
+</list>

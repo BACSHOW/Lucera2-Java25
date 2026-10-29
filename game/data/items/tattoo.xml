@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE list SYSTEM "item.dtd">
+
+<list>
+  <armor id="9700" name="Tatto of Monk Lvl 1">
+    <set name="crystal_count" value="422"/>
+    <set name="crystal_type" value="C"/>
+    <set name="crystallizable" value="true"/>
+    <set name="icon" value="icon.armor_mithril_banded_mail_i00"/>
+    <set name="price" value="5280000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="0"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+	<skills>
+      <skill id="6030" level="1"/>
+    </skills>
+    <cond msgId="1507">
+      <not>
+        <player olympiad="true"/>
+      </not>
+    </cond>
+    <for>
+        <mul order="0x30" stat="pAtk" val="1.03"/>
+    </for>
+  </armor>  
+  
+    <armor id="9701" name="Tattoo of Ogre Lv 2">
+    <!-- [tattoo_o__power] -->
+    <set name="tradeable" value="false"/>
+    <set name="dropable" value="false"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="price" value="36900"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+    <cond msgId="1507">
+      <not>
+        <player olympiad="true"/>
+      </not>
+    </cond>
+    <for>
+        <mul order="0x30" stat="pAtk" val="1.06"/>
+      <enchant stat="pDef" order="0x0C" value="0"/>
+    </for>
+  </armor>
+  
+    <armor id="9702" name="Tattoo of Ogre Lv 3">
+    <!-- [tattoo_o__power] -->
+    <set name="tradeable" value="false"/>
+    <set name="dropable" value="false"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="price" value="36900"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+    <cond msgId="1507">
+      <not>
+        <player olympiad="true"/>
+      </not>
+    </cond>
+    <for>
+        <mul order="0x30" stat="pAtk" val="1.09"/>
+      <enchant stat="pDef" order="0x0C" value="0"/>
+    </for>
+  </armor>
+  
+     <armor id="9703" name="Tattoo of Ogre Lv 4">
+    <!-- [tattoo_o__power] -->
+    <set name="tradeable" value="false"/>
+    <set name="dropable" value="false"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="price" value="36900"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+    <cond msgId="1507">
+      <not>
+        <player olympiad="true"/>
+      </not>
+    </cond>
+    <for>
+        <mul order="0x30" stat="pAtk" val="1.12"/>
+      <enchant stat="pDef" order="0x0C" value="0"/>
+    </for>
+  </armor>
+  
+    <armor id="9704" name="Tattoo of Ogre Lv 5">
+    <!-- [tattoo_o__power] -->
+    <set name="tradeable" value="false"/>
+    <set name="dropable" value="false"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="price" value="36900"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="4200"/>
+    <equip>
+      <slot id="UNDERWEAR"/>
+    </equip>
+    <cond msgId="1507">
+      <not>
+        <player olympiad="true"/>
+      </not>
+    </cond>
+    <for>
+    <add stat="pAtk" order="0x10" value="10"/>
+      <enchant stat="pDef" order="0x0C" value="0"/>
+    </for>
+  </armor>
+</list>
+
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE list SYSTEM "tree.dtd">
+<list>
+	<hero_skill_tree>
+		<skill id="395"  min_level="0"  level="1" cost="0" name="Heroic Miracle"/>
+		<skill id="396"  min_level="0"  level="1" cost="0" name="Heroic Berserker"/>
+		<skill id="1374" min_level="0"  level="1" cost="0" name="Heroic Valor"/>
+		<skill id="1375" min_level="0"  level="1" cost="0" name="Heroic Grandeur"/>
+		<skill id="1376" min_level="0"  level="1" cost="0" name="Heroic Dread"/>
+	</hero_skill_tree>
+</list>

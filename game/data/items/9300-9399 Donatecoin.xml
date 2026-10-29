@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE list SYSTEM "item.dtd">
+
+<list>
+  <etcitem id="9300" name="Donate Coin">
+    <!-- [adena] -->
+	<set name="icon" value="BAN_BITCOIN.UseCount_effect"/>
+    <set name="sellable" value="false"/>
+	<set name="dropable" value="True"/>
+    <set name="tradeable" value="True"/>
+    <set name="class" value="OTHER"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="price" value="1"/>
+    <set name="stackable" value="true"/>
+    <set name="type" value="MONEY"/>
+  </etcitem>
+  
+   <etcitem id="9301" name="Gold Bar">
+    <!-- [adena] -->
+	<set name="icon" value="icon.etc_lump_yellow_i00"/>
+    <set name="sellable" value="false"/>
+    <set name="dropable" value="True"/>
+    <set name="tradeable" value="True"/>
+    <set name="class" value="OTHER"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="price" value="1"/>
+    <set name="stackable" value="true"/>
+    <set name="type" value="MONEY"/>
+  </etcitem>
+  
+  
+     <etcitem id="9302" name="Gold Medal">
+    <!-- [adena] -->
+	<set name="icon" value="Medals_bySmallz.GoldMedal_bySmallz"/>
+    <set name="sellable" value="false"/>
+    <set name="dropable" value="True"/>
+    <set name="tradeable" value="True"/>
+    <set name="class" value="OTHER"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="price" value="1"/>
+    <set name="stackable" value="true"/>
+    <set name="type" value="MONEY"/>
+  </etcitem>
+
+    <etcitem id="9303" name="Silver Medal">
+    <!-- [adena] -->
+	  <set name="icon" value="Medals_bySmallz.SilverMedal_bySmallz"/>
+    <set name="sellable" value="false"/>
+    <set name="dropable" value="True"/>
+    <set name="tradeable" value="True"/>
+    <set name="class" value="OTHER"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="price" value="1"/>
+    <set name="stackable" value="true"/>
+    <set name="type" value="MONEY"/>
+  </etcitem>
+
+      <etcitem id="9304" name="Halisha's Mark">
+    <!-- [adena] -->
+	  <set name="icon" value="icon.etc_eyeball_i00"/>
+    <set name="sellable" value="false"/>
+    <set name="dropable" value="True"/>
+    <set name="tradeable" value="True"/>
+    <set name="class" value="OTHER"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="price" value="1"/>
+    <set name="stackable" value="true"/>
+    <set name="type" value="MONEY"/>
+  </etcitem>
+  </list>

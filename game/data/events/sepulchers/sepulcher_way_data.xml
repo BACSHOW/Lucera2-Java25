@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<way prefix="1st">
+		<points>
+			<point type="entry" x="181528" y="-85583" z="-7216" />
+			<point type="escape" x="170132" y="-88160" z="-2912" />
+		</points>
+		<doors>
+			<door name="royal_rush_door_1a" />
+			<door name="royal_rush_door_1b" />
+			<door name="royal_rush_door_1c" />
+			<door name="royal_rush_door_1d" />
+			<door name="royal_rush_door_1e" />
+		</doors>
+		<collapse_zone name="[royal_rush_ssq1]" />
+	</way>
+	<way prefix="2nd">
+		<points>
+			<point type="entry" x="179849" y="-88990" z="-7216" />
+			<point type="escape" x="170132" y="-88160" z="-2912" />
+		</points>
+		<doors>
+			<door name="royal_rush_door_2a" />
+			<door name="royal_rush_door_2b" />
+			<door name="royal_rush_door_2c" />
+			<door name="royal_rush_door_2d" />
+			<door name="royal_rush_door_2e" />
+		</doors>
+		<collapse_zone name="[royal_rush_ssq2]" />
+	</way>
+	<way prefix="3rd">
+		<points>
+			<point type="entry" x="173216" y="-86195" z="-7216" />
+			<point type="escape" x="170132" y="-88160" z="-2912" />
+		</points>
+		<doors>
+			<door name="royal_rush_door_3a" />
+			<door name="royal_rush_door_3b" />
+			<door name="royal_rush_door_3c" />
+			<door name="royal_rush_door_3d" />
+			<door name="royal_rush_door_3e" />
+		</doors>
+		<collapse_zone name="[royal_rush_ssq3]" />
+	</way>
+	<way prefix="4th">
+		<points>
+			<point type="entry" x="175615" y="-82365" z="-7216" />
+			<point type="escape" x="170132" y="-88160" z="-2912" />
+		</points>
+		<doors>
+			<door name="royal_rush_door_4a" />
+			<door name="royal_rush_door_4b" />
+			<door name="royal_rush_door_4c" />
+			<door name="royal_rush_door_4d" />
+			<door name="royal_rush_door_4e" />
+		</doors>
+		<collapse_zone name="[royal_rush_ssq4]" />
+	</way>
+	
+</list>

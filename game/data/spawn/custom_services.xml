@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE list SYSTEM "spawn.dtd">
+<list>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="-80629 149917 -3040 23000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="-84072 244573 -3728 41000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="-45258 -112662 -240 0" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="-12917 122814 -3112 48000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="9573 15686 -4568 6000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="15578 142885 -2696 16000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="43774 -47671 -792 50000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="46893 51512 -2976 47000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="87020 -143471 -1288 16500" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="82983 53118 -1488 31000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="83466 147899 -3400 16700" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="115084 -178333 -912 1000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="117074 77082 -2688 34000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="111360 219410 -3544 48000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="148031 -55228 -2728 48000" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="146732 25848 -2008 0" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="17746 170294 -3504 1040" />
+    </spawn>
+    <spawn name="[global_gatekeeper]">
+        <npc id="40012" count="1" respawn="60" pos="85195 16145 -3672 59277" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="115070 -178225 -880 0" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="-80710 149828 -3040 24576" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="46821 51472 -2976 49152" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="-84238 244728 -3728 40960" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="9715 15494 -4568 8192" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="-45253 -112563 -240 0" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="-12796 122808 -3112 49152" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="83274 147910 -3400 16384" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="82898 53061 -1488 16500" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="117105 76973 -2696 32768" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="17687 170125 -3504 0" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="146734 25700 -2008 0" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="111461 219407 -3544 49152" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="15804 142879 -2696 16384" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="85242 16162 -3672 49152" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="148050 -55417 -2728 49152" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="43682 -47742 -792 49152" />
+    </spawn>
+    <spawn name="[npc_buffer]">
+        <npc id="40010" count="1" respawn="60" pos="87021 -143349 -1288 16000" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="115077 -178282 -880 0" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="-80671 149873 -3040 24576" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="46851 51506 -2976 49152" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="-84037 244534 -3728 40960" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="9727 15425 -4576 8192" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="-45260 -112612 -240 0" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="-12861 122813 -3112 49152" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="83530 147892 -3400 16384" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="82964 53061 -1488 32768" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="117089 77029 -2704 32768" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="17647 170145 -3504 0" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="146733 25905 -2008 0" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="111325 219399 -3544 49152" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="15753 142876 -2696 16384" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="85286 16183 -3672 49152" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="147850 -55213 -2728 49152" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="43724 -47683 -792 49152" />
+    </spawn>
+    <spawn name="[gm_shop]">
+        <npc id="40013" count="1" respawn="60" pos="87172 -143465 -1288 16000" />
+    </spawn>
+    <spawn name="[global_services]">
+        <npc id="40025" count="1" respawn="60" pos="83400 147850 -3400 16384" />
+    </spawn>
+    <spawn name="[global_services]">
+        <npc id="40025" count="1" respawn="60" pos="146700 25800 -2008 0" />
+    </spawn>
+    <spawn name="[global_services]">
+        <npc id="40025" count="1" respawn="60" pos="43750 -47700 -792 49152" />
+    </spawn>
+</list>

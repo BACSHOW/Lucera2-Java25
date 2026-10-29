@@ -1,0 +1,20 @@
+<!ELEMENT packets (packetByName|packetByOpcode)*>
+<!ELEMENT packetByName (limit)*>
+<!ATTLIST packetByName
+        name CDATA #REQUIRED>
+<!ELEMENT limit (log|msg|actionFailed|drop|kick)*>
+<!ATTLIST limit
+        count CDATA #REQUIRED
+        perMs CDATA #REQUIRED>
+<!ELEMENT log (#PCDATA)>
+<!ATTLIST log
+        format CDATA #REQUIRED>
+<!ELEMENT msg (#PCDATA)>
+<!ATTLIST msg
+        text CDATA #REQUIRED>
+<!ELEMENT actionFailed (#PCDATA)>
+<!ELEMENT drop (#PCDATA)>
+<!ELEMENT kick (#PCDATA)>
+<!ELEMENT packetByOpcode (limit)*>
+<!ATTLIST packetByOpcode
+        op CDATA #REQUIRED>

@@ -1,0 +1,1623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+  <npcmaker name="1st_trigger_a" territory="godard16_2515_01">
+    <npc id="31468" pos="{182074;-85579;-7216;-32600}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_type1_a" territory="godard16_2515_01">
+    <npc id="18120" pos="{182556;-85581;-7216;-32920}" respawn="0" total="1" />
+    <npc id="18135" pos="{182075;-85345;-7174;-15480}" respawn="300" total="1" />
+    <npc id="18135" pos="{182081;-85788;-7174;16312}" respawn="300" total="1" />
+    <npc id="18136" pos="{181818;-85576;-7174;464}" respawn="300" total="1" />
+    <npc id="18136" pos="{182323;-85580;-7174;-32864}" respawn="300" total="1" />
+    <npc id="18134" pos="{181808;-85797;-7174;8192}" respawn="300" total="1" />
+    <npc id="18134" pos="{182308;-85786;-7174;24128}" respawn="300" total="1" />
+    <npc id="18134" pos="{182305;-85375;-7174;39264}" respawn="300" total="1" />
+    <npc id="18134" pos="{181812;-85361;-7174;58056}" respawn="300" total="1" />
+    <npc id="18137" pos="{182466;-85281;-7185;48632}" respawn="300" total="1" />
+    <npc id="18134" pos="{182467;-85901;-7185;16680}" respawn="300" total="1" />
+    <npc id="18132" pos="{182509;-85729;-7216;21360}" respawn="60" total="1" />
+    <npc id="18132" pos="{182504;-85439;-7216;40048}" respawn="60" total="1" />
+    <npc id="18132" pos="{181690;-85217;-7216;58816}" respawn="60" total="1" />
+    <npc id="18132" pos="{181673;-85943;-7216;72024}" respawn="60" total="1" />
+    <npc id="18132" pos="{182092;-85128;-7216;48664}" respawn="60" total="1" />
+    <npc id="18132" pos="{182084;-86036;-7216;81568}" respawn="60" total="1" />
+    <npc id="18136" pos="anywhere" respawn="60" total="2" />
+    <npc id="18135" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="1st_type2_a" territory="godard16_2515_01">
+    <npc id="18121" pos="{182556;-85581;-7216;-32920}" respawn="0" total="1" />
+    <npc id="18140" pos="{182075;-85345;-7174;-15480}" respawn="300" total="1" />
+    <npc id="18140" pos="{182081;-85788;-7174;16312}" respawn="300" total="1" />
+    <npc id="18138" pos="{181818;-85576;-7174;464}" respawn="300" total="1" />
+    <npc id="18138" pos="{182323;-85580;-7174;-32864}" respawn="300" total="1" />
+    <npc id="18137" pos="{181808;-85797;-7174;8192}" respawn="300" total="1" />
+    <npc id="18137" pos="{182308;-85786;-7174;24128}" respawn="300" total="1" />
+    <npc id="18137" pos="{182305;-85375;-7174;39264}" respawn="300" total="1" />
+    <npc id="18137" pos="{181812;-85361;-7174;58056}" respawn="300" total="1" />
+    <npc id="18137" pos="{182466;-85281;-7185;48632}" respawn="300" total="1" />
+    <npc id="18137" pos="{182467;-85901;-7185;16680}" respawn="300" total="1" />
+    <npc id="18132" pos="{182509;-85729;-7216;21360}" respawn="60" total="1" />
+    <npc id="18132" pos="{182504;-85439;-7216;40048}" respawn="60" total="1" />
+    <npc id="18132" pos="{181690;-85217;-7216;58816}" respawn="60" total="1" />
+    <npc id="18132" pos="{181673;-85943;-7216;72024}" respawn="60" total="1" />
+    <npc id="18132" pos="{182092;-85128;-7216;48664}" respawn="60" total="1" />
+    <npc id="18132" pos="{182084;-86036;-7216;81568}" respawn="60" total="1" />
+    <npc id="18138" pos="anywhere" respawn="60" total="2" />
+    <npc id="18139" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="1st_type3_a" territory="godard16_2515_01">
+    <npc id="18122" pos="{182556;-85581;-7216;-32920}" respawn="0" total="1" />
+    <npc id="18135" pos="{182075;-85345;-7174;-15480}" respawn="300" total="1" />
+    <npc id="18135" pos="{182081;-85788;-7174;16312}" respawn="300" total="1" />
+    <npc id="18133" pos="{181818;-85576;-7174;464}" respawn="300" total="1" />
+    <npc id="18133" pos="{182323;-85580;-7174;-32864}" respawn="300" total="1" />
+    <npc id="18137" pos="{181808;-85797;-7174;8192}" respawn="300" total="1" />
+    <npc id="18137" pos="{182308;-85786;-7174;24128}" respawn="300" total="1" />
+    <npc id="18137" pos="{182305;-85375;-7174;39264}" respawn="300" total="1" />
+    <npc id="18137" pos="{181812;-85361;-7174;58056}" respawn="300" total="1" />
+    <npc id="18137" pos="{182466;-85281;-7185;48632}" respawn="300" total="1" />
+    <npc id="18137" pos="{182467;-85901;-7185;16680}" respawn="300" total="1" />
+    <npc id="18132" pos="{182509;-85729;-7216;21360}" respawn="60" total="1" />
+    <npc id="18132" pos="{182504;-85439;-7216;40048}" respawn="60" total="1" />
+    <npc id="18132" pos="{181690;-85217;-7216;58816}" respawn="60" total="1" />
+    <npc id="18132" pos="{181673;-85943;-7216;72024}" respawn="60" total="1" />
+    <npc id="18132" pos="{182092;-85128;-7216;48664}" respawn="60" total="1" />
+    <npc id="18132" pos="{182084;-86036;-7216;81568}" respawn="60" total="1" />
+    <npc id="18138" pos="anywhere" respawn="60" total="2" />
+    <npc id="18136" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="1st_trigger_b" territory="godard16_2515_02">
+    <npc id="31469" pos="{183868;-85577;-7216;-32600}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_type1_b1" territory="godard16_2515_02">
+    <npc id="18146" pos="{183514;-85804;-7216;16112}" respawn="0" total="1" />
+    <npc id="18146" pos="{184247;-85801;-7216;16112}" respawn="0" total="1" />
+    <npc id="18146" pos="{183532;-85328;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18146" pos="{184248;-85335;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18148" pos="{183888;-85805;-7216;16112}" respawn="0" total="1" />
+    <npc id="18148" pos="{183700;-85807;-7216;16112}" respawn="0" total="1" />
+    <npc id="18148" pos="{184083;-85801;-7216;16112}" respawn="0" total="1" />
+    <npc id="18148" pos="{183896;-85331;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18148" pos="{183712;-85328;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18148" pos="{184078;-85336;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18148" pos="{183494;-85669;-7216;264}" respawn="0" total="1" />
+    <npc id="18148" pos="{183494;-85480;-7216;264}" respawn="0" total="1" />
+    <npc id="18148" pos="{184239;-85467;-7216;-31520}" respawn="0" total="1" />
+    <npc id="18148" pos="{184235;-85688;-7216;-31520}" respawn="0" total="1" />
+    <npc id="18149" pos="anywhere" respawn="0" total="2" />
+  </npcmaker>
+  <npcmaker name="1st_type1_b2" territory="godard16_2515_02">
+    <npc id="18146" pos="{183514;-85804;-7216;16112}" respawn="0" total="1" />
+    <npc id="18146" pos="{184247;-85801;-7216;16112}" respawn="0" total="1" />
+    <npc id="18146" pos="{183532;-85328;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18146" pos="{184248;-85335;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18148" pos="anywhere" respawn="0" total="9" />
+    <npc id="18146" pos="anywhere" respawn="0" total="2" />
+    <npc id="18149" pos="anywhere" respawn="0" total="3" />
+  </npcmaker>
+  <npcmaker name="1st_type1_b3" territory="godard16_2515_02">
+    <npc id="18141" pos="{184363;-85587;-7216;32744}" respawn="0" total="1" />
+    <npc id="18146" pos="{184239;-85467;-7216;-31520}" respawn="60" total="1" />
+    <npc id="18146" pos="{184235;-85688;-7216;-31520}" respawn="60" total="1" />
+    <npc id="18146" pos="anywhere" respawn="60" total="5" />
+    <npc id="18148" pos="anywhere" respawn="60" total="5" />
+    <npc id="18149" pos="anywhere" respawn="60" total="4" />
+  </npcmaker>
+  <npcmaker name="1st_type2_b1" territory="godard16_2515_02">
+    <npc id="18145" pos="{183514;-85804;-7216;16112}" respawn="0" total="1" />
+    <npc id="18145" pos="{184247;-85801;-7216;16112}" respawn="0" total="1" />
+    <npc id="18145" pos="{183532;-85328;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18145" pos="{184248;-85335;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18147" pos="{183888;-85805;-7216;16112}" respawn="0" total="1" />
+    <npc id="18147" pos="{183700;-85807;-7216;16112}" respawn="0" total="1" />
+    <npc id="18147" pos="{184083;-85801;-7216;16112}" respawn="0" total="1" />
+    <npc id="18147" pos="{183896;-85331;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18147" pos="{183712;-85328;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18147" pos="{184078;-85336;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18147" pos="{183494;-85669;-7216;264}" respawn="0" total="1" />
+    <npc id="18147" pos="{183494;-85480;-7216;264}" respawn="0" total="1" />
+    <npc id="18147" pos="{184239;-85467;-7216;-31520}" respawn="0" total="1" />
+    <npc id="18147" pos="{184235;-85688;-7216;-31520}" respawn="0" total="1" />
+    <npc id="18149" pos="anywhere" respawn="0" total="2" />
+  </npcmaker>
+  <npcmaker name="1st_type2_b2" territory="godard16_2515_02">
+    <npc id="18145" pos="{183514;-85804;-7216;16112}" respawn="0" total="1" />
+    <npc id="18145" pos="{184247;-85801;-7216;16112}" respawn="0" total="1" />
+    <npc id="18145" pos="{183532;-85328;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18145" pos="{184248;-85335;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18147" pos="anywhere" respawn="0" total="9" />
+    <npc id="18145" pos="anywhere" respawn="0" total="2" />
+    <npc id="18149" pos="anywhere" respawn="0" total="3" />
+  </npcmaker>
+  <npcmaker name="1st_type2_b3" territory="godard16_2515_02">
+    <npc id="18141" pos="{184363;-85587;-7216;32744}" respawn="0" total="1" />
+    <npc id="18145" pos="{184239;-85467;-7216;-31520}" respawn="60" total="1" />
+    <npc id="18145" pos="{184235;-85688;-7216;-31520}" respawn="60" total="1" />
+    <npc id="18145" pos="anywhere" respawn="60" total="5" />
+    <npc id="18147" pos="anywhere" respawn="60" total="5" />
+    <npc id="18149" pos="anywhere" respawn="60" total="4" />
+  </npcmaker>
+  <npcmaker name="1st_trigger_c" territory="godard16_2515_03">
+    <npc id="31470" pos="{185681;-85573;-7216;-32600}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_type1_c" territory="godard16_2515_03">
+    <npc id="18150" pos="{185681;-85573;-7232;-32600}" respawn="0" total="1" />
+    <npc id="18169" pos="{185699;-85701;-7216;16408}" respawn="60" total="1" />
+    <npc id="18169" pos="{185700;-85462;-7216;49136}" respawn="60" total="1" />
+    <npc id="18168" pos="{185228;-85535;-7216;65744}" respawn="0" total="1" />
+    <npc id="18167" pos="{186192;-85572;-7216;32848}" respawn="60" total="1" />
+    <npc id="18168" pos="{186018;-85472;-7216;-24808}" respawn="0" total="1" />
+    <npc id="18168" pos="{186017;-85738;-7216;-41072}" respawn="0" total="1" />
+    <npc id="18168" pos="{185228;-85654;-7216;-65872}" respawn="0" total="1" />
+    <npc id="18172" pos="{185373;-85577;-7232;-8}" respawn="0" total="1" />
+    <npc id="18170" pos="{186035;-85575;-7232;-32696}" respawn="0" total="1" />
+    <npc id="18167" pos="{185623;-85805;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{185462;-85805;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{185304;-85805;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{186105;-85804;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{185944;-85804;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{185786;-85804;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{185624;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18170" pos="{185463;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{185305;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{186107;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18170" pos="{185945;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{185787;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{186123;-85691;-7232;-32696}" respawn="60" total="1" />
+    <npc id="18167" pos="{186121;-85463;-7232;-32696}" respawn="60" total="1" />
+    <npc id="18166" pos="anywhere" respawn="60" total="3" />
+    <npc id="18169" pos="anywhere" respawn="60" total="3" />
+  </npcmaker>
+  <npcmaker name="1st_type2_c" territory="godard16_2515_03">
+    <npc id="18151" pos="{185681;-85573;-7232;-32600}" respawn="0" total="1" />
+    <npc id="18169" pos="{185699;-85701;-7216;16408}" respawn="60" total="1" />
+    <npc id="18169" pos="{185700;-85462;-7216;49136}" respawn="60" total="1" />
+    <npc id="18171" pos="{185228;-85535;-7216;65744}" respawn="0" total="1" />
+    <npc id="18167" pos="{186192;-85572;-7216;32848}" respawn="60" total="1" />
+    <npc id="18167" pos="{186018;-85472;-7216;-24808}" respawn="0" total="1" />
+    <npc id="18167" pos="{186017;-85738;-7216;-41072}" respawn="0" total="1" />
+    <npc id="18171" pos="{185228;-85654;-7216;-65872}" respawn="0" total="1" />
+    <npc id="18172" pos="{185373;-85577;-7232;-8}" respawn="0" total="1" />
+    <npc id="18170" pos="{186035;-85575;-7232;-32696}" respawn="0" total="1" />
+    <npc id="18170" pos="{185623;-85805;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{185462;-85805;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{185304;-85805;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{186105;-85804;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{185944;-85804;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{185786;-85804;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{185624;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{185463;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18170" pos="{185305;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18170" pos="{186107;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{185945;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18170" pos="{185787;-85398;-7216;49152}" respawn="0" total="1" />
+    <npc id="18171" pos="{186123;-85691;-7232;-32696}" respawn="60" total="1" />
+    <npc id="18171" pos="{186121;-85463;-7232;-32696}" respawn="60" total="1" />
+    <npc id="18172" pos="anywhere" respawn="60" total="3" />
+    <npc id="18171" pos="anywhere" respawn="60" total="3" />
+  </npcmaker>
+  <npcmaker name="1st_trigger_d" territory="godard16_2515_04">
+    <npc id="31471" pos="{187498;-85566;-7216;-32600}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_type1_d" territory="godard16_2515_04">
+    <npc id="18173" pos="{187145;-85574;-7217;0}" respawn="0" total="1" />
+    <npc id="18196" pos="{186956;-86039;-7168;9264}" respawn="0" total="1" />
+    <npc id="18197" pos="{186949;-85098;-7168;-8480}" respawn="0" total="1" />
+    <npc id="18198" pos="{188053;-85106;-7168;-23704}" respawn="0" total="1" />
+    <npc id="18199" pos="{188063;-86053;-7168;-40176}" respawn="0" total="1" />
+    <npc id="18185" pos="{187748;-85460;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18185" pos="{187746;-85686;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{187912;-85575;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{187091;-85966;-7232;8248}" respawn="300" total="1" />
+    <npc id="18186" pos="{187101;-85185;-7232;-5664}" respawn="300" total="1" />
+    <npc id="18188" pos="{187815;-85819;-7200;23520}" respawn="300" total="1" />
+    <npc id="18188" pos="{187814;-85319;-7200;38672}" respawn="300" total="1" />
+    <npc id="18188" pos="{187207;-85318;-7200;57088}" respawn="300" total="1" />
+    <npc id="18188" pos="{187208;-85820;-7200;72784}" respawn="300" total="1" />
+    <npc id="18187" pos="{187501;-85813;-7200;81240}" respawn="300" total="1" />
+    <npc id="18187" pos="{187502;-85344;-7200;48792}" respawn="300" total="1" />
+    <npc id="18190" pos="{187664;-85571;-7192;32856}" respawn="300" total="1" />
+    <npc id="18185" pos="{187032;-85678;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18185" pos="{187029;-85484;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18189" pos="anywhere" respawn="60" total="3" />
+    <npc id="18190" pos="anywhere" respawn="60" total="3" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="1st_type2_d" territory="godard16_2515_04">
+    <npc id="18174" pos="{187145;-85574;-7217;0}" respawn="0" total="1" />
+    <npc id="18196" pos="{186956;-86039;-7168;9264}" respawn="0" total="1" />
+    <npc id="18197" pos="{186949;-85098;-7168;-8480}" respawn="0" total="1" />
+    <npc id="18198" pos="{188053;-85106;-7168;-23704}" respawn="0" total="1" />
+    <npc id="18199" pos="{188063;-86053;-7168;-40176}" respawn="0" total="1" />
+    <npc id="18185" pos="{187748;-85460;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18185" pos="{187746;-85686;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{187912;-85575;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{187091;-85966;-7232;8248}" respawn="300" total="1" />
+    <npc id="18186" pos="{187101;-85185;-7232;-5664}" respawn="300" total="1" />
+    <npc id="18191" pos="{187815;-85819;-7200;23520}" respawn="300" total="1" />
+    <npc id="18191" pos="{187814;-85319;-7200;38672}" respawn="300" total="1" />
+    <npc id="18191" pos="{187207;-85318;-7200;57088}" respawn="300" total="1" />
+    <npc id="18191" pos="{187208;-85820;-7200;72784}" respawn="300" total="1" />
+    <npc id="18192" pos="{187501;-85813;-7200;81240}" respawn="300" total="1" />
+    <npc id="18192" pos="{187502;-85344;-7200;48792}" respawn="300" total="1" />
+    <npc id="18190" pos="{187664;-85571;-7192;32856}" respawn="300" total="1" />
+    <npc id="18185" pos="{187032;-85678;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18185" pos="{187029;-85484;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18192" pos="anywhere" respawn="60" total="2" />
+    <npc id="18193" pos="anywhere" respawn="60" total="2" />
+    <npc id="18194" pos="anywhere" respawn="60" total="2" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="1st_type3_d" territory="godard16_2515_04">
+    <npc id="18175" pos="{187145;-85574;-7217;0}" respawn="0" total="1" />
+    <npc id="18196" pos="{186956;-86039;-7168;9264}" respawn="300" total="1" />
+    <npc id="18197" pos="{186949;-85098;-7168;-8480}" respawn="300" total="1" />
+    <npc id="18198" pos="{188053;-85106;-7168;-23704}" respawn="300" total="1" />
+    <npc id="18199" pos="{188063;-86053;-7168;-40176}" respawn="300" total="1" />
+    <npc id="18185" pos="{187748;-85460;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18185" pos="{187746;-85686;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{187912;-85575;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{187091;-85966;-7232;8248}" respawn="300" total="1" />
+    <npc id="18186" pos="{187101;-85185;-7232;-5664}" respawn="300" total="1" />
+    <npc id="18188" pos="{187815;-85819;-7200;23520}" respawn="300" total="1" />
+    <npc id="18191" pos="{187814;-85319;-7200;38672}" respawn="300" total="1" />
+    <npc id="18188" pos="{187207;-85318;-7200;57088}" respawn="300" total="1" />
+    <npc id="18191" pos="{187208;-85820;-7200;72784}" respawn="300" total="1" />
+    <npc id="18187" pos="{187501;-85813;-7200;81240}" respawn="300" total="1" />
+    <npc id="18192" pos="{187502;-85344;-7200;48792}" respawn="300" total="1" />
+    <npc id="18190" pos="{187664;-85571;-7192;32856}" respawn="300" total="1" />
+    <npc id="18185" pos="{187032;-85678;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18185" pos="{187029;-85484;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18189" pos="anywhere" respawn="60" total="2" />
+    <npc id="18190" pos="anywhere" respawn="60" total="2" />
+    <npc id="18192" pos="anywhere" respawn="60" total="2" />
+    <npc id="18193" pos="anywhere" respawn="60" total="2" />
+    <npc id="18194" pos="anywhere" respawn="60" total="2" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="1st_trigger_e" territory="godard16_2515_05">
+    <npc id="31472" pos="{189306;-85571;-7216;-32600}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_type1_e" territory="godard16_2515_05">
+    <npc id="18224" pos="{189011;-85567;-7184;0}" respawn="0" total="1" />
+    <npc id="18225" pos="{189540;-85576;-7202;32104}" respawn="0" total="1" />
+    <npc id="18226" pos="{188837;-85755;-7217;5632}" respawn="0" total="1" />
+    <npc id="18226" pos="{188834;-85401;-7217;-7232}" respawn="0" total="1" />
+    <npc id="18220" pos="{189139;-85279;-7217;-16256}" respawn="0" total="1" />
+    <npc id="18221" pos="{189142;-85889;-7217;16336}" respawn="0" total="1" />
+    <npc id="18223" pos="{189813;-85652;-7217;32712}" respawn="0" total="1" />
+    <npc id="18223" pos="{189809;-85499;-7217;32416}" respawn="0" total="1" />
+    <npc id="18223" pos="{189318;-85335;-7200;-16648}" respawn="0" total="1" />
+    <npc id="18223" pos="{189321;-85826;-7200;16104}" respawn="0" total="1" />
+    <npc id="18222" pos="{189250;-85749;-7202;16888}" respawn="0" total="1" />
+    <npc id="18222" pos="{189243;-85405;-7202;-15944}" respawn="0" total="1" />
+    <npc id="18223" pos="{189625;-85339;-7200;-16656}" respawn="0" total="1" />
+    <npc id="18223" pos="{189623;-85826;-7200;-49328}" respawn="0" total="1" />
+    <npc id="18223" pos="{189012;-85341;-7200;-16656}" respawn="0" total="1" />
+    <npc id="18223" pos="{189020;-85828;-7200;-49328}" respawn="0" total="1" />
+    <npc id="18220" pos="{189453;-85890;-7217;16336}" respawn="0" total="1" />
+    <npc id="18221" pos="{189489;-85286;-7217;-16040}" respawn="0" total="1" />
+    <npc id="18227" pos="{189568;-85695;-7217;32416}" respawn="0" total="1" />
+    <npc id="18227" pos="{189563;-85428;-7217;32416}" respawn="0" total="1" />
+    <npc id="18226" pos="{189014;-85428;-7217;49016}" respawn="0" total="1" />
+    <npc id="18226" pos="{189015;-85702;-7217;16200}" respawn="0" total="1" />
+    <npc id="18220" pos="{189713;-85575;-7217;32800}" respawn="0" total="1" />
+    <npc id="18221" pos="{188807;-85570;-7217;-128}" respawn="0" total="1" />
+    <npc id="18222" pos="anywhere" respawn="0" total="2" />
+    <npc id="18224" pos="anywhere" respawn="0" total="2" />
+    <npc id="18225" pos="anywhere" respawn="0" total="2" />
+    <npc id="18230" pos="anywhere" respawn="0" total="4" />
+    <npc id="18243" pos="{189901;-85733;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85804;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85876;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85946;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-86014;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85125;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85196;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85268;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85339;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85406;-7200;33096}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_type1_boss_e" territory="godard16_2515_05">
+    <npc id="18212" pos="anywhere" respawn="0" total="1" />
+    <npc id="18230" pos="anywhere" respawn="60" total="5" />
+    <npc id="18220" pos="anywhere" respawn="60" total="4" />
+    <npc id="18227" pos="anywhere" respawn="60" total="2" />
+    <npc id="18222" pos="anywhere" respawn="60" total="2" />
+    <npc id="18224" pos="anywhere" respawn="60" total="2" />
+    <npc id="18225" pos="anywhere" respawn="60" total="2" />
+    <npc id="18243" pos="{190034;-85514;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{190034;-85585;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{190034;-85652;-7200;33096}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_type2_e" territory="godard16_2515_05">
+    <npc id="18227" pos="{189011;-85567;-7184;0}" respawn="0" total="1" />
+    <npc id="18227" pos="{189540;-85576;-7202;32104}" respawn="0" total="1" />
+    <npc id="18223" pos="{188837;-85755;-7217;5632}" respawn="0" total="1" />
+    <npc id="18223" pos="{188834;-85401;-7217;-7232}" respawn="0" total="1" />
+    <npc id="18220" pos="{189139;-85279;-7217;-16256}" respawn="0" total="1" />
+    <npc id="18221" pos="{189142;-85889;-7217;16336}" respawn="0" total="1" />
+    <npc id="18226" pos="{189813;-85652;-7217;32712}" respawn="0" total="1" />
+    <npc id="18226" pos="{189809;-85499;-7217;32416}" respawn="0" total="1" />
+    <npc id="18226" pos="{189318;-85335;-7200;-16648}" respawn="0" total="1" />
+    <npc id="18226" pos="{189321;-85826;-7200;16104}" respawn="0" total="1" />
+    <npc id="18227" pos="{189250;-85749;-7202;16888}" respawn="0" total="1" />
+    <npc id="18227" pos="{189243;-85405;-7202;-15944}" respawn="0" total="1" />
+    <npc id="18226" pos="{189625;-85339;-7200;-16656}" respawn="0" total="1" />
+    <npc id="18226" pos="{189623;-85826;-7200;-49328}" respawn="0" total="1" />
+    <npc id="18226" pos="{189012;-85341;-7200;-16656}" respawn="0" total="1" />
+    <npc id="18226" pos="{189020;-85828;-7200;-49328}" respawn="0" total="1" />
+    <npc id="18220" pos="{189453;-85890;-7217;16336}" respawn="0" total="1" />
+    <npc id="18221" pos="{189489;-85286;-7217;-16040}" respawn="0" total="1" />
+    <npc id="18224" pos="{189568;-85695;-7217;32416}" respawn="0" total="1" />
+    <npc id="18224" pos="{189563;-85428;-7217;32416}" respawn="0" total="1" />
+    <npc id="18223" pos="{189014;-85428;-7217;49016}" respawn="0" total="1" />
+    <npc id="18223" pos="{189015;-85702;-7217;16200}" respawn="0" total="1" />
+    <npc id="18220" pos="{189713;-85575;-7217;32800}" respawn="0" total="1" />
+    <npc id="18221" pos="{188807;-85570;-7217;-128}" respawn="0" total="1" />
+    <npc id="18229" pos="anywhere" respawn="0" total="2" />
+    <npc id="18227" pos="anywhere" respawn="0" total="2" />
+    <npc id="18228" pos="anywhere" respawn="0" total="2" />
+    <npc id="18230" pos="anywhere" respawn="0" total="4" />
+    <npc id="18243" pos="{189901;-85733;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85804;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85876;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85946;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-86014;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85125;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85196;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85268;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85339;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{189901;-85406;-7200;33096}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_type2_boss_e" territory="godard16_2515_05">
+    <npc id="18212" pos="anywhere" respawn="0" total="1" />
+    <npc id="18230" pos="anywhere" respawn="60" total="5" />
+    <npc id="18220" pos="anywhere" respawn="60" total="4" />
+    <npc id="18224" pos="anywhere" respawn="60" total="2" />
+    <npc id="18229" pos="anywhere" respawn="60" total="2" />
+    <npc id="18227" pos="anywhere" respawn="60" total="2" />
+    <npc id="18228" pos="anywhere" respawn="60" total="2" />
+    <npc id="18243" pos="{190034;-85514;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{190034;-85585;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{190034;-85652;-7200;33096}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_boss_type1" territory="godard16_2515_06">
+    <npc id="25339" pos="{191544;-85575;-7184;-33016}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_boss_type2" territory="godard16_2515_06">
+    <npc id="25342" pos="{191544;-85575;-7184;-33016}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_boss_type3" territory="godard16_2515_06">
+    <npc id="25346" pos="{191544;-85575;-7184;-33016}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_boss_type4" territory="godard16_2515_06">
+    <npc id="25349" pos="{191544;-85575;-7184;-33016}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="1st_boss_treasure" territory="godard16_2515_06">
+    <npc id="18256" pos="anywhere" respawn="0" total="200" />
+  </npcmaker>
+  <npcmaker name="2nd_trigger_a" territory="godard17_2515_01">
+    <npc id="31473" pos="{180375;-88968;-7216;-32600}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_type1_a" territory="godard17_2515_01">
+    <npc id="18123" pos="{180856;-88969;-7216;-32920}" respawn="0" total="1" />
+    <npc id="18135" pos="{180376;-88733;-7174;-15480}" respawn="300" total="1" />
+    <npc id="18135" pos="{180381;-89177;-7174;16312}" respawn="300" total="1" />
+    <npc id="18136" pos="{180118;-88965;-7174;464}" respawn="300" total="1" />
+    <npc id="18136" pos="{180623;-88969;-7174;-32864}" respawn="300" total="1" />
+    <npc id="18134" pos="{180108;-89185;-7174;8192}" respawn="300" total="1" />
+    <npc id="18134" pos="{180608;-89175;-7174;24128}" respawn="300" total="1" />
+    <npc id="18134" pos="{180605;-88764;-7174;39264}" respawn="300" total="1" />
+    <npc id="18134" pos="{180112;-88749;-7174;58056}" respawn="300" total="1" />
+    <npc id="18137" pos="{180767;-88670;-7185;48632}" respawn="300" total="1" />
+    <npc id="18134" pos="{180768;-89290;-7185;16680}" respawn="300" total="1" />
+    <npc id="18132" pos="{180810;-89118;-7216;21360}" respawn="60" total="1" />
+    <npc id="18132" pos="{180804;-88828;-7216;40048}" respawn="60" total="1" />
+    <npc id="18132" pos="{179991;-88605;-7216;58816}" respawn="60" total="1" />
+    <npc id="18132" pos="{179974;-89331;-7216;72024}" respawn="60" total="1" />
+    <npc id="18132" pos="{180393;-88516;-7216;48664}" respawn="60" total="1" />
+    <npc id="18132" pos="{180384;-89425;-7216;81568}" respawn="60" total="1" />
+    <npc id="18136" pos="anywhere" respawn="60" total="2" />
+    <npc id="18135" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="2nd_type2_a" territory="godard17_2515_01">
+    <npc id="18124" pos="{180856;-88969;-7216;-32920}" respawn="0" total="1" />
+    <npc id="18140" pos="{180376;-88733;-7174;-15480}" respawn="300" total="1" />
+    <npc id="18140" pos="{180381;-89177;-7174;16312}" respawn="300" total="1" />
+    <npc id="18138" pos="{180118;-88965;-7174;464}" respawn="300" total="1" />
+    <npc id="18138" pos="{180623;-88969;-7174;-32864}" respawn="300" total="1" />
+    <npc id="18137" pos="{180108;-89185;-7174;8192}" respawn="300" total="1" />
+    <npc id="18137" pos="{180608;-89175;-7174;24128}" respawn="300" total="1" />
+    <npc id="18137" pos="{180605;-88764;-7174;39264}" respawn="300" total="1" />
+    <npc id="18137" pos="{180112;-88749;-7174;58056}" respawn="300" total="1" />
+    <npc id="18137" pos="{180767;-88670;-7185;48632}" respawn="300" total="1" />
+    <npc id="18137" pos="{180768;-89290;-7185;16680}" respawn="300" total="1" />
+    <npc id="18132" pos="{180810;-89118;-7216;21360}" respawn="60" total="1" />
+    <npc id="18132" pos="{180804;-88828;-7216;40048}" respawn="60" total="1" />
+    <npc id="18132" pos="{179991;-88605;-7216;58816}" respawn="60" total="1" />
+    <npc id="18132" pos="{179974;-89331;-7216;72024}" respawn="60" total="1" />
+    <npc id="18132" pos="{180393;-88516;-7216;48664}" respawn="60" total="1" />
+    <npc id="18132" pos="{180384;-89425;-7216;81568}" respawn="60" total="1" />
+    <npc id="18138" pos="anywhere" respawn="60" total="2" />
+    <npc id="18139" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="2nd_type3_a" territory="godard17_2515_01">
+    <npc id="18125" pos="{180856;-88969;-7216;-32920}" respawn="0" total="1" />
+    <npc id="18135" pos="{180376;-88733;-7174;-15480}" respawn="300" total="1" />
+    <npc id="18135" pos="{180381;-89177;-7174;16312}" respawn="300" total="1" />
+    <npc id="18133" pos="{180118;-88965;-7174;464}" respawn="300" total="1" />
+    <npc id="18133" pos="{180623;-88969;-7174;-32864}" respawn="300" total="1" />
+    <npc id="18137" pos="{180108;-89185;-7174;8192}" respawn="300" total="1" />
+    <npc id="18137" pos="{180608;-89175;-7174;24128}" respawn="300" total="1" />
+    <npc id="18137" pos="{180605;-88764;-7174;39264}" respawn="300" total="1" />
+    <npc id="18137" pos="{180112;-88749;-7174;58056}" respawn="300" total="1" />
+    <npc id="18137" pos="{180767;-88670;-7185;48632}" respawn="300" total="1" />
+    <npc id="18137" pos="{180768;-89290;-7185;16680}" respawn="300" total="1" />
+    <npc id="18132" pos="{180810;-89118;-7216;21360}" respawn="60" total="1" />
+    <npc id="18132" pos="{180804;-88828;-7216;40048}" respawn="60" total="1" />
+    <npc id="18132" pos="{179991;-88605;-7216;58816}" respawn="60" total="1" />
+    <npc id="18132" pos="{179974;-89331;-7216;72024}" respawn="60" total="1" />
+    <npc id="18132" pos="{180393;-88516;-7216;48664}" respawn="60" total="1" />
+    <npc id="18132" pos="{180384;-89425;-7216;81568}" respawn="60" total="1" />
+    <npc id="18138" pos="anywhere" respawn="60" total="2" />
+    <npc id="18136" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="2nd_trigger_b" territory="godard17_2515_02">
+    <npc id="31474" pos="{182151;-88962;-7216;-32600}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_type1_b1" territory="godard17_2515_02">
+    <npc id="18146" pos="{181797;-89190;-7216;16112}" respawn="0" total="1" />
+    <npc id="18146" pos="{182531;-89186;-7216;16112}" respawn="0" total="1" />
+    <npc id="18146" pos="{181815;-88714;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18146" pos="{182532;-88720;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18148" pos="{182171;-89191;-7216;16112}" respawn="0" total="1" />
+    <npc id="18148" pos="{181983;-89192;-7216;16112}" respawn="0" total="1" />
+    <npc id="18148" pos="{182366;-89186;-7216;16112}" respawn="0" total="1" />
+    <npc id="18148" pos="{182179;-88717;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18148" pos="{181995;-88714;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18148" pos="{182362;-88721;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18148" pos="{181777;-89054;-7216;264}" respawn="0" total="1" />
+    <npc id="18148" pos="{181777;-88866;-7216;264}" respawn="0" total="1" />
+    <npc id="18148" pos="{182522;-88853;-7216;-31520}" respawn="0" total="1" />
+    <npc id="18148" pos="{182518;-89073;-7216;-31520}" respawn="0" total="1" />
+    <npc id="18149" pos="anywhere" respawn="0" total="2" />
+  </npcmaker>
+  <npcmaker name="2nd_type1_b2" territory="godard17_2515_02">
+    <npc id="18146" pos="{181797;-89190;-7216;16112}" respawn="0" total="1" />
+    <npc id="18146" pos="{182531;-89186;-7216;16112}" respawn="0" total="1" />
+    <npc id="18146" pos="{181815;-88714;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18146" pos="{182532;-88720;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18148" pos="anywhere" respawn="0" total="9" />
+    <npc id="18146" pos="anywhere" respawn="0" total="2" />
+    <npc id="18149" pos="anywhere" respawn="0" total="3" />
+  </npcmaker>
+  <npcmaker name="2nd_type1_b3" territory="godard17_2515_02">
+    <npc id="18142" pos="anywhere" respawn="0" total="1" />
+    <npc id="18146" pos="anywhere" respawn="60" total="5" />
+    <npc id="18148" pos="anywhere" respawn="60" total="6" />
+    <npc id="18149" pos="anywhere" respawn="60" total="5" />
+  </npcmaker>
+  <npcmaker name="2nd_type2_b1" territory="godard17_2515_02">
+    <npc id="18145" pos="{181797;-89190;-7216;16112}" respawn="0" total="1" />
+    <npc id="18145" pos="{182531;-89186;-7216;16112}" respawn="0" total="1" />
+    <npc id="18145" pos="{181815;-88714;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18145" pos="{182532;-88720;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18147" pos="{182171;-89191;-7216;16112}" respawn="0" total="1" />
+    <npc id="18147" pos="{181983;-89192;-7216;16112}" respawn="0" total="1" />
+    <npc id="18147" pos="{182366;-89186;-7216;16112}" respawn="0" total="1" />
+    <npc id="18147" pos="{182179;-88717;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18147" pos="{181995;-88714;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18147" pos="{182362;-88721;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18147" pos="{181777;-89054;-7216;264}" respawn="0" total="1" />
+    <npc id="18147" pos="{181777;-88866;-7216;264}" respawn="0" total="1" />
+    <npc id="18147" pos="{182522;-88853;-7216;-31520}" respawn="0" total="1" />
+    <npc id="18147" pos="{182518;-89073;-7216;-31520}" respawn="0" total="1" />
+    <npc id="18149" pos="anywhere" respawn="0" total="2" />
+  </npcmaker>
+  <npcmaker name="2nd_type2_b2" territory="godard17_2515_02">
+    <npc id="18145" pos="{181797;-89190;-7216;16112}" respawn="0" total="1" />
+    <npc id="18145" pos="{182531;-89186;-7216;16112}" respawn="0" total="1" />
+    <npc id="18145" pos="{181815;-88714;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18145" pos="{182532;-88720;-7216;-16000}" respawn="0" total="1" />
+    <npc id="18147" pos="anywhere" respawn="0" total="9" />
+    <npc id="18145" pos="anywhere" respawn="0" total="2" />
+    <npc id="18149" pos="anywhere" respawn="0" total="3" />
+  </npcmaker>
+  <npcmaker name="2nd_type2_b3" territory="godard17_2515_02">
+    <npc id="18142" pos="anywhere" respawn="0" total="1" />
+    <npc id="18145" pos="anywhere" respawn="60" total="5" />
+    <npc id="18147" pos="anywhere" respawn="60" total="6" />
+    <npc id="18149" pos="anywhere" respawn="60" total="5" />
+  </npcmaker>
+  <npcmaker name="2nd_trigger_c" territory="godard17_2515_03">
+    <npc id="31475" pos="{183960;-88964;-7216;-32600}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_type1_c" territory="godard17_2515_03">
+    <npc id="18152" pos="{183960;-88964;-7232;-32600}" respawn="0" total="1" />
+    <npc id="18169" pos="{183996;-89091;-7216;16408}" respawn="60" total="1" />
+    <npc id="18169" pos="{183996;-88852;-7216;49136}" respawn="60" total="1" />
+    <npc id="18168" pos="{183524;-88925;-7216;65744}" respawn="0" total="1" />
+    <npc id="18167" pos="{184488;-88962;-7216;32848}" respawn="60" total="1" />
+    <npc id="18168" pos="{184314;-88862;-7216;-24808}" respawn="0" total="1" />
+    <npc id="18168" pos="{184313;-89128;-7216;-41072}" respawn="0" total="1" />
+    <npc id="18168" pos="{183524;-89044;-7216;-65872}" respawn="0" total="1" />
+    <npc id="18172" pos="{183670;-88967;-7232;-8}" respawn="0" total="1" />
+    <npc id="18170" pos="{184331;-88965;-7232;-32696}" respawn="0" total="1" />
+    <npc id="18167" pos="{183919;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{183758;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{183600;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{184402;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{184240;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{184082;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{183921;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18170" pos="{183759;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{183601;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{184403;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18170" pos="{184241;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{184083;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{184419;-89081;-7232;-32696}" respawn="60" total="1" />
+    <npc id="18167" pos="{184417;-88853;-7232;-32696}" respawn="60" total="1" />
+    <npc id="18166" pos="anywhere" respawn="60" total="3" />
+    <npc id="18169" pos="anywhere" respawn="60" total="3" />
+  </npcmaker>
+  <npcmaker name="2nd_type2_c" territory="godard17_2515_03">
+    <npc id="18153" pos="{183960;-88964;-7232;-32600}" respawn="0" total="1" />
+    <npc id="18169" pos="{183996;-89091;-7216;16408}" respawn="60" total="1" />
+    <npc id="18169" pos="{183996;-88852;-7216;49136}" respawn="60" total="1" />
+    <npc id="18171" pos="{183524;-88925;-7216;65744}" respawn="0" total="1" />
+    <npc id="18167" pos="{184488;-88962;-7216;32848}" respawn="60" total="1" />
+    <npc id="18167" pos="{184314;-88862;-7216;-24808}" respawn="0" total="1" />
+    <npc id="18167" pos="{184313;-89128;-7216;-41072}" respawn="0" total="1" />
+    <npc id="18171" pos="{183524;-89044;-7216;-65872}" respawn="0" total="1" />
+    <npc id="18172" pos="{183670;-88967;-7232;-8}" respawn="0" total="1" />
+    <npc id="18170" pos="{184331;-88965;-7232;-32696}" respawn="0" total="1" />
+    <npc id="18170" pos="{183919;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{183758;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{183600;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{184402;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18167" pos="{184240;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{184082;-89195;-7216;16408}" respawn="0" total="1" />
+    <npc id="18170" pos="{183921;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{183759;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18170" pos="{183601;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18170" pos="{184403;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18167" pos="{184241;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18170" pos="{184083;-88788;-7216;49152}" respawn="0" total="1" />
+    <npc id="18171" pos="{184419;-89081;-7232;-32696}" respawn="60" total="1" />
+    <npc id="18171" pos="{184417;-88853;-7232;-32696}" respawn="60" total="1" />
+    <npc id="18172" pos="anywhere" respawn="60" total="2" />
+    <npc id="18171" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="2nd_trigger_d" territory="godard17_2515_04">
+    <npc id="31476" pos="{185792;-88966;-7216;-32600}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_type1_d" territory="godard17_2515_04">
+    <npc id="18176" pos="{185471;-88983;-7217;0}" respawn="0" total="1" />
+    <npc id="18200" pos="{185242;-88497;-7168;-8480}" respawn="300" total="1" />
+    <npc id="18201" pos="{186346;-88505;-7168;-23704}" respawn="300" total="1" />
+    <npc id="18202" pos="{186356;-89453;-7168;-40176}" respawn="300" total="1" />
+    <npc id="18203" pos="{185249;-89438;-7168;9264}" respawn="300" total="1" />
+    <npc id="18185" pos="{186041;-88859;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18185" pos="{186039;-89086;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{186205;-88974;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{185384;-89365;-7232;8248}" respawn="300" total="1" />
+    <npc id="18186" pos="{185394;-88585;-7232;-5664}" respawn="300" total="1" />
+    <npc id="18188" pos="{186108;-89218;-7200;23520}" respawn="300" total="1" />
+    <npc id="18188" pos="{186108;-88719;-7200;38672}" respawn="300" total="1" />
+    <npc id="18188" pos="{185501;-88718;-7200;57088}" respawn="300" total="1" />
+    <npc id="18188" pos="{185501;-89219;-7200;72784}" respawn="300" total="1" />
+    <npc id="18187" pos="{185794;-89212;-7200;81240}" respawn="300" total="1" />
+    <npc id="18187" pos="{185796;-88743;-7200;48792}" respawn="300" total="1" />
+    <npc id="18190" pos="{185958;-88971;-7192;32856}" respawn="300" total="1" />
+    <npc id="18185" pos="{185325;-89077;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18185" pos="{185322;-88883;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18189" pos="anywhere" respawn="60" total="3" />
+    <npc id="18190" pos="anywhere" respawn="60" total="3" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="2nd_type2_d" territory="godard17_2515_04">
+    <npc id="18177" pos="{185471;-88983;-7217;0}" respawn="0" total="1" />
+    <npc id="18201" pos="{185242;-88497;-7168;-8480}" respawn="300" total="1" />
+    <npc id="18200" pos="{186346;-88505;-7168;-23704}" respawn="300" total="1" />
+    <npc id="18203" pos="{186356;-89453;-7168;-40176}" respawn="300" total="1" />
+    <npc id="18202" pos="{185249;-89438;-7168;9264}" respawn="300" total="1" />
+    <npc id="18185" pos="{186041;-88859;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18185" pos="{186039;-89086;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{186205;-88974;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{185384;-89365;-7232;8248}" respawn="300" total="1" />
+    <npc id="18186" pos="{185394;-88585;-7232;-5664}" respawn="300" total="1" />
+    <npc id="18191" pos="{186108;-89218;-7200;23520}" respawn="300" total="1" />
+    <npc id="18191" pos="{186108;-88719;-7200;38672}" respawn="300" total="1" />
+    <npc id="18191" pos="{185501;-88718;-7200;57088}" respawn="300" total="1" />
+    <npc id="18191" pos="{185501;-89219;-7200;72784}" respawn="300" total="1" />
+    <npc id="18192" pos="{185794;-89212;-7200;81240}" respawn="300" total="1" />
+    <npc id="18192" pos="{185796;-88743;-7200;48792}" respawn="300" total="1" />
+    <npc id="18190" pos="{185958;-88971;-7192;32856}" respawn="300" total="1" />
+    <npc id="18185" pos="{185325;-89077;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18185" pos="{185322;-88883;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18192" pos="anywhere" respawn="60" total="2" />
+    <npc id="18193" pos="anywhere" respawn="60" total="2" />
+    <npc id="18194" pos="anywhere" respawn="60" total="2" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="2nd_type3_d" territory="godard17_2515_04">
+    <npc id="18178" pos="{185471;-88983;-7217;0}" respawn="0" total="1" />
+    <npc id="18200" pos="{185242;-88497;-7168;-8480}" respawn="300" total="1" />
+    <npc id="18201" pos="{186346;-88505;-7168;-23704}" respawn="300" total="1" />
+    <npc id="18202" pos="{186356;-89453;-7168;-40176}" respawn="300" total="1" />
+    <npc id="18203" pos="{185249;-89438;-7168;9264}" respawn="300" total="1" />
+    <npc id="18185" pos="{186041;-88859;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18185" pos="{186039;-89086;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{186205;-88974;-7232;-32696}" respawn="300" total="1" />
+    <npc id="18186" pos="{185384;-89365;-7232;8248}" respawn="300" total="1" />
+    <npc id="18186" pos="{185394;-88585;-7232;-5664}" respawn="300" total="1" />
+    <npc id="18188" pos="{186108;-89218;-7200;23520}" respawn="300" total="1" />
+    <npc id="18191" pos="{186108;-88719;-7200;38672}" respawn="300" total="1" />
+    <npc id="18188" pos="{185501;-88718;-7200;57088}" respawn="300" total="1" />
+    <npc id="18191" pos="{185501;-89219;-7200;72784}" respawn="300" total="1" />
+    <npc id="18187" pos="{185794;-89212;-7200;81240}" respawn="300" total="1" />
+    <npc id="18192" pos="{185796;-88743;-7200;48792}" respawn="300" total="1" />
+    <npc id="18190" pos="{185958;-88971;-7192;32856}" respawn="300" total="1" />
+    <npc id="18185" pos="{185325;-89077;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18185" pos="{185322;-88883;-7232;-65496}" respawn="60" total="1" />
+    <npc id="18189" pos="anywhere" respawn="60" total="2" />
+    <npc id="18190" pos="anywhere" respawn="60" total="2" />
+    <npc id="18192" pos="anywhere" respawn="60" total="2" />
+    <npc id="18193" pos="anywhere" respawn="60" total="2" />
+    <npc id="18194" pos="anywhere" respawn="60" total="2" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="2nd_trigger_e" territory="godard17_2515_05">
+    <npc id="31477" pos="{187625;-88953;-7216;-32600}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_type1_e" territory="godard17_2515_05">
+    <npc id="18224" pos="{187780;-88963;-7217;32416}" respawn="0" total="1" />
+    <npc id="18225" pos="{187306;-88950;-7202;0}" respawn="0" total="1" />
+    <npc id="18226" pos="{187133;-89138;-7217;5632}" respawn="0" total="1" />
+    <npc id="18226" pos="{187130;-88784;-7217;-7232}" respawn="0" total="1" />
+    <npc id="18220" pos="{187435;-88662;-7217;-16256}" respawn="0" total="1" />
+    <npc id="18221" pos="{187438;-89272;-7217;16336}" respawn="0" total="1" />
+    <npc id="18223" pos="{188108;-89035;-7217;32712}" respawn="0" total="1" />
+    <npc id="18223" pos="{188105;-88882;-7217;32416}" respawn="0" total="1" />
+    <npc id="18223" pos="{187613;-88718;-7200;-16648}" respawn="0" total="1" />
+    <npc id="18223" pos="{187617;-89209;-7200;16104}" respawn="0" total="1" />
+    <npc id="18222" pos="{187546;-89132;-7202;16888}" respawn="0" total="1" />
+    <npc id="18222" pos="{187539;-88788;-7202;-15944}" respawn="0" total="1" />
+    <npc id="18223" pos="{187920;-88722;-7200;-16656}" respawn="0" total="1" />
+    <npc id="18223" pos="{187919;-89209;-7200;-49328}" respawn="0" total="1" />
+    <npc id="18223" pos="{187307;-88724;-7200;-16656}" respawn="0" total="1" />
+    <npc id="18223" pos="{187315;-89211;-7200;-49328}" respawn="0" total="1" />
+    <npc id="18220" pos="{187749;-89273;-7217;16336}" respawn="0" total="1" />
+    <npc id="18221" pos="{187784;-88670;-7217;-16040}" respawn="0" total="1" />
+    <npc id="18227" pos="{187863;-89078;-7217;32416}" respawn="0" total="1" />
+    <npc id="18227" pos="{187859;-88811;-7217;32416}" respawn="0" total="1" />
+    <npc id="18226" pos="{187310;-88811;-7217;49016}" respawn="0" total="1" />
+    <npc id="18226" pos="{187310;-89085;-7217;16200}" respawn="0" total="1" />
+    <npc id="18220" pos="{188008;-88959;-7217;32800}" respawn="0" total="1" />
+    <npc id="18221" pos="{187102;-88953;-7217;-128}" respawn="0" total="1" />
+    <npc id="18222" pos="anywhere" respawn="0" total="2" />
+    <npc id="18224" pos="anywhere" respawn="0" total="2" />
+    <npc id="18225" pos="anywhere" respawn="0" total="2" />
+    <npc id="18230" pos="anywhere" respawn="0" total="4" />
+    <npc id="18243" pos="{188200;-89114;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-89185;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-89257;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-89328;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-89395;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-88507;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-88577;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-88650;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-88720;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-88787;-7200;33096}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_type1_boss_e" territory="godard17_2515_05">
+    <npc id="18214" pos="anywhere" respawn="0" total="1" />
+    <npc id="18230" pos="anywhere" respawn="60" total="5" />
+    <npc id="18220" pos="anywhere" respawn="60" total="4" />
+    <npc id="18227" pos="anywhere" respawn="60" total="2" />
+    <npc id="18222" pos="anywhere" respawn="60" total="2" />
+    <npc id="18224" pos="anywhere" respawn="60" total="2" />
+    <npc id="18225" pos="anywhere" respawn="60" total="2" />
+    <npc id="18243" pos="{188336;-88896;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188336;-88966;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188336;-89034;-7200;33096}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_type2_e" territory="godard17_2515_05">
+    <npc id="18227" pos="{187780;-88963;-7217;32416}" respawn="0" total="1" />
+    <npc id="18227" pos="{187306;-88950;-7202;0}" respawn="0" total="1" />
+    <npc id="18223" pos="{187133;-89138;-7217;5632}" respawn="0" total="1" />
+    <npc id="18223" pos="{187130;-88784;-7217;-7232}" respawn="0" total="1" />
+    <npc id="18220" pos="{187435;-88662;-7217;-16256}" respawn="0" total="1" />
+    <npc id="18221" pos="{187438;-89272;-7217;16336}" respawn="0" total="1" />
+    <npc id="18226" pos="{188108;-89035;-7217;32712}" respawn="0" total="1" />
+    <npc id="18226" pos="{188105;-88882;-7217;32416}" respawn="0" total="1" />
+    <npc id="18226" pos="{187613;-88718;-7200;-16648}" respawn="0" total="1" />
+    <npc id="18226" pos="{187617;-89209;-7200;16104}" respawn="0" total="1" />
+    <npc id="18227" pos="{187546;-89132;-7202;16888}" respawn="0" total="1" />
+    <npc id="18227" pos="{187539;-88788;-7202;-15944}" respawn="0" total="1" />
+    <npc id="18226" pos="{187920;-88722;-7200;-16656}" respawn="0" total="1" />
+    <npc id="18226" pos="{187919;-89209;-7200;-49328}" respawn="0" total="1" />
+    <npc id="18226" pos="{187307;-88724;-7200;-16656}" respawn="0" total="1" />
+    <npc id="18226" pos="{187315;-89211;-7200;-49328}" respawn="0" total="1" />
+    <npc id="18220" pos="{187749;-89273;-7217;16336}" respawn="0" total="1" />
+    <npc id="18221" pos="{187784;-88670;-7217;-16040}" respawn="0" total="1" />
+    <npc id="18224" pos="{187863;-89078;-7217;32416}" respawn="0" total="1" />
+    <npc id="18224" pos="{187859;-88811;-7217;32416}" respawn="0" total="1" />
+    <npc id="18223" pos="{187310;-88811;-7217;49016}" respawn="0" total="1" />
+    <npc id="18223" pos="{187310;-89085;-7217;16200}" respawn="0" total="1" />
+    <npc id="18220" pos="{188008;-88959;-7217;32800}" respawn="0" total="1" />
+    <npc id="18221" pos="{187102;-88953;-7217;-128}" respawn="0" total="1" />
+    <npc id="18229" pos="anywhere" respawn="0" total="2" />
+    <npc id="18227" pos="anywhere" respawn="0" total="2" />
+    <npc id="18228" pos="anywhere" respawn="0" total="2" />
+    <npc id="18230" pos="anywhere" respawn="0" total="2" />
+    <npc id="18243" pos="{188200;-89114;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-89185;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-89257;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-89328;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-89395;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-88507;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-88577;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-88650;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-88720;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188200;-88787;-7200;33096}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_type2_boss_e" territory="godard17_2515_05">
+    <npc id="18215" pos="anywhere" respawn="0" total="1" />
+    <npc id="18230" pos="anywhere" respawn="60" total="5" />
+    <npc id="18220" pos="anywhere" respawn="60" total="4" />
+    <npc id="18224" pos="anywhere" respawn="60" total="2" />
+    <npc id="18229" pos="anywhere" respawn="60" total="2" />
+    <npc id="18227" pos="anywhere" respawn="60" total="2" />
+    <npc id="18228" pos="anywhere" respawn="60" total="2" />
+    <npc id="18243" pos="{188336;-88896;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188336;-88966;-7200;33096}" respawn="0" total="1" />
+    <npc id="18243" pos="{188336;-89034;-7200;33096}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_boss_type1" territory="godard17_2515_06">
+    <npc id="25339" pos="{189801;-88965;-7184;-33016}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_boss_type2" territory="godard17_2515_06">
+    <npc id="25342" pos="{189801;-88965;-7184;-33016}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_boss_type3" territory="godard17_2515_06">
+    <npc id="25346" pos="{189801;-88965;-7184;-33016}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_boss_type4" territory="godard17_2515_06">
+    <npc id="25349" pos="{189801;-88965;-7184;-33016}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="2nd_boss_treasure" territory="godard17_2515_06">
+    <npc id="18256" pos="anywhere" respawn="0" total="200" />
+  </npcmaker>
+  <npcmaker name="3rd_trigger_a" territory="godard18_2515_01">
+    <npc id="31478" pos="{173218;-85703;-7216;-16136}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_type1_a" territory="godard18_2515_01">
+    <npc id="18126" pos="{173217;-85222;-7216;-16456}" respawn="0" total="1" />
+    <npc id="18135" pos="{172984;-85704;-7174;984}" respawn="300" total="1" />
+    <npc id="18135" pos="{173427;-85695;-7174;32776}" respawn="300" total="1" />
+    <npc id="18136" pos="{173218;-85960;-7174;16928}" respawn="300" total="1" />
+    <npc id="18136" pos="{173218;-85455;-7174;-16400}" respawn="300" total="1" />
+    <npc id="18134" pos="{173438;-85968;-7174;24656}" respawn="300" total="1" />
+    <npc id="18134" pos="{173423;-85469;-7174;40592}" respawn="300" total="1" />
+    <npc id="18134" pos="{173013;-85474;-7174;55728}" respawn="300" total="1" />
+    <npc id="18134" pos="{173002;-85968;-7174;74520}" respawn="300" total="1" />
+    <npc id="18137" pos="{172918;-85313;-7185;65096}" respawn="300" total="1" />
+    <npc id="18137" pos="{173538;-85308;-7185;33144}" respawn="300" total="1" />
+    <npc id="18132" pos="{173365;-85267;-7216;37824}" respawn="60" total="1" />
+    <npc id="18132" pos="{173076;-85275;-7216;56512}" respawn="60" total="1" />
+    <npc id="18132" pos="{172859;-86090;-7216;75280}" respawn="60" total="1" />
+    <npc id="18132" pos="{173585;-86101;-7216;88488}" respawn="60" total="1" />
+    <npc id="18132" pos="{172767;-85688;-7216;65128}" respawn="60" total="1" />
+    <npc id="18132" pos="{173675;-85690;-7216;98032}" respawn="60" total="1" />
+    <npc id="18136" pos="anywhere" respawn="60" total="2" />
+    <npc id="18135" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="3rd_type2_a" territory="godard18_2515_01">
+    <npc id="18127" pos="{173217;-85222;-7216;-16456}" respawn="0" total="1" />
+    <npc id="18140" pos="{172984;-85704;-7174;984}" respawn="300" total="1" />
+    <npc id="18140" pos="{173427;-85695;-7174;32776}" respawn="300" total="1" />
+    <npc id="18138" pos="{173218;-85960;-7174;16928}" respawn="300" total="1" />
+    <npc id="18138" pos="{173218;-85455;-7174;-16400}" respawn="300" total="1" />
+    <npc id="18137" pos="{173438;-85968;-7174;24656}" respawn="300" total="1" />
+    <npc id="18137" pos="{173423;-85469;-7174;40592}" respawn="300" total="1" />
+    <npc id="18137" pos="{173013;-85474;-7174;55728}" respawn="300" total="1" />
+    <npc id="18137" pos="{173002;-85968;-7174;74520}" respawn="300" total="1" />
+    <npc id="18137" pos="{172918;-85313;-7185;65096}" respawn="300" total="1" />
+    <npc id="18137" pos="{173538;-85308;-7185;33144}" respawn="300" total="1" />
+    <npc id="18132" pos="{173365;-85267;-7216;37824}" respawn="60" total="1" />
+    <npc id="18132" pos="{173076;-85275;-7216;56512}" respawn="60" total="1" />
+    <npc id="18132" pos="{172859;-86090;-7216;75280}" respawn="60" total="1" />
+    <npc id="18132" pos="{173585;-86101;-7216;88488}" respawn="60" total="1" />
+    <npc id="18132" pos="{172767;-85688;-7216;65128}" respawn="60" total="1" />
+    <npc id="18132" pos="{173675;-85690;-7216;98032}" respawn="60" total="1" />
+    <npc id="18138" pos="anywhere" respawn="60" total="2" />
+    <npc id="18139" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="3rd_type3_a" territory="godard18_2515_01">
+    <npc id="18128" pos="{173217;-85222;-7216;-16456}" respawn="0" total="1" />
+    <npc id="18135" pos="{172984;-85704;-7174;984}" respawn="300" total="1" />
+    <npc id="18135" pos="{173427;-85695;-7174;32776}" respawn="300" total="1" />
+    <npc id="18133" pos="{173218;-85960;-7174;16928}" respawn="300" total="1" />
+    <npc id="18133" pos="{173218;-85455;-7174;-16400}" respawn="300" total="1" />
+    <npc id="18137" pos="{173438;-85968;-7174;24656}" respawn="300" total="1" />
+    <npc id="18137" pos="{173423;-85469;-7174;40592}" respawn="300" total="1" />
+    <npc id="18137" pos="{173013;-85474;-7174;55728}" respawn="300" total="1" />
+    <npc id="18137" pos="{173002;-85968;-7174;74520}" respawn="300" total="1" />
+    <npc id="18137" pos="{172918;-85313;-7185;65096}" respawn="300" total="1" />
+    <npc id="18137" pos="{173538;-85308;-7185;33144}" respawn="300" total="1" />
+    <npc id="18132" pos="{173365;-85267;-7216;37824}" respawn="60" total="1" />
+    <npc id="18132" pos="{173076;-85275;-7216;56512}" respawn="60" total="1" />
+    <npc id="18132" pos="{172859;-86090;-7216;75280}" respawn="60" total="1" />
+    <npc id="18132" pos="{173585;-86101;-7216;88488}" respawn="60" total="1" />
+    <npc id="18132" pos="{172767;-85688;-7216;65128}" respawn="60" total="1" />
+    <npc id="18132" pos="{173675;-85690;-7216;98032}" respawn="60" total="1" />
+    <npc id="18138" pos="anywhere" respawn="60" total="2" />
+    <npc id="18136" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="3rd_trigger_b" territory="godard18_2515_02">
+    <npc id="31479" pos="{173206;-83929;-7216;-15944}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_type1_b1" territory="godard18_2515_02">
+    <npc id="18146" pos="{173443;-84278;-7216;32768}" respawn="0" total="1" />
+    <npc id="18146" pos="{173420;-83544;-7216;32768}" respawn="0" total="1" />
+    <npc id="18146" pos="{172967;-84272;-7216;656}" respawn="0" total="1" />
+    <npc id="18146" pos="{172955;-83555;-7216;656}" respawn="0" total="1" />
+    <npc id="18148" pos="{173434;-83903;-7216;32768}" respawn="0" total="1" />
+    <npc id="18148" pos="{173441;-84091;-7216;32768}" respawn="0" total="1" />
+    <npc id="18148" pos="{173425;-83709;-7216;32768}" respawn="0" total="1" />
+    <npc id="18148" pos="{172960;-83908;-7216;656}" respawn="0" total="1" />
+    <npc id="18148" pos="{172962;-84092;-7216;656}" respawn="0" total="1" />
+    <npc id="18148" pos="{172960;-83725;-7216;656}" respawn="0" total="1" />
+    <npc id="18148" pos="{173308;-84301;-7216;16920}" respawn="0" total="1" />
+    <npc id="18148" pos="{173120;-84305;-7216;16920}" respawn="0" total="1" />
+    <npc id="18148" pos="{173087;-83561;-7216;-14864}" respawn="0" total="1" />
+    <npc id="18148" pos="{173308;-83559;-7216;-14864}" respawn="0" total="1" />
+    <npc id="18149" pos="anywhere" respawn="0" total="2" />
+  </npcmaker>
+  <npcmaker name="3rd_type1_b2" territory="godard18_2515_02">
+    <npc id="18146" pos="{172962;-84092;-7216;656}" respawn="0" total="1" />
+    <npc id="18146" pos="{172960;-83725;-7216;656}" respawn="0" total="1" />
+    <npc id="18146" pos="{173308;-84301;-7216;16920}" respawn="0" total="1" />
+    <npc id="18146" pos="{173120;-84305;-7216;16920}" respawn="0" total="1" />
+    <npc id="18148" pos="anywhere" respawn="0" total="9" />
+    <npc id="18146" pos="anywhere" respawn="0" total="2" />
+    <npc id="18149" pos="anywhere" respawn="0" total="3" />
+  </npcmaker>
+  <npcmaker name="3rd_type1_b3" territory="godard18_2515_02">
+    <npc id="18143" pos="anywhere" respawn="0" total="1" />
+    <npc id="18146" pos="anywhere" respawn="60" total="6" />
+    <npc id="18148" pos="anywhere" respawn="60" total="6" />
+    <npc id="18149" pos="anywhere" respawn="60" total="5" />
+  </npcmaker>
+  <npcmaker name="3rd_type2_b1" territory="godard18_2515_02">
+    <npc id="18145" pos="{173443;-84278;-7216;32768}" respawn="0" total="1" />
+    <npc id="18145" pos="{173420;-83544;-7216;32768}" respawn="0" total="1" />
+    <npc id="18145" pos="{172967;-84272;-7216;656}" respawn="0" total="1" />
+    <npc id="18145" pos="{172955;-83555;-7216;656}" respawn="0" total="1" />
+    <npc id="18147" pos="{173434;-83903;-7216;32768}" respawn="0" total="1" />
+    <npc id="18147" pos="{173441;-84091;-7216;32768}" respawn="0" total="1" />
+    <npc id="18147" pos="{173425;-83709;-7216;32768}" respawn="0" total="1" />
+    <npc id="18147" pos="{172960;-83908;-7216;656}" respawn="0" total="1" />
+    <npc id="18147" pos="{172962;-84092;-7216;656}" respawn="0" total="1" />
+    <npc id="18147" pos="{172960;-83725;-7216;656}" respawn="0" total="1" />
+    <npc id="18147" pos="{173308;-84301;-7216;16920}" respawn="0" total="1" />
+    <npc id="18147" pos="{173120;-84305;-7216;16920}" respawn="0" total="1" />
+    <npc id="18147" pos="{173087;-83561;-7216;-14864}" respawn="0" total="1" />
+    <npc id="18147" pos="{173308;-83559;-7216;-14864}" respawn="0" total="1" />
+    <npc id="18149" pos="anywhere" respawn="0" total="2" />
+  </npcmaker>
+  <npcmaker name="3rd_type2_b2" territory="godard18_2515_02">
+    <npc id="18145" pos="{172962;-84092;-7216;656}" respawn="0" total="1" />
+    <npc id="18145" pos="{172960;-83725;-7216;656}" respawn="0" total="1" />
+    <npc id="18145" pos="{173308;-84301;-7216;16920}" respawn="0" total="1" />
+    <npc id="18145" pos="{173120;-84305;-7216;16920}" respawn="0" total="1" />
+    <npc id="18147" pos="anywhere" respawn="0" total="9" />
+    <npc id="18145" pos="anywhere" respawn="0" total="2" />
+    <npc id="18149" pos="anywhere" respawn="0" total="3" />
+  </npcmaker>
+  <npcmaker name="3rd_type2_b3" territory="godard18_2515_02">
+    <npc id="18143" pos="anywhere" respawn="0" total="1" />
+    <npc id="18145" pos="anywhere" respawn="60" total="6" />
+    <npc id="18147" pos="anywhere" respawn="60" total="6" />
+    <npc id="18149" pos="anywhere" respawn="60" total="5" />
+  </npcmaker>
+  <npcmaker name="3rd_trigger_c" territory="godard18_2515_03">
+    <npc id="31480" pos="{173208;-82085;-7216;-15944}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_type1_c" territory="godard18_2515_03">
+    <npc id="18154" pos="{173208;-82085;-7232;-15944}" respawn="0" total="1" />
+    <npc id="18169" pos="{173314;-82087;-7216;-32728}" respawn="60" total="1" />
+    <npc id="18169" pos="{173075;-82086;-7216;0}" respawn="60" total="1" />
+    <npc id="18168" pos="{173149;-82558;-7216;16608}" respawn="0" total="1" />
+    <npc id="18167" pos="{173184;-81594;-7216;-16288}" respawn="60" total="1" />
+    <npc id="18168" pos="{173085;-81769;-7216;-73944}" respawn="0" total="1" />
+    <npc id="18168" pos="{173351;-81769;-7216;-90208}" respawn="0" total="1" />
+    <npc id="18168" pos="{173268;-82558;-7216;-115008}" respawn="0" total="1" />
+    <npc id="18172" pos="{173191;-82413;-7232;-49144}" respawn="0" total="1" />
+    <npc id="18170" pos="{173188;-81752;-7232;-81832}" respawn="0" total="1" />
+    <npc id="18167" pos="{173418;-82163;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{173419;-82324;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{173419;-82482;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{173417;-81681;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{173417;-81842;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{173418;-82000;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{173012;-82162;-7216;16}" respawn="0" total="1" />
+    <npc id="18170" pos="{173012;-82324;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{173012;-82482;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{173011;-81680;-7216;16}" respawn="0" total="1" />
+    <npc id="18170" pos="{173011;-81841;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{173011;-81999;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{173304;-81663;-7232;-81832}" respawn="60" total="1" />
+    <npc id="18167" pos="{173076;-81666;-7232;-81832}" respawn="60" total="1" />
+    <npc id="18166" pos="anywhere" respawn="60" total="3" />
+    <npc id="18169" pos="anywhere" respawn="60" total="3" />
+  </npcmaker>
+  <npcmaker name="3rd_type2_c" territory="godard18_2515_03">
+    <npc id="18155" pos="{173208;-82085;-7232;-15944}" respawn="0" total="1" />
+    <npc id="18169" pos="{173314;-82087;-7216;-32728}" respawn="60" total="1" />
+    <npc id="18169" pos="{173075;-82086;-7216;0}" respawn="60" total="1" />
+    <npc id="18171" pos="{173149;-82558;-7216;16608}" respawn="0" total="1" />
+    <npc id="18167" pos="{173184;-81594;-7216;-16288}" respawn="60" total="1" />
+    <npc id="18167" pos="{173085;-81769;-7216;-73944}" respawn="0" total="1" />
+    <npc id="18167" pos="{173351;-81769;-7216;-90208}" respawn="0" total="1" />
+    <npc id="18171" pos="{173268;-82558;-7216;-115008}" respawn="0" total="1" />
+    <npc id="18172" pos="{173191;-82413;-7232;-49144}" respawn="0" total="1" />
+    <npc id="18170" pos="{173188;-81752;-7232;-81832}" respawn="0" total="1" />
+    <npc id="18170" pos="{173418;-82163;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{173419;-82324;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{173419;-82482;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{173417;-81681;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{173417;-81842;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{173418;-82000;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{173012;-82162;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{173012;-82324;-7216;16}" respawn="0" total="1" />
+    <npc id="18170" pos="{173012;-82482;-7216;16}" respawn="0" total="1" />
+    <npc id="18170" pos="{173011;-81680;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{173011;-81841;-7216;16}" respawn="0" total="1" />
+    <npc id="18170" pos="{173011;-81999;-7216;16}" respawn="0" total="1" />
+    <npc id="18171" pos="{173304;-81663;-7232;-81832}" respawn="60" total="1" />
+    <npc id="18171" pos="{173076;-81666;-7232;-81832}" respawn="60" total="1" />
+    <npc id="18172" pos="anywhere" respawn="60" total="3" />
+    <npc id="18171" pos="anywhere" respawn="60" total="3" />
+  </npcmaker>
+  <npcmaker name="3rd_trigger_d" territory="godard18_2515_04">
+    <npc id="31481" pos="{173191;-80290;-7216;-16248}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_type1_d" territory="godard18_2515_04">
+    <npc id="18179" pos="{173207;-80611;-7217;16352}" respawn="0" total="1" />
+    <npc id="18207" pos="{173662;-80834;-7168;25616}" respawn="0" total="1" />
+    <npc id="18205" pos="{172732;-79735;-7168;-7352}" respawn="0" total="1" />
+    <npc id="18206" pos="{172720;-80839;-7168;7872}" respawn="0" total="1" />
+    <npc id="18204" pos="{173679;-79728;-7168;-23824}" respawn="0" total="1" />
+    <npc id="18185" pos="{173085;-80041;-7232;-16344}" respawn="300" total="1" />
+    <npc id="18185" pos="{173311;-80044;-7232;-16344}" respawn="300" total="1" />
+    <npc id="18186" pos="{173200;-79877;-7232;-16344}" respawn="300" total="1" />
+    <npc id="18186" pos="{173589;-80699;-7232;24600}" respawn="300" total="1" />
+    <npc id="18186" pos="{172809;-80687;-7232;10688}" respawn="300" total="1" />
+    <npc id="18188" pos="{173444;-79975;-7200;39872}" respawn="300" total="1" />
+    <npc id="18188" pos="{172945;-79974;-7200;55024}" respawn="300" total="1" />
+    <npc id="18188" pos="{172942;-80580;-7200;73440}" respawn="300" total="1" />
+    <npc id="18188" pos="{173443;-80582;-7200;89136}" respawn="300" total="1" />
+    <npc id="18187" pos="{173437;-80289;-7200;97592}" respawn="300" total="1" />
+    <npc id="18187" pos="{172968;-80286;-7200;65144}" respawn="300" total="1" />
+    <npc id="18190" pos="{173197;-80124;-7192;49208}" respawn="300" total="1" />
+    <npc id="18185" pos="{173301;-80758;-7232;-49144}" respawn="60" total="1" />
+    <npc id="18185" pos="{173107;-80759;-7232;-49144}" respawn="60" total="1" />
+    <npc id="18189" pos="anywhere" respawn="60" total="3" />
+    <npc id="18190" pos="anywhere" respawn="60" total="3" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="3rd_type2_d" territory="godard18_2515_04">
+    <npc id="18180" pos="{173207;-80611;-7217;16352}" respawn="0" total="1" />
+    <npc id="18204" pos="{173662;-80834;-7168;25616}" respawn="0" total="1" />
+    <npc id="18205" pos="{172732;-79735;-7168;-7352}" respawn="0" total="1" />
+    <npc id="18206" pos="{172720;-80839;-7168;7872}" respawn="0" total="1" />
+    <npc id="18207" pos="{173679;-79728;-7168;-23824}" respawn="0" total="1" />
+    <npc id="18185" pos="{173085;-80041;-7232;-16344}" respawn="300" total="1" />
+    <npc id="18185" pos="{173311;-80044;-7232;-16344}" respawn="300" total="1" />
+    <npc id="18186" pos="{173200;-79877;-7232;-16344}" respawn="300" total="1" />
+    <npc id="18186" pos="{173589;-80699;-7232;24600}" respawn="300" total="1" />
+    <npc id="18186" pos="{172809;-80687;-7232;10688}" respawn="300" total="1" />
+    <npc id="18191" pos="{173444;-79975;-7200;39872}" respawn="300" total="1" />
+    <npc id="18191" pos="{172945;-79974;-7200;55024}" respawn="300" total="1" />
+    <npc id="18191" pos="{172942;-80580;-7200;73440}" respawn="300" total="1" />
+    <npc id="18191" pos="{173443;-80582;-7200;89136}" respawn="300" total="1" />
+    <npc id="18192" pos="{173437;-80289;-7200;97592}" respawn="300" total="1" />
+    <npc id="18192" pos="{172968;-80286;-7200;65144}" respawn="300" total="1" />
+    <npc id="18190" pos="{173197;-80124;-7192;49208}" respawn="300" total="1" />
+    <npc id="18185" pos="{173301;-80758;-7232;-49144}" respawn="60" total="1" />
+    <npc id="18185" pos="{173107;-80759;-7232;-49144}" respawn="60" total="1" />
+    <npc id="18192" pos="anywhere" respawn="60" total="3" />
+    <npc id="18193" pos="anywhere" respawn="60" total="3" />
+    <npc id="18194" pos="anywhere" respawn="60" total="3" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="3rd_type3_d" territory="godard18_2515_04">
+    <npc id="18181" pos="{173207;-80611;-7217;16352}" respawn="0" total="1" />
+    <npc id="18204" pos="{173662;-80834;-7168;25616}" respawn="0" total="1" />
+    <npc id="18205" pos="{172732;-79735;-7168;-7352}" respawn="0" total="1" />
+    <npc id="18206" pos="{172720;-80839;-7168;7872}" respawn="0" total="1" />
+    <npc id="18207" pos="{173679;-79728;-7168;-23824}" respawn="0" total="1" />
+    <npc id="18185" pos="{173085;-80041;-7232;-16344}" respawn="300" total="1" />
+    <npc id="18185" pos="{173311;-80044;-7232;-16344}" respawn="300" total="1" />
+    <npc id="18186" pos="{173200;-79877;-7232;-16344}" respawn="300" total="1" />
+    <npc id="18186" pos="{173589;-80699;-7232;24600}" respawn="300" total="1" />
+    <npc id="18186" pos="{172809;-80687;-7232;10688}" respawn="300" total="1" />
+    <npc id="18188" pos="{173444;-79975;-7200;39872}" respawn="300" total="1" />
+    <npc id="18191" pos="{172945;-79974;-7200;55024}" respawn="300" total="1" />
+    <npc id="18188" pos="{172942;-80580;-7200;73440}" respawn="300" total="1" />
+    <npc id="18191" pos="{173443;-80582;-7200;89136}" respawn="300" total="1" />
+    <npc id="18187" pos="{173437;-80289;-7200;97592}" respawn="300" total="1" />
+    <npc id="18192" pos="{172968;-80286;-7200;65144}" respawn="300" total="1" />
+    <npc id="18190" pos="{173197;-80124;-7192;49208}" respawn="300" total="1" />
+    <npc id="18185" pos="{173301;-80758;-7232;-49144}" respawn="60" total="1" />
+    <npc id="18185" pos="{173107;-80759;-7232;-49144}" respawn="60" total="1" />
+    <npc id="18189" pos="anywhere" respawn="60" total="3" />
+    <npc id="18190" pos="anywhere" respawn="60" total="3" />
+    <npc id="18192" pos="anywhere" respawn="60" total="3" />
+    <npc id="18193" pos="anywhere" respawn="60" total="3" />
+    <npc id="18194" pos="anywhere" respawn="60" total="3" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="3rd_trigger_e" territory="godard18_2515_05">
+    <npc id="31482" pos="{173198;-78465;-7216;-15928}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_type1_e" territory="godard18_2515_05">
+    <npc id="18224" pos="{173189;-78304;-7217;48600}" respawn="0" total="1" />
+    <npc id="18225" pos="{173168;-78794;-7202;16184}" respawn="0" total="1" />
+    <npc id="18226" pos="{173353;-78971;-7217;21816}" respawn="0" total="1" />
+    <npc id="18226" pos="{172999;-78968;-7217;8952}" respawn="0" total="1" />
+    <npc id="18220" pos="{172891;-78672;-7217;-72}" respawn="0" total="1" />
+    <npc id="18221" pos="{173493;-78669;-7217;32520}" respawn="0" total="1" />
+    <npc id="18223" pos="{173269;-77994;-7217;48896}" respawn="0" total="1" />
+    <npc id="18223" pos="{173116;-77995;-7217;48600}" respawn="0" total="1" />
+    <npc id="18223" pos="{172942;-78483;-7200;-464}" respawn="0" total="1" />
+    <npc id="18223" pos="{173433;-78489;-7200;32288}" respawn="0" total="1" />
+    <npc id="18222" pos="{173355;-78558;-7202;33072}" respawn="0" total="1" />
+    <npc id="18222" pos="{173011;-78559;-7202;240}" respawn="0" total="1" />
+    <npc id="18223" pos="{172952;-78176;-7200;-472}" respawn="0" total="1" />
+    <npc id="18223" pos="{173439;-78187;-7200;-33144}" respawn="0" total="1" />
+    <npc id="18223" pos="{172942;-78789;-7200;-472}" respawn="0" total="1" />
+    <npc id="18223" pos="{173429;-78790;-7200;-33144}" respawn="0" total="1" />
+    <npc id="18220" pos="{173484;-78365;-7217;32520}" respawn="0" total="1" />
+    <npc id="18221" pos="{172895;-78308;-7217;144}" respawn="0" total="1" />
+    <npc id="18227" pos="{173307;-78240;-7217;48600}" respawn="0" total="1" />
+    <npc id="18227" pos="{173041;-78240;-7217;48600}" respawn="0" total="1" />
+    <npc id="18226" pos="{173030;-78788;-7217;65200}" respawn="0" total="1" />
+    <npc id="18226" pos="{173304;-78793;-7217;32384}" respawn="0" total="1" />
+    <npc id="18220" pos="{173191;-78093;-7217;48984}" respawn="0" total="1" />
+    <npc id="18221" pos="{173167;-78998;-7217;16056}" respawn="0" total="1" />
+    <npc id="18222" pos="anywhere" respawn="0" total="2" />
+    <npc id="18224" pos="anywhere" respawn="0" total="2" />
+    <npc id="18225" pos="anywhere" respawn="0" total="2" />
+    <npc id="18230" pos="anywhere" respawn="0" total="4" />
+    <npc id="18243" pos="{173369;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173435;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173498;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173561;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173623;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{172757;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{172824;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{172886;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{172950;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173012;-77885;-7200;49152}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_type1_boss_e" territory="godard18_2515_05">
+    <npc id="18216" pos="anywhere" respawn="0" total="1" />
+    <npc id="18230" pos="anywhere" respawn="60" total="5" />
+    <npc id="18220" pos="anywhere" respawn="60" total="4" />
+    <npc id="18227" pos="anywhere" respawn="60" total="2" />
+    <npc id="18222" pos="anywhere" respawn="60" total="2" />
+    <npc id="18224" pos="anywhere" respawn="60" total="2" />
+    <npc id="18225" pos="anywhere" respawn="60" total="2" />
+    <npc id="18243" pos="{173132;-77749;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173198;-77749;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173261;-77749;-7200;49152}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_type2_e" territory="godard18_2515_05">
+    <npc id="18227" pos="{173185;-78288;-7202;49080}" respawn="0" total="1" />
+    <npc id="18227" pos="{173168;-78794;-7202;16184}" respawn="0" total="1" />
+    <npc id="18223" pos="{173353;-78971;-7217;21816}" respawn="0" total="1" />
+    <npc id="18223" pos="{172999;-78968;-7217;8952}" respawn="0" total="1" />
+    <npc id="18220" pos="{172891;-78672;-7217;-72}" respawn="0" total="1" />
+    <npc id="18221" pos="{173493;-78669;-7217;32520}" respawn="0" total="1" />
+    <npc id="18226" pos="{173269;-77994;-7217;48896}" respawn="0" total="1" />
+    <npc id="18226" pos="{173116;-77995;-7217;48600}" respawn="0" total="1" />
+    <npc id="18226" pos="{172942;-78483;-7200;-464}" respawn="0" total="1" />
+    <npc id="18226" pos="{173433;-78489;-7200;32288}" respawn="0" total="1" />
+    <npc id="18227" pos="{173355;-78558;-7202;33072}" respawn="0" total="1" />
+    <npc id="18227" pos="{173011;-78559;-7202;240}" respawn="0" total="1" />
+    <npc id="18226" pos="{172952;-78176;-7200;-472}" respawn="0" total="1" />
+    <npc id="18226" pos="{173439;-78187;-7200;-33144}" respawn="0" total="1" />
+    <npc id="18226" pos="{172942;-78789;-7200;-472}" respawn="0" total="1" />
+    <npc id="18226" pos="{173429;-78790;-7200;-33144}" respawn="0" total="1" />
+    <npc id="18220" pos="{173484;-78365;-7217;32520}" respawn="0" total="1" />
+    <npc id="18221" pos="{172895;-78308;-7217;144}" respawn="0" total="1" />
+    <npc id="18224" pos="{173307;-78240;-7217;48600}" respawn="0" total="1" />
+    <npc id="18224" pos="{173041;-78240;-7217;48600}" respawn="0" total="1" />
+    <npc id="18223" pos="{173030;-78788;-7217;65200}" respawn="0" total="1" />
+    <npc id="18223" pos="{173304;-78793;-7217;32384}" respawn="0" total="1" />
+    <npc id="18220" pos="{173191;-78093;-7217;48984}" respawn="0" total="1" />
+    <npc id="18221" pos="{173167;-78998;-7217;16056}" respawn="0" total="1" />
+    <npc id="18229" pos="anywhere" respawn="0" total="2" />
+    <npc id="18227" pos="anywhere" respawn="0" total="2" />
+    <npc id="18228" pos="anywhere" respawn="0" total="2" />
+    <npc id="18230" pos="anywhere" respawn="0" total="4" />
+    <npc id="18243" pos="{173369;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173435;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173498;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173561;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173623;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{172757;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{172824;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{172886;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{172950;-77885;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173012;-77885;-7200;49152}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_type2_boss_e" territory="godard18_2515_05">
+    <npc id="18217" pos="anywhere" respawn="0" total="1" />
+    <npc id="18230" pos="anywhere" respawn="60" total="5" />
+    <npc id="18220" pos="anywhere" respawn="60" total="4" />
+    <npc id="18224" pos="anywhere" respawn="60" total="2" />
+    <npc id="18229" pos="anywhere" respawn="60" total="2" />
+    <npc id="18227" pos="anywhere" respawn="60" total="2" />
+    <npc id="18228" pos="anywhere" respawn="60" total="2" />
+    <npc id="18243" pos="{173132;-77749;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173198;-77749;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{173261;-77749;-7200;49152}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_boss_type1" territory="godard18_2515_06">
+    <npc id="25339" pos="{173193;-76299;-7184;-15992}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_boss_type2" territory="godard18_2515_06">
+    <npc id="25342" pos="{173193;-76299;-7184;-15992}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_boss_type3" territory="godard18_2515_06">
+    <npc id="25346" pos="{173193;-76299;-7184;-15992}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_boss_type4" territory="godard18_2515_06">
+    <npc id="25349" pos="{173193;-76299;-7184;-15992}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="3rd_boss_treasure" territory="godard18_2515_06">
+    <npc id="18256" pos="anywhere" respawn="0" total="200" />
+  </npcmaker>
+  <npcmaker name="4th_trigger_a" territory="godard19_2515_01">
+    <npc id="31483" pos="{175601;-81905;-7216;-16136}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_type1_a" territory="godard19_2515_01">
+    <npc id="18129" pos="{175599;-81424;-7216;-16456}" respawn="0" total="1" />
+    <npc id="18135" pos="{175366;-81906;-7174;984}" respawn="300" total="1" />
+    <npc id="18135" pos="{175810;-81897;-7174;32776}" respawn="300" total="1" />
+    <npc id="18136" pos="{175600;-82162;-7174;16928}" respawn="300" total="1" />
+    <npc id="18136" pos="{175601;-81657;-7174;-16400}" respawn="300" total="1" />
+    <npc id="18134" pos="{175821;-82170;-7174;24656}" respawn="300" total="1" />
+    <npc id="18134" pos="{175806;-81671;-7174;40592}" respawn="300" total="1" />
+    <npc id="18134" pos="{175395;-81676;-7174;55728}" respawn="300" total="1" />
+    <npc id="18134" pos="{175385;-82170;-7174;74520}" respawn="300" total="1" />
+    <npc id="18137" pos="{175301;-81515;-7185;65096}" respawn="300" total="1" />
+    <npc id="18137" pos="{175920;-81510;-7185;33144}" respawn="300" total="1" />
+    <npc id="18132" pos="{175748;-81469;-7216;37824}" respawn="60" total="1" />
+    <npc id="18132" pos="{175458;-81477;-7216;56512}" respawn="60" total="1" />
+    <npc id="18132" pos="{175241;-82292;-7216;75280}" respawn="60" total="1" />
+    <npc id="18132" pos="{175967;-82303;-7216;88488}" respawn="60" total="1" />
+    <npc id="18132" pos="{175149;-81890;-7216;65128}" respawn="60" total="1" />
+    <npc id="18132" pos="{176058;-81892;-7216;98032}" respawn="60" total="1" />
+    <npc id="18136" pos="anywhere" respawn="60" total="2" />
+    <npc id="18135" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="4th_type2_a" territory="godard19_2515_01">
+    <npc id="18130" pos="{175599;-81424;-7216;-16456}" respawn="0" total="1" />
+    <npc id="18140" pos="{175366;-81906;-7174;984}" respawn="300" total="1" />
+    <npc id="18140" pos="{175810;-81897;-7174;32776}" respawn="300" total="1" />
+    <npc id="18138" pos="{175600;-82162;-7174;16928}" respawn="300" total="1" />
+    <npc id="18138" pos="{175601;-81657;-7174;-16400}" respawn="300" total="1" />
+    <npc id="18137" pos="{175821;-82170;-7174;24656}" respawn="300" total="1" />
+    <npc id="18137" pos="{175806;-81671;-7174;40592}" respawn="300" total="1" />
+    <npc id="18137" pos="{175395;-81676;-7174;55728}" respawn="300" total="1" />
+    <npc id="18137" pos="{175385;-82170;-7174;74520}" respawn="300" total="1" />
+    <npc id="18137" pos="{175301;-81515;-7185;65096}" respawn="300" total="1" />
+    <npc id="18137" pos="{175920;-81510;-7185;33144}" respawn="300" total="1" />
+    <npc id="18132" pos="{175748;-81469;-7216;37824}" respawn="60" total="1" />
+    <npc id="18132" pos="{175458;-81477;-7216;56512}" respawn="60" total="1" />
+    <npc id="18132" pos="{175241;-82292;-7216;75280}" respawn="60" total="1" />
+    <npc id="18132" pos="{175967;-82303;-7216;88488}" respawn="60" total="1" />
+    <npc id="18132" pos="{175149;-81890;-7216;65128}" respawn="60" total="1" />
+    <npc id="18132" pos="{176058;-81892;-7216;98032}" respawn="60" total="1" />
+    <npc id="18138" pos="anywhere" respawn="60" total="2" />
+    <npc id="18139" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="4th_type3_a" territory="godard19_2515_01">
+    <npc id="18131" pos="{175599;-81424;-7216;-16456}" respawn="0" total="1" />
+    <npc id="18135" pos="{175366;-81906;-7174;984}" respawn="300" total="1" />
+    <npc id="18135" pos="{175810;-81897;-7174;32776}" respawn="300" total="1" />
+    <npc id="18133" pos="{175600;-82162;-7174;16928}" respawn="300" total="1" />
+    <npc id="18133" pos="{175601;-81657;-7174;-16400}" respawn="300" total="1" />
+    <npc id="18137" pos="{175821;-82170;-7174;24656}" respawn="300" total="1" />
+    <npc id="18137" pos="{175806;-81671;-7174;40592}" respawn="300" total="1" />
+    <npc id="18137" pos="{175395;-81676;-7174;55728}" respawn="300" total="1" />
+    <npc id="18137" pos="{175385;-82170;-7174;74520}" respawn="300" total="1" />
+    <npc id="18137" pos="{175301;-81515;-7185;65096}" respawn="300" total="1" />
+    <npc id="18137" pos="{175920;-81510;-7185;33144}" respawn="300" total="1" />
+    <npc id="18132" pos="{175748;-81469;-7216;37824}" respawn="60" total="1" />
+    <npc id="18132" pos="{175458;-81477;-7216;56512}" respawn="60" total="1" />
+    <npc id="18132" pos="{175241;-82292;-7216;75280}" respawn="60" total="1" />
+    <npc id="18132" pos="{175967;-82303;-7216;88488}" respawn="60" total="1" />
+    <npc id="18132" pos="{175149;-81890;-7216;65128}" respawn="60" total="1" />
+    <npc id="18132" pos="{176058;-81892;-7216;98032}" respawn="60" total="1" />
+    <npc id="18138" pos="anywhere" respawn="60" total="2" />
+    <npc id="18136" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="4th_trigger_b" territory="godard19_2515_02">
+    <npc id="31484" pos="{175619;-80094;-7216;-15944}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_type1_b1" territory="godard19_2515_02">
+    <npc id="18146" pos="{175856;-80442;-7216;32768}" respawn="0" total="1" />
+    <npc id="18146" pos="{175833;-79709;-7216;32768}" respawn="0" total="1" />
+    <npc id="18146" pos="{175379;-80437;-7216;656}" respawn="0" total="1" />
+    <npc id="18146" pos="{175367;-79720;-7216;656}" respawn="0" total="1" />
+    <npc id="18148" pos="{175847;-80068;-7216;32768}" respawn="0" total="1" />
+    <npc id="18148" pos="{175853;-80256;-7216;32768}" respawn="0" total="1" />
+    <npc id="18148" pos="{175837;-79873;-7216;32768}" respawn="0" total="1" />
+    <npc id="18148" pos="{175373;-80072;-7216;656}" respawn="0" total="1" />
+    <npc id="18148" pos="{175375;-80256;-7216;656}" respawn="0" total="1" />
+    <npc id="18148" pos="{175373;-79890;-7216;656}" respawn="0" total="1" />
+    <npc id="18148" pos="{175721;-80465;-7216;16920}" respawn="0" total="1" />
+    <npc id="18148" pos="{175532;-80470;-7216;16920}" respawn="0" total="1" />
+    <npc id="18148" pos="{175500;-79726;-7216;-14864}" respawn="0" total="1" />
+    <npc id="18148" pos="{175720;-79724;-7216;-14864}" respawn="0" total="1" />
+    <npc id="18149" pos="anywhere" respawn="0" total="2" />
+  </npcmaker>
+  <npcmaker name="4th_type1_b2" territory="godard19_2515_02">
+    <npc id="18146" pos="{175856;-80442;-7216;32768}" respawn="0" total="1" />
+    <npc id="18146" pos="{175833;-79709;-7216;32768}" respawn="0" total="1" />
+    <npc id="18146" pos="{175379;-80437;-7216;656}" respawn="0" total="1" />
+    <npc id="18146" pos="{175367;-79720;-7216;656}" respawn="0" total="1" />
+    <npc id="18148" pos="anywhere" respawn="0" total="9" />
+    <npc id="18146" pos="anywhere" respawn="0" total="2" />
+    <npc id="18149" pos="anywhere" respawn="0" total="3" />
+  </npcmaker>
+  <npcmaker name="4th_type1_b3" territory="godard19_2515_02">
+    <npc id="18144" pos="anywhere" respawn="0" total="1" />
+    <npc id="18146" pos="anywhere" respawn="60" total="5" />
+    <npc id="18148" pos="anywhere" respawn="60" total="6" />
+    <npc id="18149" pos="anywhere" respawn="60" total="5" />
+  </npcmaker>
+  <npcmaker name="4th_type2_b1" territory="godard19_2515_02">
+    <npc id="18145" pos="{175856;-80442;-7216;32768}" respawn="0" total="1" />
+    <npc id="18145" pos="{175833;-79709;-7216;32768}" respawn="0" total="1" />
+    <npc id="18145" pos="{175379;-80437;-7216;656}" respawn="0" total="1" />
+    <npc id="18145" pos="{175367;-79720;-7216;656}" respawn="0" total="1" />
+    <npc id="18147" pos="{175847;-80068;-7216;32768}" respawn="0" total="1" />
+    <npc id="18147" pos="{175853;-80256;-7216;32768}" respawn="0" total="1" />
+    <npc id="18147" pos="{175837;-79873;-7216;32768}" respawn="0" total="1" />
+    <npc id="18147" pos="{175373;-80072;-7216;656}" respawn="0" total="1" />
+    <npc id="18147" pos="{175375;-80256;-7216;656}" respawn="0" total="1" />
+    <npc id="18147" pos="{175373;-79890;-7216;656}" respawn="0" total="1" />
+    <npc id="18147" pos="{175721;-80465;-7216;16920}" respawn="0" total="1" />
+    <npc id="18147" pos="{175532;-80470;-7216;16920}" respawn="0" total="1" />
+    <npc id="18147" pos="{175500;-79726;-7216;-14864}" respawn="0" total="1" />
+    <npc id="18147" pos="{175720;-79724;-7216;-14864}" respawn="0" total="1" />
+    <npc id="18149" pos="anywhere" respawn="0" total="2" />
+  </npcmaker>
+  <npcmaker name="4th_type2_b2" territory="godard19_2515_02">
+    <npc id="18145" pos="{175856;-80442;-7216;32768}" respawn="0" total="1" />
+    <npc id="18145" pos="{175833;-79709;-7216;32768}" respawn="0" total="1" />
+    <npc id="18145" pos="{175379;-80437;-7216;656}" respawn="0" total="1" />
+    <npc id="18145" pos="{175367;-79720;-7216;656}" respawn="0" total="1" />
+    <npc id="18147" pos="anywhere" respawn="0" total="9" />
+    <npc id="18145" pos="anywhere" respawn="0" total="2" />
+    <npc id="18149" pos="anywhere" respawn="0" total="3" />
+  </npcmaker>
+  <npcmaker name="4th_type2_b3" territory="godard19_2515_02">
+    <npc id="18144" pos="anywhere" respawn="0" total="1" />
+    <npc id="18145" pos="anywhere" respawn="60" total="5" />
+    <npc id="18147" pos="anywhere" respawn="60" total="6" />
+    <npc id="18149" pos="anywhere" respawn="60" total="5" />
+  </npcmaker>
+  <npcmaker name="4th_trigger_c" territory="godard19_2515_03">
+    <npc id="31485" pos="{175608;-78268;-7216;-15944}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_type1_c" territory="godard19_2515_03">
+    <npc id="18156" pos="{175608;-78268;-7232;-15944}" respawn="0" total="1" />
+    <npc id="18169" pos="{175711;-78271;-7216;-32728}" respawn="60" total="1" />
+    <npc id="18169" pos="{175472;-78271;-7216;0}" respawn="60" total="1" />
+    <npc id="18168" pos="{175546;-78743;-7216;16608}" respawn="0" total="1" />
+    <npc id="18167" pos="{175582;-77779;-7216;-16288}" respawn="60" total="1" />
+    <npc id="18168" pos="{175482;-77953;-7216;-73944}" respawn="0" total="1" />
+    <npc id="18168" pos="{175748;-77953;-7216;-90208}" respawn="0" total="1" />
+    <npc id="18168" pos="{175665;-78743;-7216;-115008}" respawn="0" total="1" />
+    <npc id="18172" pos="{175588;-78597;-7232;-49144}" respawn="0" total="1" />
+    <npc id="18170" pos="{175585;-77936;-7232;-81832}" respawn="0" total="1" />
+    <npc id="18167" pos="{175815;-78347;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{175816;-78509;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{175816;-78667;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{175814;-77865;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{175815;-78027;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{175815;-78185;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{175409;-78347;-7216;16}" respawn="0" total="1" />
+    <npc id="18170" pos="{175409;-78508;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{175409;-78666;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{175408;-77864;-7216;16}" respawn="0" total="1" />
+    <npc id="18170" pos="{175408;-78026;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{175408;-78184;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{175701;-77848;-7232;-81832}" respawn="60" total="1" />
+    <npc id="18167" pos="{175473;-77851;-7232;-81832}" respawn="60" total="1" />
+    <npc id="18166" pos="anywhere" respawn="60" total="3" />
+    <npc id="18169" pos="anywhere" respawn="60" total="3" />
+  </npcmaker>
+  <npcmaker name="4th_type2_c" territory="godard19_2515_03">
+    <npc id="18157" pos="{175608;-78268;-7232;-15944}" respawn="0" total="1" />
+    <npc id="18169" pos="{175711;-78271;-7216;-32728}" respawn="60" total="1" />
+    <npc id="18169" pos="{175472;-78271;-7216;0}" respawn="60" total="1" />
+    <npc id="18171" pos="{175546;-78743;-7216;16608}" respawn="0" total="1" />
+    <npc id="18167" pos="{175582;-77779;-7216;-16288}" respawn="60" total="1" />
+    <npc id="18167" pos="{175482;-77953;-7216;-73944}" respawn="0" total="1" />
+    <npc id="18167" pos="{175748;-77953;-7216;-90208}" respawn="0" total="1" />
+    <npc id="18171" pos="{175665;-78743;-7216;-115008}" respawn="0" total="1" />
+    <npc id="18172" pos="{175588;-78597;-7232;-49144}" respawn="0" total="1" />
+    <npc id="18170" pos="{175585;-77936;-7232;-81832}" respawn="0" total="1" />
+    <npc id="18170" pos="{175815;-78347;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{175816;-78509;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{175816;-78667;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{175814;-77865;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18167" pos="{175815;-78027;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{175815;-78185;-7216;-32728}" respawn="0" total="1" />
+    <npc id="18170" pos="{175409;-78347;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{175409;-78508;-7216;16}" respawn="0" total="1" />
+    <npc id="18170" pos="{175409;-78666;-7216;16}" respawn="0" total="1" />
+    <npc id="18170" pos="{175408;-77864;-7216;16}" respawn="0" total="1" />
+    <npc id="18167" pos="{175408;-78026;-7216;16}" respawn="0" total="1" />
+    <npc id="18170" pos="{175408;-78184;-7216;16}" respawn="0" total="1" />
+    <npc id="18171" pos="{175701;-77848;-7232;-81832}" respawn="60" total="1" />
+    <npc id="18171" pos="{175473;-77851;-7232;-81832}" respawn="60" total="1" />
+    <npc id="18172" pos="anywhere" respawn="60" total="2" />
+    <npc id="18171" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="4th_trigger_d" territory="godard19_2515_04">
+    <npc id="31486" pos="{175588;-76472;-7216;-16328}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_type1_d" territory="godard19_2515_04">
+    <npc id="18182" pos="{175602;-76793;-7217;16272}" respawn="0" total="1" />
+    <npc id="18210" pos="{176055;-77020;-7168;25536}" respawn="0" total="1" />
+    <npc id="18211" pos="{175114;-77018;-7168;7792}" respawn="0" total="1" />
+    <npc id="18208" pos="{175134;-75913;-7168;-7432}" respawn="0" total="1" />
+    <npc id="18209" pos="{176081;-75913;-7168;-23904}" respawn="0" total="1" />
+    <npc id="18185" pos="{175485;-76222;-7232;-16424}" respawn="300" total="1" />
+    <npc id="18185" pos="{175711;-76227;-7232;-16424}" respawn="300" total="1" />
+    <npc id="18186" pos="{175601;-76059;-7232;-16424}" respawn="300" total="1" />
+    <npc id="18186" pos="{175983;-76884;-7232;24520}" respawn="300" total="1" />
+    <npc id="18186" pos="{175203;-76866;-7232;10608}" respawn="300" total="1" />
+    <npc id="18188" pos="{175844;-76159;-7200;39792}" respawn="300" total="1" />
+    <npc id="18188" pos="{175345;-76154;-7200;54944}" respawn="300" total="1" />
+    <npc id="18188" pos="{175337;-76761;-7200;73360}" respawn="300" total="1" />
+    <npc id="18188" pos="{175838;-76766;-7200;89056}" respawn="300" total="1" />
+    <npc id="18187" pos="{175835;-76473;-7200;97512}" respawn="300" total="1" />
+    <npc id="18187" pos="{175366;-76466;-7200;65064}" respawn="300" total="1" />
+    <npc id="18185" pos="{175695;-76941;-7232;-49224}" respawn="300" total="1" />
+    <npc id="18185" pos="{175501;-76941;-7232;-49224}" respawn="60" total="1" />
+    <npc id="18190" pos="{175595;-76306;-7192;49128}" respawn="60" total="1" />
+    <npc id="18189" pos="anywhere" respawn="60" total="3" />
+    <npc id="18190" pos="anywhere" respawn="60" total="3" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="4th_type2_d" territory="godard19_2515_04">
+    <npc id="18183" pos="{175602;-76793;-7217;16272}" respawn="0" total="1" />
+    <npc id="18210" pos="{176055;-77020;-7168;25536}" respawn="0" total="1" />
+    <npc id="18211" pos="{175114;-77018;-7168;7792}" respawn="0" total="1" />
+    <npc id="18208" pos="{175134;-75913;-7168;-7432}" respawn="0" total="1" />
+    <npc id="18209" pos="{176081;-75913;-7168;-23904}" respawn="0" total="1" />
+    <npc id="18185" pos="{175485;-76222;-7232;-16424}" respawn="300" total="1" />
+    <npc id="18185" pos="{175711;-76227;-7232;-16424}" respawn="300" total="1" />
+    <npc id="18186" pos="{175601;-76059;-7232;-16424}" respawn="300" total="1" />
+    <npc id="18186" pos="{175983;-76884;-7232;24520}" respawn="300" total="1" />
+    <npc id="18186" pos="{175203;-76866;-7232;10608}" respawn="300" total="1" />
+    <npc id="18191" pos="{175844;-76159;-7200;39792}" respawn="300" total="1" />
+    <npc id="18191" pos="{175345;-76154;-7200;54944}" respawn="300" total="1" />
+    <npc id="18191" pos="{175337;-76761;-7200;73360}" respawn="300" total="1" />
+    <npc id="18191" pos="{175838;-76766;-7200;89056}" respawn="300" total="1" />
+    <npc id="18192" pos="{175835;-76473;-7200;97512}" respawn="300" total="1" />
+    <npc id="18192" pos="{175366;-76466;-7200;65064}" respawn="300" total="1" />
+    <npc id="18190" pos="{175695;-76941;-7232;-49224}" respawn="300" total="1" />
+    <npc id="18185" pos="{175501;-76941;-7232;-49224}" respawn="60" total="1" />
+    <npc id="18185" pos="{175595;-76306;-7192;49128}" respawn="60" total="1" />
+    <npc id="18192" pos="anywhere" respawn="60" total="3" />
+    <npc id="18193" pos="anywhere" respawn="60" total="3" />
+    <npc id="18194" pos="anywhere" respawn="60" total="2" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="4th_type3_d" territory="godard19_2515_04">
+    <npc id="18184" pos="{175602;-76793;-7217;16272}" respawn="0" total="1" />
+    <npc id="18210" pos="{176055;-77020;-7168;25536}" respawn="0" total="1" />
+    <npc id="18211" pos="{175114;-77018;-7168;7792}" respawn="0" total="1" />
+    <npc id="18208" pos="{175134;-75913;-7168;-7432}" respawn="0" total="1" />
+    <npc id="18209" pos="{176081;-75913;-7168;-23904}" respawn="0" total="1" />
+    <npc id="18185" pos="{175485;-76222;-7232;-16424}" respawn="300" total="1" />
+    <npc id="18185" pos="{175711;-76227;-7232;-16424}" respawn="300" total="1" />
+    <npc id="18186" pos="{175601;-76059;-7232;-16424}" respawn="300" total="1" />
+    <npc id="18186" pos="{175983;-76884;-7232;24520}" respawn="300" total="1" />
+    <npc id="18186" pos="{175203;-76866;-7232;10608}" respawn="300" total="1" />
+    <npc id="18188" pos="{175844;-76159;-7200;39792}" respawn="300" total="1" />
+    <npc id="18191" pos="{175345;-76154;-7200;54944}" respawn="300" total="1" />
+    <npc id="18188" pos="{175337;-76761;-7200;73360}" respawn="300" total="1" />
+    <npc id="18191" pos="{175838;-76766;-7200;89056}" respawn="300" total="1" />
+    <npc id="18187" pos="{175835;-76473;-7200;97512}" respawn="300" total="1" />
+    <npc id="18192" pos="{175366;-76466;-7200;65064}" respawn="300" total="1" />
+    <npc id="18190" pos="{175695;-76941;-7232;-49224}" respawn="300" total="1" />
+    <npc id="18185" pos="{175501;-76941;-7232;-49224}" respawn="60" total="1" />
+    <npc id="18185" pos="{175595;-76306;-7192;49128}" respawn="60" total="1" />
+    <npc id="18189" pos="anywhere" respawn="60" total="3" />
+    <npc id="18190" pos="anywhere" respawn="60" total="3" />
+    <npc id="18192" pos="anywhere" respawn="60" total="2" />
+    <npc id="18193" pos="anywhere" respawn="60" total="2" />
+    <npc id="18194" pos="anywhere" respawn="60" total="2" />
+    <npc id="18195" pos="anywhere" respawn="60" total="2" />
+  </npcmaker>
+  <npcmaker name="4th_trigger_e" territory="godard19_2515_05">
+    <npc id="31487" pos="{175594;-74655;-7216;-15928}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_type1_e" territory="godard19_2515_05">
+    <npc id="18224" pos="{175577;-74447;-7217;48600}" respawn="0" total="1" />
+    <npc id="18225" pos="{175558;-74953;-7202;16184}" respawn="0" total="1" />
+    <npc id="18226" pos="{175742;-75130;-7217;21816}" respawn="0" total="1" />
+    <npc id="18226" pos="{175388;-75126;-7217;8952}" respawn="0" total="1" />
+    <npc id="18220" pos="{175272;-74819;-7217;-72}" respawn="0" total="1" />
+    <npc id="18221" pos="{175883;-74828;-7217;32520}" respawn="0" total="1" />
+    <npc id="18223" pos="{175658;-74153;-7217;48896}" respawn="0" total="1" />
+    <npc id="18223" pos="{175506;-74153;-7217;48600}" respawn="0" total="1" />
+    <npc id="18223" pos="{175331;-74642;-7200;-464}" respawn="0" total="1" />
+    <npc id="18223" pos="{175822;-74648;-7200;32288}" respawn="0" total="1" />
+    <npc id="18222" pos="{175744;-74717;-7202;33072}" respawn="0" total="1" />
+    <npc id="18222" pos="{175400;-74718;-7202;240}" respawn="0" total="1" />
+    <npc id="18223" pos="{175342;-74335;-7200;-472}" respawn="0" total="1" />
+    <npc id="18223" pos="{175828;-74346;-7200;-33144}" respawn="0" total="1" />
+    <npc id="18223" pos="{175331;-74948;-7200;-472}" respawn="0" total="1" />
+    <npc id="18223" pos="{175819;-74949;-7200;-33144}" respawn="0" total="1" />
+    <npc id="18220" pos="{175889;-74517;-7217;32520}" respawn="0" total="1" />
+    <npc id="18221" pos="{175287;-74470;-7217;144}" respawn="0" total="1" />
+    <npc id="18227" pos="{175697;-74399;-7217;48600}" respawn="0" total="1" />
+    <npc id="18227" pos="{175430;-74398;-7217;48600}" respawn="0" total="1" />
+    <npc id="18226" pos="{175419;-74947;-7217;65200}" respawn="0" total="1" />
+    <npc id="18226" pos="{175693;-74952;-7217;32384}" respawn="0" total="1" />
+    <npc id="18220" pos="{175580;-74251;-7217;48984}" respawn="0" total="1" />
+    <npc id="18221" pos="{175557;-75157;-7217;16056}" respawn="0" total="1" />
+    <npc id="18222" pos="anywhere" respawn="0" total="2" />
+    <npc id="18224" pos="anywhere" respawn="0" total="2" />
+    <npc id="18225" pos="anywhere" respawn="0" total="2" />
+    <npc id="18230" pos="anywhere" respawn="0" total="4" />
+    <npc id="18243" pos="{175768;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175834;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175897;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175960;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{176022;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175156;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175222;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175285;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175349;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175411;-74059;-7200;-16248}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_type1_boss_e" territory="godard19_2515_05">
+    <npc id="18218" pos="anywhere" respawn="0" total="1" />
+    <npc id="18230" pos="anywhere" respawn="60" total="5" />
+    <npc id="18220" pos="anywhere" respawn="60" total="4" />
+    <npc id="18227" pos="anywhere" respawn="60" total="2" />
+    <npc id="18222" pos="anywhere" respawn="60" total="2" />
+    <npc id="18224" pos="anywhere" respawn="60" total="2" />
+    <npc id="18225" pos="anywhere" respawn="60" total="2" />
+    <npc id="18243" pos="{175521;-73930;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{175588;-73930;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{175650;-73930;-7200;49152}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_type2_e" territory="godard19_2515_05">
+    <npc id="18227" pos="{175577;-74447;-7217;48600}" respawn="0" total="1" />
+    <npc id="18227" pos="{175558;-74953;-7202;16184}" respawn="0" total="1" />
+    <npc id="18223" pos="{175742;-75130;-7217;21816}" respawn="0" total="1" />
+    <npc id="18223" pos="{175388;-75126;-7217;8952}" respawn="0" total="1" />
+    <npc id="18220" pos="{175272;-74819;-7217;-72}" respawn="0" total="1" />
+    <npc id="18221" pos="{175883;-74828;-7217;32520}" respawn="0" total="1" />
+    <npc id="18226" pos="{175658;-74153;-7217;48896}" respawn="0" total="1" />
+    <npc id="18226" pos="{175506;-74153;-7217;48600}" respawn="0" total="1" />
+    <npc id="18226" pos="{175331;-74642;-7200;-464}" respawn="0" total="1" />
+    <npc id="18226" pos="{175822;-74648;-7200;32288}" respawn="0" total="1" />
+    <npc id="18227" pos="{175744;-74717;-7202;33072}" respawn="0" total="1" />
+    <npc id="18227" pos="{175400;-74718;-7202;240}" respawn="0" total="1" />
+    <npc id="18226" pos="{175342;-74335;-7200;-472}" respawn="0" total="1" />
+    <npc id="18226" pos="{175828;-74346;-7200;-33144}" respawn="0" total="1" />
+    <npc id="18226" pos="{175331;-74948;-7200;-472}" respawn="0" total="1" />
+    <npc id="18226" pos="{175819;-74949;-7200;-33144}" respawn="0" total="1" />
+    <npc id="18220" pos="{175889;-74517;-7217;32520}" respawn="0" total="1" />
+    <npc id="18221" pos="{175287;-74470;-7217;144}" respawn="0" total="1" />
+    <npc id="18224" pos="{175697;-74399;-7217;48600}" respawn="0" total="1" />
+    <npc id="18224" pos="{175430;-74398;-7217;48600}" respawn="0" total="1" />
+    <npc id="18223" pos="{175419;-74947;-7217;65200}" respawn="0" total="1" />
+    <npc id="18223" pos="{175693;-74952;-7217;32384}" respawn="0" total="1" />
+    <npc id="18220" pos="{175580;-74251;-7217;48984}" respawn="0" total="1" />
+    <npc id="18221" pos="{175557;-75157;-7217;16056}" respawn="0" total="1" />
+    <npc id="18229" pos="anywhere" respawn="0" total="2" />
+    <npc id="18227" pos="anywhere" respawn="0" total="2" />
+    <npc id="18228" pos="anywhere" respawn="0" total="2" />
+    <npc id="18230" pos="anywhere" respawn="0" total="4" />
+    <npc id="18243" pos="{175768;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175834;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175897;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175960;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{176022;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175156;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175222;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175285;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175349;-74059;-7200;-16248}" respawn="0" total="1" />
+    <npc id="18243" pos="{175411;-74059;-7200;-16248}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_type2_boss_e" territory="godard19_2515_05">
+    <npc id="18219" pos="anywhere" respawn="0" total="1" />
+    <npc id="18230" pos="anywhere" respawn="60" total="5" />
+    <npc id="18220" pos="anywhere" respawn="60" total="4" />
+    <npc id="18224" pos="anywhere" respawn="60" total="2" />
+    <npc id="18229" pos="anywhere" respawn="60" total="2" />
+    <npc id="18227" pos="anywhere" respawn="60" total="2" />
+    <npc id="18228" pos="anywhere" respawn="60" total="2" />
+    <npc id="18243" pos="{175521;-73930;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{175588;-73930;-7200;49152}" respawn="0" total="1" />
+    <npc id="18243" pos="{175650;-73930;-7200;49152}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_boss_type1" territory="godard19_2515_06">
+    <npc id="25339" pos="{175610;-72453;-7184;-15992}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_boss_type2" territory="godard19_2515_06">
+    <npc id="25342" pos="{175610;-72453;-7184;-15992}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_boss_type3" territory="godard19_2515_06">
+    <npc id="25346" pos="{175610;-72453;-7184;-15992}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_boss_type4" territory="godard19_2515_06">
+    <npc id="25349" pos="{175610;-72453;-7184;-15992}" respawn="0" total="1" />
+  </npcmaker>
+  <npcmaker name="4th_boss_treasure" territory="godard19_2515_06">
+    <npc id="18256" pos="anywhere" respawn="0" total="200" />
+  </npcmaker>
+  <!-- custom -->
+  <!-- entrance npcs -->
+  <npcmaker name="1st_entrance">
+    <npc id="31921" pos="{181528;-85583;-7200;-32600}" respawn="60" total="1"/>
+  </npcmaker>
+  <npcmaker name="2nd_entrance">
+    <npc id="31922" pos="{179292;-88981;-7200;-33272}" respawn="60" total="1"/>
+  </npcmaker>
+  <npcmaker name="3rd_entrance">
+    <npc id="31923" pos="{173202;-87004;-7200;-16248}" respawn="60" total="1"/>
+  </npcmaker>  
+  <npcmaker name="4th_entrance">
+    <npc id="31924" pos="{175606;-82853;-7200;-16248}" respawn="60" total="1"/>
+  </npcmaker>
+
+  <!-- interior doormans -->
+  <npcmaker name="1st_doormans">
+    <npc id="31925" pos="{182727;-85493;-7200;-32584}" respawn="60" total="1"/>
+	<npc id="31926" pos="{184547;-85479;-7200;-32584}" respawn="60" total="1"/>
+	<npc id="31927" pos="{186349;-85473;-7200;-32584}" respawn="60" total="1"/>
+	<npc id="31928" pos="{188154;-85463;-7200;-32584}" respawn="60" total="1"/>
+	<npc id="31929" pos="{189947;-85466;-7200;-32584}" respawn="60" total="1"/>
+  </npcmaker>
+  <npcmaker name="2nd_doormans">
+    <npc id="31930" pos="{181030;-88868;-7200;-33272}" respawn="60" total="1"/>
+	<npc id="31931" pos="{182809;-88868;-7200;-33272}" respawn="60" total="1"/>
+	<npc id="31932" pos="{184626;-88868;-7200;-33272}" respawn="60" total="1"/>
+	<npc id="31933" pos="{186438;-88868;-7200;-33272}" respawn="60" total="1"/>
+	<npc id="31934" pos="{188236;-88868;-7200;-33272}" respawn="60" total="1"/>
+  </npcmaker>
+  <npcmaker name="3rd_doormans">
+    <npc id="31935" pos="{173101;-85105;-7200;-16248}" respawn="60" total="1"/>
+	<npc id="31936" pos="{173101;-83280;-7200;-16248}" respawn="60" total="1"/>
+	<npc id="31937" pos="{173101;-81479;-7200;-16248}" respawn="60" total="1"/>
+	<npc id="31938" pos="{173101;-79698;-7200;-16248}" respawn="60" total="1"/>
+	<npc id="31939" pos="{173101;-77896;-7200;-16248}" respawn="60" total="1"/>
+  </npcmaker>
+  <npcmaker name="4th_doormans">
+    <npc id="31940" pos="{175489;-81265;-7200;-16248}" respawn="60" total="1"/>
+	<npc id="31941" pos="{175489;-79468;-7200;-16248}" respawn="60" total="1"/>
+	<npc id="31942" pos="{175489;-77652;-7200;-16248}" respawn="60" total="1"/>
+	<npc id="31943" pos="{175489;-75856;-7200;-16248}" respawn="60" total="1"/>
+	<npc id="31944" pos="{175489;-74049;-7200;-16248}" respawn="60" total="1"/>
+  </npcmaker>
+</list>

@@ -1,0 +1,55 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package ai.residences;
+
+import ai.residences.SiegeGuard;
+import l2.gameserver.model.instances.NpcInstance;
+
+public class SiegeGuardRanger
+extends SiegeGuard {
+    public SiegeGuardRanger(NpcInstance npcInstance) {
+        super(npcInstance);
+    }
+
+    @Override
+    protected boolean createNewTask() {
+        return this.defaultFightTask();
+    }
+
+    @Override
+    public int getRatePHYS() {
+        return 25;
+    }
+
+    @Override
+    public int getRateDOT() {
+        return 50;
+    }
+
+    @Override
+    public int getRateDEBUFF() {
+        return 25;
+    }
+
+    @Override
+    public int getRateDAM() {
+        return 75;
+    }
+
+    @Override
+    public int getRateSTUN() {
+        return 75;
+    }
+
+    @Override
+    public int getRateBUFF() {
+        return 5;
+    }
+
+    @Override
+    public int getRateHEAL() {
+        return 50;
+    }
+}
+

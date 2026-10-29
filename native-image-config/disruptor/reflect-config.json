@@ -1,0 +1,60 @@
+[
+  {
+    "name": "ext.mods.commons.disruptor.PacketEventFactory",
+    "allPublicMethods": true
+  },
+  {
+    "name": "ext.mods.commons.disruptor.PacketEvent",
+    "allDeclaredFields": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "ext.mods.commons.disruptor.UnifiedEventFactory",
+    "allPublicMethods": true
+  },
+  {
+    "name": "ext.mods.commons.disruptor.UnifiedPacketEvent",
+    "allDeclaredFields": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "com.lmax.disruptor.SleepingWaitStrategy",
+    "methods": [{ "name": "<init>", "parameterTypes": [] }]
+  },
+  {
+    "name": "com.lmax.disruptor.YieldingWaitStrategy",
+    "methods": [{ "name": "<init>", "parameterTypes": [] }]
+  },
+  {
+    "name": "com.lmax.disruptor.BlockingWaitStrategy",
+    "methods": [{ "name": "<init>", "parameterTypes": [] }]
+  },
+  {
+    "name": "com.lmax.disruptor.LiteBlockingWaitStrategy",
+    "methods": [{ "name": "<init>", "parameterTypes": [] }]
+  },
+  {
+    "name": "io.netty.channel.epoll.Epoll",
+    "methods": [{ "name": "isAvailable", "parameterTypes": [] }]
+  },
+  {
+    "name": "io.netty.channel.epoll.EpollEventLoopGroup",
+    "methods": [{ "name": "<init>", "parameterTypes": ["int"] }]
+  },
+  {
+    "name": "io.netty.channel.epoll.EpollServerSocketChannel",
+    "methods": [{ "name": "<init>", "parameterTypes": [] }]
+  },
+  {
+    "name": "io.netty.channel.kqueue.KQueue",
+    "methods": [{ "name": "isAvailable", "parameterTypes": [] }]
+  },
+  {
+    "name": "io.netty.channel.kqueue.KQueueEventLoopGroup",
+    "methods": [{ "name": "<init>", "parameterTypes": ["int"] }]
+  },
+  {
+    "name": "io.netty.channel.kqueue.KQueueServerSocketChannel",
+    "methods": [{ "name": "<init>", "parameterTypes": [] }]
+  }
+]

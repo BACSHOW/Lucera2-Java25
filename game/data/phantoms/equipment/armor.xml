@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE list SYSTEM "armor.dtd">
+<list>
+    <!-- Divine Tunic C -->
+    <set set_id="28">
+        <item id="442"/>
+        <item id="473"/>
+        <item id="2463"/>
+    </set>
+    <!-- Demon's Tunic C -->
+    <set set_id="29">
+        <item id="441"/>
+        <item id="472"/>
+        <item id="2459"/>
+    </set>
+    <!-- Karmian Tunic C -->
+    <set set_id="30">
+        <item id="439"/>
+        <item id="471"/>
+        <item id="2454"/>
+    </set>
+    <!-- Drake Leather Armor C -->
+    <set set_id="31">
+        <item id="401"/>
+        <item id="2437"/>
+        <item id="2454"/>
+    </set>
+    <!-- Theca Leather Armor C -->
+    <set set_id="32">
+        <item id="400"/>
+        <item id="420"/>
+        <item id="2436"/>
+    </set>
+    <!-- Plated Leather C -->
+    <set set_id="33">
+        <item id="398"/>
+        <item id="418"/>
+        <item id="2431"/>
+    </set>
+    <!-- Mithril Shirt C -->
+    <set set_id="34">
+        <item id="397"/>
+        <item id="2387"/>
+        <item id="62"/>
+    </set>
+    <!-- Full Plate Armor C -->
+    <set set_id="35">
+        <item id="356"/>
+        <item id="2414"/>
+    </set>
+    <!-- Composite Armor C -->
+    <set set_id="36">
+        <item id="60"/>
+        <item id="517"/>
+    </set>
+    <!-- Chain Mail Shirt C -->
+    <set set_id="37">
+        <item id="354"/>
+        <item id="381"/>
+        <item id="2413"/>
+    </set>
+    <!-- Mithril Tunic C -->
+    <set set_id="38">
+        <item id="437"/>
+        <item id="470"/>
+        <item id="2450"/>
+    </set>
+    <!-- Tunic of Knowledge D -->
+    <set set_id="39">
+        <item id="436"/>
+        <item id="469"/>
+        <item id="2447"/>
+    </set>
+    <!-- Manticore Skin Leather D -->
+    <set set_id="40">
+        <item id="395"/>
+        <item id="417"/>
+        <item id="2424"/>
+    </set>
+    <!-- Reinforced Leather Shirt D -->
+    <set set_id="41">
+        <item id="394"/>
+        <item id="416"/>
+        <item id="2422"/>
+    </set>
+    <!-- Brigandine Tunic D -->
+    <set set_id="42">
+        <item id="352"/>
+        <item id="2378"/>
+        <item id="2411"/>
+    </set>
+    <!-- Mithril Breastplate D -->
+    <set set_id="43">
+        <item id="58"/>
+        <item id="59"/>
+        <item id="47"/>
+    </set>
+    <!-- Start Set Fighter-->
+    <set set_id="45">
+        <item id="1146"/>
+        <item id="1147"/>
+    </set>
+    <!-- Start Set Mage -->
+    <set set_id="46">
+        <item id="1146"/>
+        <item id="1147"/>
+    </set>
+</list>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE list SYSTEM "pcparams.dtd">
+<list>
+    <pcparams classId="107" classType="spectral_dancer" name="Spectral Dancer">
+        <male> <!-- Male Spectral Dancer -->
+            <items> <!-- Starting Items -->
+                <item id="5588" amount="1"/>
+                <item id="1147" amount="1" equipped="true" enchant="0"/>
+                <item id="1146" amount="1" equipped="true" enchant="0"/>
+                <item id="2369" amount="1" equipped="true" enchant="0"/>
+                <item id="10" amount="1"/>
+            </items>
+            <spawn x="28377" y="10916" z="-4224"/> <!-- Spawn start coordinates -->
+            <stats> <!-- Base Stats like pAtkSpd, CON, DEX and etc -->
+                <set name="baseSTR" value="41"/>
+                <set name="baseCON" value="32"/>
+                <set name="baseDEX" value="34"/>
+                <set name="baseINT" value="25"/>
+                <set name="baseWIT" value="12"/>
+                <set name="baseMEN" value="26"/>
+                <set name="basePAtk" value="4"/>
+                <set name="basePDef" value="72"/>
+                <set name="baseMAtk" value="3"/>
+                <set name="baseMDef" value="47"/>
+                <set name="basePAtkSpd" value="342"/>
+                <set name="baseMAtkSpd" value="333"/>
+                <set name="baseCritRate" value="45"/>
+                <set name="baseRunSpd" value="122"/>
+                <set name="baseWalkSpd" value="85"/>
+                <set name="baseAtkRange" value="20"/>
+                <set name="baseShldDef" value="0"/>
+                <set name="baseShldRate" value="0"/>
+                <set name="baseExp" value="3"/>
+                <set name="collision_radius" value="7.5"/>
+                <set name="collision_height" value="24.0"/>
+                <set name="baseHpMax" value="0"/>
+                <set name="baseCpMax" value="0"/>
+                <set name="baseMpMax" value="0"/>
+                <set name="baseHpReg" value="0.01"/>
+                <set name="baseCpReg" value="0.01"/>
+                <set name="baseMpReg" value="0.01"/>
+            </stats>
+        </male>
+        <female> <!-- Female Spectral Dancer -->
+            <items> <!-- Starting Items -->
+                <item id="5588" amount="1"/>
+                <item id="1147" amount="1" equipped="true" enchant="0"/>
+                <item id="1146" amount="1" equipped="true" enchant="0"/>
+                <item id="2369" amount="1" equipped="true" enchant="0"/>
+                <item id="10" amount="1"/>
+            </items>
+            <spawn x="28377" y="10916" z="-4224"/> <!-- Spawn start coordinates -->
+            <stats> <!-- Base Stats like pAtkSpd, CON, DEX and etc -->
+                <set name="baseSTR" value="41"/>
+                <set name="baseCON" value="32"/>
+                <set name="baseDEX" value="34"/>
+                <set name="baseINT" value="25"/>
+                <set name="baseWIT" value="12"/>
+                <set name="baseMEN" value="26"/>
+                <set name="basePAtk" value="4"/>
+                <set name="basePDef" value="72"/>
+                <set name="baseMAtk" value="3"/>
+                <set name="baseMDef" value="47"/>
+                <set name="basePAtkSpd" value="342"/>
+                <set name="baseMAtkSpd" value="333"/>
+                <set name="baseCritRate" value="45"/>
+                <set name="baseRunSpd" value="122"/>
+                <set name="baseWalkSpd" value="85"/>
+                <set name="baseAtkRange" value="20"/>
+                <set name="baseShldDef" value="0"/>
+                <set name="baseShldRate" value="0"/>
+                <set name="baseExp" value="3"/>
+                <set name="collision_radius" value="7.0"/>
+                <set name="collision_height" value="23.5"/>
+                <set name="baseHpMax" value="0"/>
+                <set name="baseCpMax" value="0"/>
+                <set name="baseMpMax" value="0"/>
+                <set name="baseHpReg" value="0.01"/>
+                <set name="baseCpReg" value="0.01"/>
+                <set name="baseMpReg" value="0.01"/>
+            </stats>
+        </female>
+    </pcparams>
+</list>

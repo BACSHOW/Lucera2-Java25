@@ -1,0 +1,5 @@
+<!ELEMENT list (increase)*>
+<!ELEMENT increase (#PCDATA)>
+<!ATTLIST increase
+		level CDATA #REQUIRED
+		value CDATA #REQUIRED>

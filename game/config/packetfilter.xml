@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packets>
+    <!-- DO NOT TOUCH THIS PACKET! -->
+    <packetByName name="Appearing">
+        <limit count="3" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit Appearing"/>
+            <!-- <msg text="Dont do it that often"/> -->
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <!-- DO NOT TOUCH THIS PACKET! -->
+    <packetByName name="AttackRequest">
+        <limit count="1" perMs="300">
+            <!-- <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit AttackRequest"/> -->
+            <!-- <msg text="Dont do it that often"/> -->
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <!-- DO NOT TOUCH THIS PACKET! -->
+    <packetByName name="RequestEnchantItem">
+        <limit count="1" perMs="500">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestEnchantItem"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <!-- DO NOT TOUCH THIS PACKET! -->
+    <packetByName name="RequestReload">
+        <limit count="1" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestReload"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <!-- DO NOT TOUCH THIS PACKET! -->
+    <packetByName name="RequestDropItem">
+        <limit count="2" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestDropItem"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <!-- DO NOT TOUCH THIS PACKET! -->
+    <packetByName name="RequestPledgeCrest">
+        <limit count="3" perMs="500">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestPledgeCrest"/>
+            <!-- <actionFailed/> -->
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <!-- DO NOT TOUCH THIS PACKET! -->
+    <packetByName name="RequestSetPledgeCrest">
+        <limit count="1" perMs="500">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestSetPledgeCrest"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <!-- DO NOT TOUCH THIS PACKET! -->
+    <packetByName name="EnterWorld">
+        <limit count="2" perMs="1200">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit EnterWorld"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <!-- You can modify these packages for yourself -->
+    <packetByName name="Logout">
+        <limit count="1" perMs="100">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit Logout"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestStartPledgeWar">
+        <limit count="1" perMs="800">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestStartPledgeWar"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestStopPledgeWar">
+        <limit count="1" perMs="800">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestStopPledgeWar"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestGiveNickName">
+        <limit count="1" perMs="800">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestGiveNickName"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="CharacterCreate">
+        <limit count="1" perMs="1200">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit CharacterCreate"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="CharacterDelete">
+        <limit count="1" perMs="1200">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit CharacterDelete"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="ProtocolVersion">
+        <limit count="1" perMs="600">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit ProtocolVersion"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="CharacterSelected">
+        <limit count="2" perMs="1200">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit CharacterSelected"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="NewCharacter">
+        <limit count="2" perMs="2000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit NewCharacter"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="TradeRequest">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit TradeRequest"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="AddTradeItem">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit AddTradeItem"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="TradeDone">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit TradeDone"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestBypassToServer">
+        <limit count="1" perMs="100">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestBypassToServer"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestBBSwrite">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestBBSwrite"/>
+            <actionFailed/>
+            <!--<drop/>-->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestJoinPledge">
+        <limit count="1" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestJoinPledge"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestAnswerJoinPledge">
+        <limit count="1" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestAnswerJoinPledge"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestWithdrawalPledge">
+        <limit count="1" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestWithdrawalPledge"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestGetItemFromPet">
+        <limit count="1" perMs="600">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestGetItemFromPet"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestCrystallizeItem">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestCrystallizeItem"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestSellItem">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestSellItem"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestMagicSkillList">
+        <limit count="1" perMs="600">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestMagicSkillList"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="SendWareHouseWithDrawList">
+        <limit count="1" perMs="500">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit SendWareHouseWithDrawList"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="SendWareHouseDepositList">
+        <limit count="1" perMs="500">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit SendWareHouseDepositList"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestShortCutReg">
+        <limit count="2" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestShortCutReg"/>
+            <!-- <actionFailed/> -->
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestShortCutDel">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestShortCutDel"/>
+            <actionFailed/>
+            <!--<drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestBuyItem">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestBuyItem"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestJoinParty">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestJoinParty"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestAnswerJoinParty">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestAnswerJoinParty"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestWithDrawalParty">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestWithDrawalParty"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestOustPartyMember">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestOustPartyMember"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestDismissParty">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestDismissParty"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="Say2C">
+        <limit count="1" perMs="200">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit Say2C"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestSkillList">
+        <limit count="2" perMs="600">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestSkillList"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestGetOnVehicle">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestGetOnVehicle"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestGetOffVehicle">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestGetOffVehicle"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestShowBoard">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestShowBoard"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestDestroyItem">
+        <limit count="1" perMs="500">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestDestroyItem"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestQuestList">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestQuestList"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestShowMiniMap">
+        <limit count="2" perMs="800">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestShowMiniMap"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestHennaEquip">
+        <limit count="2" perMs="1200">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestHennaEquip"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestAquireSkillInfo">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestAquireSkillInfo"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestFriendInvite">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestFriendInvite"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestFriendAddReply">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestFriendAddReply"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestFriendList">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestFriendList"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestFriendDel">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestFriendDel"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="CharacterRestore">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit CharacterRestore"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestAquireSkill">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestAquireSkill"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestRestartPoint">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestRestartPoint"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestJoinAlly">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestJoinAlly"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestAnswerJoinAlly">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestAnswerJoinAlly"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestWithdrawAlly">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestWithdrawAlly"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestOustAlly">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestOustAlly"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestDismissAlly">
+        <limit count="2" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestDismissAlly"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestSetAllyCrest">
+        <limit count="1" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestSetAllyCrest"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestAllyCrest">
+        <limit count="3" perMs="500">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestAllyCrest"/>
+            <!-- <actionFailed/> -->
+            <drop/>
+            <!-- <kick/>-->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestChangePetName">
+        <limit count="1" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestChangePetName"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/>-->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestPetUseItem">
+        <limit count="1" perMs="1000">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestPetUseItem"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/>-->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestGiveItemToPet">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestGiveItemToPet"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestPackageSend">
+        <limit count="1" perMs="900">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestPackageSend"/>
+            <actionFailed/>
+            <drop/>
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestCastleSiegeAttackerList">
+        <limit count="1" perMs="600">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestCastleSiegeAttackerList"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestCastleSiegeDefenderList">
+        <limit count="1" perMs="600">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestCastleSiegeDefenderList"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestJoinCastleSiege">
+        <limit count="1" perMs="800">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestJoinCastleSiege"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestSetCastleSiegeTime">
+        <limit count="1" perMs="800">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestSetCastleSiegeTime"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestRecipeBookOpen">
+        <limit count="1" perMs="600">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestRecipeBookOpen"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestRecipeItemDelete">
+        <limit count="1" perMs="600">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestRecipeItemDelete"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestRecipeItemMakeSelf">
+        <limit count="1" perMs="300">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestRecipeItemMakeSelf"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestBuySeed">
+        <limit count="1" perMs="800">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestBuySeed"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestMakeMacro">
+        <limit count="1" perMs="600">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestMakeMacro"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+    <packetByName name="RequestDeleteMacro">
+        <limit count="1" perMs="600">
+            <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestDeleteMacro"/>
+            <actionFailed/>
+            <!-- <drop/> -->
+            <!-- <kick/> -->
+        </limit>
+    </packetByName>
+
+    <!-- <packetByName name="Action"> -->
+    <!-- <packetByName name="AddTradeItem"> -->
+    <!-- <packetByName name="AnswerJoinPartyRoom"> -->
+    <!-- <packetByName name="AnswerPartyLootModification"> -->
+    <!-- <packetByName name="AnswerTradeRequest"> -->
+    <!-- <packetByName name="Appearing"> -->
+    <!-- <packetByName name="AttackRequest"> -->
+    <!-- <packetByName name="AuthLogin"> -->
+    <!-- <packetByName name="BypassUserCmd"> -->
+    <!-- <packetByName name="CannotMoveAnymore"> -->
+    <!-- <packetByName name="CannotMoveAnymoreInVehicle"> -->
+    <!-- <packetByName name="CharacterCreate"> -->
+    <!-- <packetByName name="CharacterDelete"> -->
+    <!-- <packetByName name="CharacterRestore"> -->
+    <!-- <packetByName name="CharacterSelected"> -->
+    <!-- <packetByName name="ConfirmDlg"> -->
+    <!-- <packetByName name="EnterWorld"> -->
+    <!-- <packetByName name="FinishRotatingC"> -->
+    <!-- <packetByName name="GotoLobby"> -->
+    <!-- <packetByName name="L2GameClientPacket"> -->
+    <!-- <packetByName name="Logout"> -->
+    <!-- <packetByName name="MoveBackwardToLocation"> -->
+    <!-- <packetByName name="MoveWithDelta"> -->
+    <!-- <packetByName name="NetPing"> -->
+    <!-- <packetByName name="NewCharacter"> -->
+    <!-- <packetByName name="PetitionVote"> -->
+    <!-- <packetByName name="ProtocolVersion"> -->
+    <!-- <packetByName name="ReplyGameGuardQuery"> -->
+    <!-- <packetByName name="RequestActionUse"> -->
+    <!-- <packetByName name="RequestAddExpandQuestAlarm"> -->
+    <!-- <packetByName name="RequestAllAgitInfo"> -->
+    <!-- <packetByName name="RequestAllCastleInfo"> -->
+    <!-- <packetByName name="RequestAllyCrest"> -->
+    <!-- <packetByName name="RequestAllyInfo"> -->
+    <!-- <packetByName name="RequestAnswerJoinAlly"> -->
+    <!-- <packetByName name="RequestAnswerJoinParty"> -->
+    <!-- <packetByName name="RequestAnswerJoinPledge"> -->
+    <!-- <packetByName name="RequestAquireSkill"> -->
+    <!-- <packetByName name="RequestAquireSkillInfo"> -->
+    <!-- <packetByName name="RequestAskJoinPartyRoom"> -->
+    <!-- <packetByName name="RequestAutoSoulShot"> -->
+    <!-- <packetByName name="RequestBBSwrite"> -->
+    <!-- <packetByName name="RequestBlock"> -->
+    <!-- <packetByName name="RequestBuyItem"> -->
+    <!-- <packetByName name="RequestBuySeed"> -->
+    <!-- <packetByName name="RequestBypassToServer"> -->
+    <!-- <packetByName name="RequestBypassToServerInLobby"> -->
+    <!-- <packetByName name="RequestCastleSiegeAttackerList"> -->
+    <!-- <packetByName name="RequestCastleSiegeDefenderList"> -->
+    <!-- <packetByName name="RequestChangeBookMarkSlot"> -->
+    <!-- <packetByName name="RequestChangeMoveType"> -->
+    <!-- <packetByName name="RequestChangeNicknameColor.java"> -->
+    <!-- <packetByName name="RequestChangePetName"> -->
+    <!-- <packetByName name="RequestChangeWaitType"> -->
+    <!-- <packetByName name="RequestConfirmCancelItem"> -->
+    <!-- <packetByName name="RequestConfirmCastleSiegeWaitingList"> -->
+    <!-- <packetByName name="RequestConfirmGemStone"> -->
+    <!-- <packetByName name="RequestConfirmRefinerItem"> -->
+    <!-- <packetByName name="RequestConfirmTargetItem"> -->
+    <!-- <packetByName name="RequestCreatePledge"> -->
+    <!-- <packetByName name="RequestCrystallizeItem"> -->
+    <!-- <packetByName name="RequestCursedWeaponList"> -->
+    <!-- <packetByName name="RequestCursedWeaponLocation"> -->
+    <!-- <packetByName name="RequestDeleteMacro"> -->
+    <!-- <packetByName name="RequestDestroyItem"> -->
+    <!-- <packetByName name="RequestDismissAlly"> -->
+    <!-- <packetByName name="RequestDismissParty"> -->
+    <!-- <packetByName name="RequestDismissPartyRoom"> -->
+    <!-- <packetByName name="RequestDispel"> -->
+    <!-- <packetByName name="RequestDropItem"> -->
+    <!-- <packetByName name="RequestDuelAnswerStart"> -->
+    <!-- <packetByName name="RequestDuelStart"> -->
+    <!-- <packetByName name="RequestDuelSurrender"> -->
+    <!-- <packetByName name="RequestEnchantItem"> -->
+    <!-- <packetByName name="RequestFriendAddReply"> -->
+    <!-- <packetByName name="RequestFriendDel"> -->
+    <!-- <packetByName name="RequestFriendInvite"> -->
+    <!-- <packetByName name="RequestFriendList"> -->
+    <!-- <packetByName name="RequestGetBossRecord"> -->
+    <!-- <packetByName name="RequestGetItemFromPet"> -->
+    <!-- <packetByName name="RequestGetOffVehicle"> -->
+    <!-- <packetByName name="RequestGetOnVehicle"> -->
+    <!-- <packetByName name="RequestGiveItemToPet"> -->
+    <!-- <packetByName name="RequestGiveNickName"> -->
+    <!-- <packetByName name="RequestGMCommand"> -->
+    <!-- <packetByName name="RequestGmList"> -->
+    <!-- <packetByName name="RequestGoodsInventoryInfo"> -->
+    <!-- <packetByName name="RequestHandOverPartyMaster"> -->
+    <!-- <packetByName name="RequestHennaEquip"> -->
+    <!-- <packetByName name="RequestHennaItemInfo"> -->
+    <!-- <packetByName name="RequestHennaList"> -->
+    <!-- <packetByName name="RequestHennaUnequip"> -->
+    <!-- <packetByName name="RequestHennaUnequipInfo"> -->
+    <!-- <packetByName name="RequestHennaUnequipList"> -->
+    <!-- <packetByName name="RequestItemList"> -->
+    <!-- <packetByName name="RequestJoinAlly"> -->
+    <!-- <packetByName name="RequestJoinCastleSiege"> -->
+    <!-- <packetByName name="RequestJoinParty"> -->
+    <!-- <packetByName name="RequestJoinPledge"> -->
+    <!-- <packetByName name="RequestKeyMapping"> -->
+    <!-- <packetByName name="RequestLinkHtml"> -->
+    <!-- <packetByName name="RequestListPartyMatchingWaitingRoom"> -->
+    <!-- <packetByName name="RequestMagicSkillList"> -->
+    <!-- <packetByName name="RequestMagicSkillUse"> -->
+    <!-- <packetByName name="RequestMakeMacro"> -->
+    <!-- <packetByName name="RequestManorList"> -->
+    <!-- <packetByName name="RequestMoveToLocationInVehicle"> -->
+    <!-- <packetByName name="RequestMultiSellChoose"> -->
+    <!-- <packetByName name="RequestObserverEnd"> -->
+    <!-- <packetByName name="RequestOlympiadMatchList"> -->
+    <!-- <packetByName name="RequestOlympiadObserverEnd"> -->
+    <!-- <packetByName name="RequestOustAlly"> -->
+    <!-- <packetByName name="RequestOustFromPartyRoom"> -->
+    <!-- <packetByName name="RequestOustPartyMember"> -->
+    <!-- <packetByName name="RequestOustPledgeMember"> -->
+    <!-- <packetByName name="RequestPackageSend"> -->
+    <!-- <packetByName name="RequestPackageSendableItemList"> -->
+    <!-- <packetByName name="RequestPartyLootModification"> -->
+    <!-- <packetByName name="RequestPartyMatchConfig"> -->
+    <!-- <packetByName name="RequestPartyMatchDetail"> -->
+    <!-- <packetByName name="RequestPartyMatchList"> -->
+    <!-- <packetByName name="RequestPCCafeCouponUse"> -->
+    <!-- <packetByName name="RequestPetGetItem"> -->
+    <!-- <packetByName name="RequestPetition"> -->
+    <!-- <packetByName name="RequestPetitionCancel"> -->
+    <!-- <packetByName name="RequestPetUseItem"> -->
+    <!-- <packetByName name="RequestPledgeCrest"> -->
+    <!-- <packetByName name="RequestPledgeCrestLarge"> -->
+    <!-- <packetByName name="RequestPledgeExtendedInfo"> -->
+    <!-- <packetByName name="RequestPledgeInfo"> -->
+    <!-- <packetByName name="RequestPledgeMemberInfo"> -->
+    <!-- <packetByName name="RequestPledgeMemberList"> -->
+    <!-- <packetByName name="RequestPledgeMemberPowerInfo"> -->
+    <!-- <packetByName name="RequestPledgePower"> -->
+    <!-- <packetByName name="RequestPledgePowerGradeList"> -->
+    <!-- <packetByName name="RequestPledgeReorganizeMember"> -->
+    <!-- <packetByName name="RequestPledgeSetAcademyMaster"> -->
+    <!-- <packetByName name="RequestPledgeSetMemberPowerGrade"> -->
+    <!-- <packetByName name="RequestPledgeWarList"> -->
+    <!-- <packetByName name="RequestPreviewItem"> -->
+    <!-- <packetByName name="RequestPrivateStoreBuy"> -->
+    <!-- <packetByName name="RequestPrivateStoreBuySellList"> -->
+    <!-- <packetByName name="RequestPrivateStoreList"> -->
+    <!-- <packetByName name="RequestPrivateStoreManageBuy"> -->
+    <!-- <packetByName name="RequestPrivateStoreQuitBuy"> -->
+    <!-- <packetByName name="RequestPrivateStoreQuitSell"> -->
+    <!-- <packetByName name="RequestPrivateStoreSell"> -->
+    <!-- <packetByName name="RequestProcureCrop"> -->
+    <!-- <packetByName name="RequestProcureCropList"> -->
+    <!-- <packetByName name="RequestPVPMatchRecord"> -->
+    <!-- <packetByName name="RequestQuestAbort"> -->
+    <!-- <packetByName name="RequestQuestList"> -->
+    <!-- <packetByName name="RequestRecipeBookOpen"> -->
+    <!-- <packetByName name="RequestRecipeItemDelete"> -->
+    <!-- <packetByName name="RequestRecipeItemMakeInfo"> -->
+    <!-- <packetByName name="RequestRecipeItemMakeSelf"> -->
+    <!-- <packetByName name="RequestRecipeShopListSet"> -->
+    <!-- <packetByName name="RequestRecipeShopMakeDo"> -->
+    <!-- <packetByName name="RequestRecipeShopMakeInfo"> -->
+    <!-- <packetByName name="RequestRecipeShopManageCancel"> -->
+    <!-- <packetByName name="RequestRecipeShopManageQuit"> -->
+    <!-- <packetByName name="RequestRecipeShopMessageSet"> -->
+    <!-- <packetByName name="RequestRecipeShopSellList"> -->
+    <!-- <packetByName name="RequestRefine"> -->
+    <!-- <packetByName name="RequestRefineCancel"> -->
+    <!-- <packetByName name="RequestReload"> -->
+    <!-- <packetByName name="RequestRemainTime"> -->
+    <!-- <packetByName name="RequestResetNickname"> -->
+    <!-- <packetByName name="RequestRestart"> -->
+    <!-- <packetByName name="RequestRestartPoint"> -->
+    <!-- <packetByName name="RequestSaveInventoryOrder"> -->
+    <!-- <packetByName name="RequestSaveKeyMapping"> -->
+    <!-- <packetByName name="RequestSEKCustom"> -->
+    <!-- <packetByName name="RequestSellItem"> -->
+    <!-- <packetByName name="RequestSendL2FriendSay"> -->
+    <!-- <packetByName name="RequestSendMsnChatLog"> -->
+    <!-- <packetByName name="RequestSetAllyCrest"> -->
+    <!-- <packetByName name="RequestSetCastleSiegeTime"> -->
+    <!-- <packetByName name="RequestSetCrop"> -->
+    <!-- <packetByName name="RequestSetPledgeCrest"> -->
+    <!-- <packetByName name="RequestSetPledgeCrestLarge"> -->
+    <!-- <packetByName name="RequestSetSeed"> -->
+    <!-- <packetByName name="RequestShortCutDel"> -->
+    <!-- <packetByName name="RequestShortCutReg"> -->
+    <!-- <packetByName name="RequestShowBoard"> -->
+    <!-- <packetByName name="RequestShowMiniMap"> -->
+    <!-- <packetByName name="RequestSiegeInfo"> -->
+    <!-- <packetByName name="RequestSkillCoolTime"> -->
+    <!-- <packetByName name="RequestSkillList"> -->
+    <!-- <packetByName name="RequestSocialAction"> -->
+    <!-- <packetByName name="RequestSSQStatus"> -->
+    <!-- <packetByName name="RequestStartPledgeWar"> -->
+    <!-- <packetByName name="RequestStatus"> -->
+    <!-- <packetByName name="RequestStopPledgeWar"> -->
+    <!-- <packetByName name="RequestTargetCanceld"> -->
+    <!-- <packetByName name="RequestTeleport"> -->
+    <!-- <packetByName name="RequestTimeCheck"> -->
+    <!-- <packetByName name="RequestTutorialClientEvent"> -->
+    <!-- <packetByName name="RequestTutorialLinkHtml"> -->
+    <!-- <packetByName name="RequestTutorialPassCmdToServer"> -->
+    <!-- <packetByName name="RequestTutorialQuestionMark"> -->
+    <!-- <packetByName name="RequestUnEquipItem"> -->
+    <!-- <packetByName name="RequestVoteNew"> -->
+    <!-- <packetByName name="RequestWithdrawAlly"> -->
+    <!-- <packetByName name="RequestWithDrawalParty"> -->
+    <!-- <packetByName name="RequestWithdrawalPledge"> -->
+    <!-- <packetByName name="RequestWithdrawPartyRoom"> -->
+    <!-- <packetByName name="RequestWithDrawPremiumItem"> -->
+    <!-- <packetByName name="RequestWriteHeroWords"> -->
+    <!-- <packetByName name="Say2C"> -->
+    <!-- <packetByName name="SendBypassBuildCmd"> -->
+    <!-- <packetByName name="SendWareHouseDepositList"> -->
+    <!-- <packetByName name="SendWareHouseWithDrawList"> -->
+    <!-- <packetByName name="SetPrivateStoreBuyList"> -->
+    <!-- <packetByName name="SetPrivateStoreMsgBuy"> -->
+    <!-- <packetByName name="SetPrivateStoreMsgSell"> -->
+    <!-- <packetByName name="SetPrivateStoreSellList"> -->
+    <!-- <packetByName name="SetPrivateStoreWholeMsg"> -->
+    <!-- <packetByName name="SnoopQuit"> -->
+    <!-- <packetByName name="StartRotatingC"> -->
+    <!-- <packetByName name="SuperCmdCharacterInfo"> -->
+    <!-- <packetByName name="SuperCmdServerStatus"> -->
+    <!-- <packetByName name="SuperCmdSummonCmd"> -->
+    <!-- <packetByName name="TradeDone"> -->
+    <!-- <packetByName name="TradeRequest"> -->
+    <!-- <packetByName name="UseItem"> -->
+    <!-- <packetByName name="ValidatePosition"> -->
+</packets>

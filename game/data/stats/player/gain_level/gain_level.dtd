@@ -1,0 +1,11 @@
+<!ELEMENT list (gain)*>
+<!ELEMENT gain (level)*>
+<!ATTLIST gain
+        class_id CDATA #REQUIRED>
+<!ELEMENT level (#PCDATA)>
+<!ATTLIST level
+        cp CDATA #REQUIRED
+        hp CDATA #REQUIRED
+        mp CDATA #REQUIRED
+        val CDATA #REQUIRED>
+]>

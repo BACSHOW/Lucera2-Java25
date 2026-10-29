@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE list SYSTEM "promocodes.dtd">
+<list>
+	<code name="HELLO" limitByUser="false">
+		<date from="12:00 12.12.2012" to="12:00 13.13.2013" /> <!-- format HH:mm dd.MM.yyyy -->
+		<item id="57" count="212" /> <!-- Min: 1 Max: 2147483647 -->
+		<exp val="11" /> <!-- Min: 1 Max: 2147483647 -->
+		<sp val="111" /> <!-- Min: 1 Max: 2147483647 -->
+		<addLevel val="1" /> <!-- Min: 1 Max: 80 -->
+	</code>
+</list>

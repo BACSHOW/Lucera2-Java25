@@ -1,0 +1,17 @@
+{
+  "resources": {
+    "includes": [
+      { "pattern": ".*\\.xml$" },
+      { "pattern": ".*\\.properties$" },
+      { "pattern": ".*\\.json$" },
+      { "pattern": ".*\\.htm$" },
+      { "pattern": ".*\\.html$" }
+    ]
+  },
+  "bundles": [
+    { "name": "com.sun.org.apache.xerces.internal.impl.msg.SAXMessages" },
+    { "name": "com.sun.org.apache.xerces.internal.impl.msg.XMLMessages" },
+    { "name": "com.sun.org.apache.xerces.internal.impl.msg.XMLSchemaMessages" },
+    { "name": "com.sun.org.apache.xerces.internal.impl.xpath.regex.message" }
+  ]
+}

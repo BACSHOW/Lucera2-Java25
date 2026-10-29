@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE list SYSTEM "hit_cond_bonus.dtd">
+<list>
+	<side type="ahead" value="0"/>  <!-- 0% bonus ahead -->
+	<side type="side" value="5"/>   <!-- 5% bonus side -->
+	<side type="back" value="10"/>  <!-- 10% bonus back -->
+	<side type="high" value="3"/>   <!-- 3% bonus high -->
+	<side type="low" value="-3"/>   <!-- -3% bonus low -->
+	<side type="dark" value="-10"/> <!-- -10% bonus -->
+	<side type="rain" value="-3"/>  <!-- -3% bonus -->
+</list>

@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE list SYSTEM "zone.dtd">
+<list>
+	<zone name="[gludio_castle_hq]" type="HEADQUARTER" >
+		<set name="residence" val="1" />
+		<polygon>
+			<coords loc="-22052 114025 -4484 3515" />
+			<coords loc="-14221 114007 -4484 3515" />
+			<coords loc="-14197 116558 -4484 3515" />
+			<coords loc="-22032 116566 -4484 3515" />
+		</polygon>
+		<polygon>
+			<coords loc="-22030 104809 -4420 3579" />
+			<coords loc="-20270 104817 -4420 3579" />
+			<coords loc="-20266 113735 -4420 3579" />
+			<coords loc="-22031 113732 -4420 3579" />
+		</polygon>
+		<polygon>
+			<coords loc="-15554 104834 -4388 3611" />
+			<coords loc="-13917 104839 -4388 3611" />
+			<coords loc="-13914 113757 -4388 3611" />
+			<coords loc="-15554 113757 -4388 3611" />
+		</polygon>
+	</zone>
+	<zone name="[dion_castle_hq]" type="HEADQUARTER" >
+		<set name="residence" val="2" />
+		<polygon>
+			<coords loc="26012 155725 -4678 4000" />
+			<coords loc="18181 155743 -4678 4000" />
+			<coords loc="18157 153192 -4678 4000" />
+			<coords loc="25992 153184 -4678 4000" />
+		</polygon>
+		<polygon>
+			<coords loc="25990 164941 -4614 4000" />
+			<coords loc="24230 164933 -4614 4000" />
+			<coords loc="24226 156015 -4614 4000" />
+			<coords loc="25991 156018 -4614 4000" />
+		</polygon>
+		<polygon>
+			<coords loc="19514 164916 -4582 4000" />
+			<coords loc="17877 164911 -4582 4000" />
+			<coords loc="17874 155993 -4582 4000" />
+			<coords loc="19514 155993 -4582 4000" />
+		</polygon>
+	</zone>
+	<zone name="[giran_castle_hq]" type="HEADQUARTER" >
+		<set name="residence" val="3" />
+		<polygon>
+			<coords loc="111897 141157 -4551 19899" />
+			<coords loc="111915 148988 -4551 19899" />
+			<coords loc="109364 149012 -4551 19899" />
+			<coords loc="109356 141177 -4551 19899" />
+		</polygon>
+		<polygon>
+			<coords loc="121113 141179 -4487 19963" />
+			<coords loc="121105 142939 -4487 19963" />
+			<coords loc="112187 142943 -4487 19963" />
+			<coords loc="112190 141178 -4487 19963" />
+		</polygon>
+		<polygon>
+			<coords loc="121088 147655 -4455 19995" />
+			<coords loc="121083 149292 -4455 19995" />
+			<coords loc="112165 149295 -4455 19995" />
+			<coords loc="112165 147655 -4455 19995" />
+		</polygon>
+	</zone>
+	<zone name="[oren_castle_hq]" type="HEADQUARTER" >
+		<set name="residence" val="4" />
+		<polygon>
+			<coords loc="77973 33252 -4278 19899" />
+			<coords loc="77991 41083 -4278 19899" />
+			<coords loc="75440 41107 -4278 19899" />
+			<coords loc="75432 33272 -4278 19899" />
+		</polygon>
+		<polygon>
+			<coords loc="87189 33274 -4214 19963" />
+			<coords loc="87181 35034 -4214 19963" />
+			<coords loc="78263 35038 -4214 19963" />
+			<coords loc="78266 33273 -4214 19963" />
+		</polygon>
+		<polygon>
+			<coords loc="87164 39750 -4182 19995" />
+			<coords loc="87159 41387 -4182 19995" />
+			<coords loc="78241 41390 -4182 19995" />
+			<coords loc="78241 39750 -4182 19995" />
+		</polygon>
+	</zone>
+	<zone name="[aden_castle_hq]" type="HEADQUARTER" >
+		<set name="residence" val="5" />
+		<polygon>
+			<coords loc="144365 9902 -1158 42" />
+			<coords loc="150572 9919 -1158 42" />
+			<coords loc="150816 4925 -1158 42" />
+			<coords loc="151831 4916 -1158 42" />
+			<coords loc="151833 7955 -1158 42" />
+			<coords loc="150754 9839 -1158 42" />
+			<coords loc="150281 10385 -1158 42" />
+			<coords loc="151282 12184 -1158 42" />
+			<coords loc="151280 13248 -1158 42" />
+			<coords loc="143668 13224 -1158 42" />
+			<coords loc="143698 12185 -1158 42" />
+			<coords loc="144657 10353 -1158 42" />
+			<coords loc="144156 9821 -1158 42" />
+			<coords loc="143148 7939 -1158 42" />
+			<coords loc="143155 4824 -1158 42" />
+			<coords loc="144053 4830 -1158 42" />
+		</polygon>
+	</zone>
+	<zone name="[innadrile_castle_hq]" type="HEADQUARTER" >
+		<set name="residence" val="6" />
+		<polygon>
+			<coords loc="119963 244504 -2774 4000" />
+			<coords loc="112132 244522 -2774 4000" />
+			<coords loc="112108 241971 -2774 4000" />
+			<coords loc="119943 241963 -2774 4000" />
+		</polygon>
+		<polygon>
+			<coords loc="119941 253720 -2710 4000" />
+			<coords loc="118181 253712 -2710 4000" />
+			<coords loc="118177 244794 -2710 4000" />
+			<coords loc="119942 244797 -2710 4000" />
+		</polygon>
+		<polygon>
+			<coords loc="113465 253695 -2678 4000" />
+			<coords loc="111828 253690 -2678 4000" />
+			<coords loc="111825 244772 -2678 4000" />
+			<coords loc="113465 244772 -2678 4000" />
+		</polygon>
+	</zone>
+	<zone name="[godad_castle_hq]" type="HEADQUARTER" >
+		<set name="residence" val="7" />
+		<polygon>
+			<coords loc="144715 -43884 -2625 1875" />
+			<coords loc="150045 -43884 -2625 1875" />
+			<coords loc="150037 -43064 -2625 1875" />
+			<coords loc="148924 -42723 -2625 1875" />
+			<coords loc="148512 -41841 -2625 1875" />
+			<coords loc="148496 -40907 -2625 1875" />
+			<coords loc="147063 -40920 -2625 1875" />
+			<coords loc="145883 -42805 -2625 1875" />
+			<coords loc="144692 -42822 -2625 1875" />
+		</polygon>
+	</zone>
+	<zone name="[rune_castle_hq]" type="HEADQUARTER" >
+		<set name="residence" val="8" />
+		<polygon>
+			<coords loc="27144 -47640 -2500 2000" />
+			<coords loc="27656 -47112 -2500 2000" />
+			<coords loc="29816 -47112 -2500 2000" />
+			<coords loc="29864 -53432 -2500 2000" />
+			<coords loc="26632 -53080 -2500 2000" />
+		</polygon>
+	</zone>
+	<zone name="[schuttgart_castle_hq]" type="HEADQUARTER" >
+		<set name="residence" val="9" />
+		<polygon>
+			<coords loc="76059 -148258 -2500 2000" />
+			<coords loc="76067 -147618 -2500 2000" />
+			<coords loc="76769 -146901 -2500 2000" />
+			<coords loc="77512 -146472 -2500 2000" />
+			<coords loc="78160 -146343 -2500 2000" />
+			<coords loc="79185 -147134 -2500 2000" />
+			<coords loc="79566 -147981 -2500 2000" />
+		</polygon>
+	</zone>
+	<zone name="[devastated_castle_hq]" type="HEADQUARTER" >
+		<set name="residence" val="34" />
+		<polygon>
+			<coords loc="176740 -13838 -2405 595" />
+			<coords loc="180040 -13838 -2405 595" />
+			<coords loc="180040 -13188 -2405 595" />
+			<coords loc="176740 -13188 -2405 595" />
+		</polygon>
+	</zone>
+	<zone name="[fortress_of_restless_hq]" type="HEADQUARTER" >
+		<set name="residence" val="64" />
+		<polygon>
+			<coords loc="57502 -31651 -147 1853" />
+			<coords loc="58431 -31607 -147 1853" />
+			<coords loc="59638 -30984 -147 1853" />
+			<coords loc="56685 -30983 -147 1853" />
+		</polygon>
+	</zone>
+</list>

@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE list SYSTEM "item.dtd">
+
+<list>
+	<armor id="9500" name="Anonymous Mask">
+		<!-- [Anonymous Mask] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Anon_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9501" name="Macaw Hat">
+		<!-- [Macaw Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Popugai_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9502" name="Blue Daemon">
+		<!-- [Blue Daemon] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Hell_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9503" name="Killer Mask">
+		<!-- [Killer Mask] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Zlodey_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9504" name="Angry Bird">
+		<!-- [Angry Bird] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Angry_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9505" name="Warm Hat Blue">
+		<!-- [Warm Hat Blue] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Shapka_Hat_Blue_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9506" name="Warm Hat White">
+		<!-- [Warm Hat White] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Shapka_Hat_White_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9507" name="Not cap">
+		<!-- [Not cap] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Kepka_Hat_Yellow_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9508" name="FBI Cap">
+		<!-- [FBI Cap] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Kepka_Hat_Black_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9509" name="Pirate King">
+		<!-- [Pirate King] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Pirate_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9510" name="Baseball Helmet">
+		<!-- [Baseball Helmet] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.HelmetRed_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9511" name="Baseball Helmet">
+		<!-- [Headphones] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Phone_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9512" name="Seraph Helmet">
+		<!-- [Seraph Helmet] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Seraph_Helm_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9513" name="Vorpal Helmet">
+		<!-- [Vorpal Helmet] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Vorpal_Helm_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9514" name="White Hat">
+		<!-- [White Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Moder_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9515" name="Black Hat">
+		<!-- [Black Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Pro_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9516" name="Summer White Hat">
+		<!-- [Summer White Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Sumhat_Hat_White_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9517" name="Summer Black Hat">
+		<!-- [Summer Black Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Sumhat_Hat_Black_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9518" name="Paper Bag">
+		<!-- [Paper Bag] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Bag_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9519" name="Witcher Hat">
+		<!-- [Witcher Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Witch_Hat_White_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9520" name="Beret of Marines">
+		<!-- [Beret of Marines] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Bill_Hat_Mph_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9521" name="Beret of Russia">
+		<!-- [Beret of Marines] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Bill_Hat_Rus_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9522" name="Beret of Special Forces">
+		<!-- [Beret of Special Forces] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Bill_Hat_Spec_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9523" name="Beret of USSR">
+		<!-- [Beret of USSR] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Bill_Hat_CCCP_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9524" name="Fashion Shoes">
+		<!-- [Fashion Shoes] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Boot_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9525" name="Big Glasses">
+		<!-- [Big Glasses] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Ttg_Glass_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9526" name="Military Helmet">
+		<!-- [Military Helmet] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Kaska_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9527" name="Headgear of Leader">
+		<!-- [Headgear of Leader] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Leader_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9528" name="Good Ghost">
+		<!-- [Good Ghost] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Ghost_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9529" name="Voodoo Hat">
+		<!-- [Voodoo Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Voodoo_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9530" name="Cap of The 80th">
+		<!-- [Cap of The 80th] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Gopka_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9531" name="Cap Rus">
+		<!-- [Cap Rus] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.br_hat_for_boi_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9532" name="Alien Mask">
+		<!-- [Alien Mask] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icones.icone_alien"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9533" name="Doccabi Mask">
+		<!-- [Doccabi Mask] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icones.icone_ogre"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9534" name="Frank Mask">
+		<!-- [Frank Mask] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icones.icone_frank"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9535" name="Mummy Mask">
+		<!-- [Mummy Mask] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icones.icone_abobora"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9536" name="Mummy Mask">
+		<!-- [Mummy Mask] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icones.icone_mumia"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9537" name="Panic Mask">
+		<!-- [Panic Mask] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icones.icone_panic"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9538" name="Cap Adiddas">
+		<!-- [Cap Adiddas] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icone.br_hat_for_boy_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9539" name="Helloween Hat">
+		<!-- [Helloween Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.accessory_halloween_cap_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9540" name="Top Hat Magic">
+		<!-- [Top Hat Magic] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.br_flag_cap_icon"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9541" name="Fire Demon">
+		<!-- [Fire Demon] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icone_anger"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9542" name="Water Angel">
+		<!-- [Water Angel] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Sorrow_icon"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9543" name="Cowboy Cap">
+		<!-- [Cowboy Cap] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.cowboy_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9544" name="Steel Cap">
+		<!-- [Steel Cap] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.g_co_sf_hair"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9545" name="Eye Visor">
+		<!-- [Eye Visor] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.br_Eye_Visor_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9546" name="Golden Skeleton Circlet">
+		<!-- [Golden Skeleton Circlet] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.golden_skeleton_circlet_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9547" name="Zaken Cap">
+		<!-- [Zaken Cap] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.zaken_cap_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9548" name="Valkyrie Cap">
+		<!-- [Valkyrie Cap] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.br_valkyrie_cap_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9549" name="Beach Cap">
+		<!-- [Beach Cap] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.g_beach_cap"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9550" name="Circlet of Eva">
+		<!-- [Circlet of Eva] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.br_circlet_of_eva_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9551" name="Goggle's">
+		<!-- [Goggle's] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.br_goggles_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9552" name="Advance Mine Search Cap">
+		<!-- [Advance Mine Search Cap] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Advance_Mine_Search_Cap_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9553" name="Knight Circlet">
+		<!-- [Knight Circlet] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.knight_circlet_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9554" name="Ketra Karm">
+		<!-- [Ketra Karm] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Ketra_Karm_m001_a_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9555" name="Mine Search Cap">
+		<!-- [Mine Search Cap] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Mine_Search_Cap_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9556" name="Ruthless Mask">
+		<!-- [Ruthless Mask] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.br_mask_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9557" name="Animal Skeleton Circlet">
+		<!-- [Animal Skeleton Circlet] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Animal_Skeleton_Circlet_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9558" name="Samurai Helmet">
+		<!-- [Samurai Helmet] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.g_co_japan_general_hair_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9559" name="Nifty Hat">
+		<!-- [Nifty Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.g_hair_fancy_hat_pl"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9560" name="Highlander Hat">
+		<!-- [Highlander Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.g_hair_gorale_hat_pl"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9561" name="Hat-Flare - Fireworks Volley">
+		<!-- [Hat-Flare - Fireworks Volley] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.br_rocket_cap_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9562" name="National Taiwan headdress">
+		<!-- [National Taiwan headdress] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.g_co_paiwan_hair"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9563" name="Cap Flower">
+		<!-- [Cap Flower] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.pi_flowerhat_for_lady"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9564" name="Chinese Empire Helmet">
+		<!-- [Chinese Empire Helmet] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.accessory_tengallon_brown_hat_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9565" name="Hat Forest Tinkerbell">
+		<!-- [Hat Forest Tinkerbell] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.pi_forgetmenot_cap"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9566" name="Hat Cricket">
+		<!-- [Hat Cricket] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.br_locust_cap_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9567" name="Hat Paiwan">
+		<!-- [Hat Paiwan] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.br_paiwan_cap_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9568" name="Comfortsprit Hat">
+		<!-- [Comfortsprit Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.br_comfortspirit_hat_a_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9569" name="Eye Beetle">
+		<!-- [Eye Beetle] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.accessory_beetle_eye_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9570" name="Straw Hat">
+		<!-- [Straw Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.icon.accessory_straw_hat_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9571" name="Topper Magic">
+		<!-- [Topper Magic] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Hatter_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9572" name="Topper Voodoo">
+		<!-- [Topper Voodoo] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.Voodoo2_Hat_i"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9573" name="Valakas Daemon">
+		<!-- [Valakas Daemon] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.kras"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9574" name="Elegia Hat">
+		<!-- [Elegia Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.elegia_mask_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9575" name="Carnival Hat">
+		<!-- [Carnival Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.carnaval"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  <armor id="9576" name="Assassin's Bamboo Hat">
+		<!-- [Carnival Hat] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="eternal_head.br_Bamboo_Hat_i00"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	   <armor id="9577" name="Baium Hair">
+		<!-- [Baium Hair] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="ct2aicon.baium_dreads"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  	<armor id="9578" name="Zaken Hair">
+		<!-- [Zaken Hair] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="ct2aicon.zaken_hat"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  	<armor id="9579" name="Zaken Swords">
+		<!-- [Zaken Swords] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="icon.Magic21"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+		<armor id="9580" name="Antharas Mask">
+		<!-- [Antharas Mask] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="iPerfectAnt.ant_ico"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+	  	<armor id="9581" name="Valakas Mask">
+		<!-- [Valakas Mask] -->
+		<set name="tradeable" value="false"/>
+		<set name="crystal_type" value="NONE"/>
+		<set name="dropable" value="false"/>
+		<set name="icon" value="iPerfectVal.val_ico"/>
+		<set name="sellable" value="false"/>
+		<set name="type" value="NONE"/>
+		<set name="weight" value="10"/>
+		<equip>
+		  <slot id="HAIR_ALL"/>
+		</equip>
+	  </armor>
+</list>

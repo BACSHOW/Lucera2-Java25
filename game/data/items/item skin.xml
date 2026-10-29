@@ -1,0 +1,1301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE list SYSTEM "item.dtd">
+
+<list>
+   <armor id="15000" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15001" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15002" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15003" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15004" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15005" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15006" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15007" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15008" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15009" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15010" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15011" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15012" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15013" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15014" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15015" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15016" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15017" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15018" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15019" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15020" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15021" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15022" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15021" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15022" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15023" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15024" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15025" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15026" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15027" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15028" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15029" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15030" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15031" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15032" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15033" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15034" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15035" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+      <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15036" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15037" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15038" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15039" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15040" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15041" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15042" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15043" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15044" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15045" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15046" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15047" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15048" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15049" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15050" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15051" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15052" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+      <armor id="15053" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+     <armor id="15054" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15055" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+     <armor id="15056" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>
+    <armor id="15057" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15058" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15059" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15060" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15061" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15062" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15063" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15064" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>  
+    <armor id="15065" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor>   
+    <armor id="15066" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15067" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15068" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15069" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15070" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15071" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15072" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15073" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15074" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15075" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15076" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15077" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15078" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15079" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15080" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15081" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15082" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15083" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15084" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15085" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15086" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15087" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15088" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15089" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15090" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15091" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15092" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15093" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15094" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15095" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15096" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15097" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15098" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15099" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15100" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15101" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15102" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15103" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15104" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15105" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15106" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15107" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15108" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15109" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15110" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15111" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15112" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15113" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+    <armor id="15114" name="Formal Wear">
+    <!-- [wedding_dress] -->
+    <set name="crystal_type" value="NONE"/>
+    <set name="icon" value="icon.armor_t2000_ul_i00"/>
+    <set name="price" value="5000000"/>
+    <set name="type" value="NONE"/>
+    <set name="weight" value="1000"/>
+    <equip>
+    <slot id="FORMAL_WEAR"/>
+    </equip>
+  </armor> 
+
+
+
+
+
+
+
+
+
+</list>

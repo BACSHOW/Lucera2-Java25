@@ -1,0 +1,3662 @@
+[
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Adventurer",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Auctioneer",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.BabyPet",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.CTFFlag",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.CastleBlacksmith",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.CastleChamberlain",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.CastleDoorman",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.CastleGatekeeper",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.CastleMagician",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Chest",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.ChristmasTree",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.ClanHallDoorman",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.ClanHallManagerNpc",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.ClassMaster",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Cubic",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.DawnPriest",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.DerbyTrackManagerNpc",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Door",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Doorman",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.DungeonGatekeeper",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.DuskPriest",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.EffectPoint",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.EventManager",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.FeedableBeast",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Fence",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.FestivalGuide",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.FestivalMonster",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Fisherman",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.FlameTower",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Folk",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.FriendlyMonster",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Gatekeeper",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.GrandBoss",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Guard",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.HalishaChest",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.HolyThing",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.LifeTower",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.ManorManagerNpc",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.MercenaryManagerNpc",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Merchant",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.MissionNpc",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Monster",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.MutedFolk",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.OlympiadManagerNpc",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Pet",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.RaidBoss",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.SchemeBuffer",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Service",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Servitor",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.SiegeFlag",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.SiegeGuard",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.SiegeNpc",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.SiegeSummon",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.SignsPriest",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.StaticObject",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.SymbolMaker",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.TamedBeast",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.Trainer",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.VillageMaster",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.VillageMasterDElf",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.VillageMasterDwarf",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.VillageMasterFighter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.VillageMasterMystic",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.VillageMasterOrc",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.VillageMasterPriest",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.WarehouseKeeper",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.WeddingManagerNpc",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.model.actor.instance.WyvernManagerNpc",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "int",
+          "ext.mods.gameserver.model.actor.template.NpcTemplate"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.Func",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncAdd",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncAddMul",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncAtkAccuracy",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncAtkCritical",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncAtkEvasion",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncBaseAdd",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncBaseMul",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncDiv",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncEnchant",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncHenna",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncMAtkMod",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncMAtkSpeed",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncMDefMod",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncMaxCpMul",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncMaxHpMul",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncMaxMpMul",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncMoveSpeed",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncMul",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncPAtkMod",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncPAtkSpeed",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncPDefMod",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncRegenCpMul",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncRegenHpMul",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncRegenMpMul",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncSet",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncSub",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.funcs.FuncSubDiv",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Object",
+          "ext.mods.gameserver.enums.skills.Stats",
+          "double",
+          "ext.mods.gameserver.combat.conditions.Condition"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectAbortCast",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectBetray",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectBigHead",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectBlockBuff",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectBlockDebuff",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectBluff",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectBuff",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectCancel",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectCancelDebuff",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectChameleonRest",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectChanceSkillTrigger",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectCharmOfCourage",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectCharmOfLuck",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectClanGate",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectConfusion",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectDamOverTime",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectDebuff",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectDistrust",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectFakeDeath",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectFear",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectFusion",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectGrow",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectHeal",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectHealOverTime",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectImmobileUntilAttacked",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectImobileBuff",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectImobilePetBuff",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectIncreaseCharges",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectInvincible",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectManaDamOverTime",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectManaHeal",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectManaHealOverTime",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectMute",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectNegate",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectNoblesseBless",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectParalyze",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectPetrification",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectPhoenixBless",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectPhysicalMute",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectPolearmTargetSingle",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectProtectionBlessing",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectRandomizeHate",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectRecovery",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectRelax",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectRemoveTarget",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectRoot",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectSeed",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectSignet",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectSignetAntiSummon",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectSignetMDam",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectSignetNoise",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectSilenceMagicPhysical",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectSilentMove",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectSleep",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectSpoil",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectStun",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectStunSelf",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectTargetMe",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.combat.effects.EffectThrowUp",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.gameserver.combat.effects.EffectTemplate",
+          "ext.mods.gameserver.combat.skills.L2Skill",
+          "ext.mods.gameserver.model.actor.Creature",
+          "ext.mods.gameserver.model.actor.Creature"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.item.kind.Armor",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.commons.data.StatSet"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.item.kind.EtcItem",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.commons.data.StatSet"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.item.kind.Item",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.commons.data.StatSet"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.item.kind.Premium",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.commons.data.StatSet"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.gameserver.item.kind.Weapon",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "ext.mods.commons.data.StatSet"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "java.util.logging.FileHandler",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "java.util.logging.ConsoleHandler",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "java.util.logging.SimpleFormatter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.handler.ErrorLogHandler",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.handler.ChatLogHandler",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.handler.GMAuditLogHandler",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.handler.ItemLogHandler",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.formatter.FileLogFormatter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.formatter.ConsoleLogFormatter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.formatter.ChatLogFormatter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.formatter.GMAuditFormatter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.formatter.ItemLogFormatter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.filter.ChatFilter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.filter.ErrorFilter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.filter.GMAuditFilter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.commons.logging.filter.ItemFilter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ext.mods.Config",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "ext.mods.gameserver.event.autofarm.spi.AutoFarmExtension",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.ai.FallbackAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.AdventurerAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.ArchmageAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.CardinalAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.DominatorAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.DreadnoughtAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.DuelistAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.GhostHunterAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.GhostSentinelAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.GrandKhavatariAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.MaestroAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.FortuneSeekerAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.MoonlightSentinelAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.MysticMuseAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.SaggitariusAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.SoultakerAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.StormScreamerAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.TitanAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.WindRiderAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.pre.DarkWizardPreAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.pre.ElvenWizardPreAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.pre.FighterPreAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.pre.HumanWizardPreAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.pre.KnightPreAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.pre.MonkPreAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.pre.MysticPreAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.pre.OrcFighterPreAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.pre.OrcMysticPreAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.pre.RoguePreAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.thirdclasses.pre.WarriorPreAI",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "ext.mods.fakeplayer.FakePlayer",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredFields": true,
+    "allPublicFields": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseLinkedQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseLinkedQueueConsumerNodeRef",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseLinkedQueuePad0",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseLinkedQueuePad1",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseLinkedQueuePad2",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseLinkedQueueProducerNodeRef",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueue$WeakIterator",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueColdProducerFields",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueConsumerFields",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueuePad1",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueuePad2",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueuePad3",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueProducerFields",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.ConcurrentCircularArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.ConcurrentCircularArrayQueue$WeakIterator",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.ConcurrentCircularArrayQueueL0Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.ConcurrentSequencedCircularArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.IndexedQueueSizeUtil",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.IndexedQueueSizeUtil$IndexedQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.LinkedArrayQueueUtil",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.LinkedQueueNode",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MessagePassingQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MessagePassingQueue$Consumer",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MessagePassingQueue$ExitCondition",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MessagePassingQueue$Supplier",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MessagePassingQueue$WaitStrategy",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MessagePassingQueueUtil",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpmcArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpmcArrayQueueConsumerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpmcArrayQueueL1Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpmcArrayQueueL2Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpmcArrayQueueL3Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpmcArrayQueueProducerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueConsumerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueL1Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueL2Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueL3Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueMidPad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueProducerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueProducerLimitField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscChunkedArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscChunkedArrayQueueColdProducerFields",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.MpscUnboundedArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.QueueProgressIndicators",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.SpscLinkedQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.SupportsIterator",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.AtomicQueueUtil",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.AtomicReferenceArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.AtomicReferenceArrayQueue$WeakIterator",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseLinkedAtomicQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseLinkedAtomicQueueConsumerNodeRef",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseLinkedAtomicQueuePad0",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseLinkedAtomicQueuePad1",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseLinkedAtomicQueuePad2",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseLinkedAtomicQueueProducerNodeRef",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseMpscLinkedAtomicArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseMpscLinkedAtomicArrayQueue$WeakIterator",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseMpscLinkedAtomicArrayQueueColdProducerFields",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseMpscLinkedAtomicArrayQueueConsumerFields",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseMpscLinkedAtomicArrayQueuePad1",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseMpscLinkedAtomicArrayQueuePad2",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseMpscLinkedAtomicArrayQueuePad3",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseMpscLinkedAtomicArrayQueueProducerFields",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.LinkedQueueAtomicNode",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpmcAtomicArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpmcAtomicArrayQueueConsumerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpmcAtomicArrayQueueL1Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpmcAtomicArrayQueueL2Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpmcAtomicArrayQueueL3Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpmcAtomicArrayQueueProducerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpscAtomicArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpscAtomicArrayQueueConsumerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpscAtomicArrayQueueL1Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpscAtomicArrayQueueL2Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpscAtomicArrayQueueL3Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpscAtomicArrayQueueMidPad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpscAtomicArrayQueueProducerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpscAtomicArrayQueueProducerLimitField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpscChunkedAtomicArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpscChunkedAtomicArrayQueueColdProducerFields",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpscUnboundedAtomicArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.SequencedAtomicReferenceArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.SpscLinkedAtomicQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.unpadded.MpscAtomicUnpaddedArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.unpadded.MpscAtomicUnpaddedArrayQueueConsumerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.unpadded.MpscAtomicUnpaddedArrayQueueL1Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.unpadded.MpscAtomicUnpaddedArrayQueueL2Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.unpadded.MpscAtomicUnpaddedArrayQueueL3Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.unpadded.MpscAtomicUnpaddedArrayQueueMidPad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.unpadded.MpscAtomicUnpaddedArrayQueueProducerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.atomic.unpadded.MpscAtomicUnpaddedArrayQueueProducerLimitField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.ConcurrentCircularUnpaddedArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.ConcurrentCircularUnpaddedArrayQueue$WeakIterator",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.ConcurrentCircularUnpaddedArrayQueueL0Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.MpscUnpaddedArrayQueue",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.MpscUnpaddedArrayQueueConsumerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.MpscUnpaddedArrayQueueL1Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.MpscUnpaddedArrayQueueL2Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.MpscUnpaddedArrayQueueL3Pad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.MpscUnpaddedArrayQueueMidPad",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.MpscUnpaddedArrayQueueProducerIndexField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.MpscUnpaddedArrayQueueProducerLimitField",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.util.PortableJvmInfo",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.util.Pow2",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.util.RangeUtil",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.util.UnsafeAccess",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.util.UnsafeLongArrayAccess",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.shaded.org.jctools.util.UnsafeRefArrayAccess",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.PlatformDependent",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.PlatformDependent0",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.util.internal.CleanerJava9",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.buffer.PooledByteBufAllocator",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.buffer.PoolThreadCache",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.buffer.PoolArena",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.buffer.PoolSubpage",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.buffer.PoolChunk",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.channel.kqueue.KQueueEventLoop",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.channel.kqueue.KQueueEventLoopGroup",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.channel.kqueue.KQueueServerSocketChannel",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.channel.kqueue.KQueueSocketChannel",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.channel.epoll.EpollEventLoop",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.channel.epoll.EpollEventLoopGroup",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.channel.epoll.EpollServerSocketChannel",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "io.netty.channel.epoll.EpollSocketChannel",
+    "allDeclaredFields": true,
+    "allPublicFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  }
+]

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<boss handler_name="1st_type1_c" id="18158" />
+	<boss handler_name="1st_type2_c" id="18159" />
+	<boss handler_name="2nd_type1_c" id="18160" />
+	<boss handler_name="2nd_type2_c" id="18161" />
+	<boss handler_name="3rd_type1_c" id="18162" />
+	<boss handler_name="3rd_type2_c" id="18163" />
+	<boss handler_name="4th_type1_c" id="18164" />
+	<boss handler_name="4th_type2_c" id="18165" />
+</list>

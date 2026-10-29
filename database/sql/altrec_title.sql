@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS `altrec_title`;
+CREATE TABLE IF NOT EXISTS `altrec_title` (
+    `title` VARCHAR(35) CHARACTER SET utf8 NOT NULL,
+    `sex` TINYINT(1) DEFAULT NULL,
+    CONSTRAINT `pk_altrec_title` PRIMARY KEY (`title`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

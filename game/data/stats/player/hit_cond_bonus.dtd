@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!ELEMENT list (side)*>
+<!ELEMENT side (#PCDATA)>
+<!ATTLIST side
+        type CDATA #REQUIRED
+        value CDATA #REQUIRED>

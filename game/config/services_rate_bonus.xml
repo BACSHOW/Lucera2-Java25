@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+    <rate_bonus id="1" consume_item_id="9300" consume_item_amount="30">
+        <exp value="1.5" />
+        <sp value="1.5" />
+        <exp_raid value="1.0" />
+        <sp_raid value="1.0" />
+        <quest_reward value="1.5" />
+        <quest_adena_reward value="1.0" />
+        <quest_drop value="1.5" />
+        <drop_adena value="1.5" />
+        <drop_items value="1.5" />
+        <drop_raid_item value="1.0" />
+        <drop_spoil value="1.5" />
+        <enchant_item_mul value="1.0" />
+        <bonus_days value="30" />
+		<hwid_limits value="3" />
+        <!-- additional reward -->
+        <!-- <reward item_id="4037" item_count="1" />
+             <reward item_id="57" item_count="100" />
+             <name_color value="00FCA0" />
+             <hwid_limits value="1" />
+        -->
+    </rate_bonus>
+    <rate_bonus id="2" consume_item_id="9300" consume_item_amount="50">
+        <exp value="1.5" />
+        <sp value="1.5" />
+        <exp_raid value="1.0" />
+        <sp_raid value="1.0" />
+        <quest_reward value="1.0" />
+        <quest_adena_reward value="1.0" />
+        <quest_drop value="1.5" />
+        <drop_adena value="1.5" />
+        <drop_items value="1.5" />
+        <drop_raid_item value="1.0" />
+        <drop_spoil value="1.5" />
+        <enchant_item_mul value="1.0" />
+        <bonus_days value="90" />
+		<hwid_limits value="2" />
+        <!-- additional reward -->
+        <!-- <reward item_id="4037" item_count="1" />
+             <reward item_id="57" item_count="100" />
+             <name_color value="A0A601" />
+             <hwid_limits value="1" />
+        -->
+    </rate_bonus>
+</list>

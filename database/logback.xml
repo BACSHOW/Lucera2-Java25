@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{HH:mm:ss}] %5p %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>log/java.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>[%d{dd.MM.yy HH:mm:ss}] %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="GAME" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/game.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/game.%d{dd-MM-yyyy}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{dd.MM.yy HH:mm:ss}] %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="CHAT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/chat.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/chat.%d{dd-MM-yyyy}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{dd.MM.yy HH:mm:ss}] %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="ITEM" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/item.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/item.%d{dd-MM-yyyy}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{dd.MM.yy HH:mm:ss}] %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="GMACTIONS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/gmactions.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/gmactions.%d{dd-MM-yyyy}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{dd.MM.yy HH:mm:ss}] %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="DEBUG" class="ch.qos.logback.core.FileAppender">
+        <file>log/debug.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>[%d{dd.MM.yy HH:mm:ss:SSS}] %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="NETWORK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/network.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/network.%d{dd-MM-yyyy}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{dd.MM.yy HH:mm:ss}] %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="SERVICE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/service.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/service.%d{dd-MM-yyyy}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{dd.MM.yy HH:mm:ss}] %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILEASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <neverBlock>true</neverBlock>
+        <appender-ref ref="FILE"/>
+    </appender>
+    <appender name="GAMEASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <neverBlock>true</neverBlock>
+        <queueSize>512</queueSize>
+        <appender-ref ref="GAME"/>
+    </appender>
+    <appender name="CHATASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <neverBlock>true</neverBlock>
+        <queueSize>256</queueSize>
+        <appender-ref ref="CHAT"/>
+    </appender>
+    <appender name="ITEMASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <neverBlock>true</neverBlock>
+        <queueSize>512</queueSize>
+        <appender-ref ref="ITEM"/>
+    </appender>
+    <appender name="NETWORKASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <neverBlock>true</neverBlock>
+        <queueSize>512</queueSize>
+        <appender-ref ref="NETWORK"/>
+    </appender>
+    <appender name="SERVICESYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <neverBlock>true</neverBlock>
+        <queueSize>512</queueSize>
+        <appender-ref ref="SERVICE"/>
+    </appender>
+    <logger name="game" additivity="false">
+        <appender-ref ref="GAMEASYNC"/>
+    </logger>
+    <logger name="chat" additivity="false">
+        <appender-ref ref="CHATASYNC"/>
+    </logger>
+    <logger name="item" additivity="false">
+        <appender-ref ref="ITEMASYNC"/>
+    </logger>
+    <logger name="gmactions" additivity="false">
+        <appender-ref ref="GMACTIONS"/>
+    </logger>
+    <logger name="debug" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="DEBUG"/>
+    </logger>
+    <logger name="network" additivity="false">
+        <appender-ref ref="NETWORKASYNC"/>
+    </logger>
+    <logger name="service" additivity="false">
+        <appender-ref ref="SERVICESYNC"/>
+    </logger>
+    <logger name="com.zaxxer.hikari" level="INFO"/>
+    <logger name="org.mariadb.jdbc" level="INFO"/>
+    <logger name="net.sf.ehcache" level="INFO"/>
+    <logger name="io.netty" level="INFO"/>
+    <logger name="l2.gameserver.data.xml.holder.MultiSellHolder" level="ERROR"/>
+    <logger name="l2.gameserver.network.l2.netty.disruptor.topology.CoreAutoTuner" level="INFO"/>
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>

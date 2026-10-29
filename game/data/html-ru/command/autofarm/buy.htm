@@ -1,0 +1,24 @@
+<html><title>Меняю покупки Авто Фарма</title><body>
+<center>
+<br>
+<table width=260>
+	<tr>
+		<td width=260>Для получения Авто Фарма необходимо указать выбрать часы</td>
+	</tr>
+</table>
+<br>
+<table width=220>
+	<tr>
+		<td width=120>Выберите часы работы Авто Фарма:</td>
+		<td><combobox width=100 var=selectid list="%time%"></td>
+	</tr>
+</table>
+<br>
+<table width=220 height=140>
+<tr>
+<td><button value="Купить Авто Фарм" action="bypass -h user_buyfarmTime $selectid" width=120 height=25 back="L2UI_CH3.bigbutton2_down" fore="L2UI_CH3.bigbutton2"></td><td>%freeUse%</td>
+</tr>
+</table>
+<button value="Назад" action="bypass -h user_autofarm" width=80 height=25 back="L2UI_CH3.bigbutton2_down" fore="L2UI_CH3.bigbutton2">
+</center>
+</body></html>

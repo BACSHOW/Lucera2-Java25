@@ -1,0 +1,35 @@
+<!DOCTYPE list SYSTEM "instances.dtd">
+<list>
+	<instance id="801" name="Baium" maxChannels="20" collapseIfEmpty="10" timelimit="30" respawn="60">
+		<geodata map="25_19"/>
+		<reuse resetReuse="* * * * *" setUponEntry="true" sharedReuseGroup="0"/>
+		<spawns>
+            <spawn mobId="40010" type="point">
+                <coords loc="113046 14466 10072	8191"/>
+            </spawn>
+			<spawn mobId="40010" type="point">
+                <coords loc="115868 17267 10080	37604"/>
+            </spawn>
+			
+        </spawns>
+		<spawns/>
+		<doors/>
+		<level min="75" max="85"/>
+		<return loc="42760 -48248 -800"/>
+		<teleport loc="42760 -48248 -800"/>
+		<collapse on-party-dismiss="false" timer="60"/>
+		<quest id="0"/>
+		<remove itemId="0" count="0" necessary="false"/>
+		<give itemId="0" count="0"/>
+		<zones>
+			<zone name="[pvp_801_tvt_default]" active="true"/>
+			<zone name="[pvp_801_tvt_spawn_red]" active="true"/>
+			<zone name="[pvp_801_tvt_spawn_blue]" active="true"/>
+			<zone name="[pvp_801_dm_default]" active="true"/>
+			<zone name="[pvp_801_dm_spawn]" active="true"/>
+			<zone name="[pvp_801_ctf_default]" active="false"/>
+			<zone name="[pvp_801_ctf_spawn_red]" active="false"/>
+			<zone name="[pvp_801_ctf_spawn_blue]" active="false"/>
+		</zones>
+	</instance>
+</list>

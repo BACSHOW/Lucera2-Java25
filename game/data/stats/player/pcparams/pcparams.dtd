@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!ELEMENT list (pcparams)*>
+<!ELEMENT pcparams (male|female)*>
+<!ATTLIST pcparams
+        classId CDATA #IMPLIED
+        classType CDATA #IMPLIED
+        name CDATA #IMPLIED>
+<!ELEMENT male (items|stats|spawn)*>
+<!ELEMENT items (item)*>
+<!ELEMENT item (#PCDATA)>
+<!ATTLIST item
+        amount CDATA #IMPLIED
+        equipped CDATA #IMPLIED
+        enchant CDATA #IMPLIED
+        id CDATA #REQUIRED>
+<!ELEMENT stats (set)*>
+<!ELEMENT set (#PCDATA)>
+<!ATTLIST set
+        name CDATA #REQUIRED
+        value CDATA #REQUIRED>
+<!ELEMENT spawn (#PCDATA)>
+<!ATTLIST spawn
+        x CDATA #REQUIRED
+        y CDATA #REQUIRED
+        z CDATA #REQUIRED
+        h CDATA #IMPLIED>
+<!ELEMENT female (items|stats|spawn)*>

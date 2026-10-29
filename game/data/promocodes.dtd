@@ -1,0 +1,34 @@
+<!ELEMENT list (code)*>
+<!ELEMENT code (date|item|exp|sp|addLevel|setLevel|premium)*>
+<!ATTLIST code
+		limitByUser CDATA #IMPLIED
+		limitByHWID CDATA #IMPLIED
+		limitByIP CDATA #IMPLIED
+		minLevel CDATA #IMPLIED
+		limit CDATA #IMPLIED
+		name CDATA #REQUIRED>
+<!ELEMENT date (#PCDATA)>
+<!ATTLIST date
+		from CDATA #REQUIRED
+		to CDATA #REQUIRED>
+<!ELEMENT item (#PCDATA)>
+<!ATTLIST item
+		id CDATA #REQUIRED
+		enchant CDATA #IMPLIED
+		durability CDATA #IMPLIED
+		count CDATA #IMPLIED>
+<!ELEMENT exp (#PCDATA)>
+<!ATTLIST exp
+		val CDATA #REQUIRED>
+<!ELEMENT sp (#PCDATA)>
+<!ATTLIST sp
+		val CDATA #REQUIRED>
+<!ELEMENT setLevel (#PCDATA)>
+<!ATTLIST setLevel
+		val CDATA #REQUIRED>
+<!ELEMENT premium (#PCDATA)>
+<!ATTLIST premium
+		id CDATA #REQUIRED>
+<!ELEMENT addLevel (#PCDATA)>
+<!ATTLIST addLevel
+	val CDATA #REQUIRED>

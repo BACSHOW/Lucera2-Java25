@@ -1,0 +1,1605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE list SYSTEM "capsule_items.dtd">
+<list>
+    <capsule itemId="8659"><!-- Coffer of Shadow Reward Box -->
+        <item id="8660" min="1" max="1" chance="15." />
+        <item id="8661" min="1" max="1" chance="15." />
+        <item id="5234" min="3" max="3" chance="30." />
+        <item id="6406" min="10" max="10" chance="20." />
+        <item id="6407" min="5" max="5" chance="19.991" />
+        <item id="5577" min="1" max="1" chance="0.002" />
+        <item id="5578" min="1" max="1" chance="0.002" />
+        <item id="5579" min="1" max="1" chance="0.002" />
+        <item id="5580" min="1" max="1" chance="0.001" />
+        <item id="5581" min="1" max="1" chance="0.001" />
+        <item id="5582" min="1" max="1" chance="0.001" />
+    </capsule>
+    <capsule itemId="8534"><!-- Item Name -->
+        <item id="853" min="1" max="1" chance="34." />
+        <item id="916" min="1" max="1" chance="33." />
+        <item id="884" min="1" max="1" chance="33." />
+    </capsule>
+    <capsule itemId="8535"><!-- Item Name -->
+        <item id="854" min="1" max="1" chance="34." />
+        <item id="917" min="1" max="1" chance="33." />
+        <item id="885" min="1" max="1" chance="33." />
+    </capsule>
+    <capsule itemId="8536"><!-- Item Name -->
+        <item id="855" min="1" max="1" chance="34." />
+        <item id="119" min="1" max="1" chance="33." />
+        <item id="886" min="1" max="1" chance="33." />
+    </capsule>
+    <capsule itemId="8537"><!-- Item Name -->
+        <item id="856" min="1" max="1" chance="34." />
+        <item id="918" min="1" max="1" chance="33." />
+        <item id="887" min="1" max="1" chance="33." />
+    </capsule>
+    <capsule itemId="8538"><!-- Item Name -->
+        <item id="864" min="1" max="1" chance="34." />
+        <item id="926" min="1" max="1" chance="33." />
+        <item id="895" min="1" max="1" chance="33." />
+    </capsule>
+    <capsule itemId="8539"><!-- Item Name -->
+        <item id="8179" min="1" max="1" chance="20." />
+        <item id="8178" min="1" max="1" chance="30." />
+        <item id="8177" min="1" max="1" chance="50." />
+    </capsule>
+    <capsule itemId="8540"><!-- Item Name -->
+        <item id="8175" min="1" max="1" chance="30." />
+    </capsule>
+    <capsule itemId="5916"><!-- Item Name -->
+        <item id="5917" min="1" max="1" chance="20." />
+        <item id="5918" min="1" max="1" chance="20." />
+        <item id="5919" min="1" max="1" chance="20." />
+        <item id="5920" min="1" max="1" chance="20." />
+        <item id="736" min="1" max="1" chance="20." />
+    </capsule>
+    <capsule itemId="7629"><!-- Item Name -->
+        <item id="6688" min="1" max="1" chance="9." />
+        <item id="6689" min="1" max="1" chance="9." />
+        <item id="6690" min="1" max="1" chance="9." />
+        <item id="6691" min="1" max="1" chance="9." />
+        <item id="6693" min="1" max="1" chance="9." />
+        <item id="6694" min="1" max="1" chance="9." />
+        <item id="6695" min="1" max="1" chance="9." />
+        <item id="6696" min="1" max="1" chance="9." />
+        <item id="6697" min="1" max="1" chance="9." />
+        <item id="7579" min="1" max="1" chance="9." />
+        <item id="57" min="330000" max="330000" chance="9." />
+    </capsule>
+    <capsule itemId="7630"><!-- Item Name -->
+        <item id="6703" min="1" max="1" chance="8." />
+        <item id="6704" min="1" max="1" chance="8." />
+        <item id="6705" min="1" max="1" chance="8." />
+        <item id="6706" min="1" max="1" chance="8." />
+        <item id="6708" min="1" max="1" chance="8." />
+        <item id="6709" min="1" max="1" chance="8." />
+        <item id="6695" min="1" max="1" chance="8." />
+        <item id="6710" min="1" max="1" chance="8." />
+        <item id="6712" min="1" max="1" chance="8." />
+        <item id="6713" min="1" max="1" chance="8." />
+        <item id="6714" min="1" max="1" chance="8." />
+        <item id="57" min="292000" max="292000" chance="8." />
+    </capsule>
+    <capsule itemId="7631"><!-- Item Name -->
+        <item id="6701" min="1" max="1" chance="20." />
+        <item id="6702" min="1" max="1" chance="20." />
+        <item id="6707" min="1" max="1" chance="20." />
+        <item id="6711" min="1" max="1" chance="20." />
+        <item id="57" min="93000" max="93000" chance="20." />
+    </capsule>
+    <capsule itemId="7632"><!-- Item Name -->
+        <item id="6857" min="1" max="1" chance="9." />
+        <item id="6859" min="1" max="1" chance="9." />
+        <item id="6861" min="1" max="1" chance="9." />
+        <item id="6863" min="1" max="1" chance="9." />
+        <item id="6867" min="1" max="1" chance="9." />
+        <item id="6869" min="1" max="1" chance="9." />
+        <item id="6871" min="1" max="1" chance="9." />
+        <item id="6875" min="1" max="1" chance="9." />
+        <item id="6877" min="1" max="1" chance="9." />
+        <item id="6879" min="1" max="1" chance="9." />
+        <item id="57" min="340000" max="340000" chance="9." />
+    </capsule>
+    <capsule itemId="7633"><!-- Item Name -->
+        <item id="6853" min="1" max="1" chance="20." />
+        <item id="6855" min="1" max="1" chance="20." />
+        <item id="6865" min="1" max="1" chance="20." />
+        <item id="6873" min="1" max="1" chance="20." />
+        <item id="57" min="850000" max="850000" chance="20." />
+    </capsule>
+    <capsule itemId="7634"><!-- Looted Goods - Brown Pouch -->
+        <item id="1874" min="20" max="20" chance="18." />
+        <item id="1875" min="20" max="20" chance="16." />
+        <item id="1876" min="20" max="20" chance="10." />
+        <item id="1877" min="20" max="20" chance="10." />
+        <item id="1879" min="20" max="20" chance="5." />
+        <item id="1880" min="20" max="20" chance="10" />
+        <item id="1881" min="20" max="20" chance="10." />
+        <item id="1882" min="20" max="20" chance="11." />
+        <item id="57" min="150000" max="150000" chance="10." />
+    </capsule>
+    <capsule itemId="7635"><!-- Looted Goods - Gray Pouch  -->
+        <item id="4039" min="4" max="4" chance="20." />
+        <item id="4040" min="4" max="4" chance="20." />
+        <item id="4041" min="4" max="4" chance="20." />
+        <item id="4042" min="4" max="4" chance="10." />
+        <item id="4043" min="4" max="4" chance="10." />
+        <item id="4044" min="4" max="4" chance="10." />
+        <item id="57" min="160000" max="160000" chance="10." />
+    </capsule>
+    <capsule itemId="7725"><!-- Item Name -->
+        <item id="6035" min="1" max="1" chance="7." />
+        <item id="1060" min="1" max="1" chance="39." />
+        <item id="735" min="1" max="1" chance="7." />
+        <item id="1540" min="1" max="1" chance="3." />
+        <item id="1061" min="1" max="1" chance="12." />
+        <item id="1539" min="1" max="1" chance="32." />
+    </capsule>
+    <capsule itemId="7637"><!-- Item Name -->
+        <item id="4039" min="4" max="4" chance="20." />
+        <item id="4041" min="1" max="1" chance="10." />
+        <item id="4043" min="4" max="4" chance="20." />
+        <item id="4044" min="4" max="4" chance="20." />
+        <item id="4042" min="2" max="2" chance="15." />
+        <item id="4040" min="2" max="2" chance="15." />
+    </capsule>
+    <capsule itemId="7636"><!-- Item Name -->
+        <item id="1875" min="3" max="3" chance="20." />
+        <item id="1882" min="3" max="3" chance="10." />
+        <item id="1880" min="4" max="4" chance="20." />
+        <item id="1874" min="1" max="1" chance="20." />
+        <item id="1877" min="3" max="3" chance="15." />
+        <item id="1881" min="1" max="1" chance="15." />
+        <item id="1879" min="3" max="3" chance="20." />
+        <item id="1876" min="6" max="6" chance="10." />
+    </capsule>
+    <capsule itemId="6010"><!-- Item Name -->
+        <item id="6017" min="2" max="2" chance="20." />
+        <item id="6020" min="2" max="2" chance="20." />
+        <item id="6016" min="1" max="1" chance="35." />
+        <item id="6015" min="2" max="2" chance="25." />
+    </capsule>
+    <capsule itemId="6009"><!-- Reagent Pouch -->
+        <item id="6012" min="1" max="1" chance="20." />
+        <item id="6018" min="2" max="2" chance="20." />
+        <item id="6019" min="2" max="2" chance="20." />
+        <item id="6013" min="1" max="1" chance="40." />
+    </capsule>
+    <capsule itemId="6008"><!-- Item Name -->
+        <item id="6017" min="2" max="2" chance="10." />
+        <item id="6020" min="2" max="2" chance="20." />
+        <item id="6014" min="1" max="1" chance="35." />
+        <item id="6016" min="1" max="1" chance="35." />
+    </capsule>
+    <capsule itemId="5969"><!-- ancient_papyrus4 -->
+        <item id="6001" min="1" max="1" chance="3." />
+        <item id="5971" min="1" max="1" chance="3." />
+        <item id="5970" min="1" max="1" chance="3." />
+        <item id="4408" min="1" max="1" chance="3." />
+        <item id="4409" min="1" max="1" chance="3." />
+        <item id="5986" min="1" max="1" chance="2." />
+        <item id="5987" min="1" max="1" chance="2." />
+        <item id="5993" min="1" max="1" chance="2." />
+        <item id="5999" min="1" max="1" chance="2." />
+        <item id="6000" min="1" max="1" chance="2." />
+        <item id="5991" min="1" max="1" chance="2.5" />
+        <item id="5992" min="1" max="1" chance="2.5" />
+        <item id="5997" min="1" max="1" chance="2.6" />
+        <item id="5998" min="1" max="1" chance="2.6" />
+        <item id="5989" min="1" max="1" chance="21.6" />
+        <item id="5990" min="1" max="1" chance="21.6" />
+        <item id="5996" min="1" max="1" chance="21.6" />
+    </capsule>
+    <capsule itemId="5968"><!-- ancient_papyrus3 -->
+        <item id="6001" min="1" max="1" chance="1.6" />
+        <item id="5971" min="1" max="1" chance="1.6" />
+        <item id="5970" min="1" max="1" chance="1.6" />
+        <item id="4408" min="1" max="1" chance="1.6" />
+        <item id="4409" min="1" max="1" chance="1.6" />
+        <item id="5986" min="1" max="1" chance="1.6" />
+        <item id="5987" min="1" max="1" chance="1.6" />
+        <item id="5993" min="1" max="1" chance="1.6" />
+        <item id="5999" min="1" max="1" chance="1.6" />
+        <item id="6000" min="1" max="1" chance="1.6" />
+        <item id="5991" min="1" max="1" chance="10.25" />
+        <item id="5992" min="1" max="1" chance="10.25" />
+        <item id="5997" min="1" max="1" chance="10.25" />
+        <item id="5998" min="1" max="1" chance="10.25" />
+        <item id="5989" min="1" max="1" chance="14.34" />
+        <item id="5990" min="1" max="1" chance="14.33" />
+        <item id="5996" min="1" max="1" chance="14.33" />
+    </capsule>
+    <capsule itemId="5967"><!-- ancient_papyrus2 -->
+        <item id="5978" min="1" max="1" chance="4." />
+        <item id="5983" min="1" max="1" chance="4." />
+        <item id="5988" min="1" max="1" chance="4." />
+        <item id="5994" min="1" max="1" chance="4." />
+        <item id="5995" min="1" max="1" chance="4." />
+        <item id="5975" min="1" max="1" chance="3.6" />
+        <item id="5976" min="1" max="1" chance="3.6" />
+        <item id="5977" min="1" max="1" chance="3.6" />
+        <item id="5981" min="1" max="1" chance="3.6" />
+        <item id="5982" min="1" max="1" chance="3.6" />
+        <item id="5973" min="1" max="1" chance="10.5" />
+        <item id="5974" min="1" max="1" chance="10.5" />
+        <item id="5980" min="1" max="1" chance="10.5" />
+        <item id="5985" min="1" max="1" chance="10.5" />
+        <item id="5972" min="1" max="1" chance="6.8" />
+        <item id="5979" min="1" max="1" chance="6.6" />
+        <item id="5984" min="1" max="1" chance="6.6" />
+    </capsule>
+    <capsule itemId="5966"><!-- ancient_papyrus1 -->
+        <item id="5978" min="1" max="1" chance="2." />
+        <item id="5983" min="1" max="1" chance="2." />
+        <item id="5988" min="1" max="1" chance="2." />
+        <item id="5994" min="1" max="1" chance="2." />
+        <item id="5995" min="1" max="1" chance="2." />
+        <item id="5975" min="1" max="1" chance="8." />
+        <item id="5976" min="1" max="1" chance="8." />
+        <item id="5977" min="1" max="1" chance="8." />
+        <item id="5981" min="1" max="1" chance="8." />
+        <item id="5982" min="1" max="1" chance="8." />
+        <item id="5973" min="1" max="1" chance="11.4" />
+        <item id="5974" min="1" max="1" chance="11.2" />
+        <item id="5980" min="1" max="1" chance="11.2" />
+        <item id="5985" min="1" max="1" chance="11.2" />
+        <item id="5972" min="1" max="1" chance="1.8" />
+        <item id="5979" min="1" max="1" chance="1.6" />
+        <item id="5984" min="1" max="1" chance="1.6" />
+    </capsule>
+    <capsule itemId="6007"><!-- Item Name -->
+        <item id="6019" min="2" max="2" chance="30." />
+        <item id="6013" min="2" max="2" chance="30." />
+        <item id="6014" min="1" max="1" chance="20." />
+        <item id="6016" min="1" max="1" chance="20." />
+    </capsule>
+    <capsule itemId="5955"><!-- Item Name -->
+        <item id="5942" min="1" max="1" chance="5." />
+        <item id="5943" min="1" max="1" chance="5." />
+        <item id="5945" min="1" max="1" chance="5." />
+        <item id="5946" min="1" max="1" chance="5." />
+        <item id="5947" min="1" max="1" chance="5." />
+        <item id="5948" min="1" max="1" chance="5." />
+        <item id="5949" min="1" max="1" chance="5." />
+        <item id="5950" min="1" max="1" chance="5." />
+        <item id="5951" min="1" max="1" chance="5." />
+        <item id="5952" min="1" max="1" chance="5." />
+        <item id="5953" min="1" max="1" chance="25." />
+        <item id="5954" min="1" max="1" chance="25." />
+    </capsule>
+    <capsule itemId="5944"><!-- Item Name -->
+        <item id="5922" min="1" max="1" chance="2.5" />
+        <item id="5923" min="1" max="1" chance="2.5" />
+        <item id="5924" min="1" max="1" chance="2.5" />
+        <item id="5925" min="1" max="1" chance="2.5" />
+        <item id="5926" min="1" max="1" chance="2.5" />
+        <item id="5927" min="1" max="1" chance="2.5" />
+        <item id="5928" min="1" max="1" chance="2.5" />
+        <item id="5929" min="1" max="1" chance="2.5" />
+        <item id="5930" min="1" max="1" chance="2.5" />
+        <item id="5931" min="1" max="1" chance="2.5" />
+        <item id="5932" min="1" max="1" chance="2.5" />
+        <item id="5933" min="1" max="1" chance="2.5" />
+        <item id="5934" min="1" max="1" chance="2.5" />
+        <item id="5935" min="1" max="1" chance="2.5" />
+        <item id="5936" min="1" max="1" chance="2.5" />
+        <item id="5937" min="1" max="1" chance="2.5" />
+        <item id="5938" min="1" max="1" chance="2.5" />
+        <item id="5939" min="1" max="1" chance="2.5" />
+        <item id="5940" min="1" max="1" chance="2.5" />
+        <item id="5941" min="1" max="1" chance="2.5" />
+        <item id="5942" min="1" max="1" chance="25." />
+        <item id="5943" min="1" max="1" chance="25." />
+    </capsule>
+    <capsule itemId="8547"><!-- Old Box -->
+        <item id="8034" min="3" max="3" chance="80." />
+        <item id="2134" min="3" max="3" chance="4." />
+        <item id="2133" min="7" max="7" chance="11." />
+    </capsule>
+    <capsule itemId="6411">
+        <item id="6908" min="6" max="6" chance="27.6"/>
+        <item id="6913" min="1" max="1" chance="16.56"/>
+    </capsule>
+    <capsule itemId="6412">
+        <item id="6908" min="6" max="6" chance="28.2"/>
+        <item id="6911" min="2" max="2" chance="21.15"/>
+    </capsule>
+    <capsule itemId="6413">
+        <item id="6908" min="6" max="6" chance="30.6"/>
+        <item id="6915" min="1" max="1" chance="30.6"/>
+    </capsule>
+    <capsule itemId="6414">
+        <item id="6908" min="6" max="6" chance="33.4"/>
+        <item id="6913" min="1" max="1" chance="20.04"/>
+    </capsule>
+    <capsule itemId="6415">
+        <item id="6908" min="8" max="8" chance="29.92"/>
+        <item id="6911" min="2" max="2" chance="28.05"/>
+    </capsule>
+    <capsule itemId="6416">
+        <item id="6908" min="6" max="6" chance="41.6"/>
+        <item id="6915" min="1" max="1" chance="33.28"/>
+    </capsule>
+    <capsule itemId="6417">
+        <item id="6908" min="12" max="12" chance="15.0"/>
+        <item id="6913" min="1" max="1" chance="18.0"/>
+        <item id="6920" min="8" max="8" chance="24.0"/>
+    </capsule>
+    <capsule itemId="6418">
+        <item id="6908" min="8" max="8" chance="39.68"/>
+        <item id="6911" min="2" max="2" chance="37.2"/>
+    </capsule>
+    <capsule itemId="6419">
+        <item id="6908" min="12" max="12" chance="26.5"/>
+        <item id="6915" min="1" max="1" chance="42.4"/>
+    </capsule>
+    <capsule itemId="6420">
+        <item id="6908" min="12" max="12" chance="19.0"/>
+        <item id="6913" min="1" max="1" chance="22.8"/>
+        <item id="6920" min="8" max="8" chance="30.4"/>
+    </capsule>
+    <capsule itemId="6421">
+        <item id="6908" min="8" max="8" chance="47.2"/>
+        <item id="6911" min="2" max="2" chance="44.25"/>
+    </capsule>
+    <capsule itemId="6422">
+        <item id="6908" min="12" max="12" chance="31.0"/>
+        <item id="6915" min="1" max="1" chance="49.6"/>
+    </capsule>
+    <capsule itemId="6423">
+        <item id="6908" min="12" max="12" chance="21.6668"/>
+        <item id="6913" min="1" max="1" chance="26.0"/>
+        <item id="6920" min="16" max="16" chance="17.3334"/>
+    </capsule>
+    <capsule itemId="6424">
+        <item id="6908" min="16" max="16" chance="27.2"/>
+        <item id="6911" min="4" max="4" chance="25.5"/>
+    </capsule>
+    <capsule itemId="6425">
+        <item id="6908" min="12" max="12" chance="35.5"/>
+        <item id="6915" min="2" max="2" chance="28.4"/>
+    </capsule>
+    <capsule itemId="6426">
+        <item id="6908" min="12" max="12" chance="24.3332"/>
+        <item id="6913" min="2" max="2" chance="16.6856"/>
+        <item id="6920" min="16" max="16" chance="19.4667"/>
+    </capsule>
+    <capsule itemId="6427">
+        <item id="6908" min="16" max="16" chance="30.0"/>
+        <item id="6911" min="4" max="4" chance="28.125"/>
+    </capsule>
+    <capsule itemId="6428">
+        <item id="6908" min="12" max="12" chance="38.5"/>
+        <item id="6915" min="2" max="2" chance="30.8"/>
+    </capsule>
+    <capsule itemId="6429">
+        <item id="6908" min="12" max="12" chance="26.3332"/>
+        <item id="6913" min="2" max="2" chance="18.0572"/>
+        <item id="6920" min="16" max="16" chance="21.0667"/>
+    </capsule>
+    <capsule itemId="6430">
+        <item id="6908" min="16" max="16" chance="32.0"/>
+        <item id="6911" min="4" max="4" chance="30.0"/>
+    </capsule>
+    <capsule itemId="6431">
+        <item id="6908" min="12" max="12" chance="41.0"/>
+        <item id="6915" min="2" max="2" chance="32.8"/>
+    </capsule>
+    <capsule itemId="6432">
+        <item id="6904" min="1" max="1" chance="1.992"/>
+        <item id="6908" min="14" max="14" chance="14.2288"/>
+        <item id="6909" min="4" max="4" chance="13.28"/>
+        <item id="6913" min="1" max="1" chance="19.92"/>
+        <item id="6920" min="16" max="16" chance="13.2801"/>
+    </capsule>
+    <capsule itemId="6433">
+        <item id="6904" min="1" max="1" chance="2.0064"/>
+        <item id="6908" min="10" max="10" chance="19.1088"/>
+        <item id="6909" min="2" max="2" chance="16.0512"/>
+        <item id="6911" min="4" max="4" chance="12.5401"/>
+        <item id="6921" min="4" max="4" chance="13.3762"/>
+    </capsule>
+    <capsule itemId="6434">
+        <item id="6904" min="1" max="1" chance="2.52"/>
+        <item id="6908" min="16" max="16" chance="16.8"/>
+        <item id="6909" min="4" max="4" chance="12.6"/>
+        <item id="6915" min="4" max="4" chance="14.0"/>
+    </capsule>
+    <capsule itemId="6435">
+        <item id="6904" min="1" max="1" chance="2.04"/>
+        <item id="6908" min="14" max="14" chance="14.5716"/>
+        <item id="6909" min="4" max="4" chance="13.6"/>
+        <item id="6913" min="2" max="2" chance="10.2"/>
+        <item id="6920" min="16" max="16" chance="13.6001"/>
+    </capsule>
+    <capsule itemId="6436">
+        <item id="6904" min="1" max="1" chance="2.0688"/>
+        <item id="6908" min="10" max="10" chance="19.7028"/>
+        <item id="6909" min="2" max="2" chance="16.5504"/>
+        <item id="6911" min="4" max="4" chance="12.9301"/>
+        <item id="6921" min="4" max="4" chance="13.7922"/>
+    </capsule>
+    <capsule itemId="6437">
+        <item id="6904" min="1" max="1" chance="2.61"/>
+        <item id="6908" min="16" max="16" chance="17.4"/>
+        <item id="6909" min="4" max="4" chance="13.05"/>
+        <item id="6915" min="4" max="4" chance="14.5"/>
+    </capsule>
+    <capsule itemId="6438">
+        <item id="6904" min="1" max="1" chance="2.1216"/>
+        <item id="6908" min="14" max="14" chance="15.1544"/>
+        <item id="6909" min="4" max="4" chance="14.144"/>
+        <item id="6913" min="2" max="2" chance="10.608"/>
+        <item id="6920" min="16" max="16" chance="14.1441"/>
+    </capsule>
+    <capsule itemId="6439">
+        <item id="6904" min="1" max="1" chance="2.1456"/>
+        <item id="6908" min="20" max="20" chance="10.2172"/>
+        <item id="6909" min="2" max="2" chance="17.1648"/>
+        <item id="6911" min="4" max="4" chance="13.4101"/>
+        <item id="6921" min="4" max="4" chance="14.3042"/>
+    </capsule>
+    <capsule itemId="6440">
+        <item id="6904" min="1" max="1" chance="2.712"/>
+        <item id="6908" min="16" max="16" chance="18.08"/>
+        <item id="6909" min="4" max="4" chance="13.56"/>
+        <item id="6915" min="4" max="4" chance="15.0666"/>
+    </capsule>
+    <capsule itemId="6441">
+        <item id="6904" min="1" max="1" chance="2.592"/>
+        <item id="6908" min="14" max="14" chance="18.514"/>
+        <item id="6909" min="4" max="4" chance="17.28"/>
+        <item id="6913" min="2" max="2" chance="12.96"/>
+        <item id="6920" min="16" max="16" chance="17.28"/>
+    </capsule>
+    <capsule itemId="6442">
+        <item id="6904" min="1" max="1" chance="2.6544"/>
+        <item id="6908" min="20" max="20" chance="12.64"/>
+        <item id="6909" min="4" max="4" chance="10.6176"/>
+        <item id="6911" min="4" max="4" chance="16.5901"/>
+        <item id="6921" min="4" max="4" chance="17.6962"/>
+    </capsule>
+    <capsule itemId="6443">
+        <item id="6904" min="1" max="1" chance="3.408"/>
+        <item id="6908" min="16" max="16" chance="22.72"/>
+        <item id="6909" min="4" max="4" chance="17.04"/>
+        <item id="6915" min="4" max="4" chance="18.9334"/>
+    </capsule>
+    <capsule itemId="6444">
+        <item id="6904" min="1" max="1" chance="2.784"/>
+        <item id="6908" min="14" max="14" chance="19.8856"/>
+        <item id="6909" min="4" max="4" chance="18.56"/>
+        <item id="6913" min="2" max="2" chance="13.92"/>
+        <item id="6920" min="16" max="16" chance="18.5599"/>
+    </capsule>
+    <capsule itemId="6445">
+        <item id="6904" min="1" max="1" chance="2.8512"/>
+        <item id="6908" min="20" max="20" chance="13.5772"/>
+        <item id="6909" min="4" max="4" chance="11.4049"/>
+        <item id="6911" min="4" max="4" chance="17.8201"/>
+        <item id="6921" min="4" max="4" chance="19.0082"/>
+    </capsule>
+    <capsule itemId="6446">
+        <item id="6904" min="1" max="1" chance="3.648"/>
+        <item id="6908" min="16" max="16" chance="24.3198"/>
+        <item id="6909" min="4" max="4" chance="18.2399"/>
+        <item id="6915" min="4" max="4" chance="20.2666"/>
+    </capsule>
+    <capsule itemId="6447">
+        <item id="6904" min="1" max="1" chance="2.9856"/>
+        <item id="6908" min="28" max="28" chance="10.6628"/>
+        <item id="6909" min="4" max="4" chance="19.904"/>
+        <item id="6913" min="2" max="2" chance="14.928"/>
+        <item id="6920" min="16" max="16" chance="19.9039"/>
+    </capsule>
+    <capsule itemId="6448">
+        <item id="6904" min="1" max="1" chance="3.048"/>
+        <item id="6908" min="20" max="20" chance="14.5144"/>
+        <item id="6909" min="4" max="4" chance="12.192"/>
+        <item id="6911" min="8" max="8" chance="9.5252"/>
+        <item id="6921" min="8" max="8" chance="10.16"/>
+    </capsule>
+    <capsule itemId="6449">
+        <item id="6904" min="1" max="1" chance="3.894"/>
+        <item id="6908" min="32" max="32" chance="12.98"/>
+        <item id="6909" min="4" max="4" chance="19.47"/>
+        <item id="6915" min="4" max="4" chance="21.6334"/>
+    </capsule>
+    <capsule itemId="6450">
+        <item id="7698" min="1" max="1" chance="5.304"/>
+        <item id="6910" min="1" max="1" chance="21.216"/>
+        <item id="6914" min="2" max="2" chance="13.2601"/>
+    </capsule>
+    <capsule itemId="6451">
+        <item id="7686" min="1" max="1" chance="6.208"/>
+        <item id="6910" min="1" max="1" chance="24.8321"/>
+        <item id="6912" min="8" max="8" chance="17.2445"/>
+    </capsule>
+    <capsule itemId="6452">
+        <item id="7697" min="1" max="1" chance="6.336"/>
+        <item id="6910" min="1" max="1" chance="25.344"/>
+        <item id="6916" min="4" max="4" chance="23.4666"/>
+    </capsule>
+    <capsule itemId="6453">
+        <item id="7698" min="1" max="1" chance="6.528"/>
+        <item id="6910" min="1" max="1" chance="26.112"/>
+        <item id="6914" min="2" max="2" chance="16.3201"/>
+    </capsule>
+    <capsule itemId="6454">
+        <item id="7686" min="1" max="1" chance="6.72"/>
+        <item id="6910" min="2" max="2" chance="13.44"/>
+        <item id="6912" min="8" max="8" chance="18.6667"/>
+    </capsule>
+    <capsule itemId="6455">
+        <item id="7697" min="1" max="1" chance="6.864"/>
+        <item id="6910" min="1" max="1" chance="27.456"/>
+        <item id="6916" min="4" max="4" chance="25.4222"/>
+    </capsule>
+    <capsule itemId="6456">
+        <item id="7698" min="1" max="1" chance="7.0"/>
+        <item id="6910" min="2" max="2" chance="18.6666"/>
+        <item id="6914" min="2" max="2" chance="17.5"/>
+    </capsule>
+    <capsule itemId="6457">
+        <item id="7686" min="1" max="1" chance="7.144"/>
+        <item id="6910" min="2" max="2" chance="14.288"/>
+        <item id="6912" min="8" max="8" chance="19.8445"/>
+    </capsule>
+    <capsule itemId="6458">
+        <item id="7697" min="1" max="1" chance="7.28"/>
+        <item id="6910" min="1" max="1" chance="29.12"/>
+        <item id="6916" min="4" max="4" chance="26.963"/>
+    </capsule>
+    <capsule itemId="6459">
+        <item id="7698" min="1" max="1" chance="7.44"/>
+        <item id="6910" min="2" max="2" chance="19.84"/>
+        <item id="6914" min="2" max="2" chance="18.5999"/>
+    </capsule>
+    <capsule itemId="6460">
+        <item id="7686" min="1" max="1" chance="7.584"/>
+        <item id="6910" min="2" max="2" chance="15.168"/>
+        <item id="6912" min="8" max="8" chance="21.0667"/>
+    </capsule>
+    <capsule itemId="6461">
+        <item id="7697" min="1" max="1" chance="8.72"/>
+        <item id="6910" min="2" max="2" chance="17.44"/>
+        <item id="6916" min="4" max="4" chance="32.2964"/>
+    </capsule>
+    <capsule itemId="6462">
+        <item id="7685" min="1" max="1" chance="5.3328"/>
+        <item id="7698" min="1" max="1" chance="5.3328"/>
+        <item id="6907" min="1" max="1" chance="5.3328"/>
+        <item id="6910" min="2" max="2" chance="14.2208"/>
+        <item id="6914" min="2" max="2" chance="13.3321"/>
+    </capsule>
+    <capsule itemId="6463">
+        <item id="7686" min="1" max="1" chance="6.798"/>
+        <item id="6905" min="1" max="1" chance="6.798"/>
+        <item id="6910" min="2" max="2" chance="13.596"/>
+        <item id="6912" min="8" max="8" chance="18.8833"/>
+    </capsule>
+    <capsule itemId="6464">
+        <item id="7697" min="1" max="1" chance="6.942"/>
+        <item id="6906" min="1" max="1" chance="6.942"/>
+        <item id="6910" min="2" max="2" chance="13.884"/>
+        <item id="6916" min="8" max="8" chance="12.8555"/>
+    </capsule>
+    <capsule itemId="6465">
+        <item id="7685" min="1" max="1" chance="6.1296"/>
+        <item id="7698" min="1" max="1" chance="6.1296"/>
+        <item id="6907" min="1" max="1" chance="6.1296"/>
+        <item id="6910" min="2" max="2" chance="16.3456"/>
+        <item id="6914" min="2" max="2" chance="15.3241"/>
+    </capsule>
+    <capsule itemId="6466">
+        <item id="7686" min="1" max="1" chance="7.806"/>
+        <item id="6905" min="1" max="1" chance="7.806"/>
+        <item id="6910" min="2" max="2" chance="15.612"/>
+        <item id="6912" min="8" max="8" chance="21.6833"/>
+    </capsule>
+    <capsule itemId="6467">
+        <item id="7697" min="1" max="1" chance="7.956"/>
+        <item id="6906" min="1" max="1" chance="7.956"/>
+        <item id="6910" min="2" max="2" chance="15.912"/>
+        <item id="6916" min="8" max="8" chance="14.7333"/>
+    </capsule>
+    <capsule itemId="6468">
+        <item id="7685" min="1" max="1" chance="6.4848"/>
+        <item id="7698" min="1" max="1" chance="6.4848"/>
+        <item id="6907" min="1" max="1" chance="6.4848"/>
+        <item id="6910" min="2" max="2" chance="17.2928"/>
+        <item id="6914" min="2" max="2" chance="16.2121"/>
+    </capsule>
+    <capsule itemId="6469">
+        <item id="7686" min="1" max="1" chance="8.256"/>
+        <item id="6905" min="1" max="1" chance="8.256"/>
+        <item id="6910" min="2" max="2" chance="16.512"/>
+        <item id="6912" min="8" max="8" chance="22.9333"/>
+    </capsule>
+    <capsule itemId="6470">
+        <item id="7697" min="1" max="1" chance="8.412"/>
+        <item id="6906" min="1" max="1" chance="8.412"/>
+        <item id="6910" min="2" max="2" chance="16.824"/>
+        <item id="6916" min="8" max="8" chance="15.5778"/>
+    </capsule>
+    <capsule itemId="6471">
+        <item id="7685" min="1" max="1" chance="7.5696"/>
+        <item id="7698" min="1" max="1" chance="7.5696"/>
+        <item id="6907" min="1" max="1" chance="7.5696"/>
+        <item id="6910" min="4" max="4" chance="10.0928"/>
+        <item id="6914" min="2" max="2" chance="18.9236"/>
+    </capsule>
+    <capsule itemId="6472">
+        <item id="7686" min="1" max="1" chance="9.648"/>
+        <item id="6905" min="1" max="1" chance="9.648"/>
+        <item id="6910" min="2" max="2" chance="19.296"/>
+        <item id="6912" min="8" max="8" chance="21.44"/>
+    </capsule>
+    <capsule itemId="6473">
+        <item id="7697" min="1" max="1" chance="10.29"/>
+        <item id="6906" min="1" max="1" chance="10.29"/>
+        <item id="6910" min="2" max="2" chance="20.58"/>
+        <item id="6916" min="8" max="8" chance="19.0555"/>
+    </capsule>
+    <capsule itemId="6474">
+        <item id="7685" min="1" max="1" chance="8.3856"/>
+        <item id="7698" min="1" max="1" chance="8.3856"/>
+        <item id="6907" min="1" max="1" chance="8.3856"/>
+        <item id="6910" min="4" max="4" chance="11.1808"/>
+        <item id="6914" min="4" max="4" chance="10.4818"/>
+    </capsule>
+    <capsule itemId="6475">
+        <item id="7686" min="1" max="1" chance="10.686"/>
+        <item id="6905" min="1" max="1" chance="10.686"/>
+        <item id="6910" min="2" max="2" chance="21.372"/>
+        <item id="6912" min="8" max="8" chance="23.7468"/>
+    </capsule>
+    <capsule itemId="6476">
+        <item id="7697" min="1" max="1" chance="10.884"/>
+        <item id="6906" min="1" max="1" chance="10.884"/>
+        <item id="6910" min="2" max="2" chance="21.768"/>
+        <item id="6916" min="8" max="8" chance="16.1244"/>
+    </capsule>
+    <capsule itemId="6477">
+        <item id="7685" min="1" max="1" chance="8.8752"/>
+        <item id="7698" min="1" max="1" chance="8.8752"/>
+        <item id="6907" min="1" max="1" chance="8.8752"/>
+        <item id="6910" min="4" max="4" chance="11.8336"/>
+        <item id="6914" min="4" max="4" chance="11.0938"/>
+    </capsule>
+    <capsule itemId="6478">
+        <item id="7686" min="1" max="1" chance="11.322"/>
+        <item id="6905" min="1" max="1" chance="11.322"/>
+        <item id="6910" min="2" max="2" chance="22.644"/>
+        <item id="6912" min="16" max="16" chance="12.58"/>
+    </capsule>
+    <capsule itemId="6479">
+        <item id="7697" min="1" max="1" chance="11.538"/>
+        <item id="6906" min="1" max="1" chance="11.538"/>
+        <item id="6910" min="2" max="2" chance="23.076"/>
+        <item id="6916" min="8" max="8" chance="17.0936"/>
+    </capsule>
+    <capsule itemId="6480">
+        <item id="7685" min="1" max="1" chance="9.4128"/>
+        <item id="7698" min="1" max="1" chance="9.4128"/>
+        <item id="6907" min="1" max="1" chance="9.4128"/>
+        <item id="6910" min="4" max="4" chance="12.5504"/>
+        <item id="6914" min="4" max="4" chance="11.7658"/>
+    </capsule>
+    <capsule itemId="6481">
+        <item id="7686" min="1" max="1" chance="12.0"/>
+        <item id="6905" min="1" max="1" chance="12.0"/>
+        <item id="6910" min="2" max="2" chance="24.0"/>
+        <item id="6912" min="16" max="16" chance="13.3334"/>
+    </capsule>
+    <capsule itemId="6482">
+        <item id="7697" min="1" max="1" chance="12.234"/>
+        <item id="6906" min="1" max="1" chance="12.234"/>
+        <item id="6910" min="2" max="2" chance="24.468"/>
+        <item id="6916" min="8" max="8" chance="18.1248"/>
+    </capsule>
+    <capsule itemId="6483">
+        <item id="7685" min="1" max="1" chance="9.9888"/>
+        <item id="7698" min="1" max="1" chance="9.9888"/>
+        <item id="6907" min="1" max="1" chance="9.9888"/>
+        <item id="6910" min="4" max="4" chance="13.3184"/>
+        <item id="6914" min="4" max="4" chance="12.4858"/>
+    </capsule>
+    <capsule itemId="6484">
+        <item id="7686" min="1" max="1" chance="12.738"/>
+        <item id="6905" min="1" max="1" chance="12.738"/>
+        <item id="6910" min="4" max="4" chance="12.738"/>
+        <item id="6912" min="16" max="16" chance="14.1534"/>
+    </capsule>
+    <capsule itemId="6485">
+        <item id="7697" min="1" max="1" chance="12.996"/>
+        <item id="6906" min="1" max="1" chance="12.996"/>
+        <item id="6910" min="4" max="4" chance="12.996"/>
+        <item id="6916" min="8" max="8" chance="19.2536"/>
+    </capsule>
+    <capsule itemId="6486">
+        <item id="7685" min="1" max="1" chance="11.0832"/>
+        <item id="7698" min="1" max="1" chance="11.0832"/>
+        <item id="6907" min="1" max="1" chance="11.0832"/>
+        <item id="6910" min="4" max="4" chance="11.822"/>
+        <item id="6914" min="4" max="4" chance="13.8542"/>
+    </capsule>
+    <capsule itemId="6487">
+        <item id="7686" min="2" max="2" chance="9.428"/>
+        <item id="6905" min="1" max="1" chance="14.1421"/>
+        <item id="6910" min="4" max="4" chance="14.1421"/>
+        <item id="6912" min="16" max="16" chance="15.7134"/>
+    </capsule>
+    <capsule itemId="6488">
+        <item id="7697" min="1" max="1" chance="14.418"/>
+        <item id="6906" min="1" max="1" chance="14.418"/>
+        <item id="6910" min="4" max="4" chance="14.418"/>
+        <item id="6916" min="8" max="8" chance="21.36"/>
+    </capsule>
+    <capsule itemId="6489">
+        <item id="7685" min="1" max="1" chance="11.7696"/>
+        <item id="7698" min="1" max="1" chance="11.7696"/>
+        <item id="6907" min="1" max="1" chance="11.7696"/>
+        <item id="6910" min="4" max="4" chance="12.554"/>
+        <item id="6914" min="4" max="4" chance="14.7122"/>
+    </capsule>
+    <capsule itemId="6490">
+        <item id="7686" min="2" max="2" chance="10.008"/>
+        <item id="6905" min="1" max="1" chance="15.0121"/>
+        <item id="6910" min="4" max="4" chance="15.0121"/>
+        <item id="6912" min="16" max="16" chance="16.6802"/>
+    </capsule>
+    <capsule itemId="6491">
+        <item id="7697" min="2" max="2" chance="10.208"/>
+        <item id="6906" min="1" max="1" chance="15.3121"/>
+        <item id="6910" min="4" max="4" chance="15.3121"/>
+        <item id="6916" min="8" max="8" chance="22.6844"/>
+    </capsule>
+    <capsule itemId="6492">
+        <item id="6908" min="12" max="12" chance="30.6"/>
+        <item id="7609" min="8" max="8" chance="48.96"/>
+    </capsule>
+    <capsule itemId="6493">
+        <item id="6908" min="12" max="12" chance="41.6"/>
+        <item id="7609" min="16" max="16" chance="33.28"/>
+    </capsule>
+    <capsule itemId="6494">
+        <item id="6908" min="24" max="24" chance="26.5"/>
+        <item id="7609" min="26" max="26" chance="24.2284"/>
+    </capsule>
+    <capsule itemId="6495">
+        <item id="6908" min="24" max="24" chance="28.5"/>
+        <item id="7609" min="26" max="26" chance="26.0572"/>
+    </capsule>
+    <capsule itemId="8965">
+        <item id="6908" min="24" max="24" chance="31.5"/>
+        <item id="7609" min="26" max="26" chance="28.8"/>
+    </capsule>
+    <capsule itemId="6496">
+        <item id="6908" min="24" max="24" chance="31.5"/>
+        <item id="7609" min="26" max="26" chance="28.8"/>
+    </capsule>
+    <capsule itemId="6497">
+        <item id="6908" min="24" max="24" chance="34.5"/>
+        <item id="7609" min="26" max="26" chance="31.5428"/>
+    </capsule>
+    <capsule itemId="6498">
+        <item id="6908" min="24" max="24" chance="39.5"/>
+        <item id="7609" min="26" max="26" chance="36.1144"/>
+    </capsule>
+    <capsule itemId="6499">
+        <item id="6904" min="1" max="1" chance="5.028"/>
+        <item id="6908" min="28" max="28" chance="17.957"/>
+        <item id="6909" min="8" max="8" chance="16.76"/>
+        <item id="7609" min="30" max="30" chance="16.76"/>
+    </capsule>
+    <capsule itemId="6500">
+        <item id="6904" min="1" max="1" chance="5.22"/>
+        <item id="6908" min="28" max="28" chance="18.6428"/>
+        <item id="6909" min="8" max="8" chance="17.3999"/>
+        <item id="7609" min="30" max="30" chance="17.4"/>
+    </capsule>
+    <capsule itemId="6501">
+        <item id="6904" min="1" max="1" chance="5.424"/>
+        <item id="6908" min="28" max="28" chance="19.3714"/>
+        <item id="6909" min="8" max="8" chance="18.0799"/>
+        <item id="7609" min="30" max="30" chance="18.08"/>
+    </capsule>
+    <capsule itemId="6502">
+        <item id="6904" min="1" max="1" chance="6.816"/>
+        <item id="6908" min="28" max="28" chance="24.3428"/>
+        <item id="6909" min="8" max="8" chance="22.7199"/>
+        <item id="7609" min="30" max="30" chance="22.72"/>
+    </capsule>
+    <capsule itemId="6503">
+        <item id="6904" min="1" max="1" chance="7.296"/>
+        <item id="6908" min="56" max="56" chance="13.0286"/>
+        <item id="6909" min="14" max="14" chance="10.8088"/>
+        <item id="7609" min="30" max="30" chance="24.32"/>
+    </capsule>
+    <capsule itemId="6504">
+        <item id="6904" min="1" max="1" chance="7.788"/>
+        <item id="6908" min="56" max="56" chance="13.9072"/>
+        <item id="6909" min="14" max="14" chance="11.5376"/>
+        <item id="7609" min="60" max="60" chance="12.98"/>
+    </capsule>
+    <capsule itemId="6505">
+        <item id="6910" min="3" max="3" chance="50.688"/>
+    </capsule>
+    <capsule itemId="6506">
+        <item id="6910" min="3" max="3" chance="54.912"/>
+    </capsule>
+    <capsule itemId="6507">
+        <item id="6910" min="3" max="3" chance="58.24"/>
+    </capsule>
+    <capsule itemId="6508">
+        <item id="6910" min="3" max="3" chance="69.76"/>
+    </capsule>
+    <capsule itemId="6509">
+        <item id="6910" min="3" max="3" chance="74.048"/>
+    </capsule>
+    <capsule itemId="6510">
+        <item id="6910" min="3" max="3" chance="84.864"/>
+    </capsule>
+    <capsule itemId="6511">
+        <item id="6910" min="3" max="3" chance="89.728"/>
+    </capsule>
+    <capsule itemId="6512">
+        <item id="6910" min="6" max="6" chance="54.88"/>
+    </capsule>
+    <capsule itemId="6513">
+        <item id="6910" min="6" max="6" chance="58.048"/>
+    </capsule>
+    <capsule itemId="6514">
+        <item id="6910" min="6" max="6" chance="61.536"/>
+    </capsule>
+    <capsule itemId="6515">
+        <item id="6910" min="6" max="6" chance="65.248"/>
+    </capsule>
+    <capsule itemId="6516">
+        <item id="6910" min="6" max="6" chance="69.312"/>
+    </capsule>
+    <capsule itemId="6517">
+        <item id="6910" min="6" max="6" chance="76.896"/>
+    </capsule>
+    <capsule itemId="6518">
+        <item id="6910" min="6" max="6" chance="81.664"/>
+    </capsule>
+    <capsule itemId="7726">
+        <item id="6908" min="3" max="3" chance="55.2"/>
+    </capsule>
+    <capsule itemId="7727">
+        <item id="6908" min="3" max="3" chance="56.8"/>
+    </capsule>
+    <capsule itemId="7728">
+        <item id="6908" min="3" max="3" chance="61.6"/>
+    </capsule>
+    <capsule itemId="7729">
+        <item id="6908" min="3" max="3" chance="67.2"/>
+    </capsule>
+    <capsule itemId="7730">
+        <item id="6908" min="3" max="3" chance="75.2"/>
+    </capsule>
+    <capsule itemId="7731">
+        <item id="6908" min="3" max="3" chance="83.2"/>
+    </capsule>
+    <capsule itemId="7732">
+        <item id="6908" min="3" max="3" chance="90.4"/>
+    </capsule>
+    <capsule itemId="7733">
+        <item id="6908" min="3" max="3" chance="99.2"/>
+    </capsule>
+    <capsule itemId="7734">
+        <item id="6908" min="6" max="6" chance="53.2"/>
+    </capsule>
+    <capsule itemId="7735">
+        <item id="6908" min="6" max="6" chance="57.2"/>
+    </capsule>
+    <capsule itemId="7736">
+        <item id="6908" min="6" max="6" chance="66.8"/>
+    </capsule>
+    <capsule itemId="7737">
+        <item id="6908" min="6" max="6" chance="66.8"/>
+    </capsule>
+    <capsule itemId="7738">
+        <item id="6908" min="6" max="6" chance="66.4"/>
+    </capsule>
+    <capsule itemId="7739">
+        <item id="6908" min="6" max="6" chance="66.0"/>
+    </capsule>
+    <capsule itemId="7740">
+        <item id="6908" min="6" max="6" chance="66.0"/>
+    </capsule>
+    <capsule itemId="7741">
+        <item id="6908" min="6" max="6" chance="65.6"/>
+    </capsule>
+    <capsule itemId="7742">
+        <item id="6908" min="6" max="6" chance="65.6"/>
+    </capsule>
+    <capsule itemId="7743">
+        <item id="6908" min="6" max="6" chance="65.2"/>
+    </capsule>
+    <capsule itemId="7744">
+        <item id="6908" min="6" max="6" chance="65.2"/>
+    </capsule>
+    <capsule itemId="7745">
+        <item id="6908" min="6" max="6" chance="65.2"/>
+    </capsule>
+    <capsule itemId="7746">
+        <item id="6908" min="6" max="6" chance="79.2"/>
+    </capsule>
+    <capsule itemId="7747">
+        <item id="6904" min="1" max="1" chance="1.616"/>
+        <item id="6908" min="6" max="6" chance="26.9331"/>
+        <item id="6909" min="2" max="2" chance="16.1598"/>
+    </capsule>
+    <capsule itemId="7748">
+        <item id="6904" min="1" max="1" chance="1.576"/>
+        <item id="6908" min="6" max="6" chance="26.2665"/>
+        <item id="6909" min="2" max="2" chance="15.7598"/>
+    </capsule>
+    <capsule itemId="7749">
+        <item id="6904" min="1" max="1" chance="1.68"/>
+        <item id="6908" min="6" max="6" chance="27.9998"/>
+        <item id="6909" min="2" max="2" chance="16.7998"/>
+    </capsule>
+    <capsule itemId="7750">
+        <item id="6904" min="1" max="1" chance="1.704"/>
+        <item id="6908" min="6" max="6" chance="28.3998"/>
+        <item id="6909" min="2" max="2" chance="17.0398"/>
+    </capsule>
+    <capsule itemId="7751">
+        <item id="6904" min="1" max="1" chance="1.728"/>
+        <item id="6908" min="6" max="6" chance="28.7998"/>
+        <item id="6909" min="2" max="2" chance="17.2798"/>
+    </capsule>
+    <capsule itemId="7752">
+        <item id="6904" min="1" max="1" chance="1.744"/>
+        <item id="6908" min="6" max="6" chance="29.0665"/>
+        <item id="6909" min="2" max="2" chance="17.4398"/>
+    </capsule>
+    <capsule itemId="7753">
+        <item id="6904" min="1" max="1" chance="1.768"/>
+        <item id="6908" min="6" max="6" chance="29.4664"/>
+        <item id="6909" min="2" max="2" chance="17.6798"/>
+    </capsule>
+    <capsule itemId="7754">
+        <item id="6904" min="1" max="1" chance="1.792"/>
+        <item id="6908" min="6" max="6" chance="29.8664"/>
+        <item id="6909" min="2" max="2" chance="17.9198"/>
+    </capsule>
+    <capsule itemId="7755">
+        <item id="6904" min="1" max="1" chance="1.808"/>
+        <item id="6908" min="6" max="6" chance="30.1331"/>
+        <item id="6909" min="2" max="2" chance="18.0798"/>
+    </capsule>
+    <capsule itemId="7756">
+        <item id="6904" min="1" max="1" chance="2.16"/>
+        <item id="6908" min="12" max="12" chance="17.9998"/>
+        <item id="6909" min="2" max="2" chance="21.5998"/>
+    </capsule>
+    <capsule itemId="7757">
+        <item id="6904" min="1" max="1" chance="2.216"/>
+        <item id="6908" min="8" max="8" chance="29.5464"/>
+        <item id="6909" min="2" max="2" chance="22.16"/>
+    </capsule>
+    <capsule itemId="7758">
+        <item id="6904" min="1" max="1" chance="2.272"/>
+        <item id="6908" min="8" max="8" chance="30.2932"/>
+        <item id="6909" min="2" max="2" chance="22.72"/>
+    </capsule>
+    <capsule itemId="7759">
+        <item id="6904" min="1" max="1" chance="2.32"/>
+        <item id="6908" min="8" max="8" chance="30.9332"/>
+        <item id="6909" min="2" max="2" chance="23.2"/>
+    </capsule>
+    <capsule itemId="7760">
+        <item id="6904" min="1" max="1" chance="2.376"/>
+        <item id="6908" min="8" max="8" chance="31.68"/>
+        <item id="6909" min="2" max="2" chance="23.76"/>
+    </capsule>
+    <capsule itemId="7761">
+        <item id="6904" min="1" max="1" chance="2.432"/>
+        <item id="6908" min="8" max="8" chance="32.4264"/>
+        <item id="6909" min="2" max="2" chance="24.32"/>
+    </capsule>
+    <capsule itemId="7762">
+        <item id="6904" min="1" max="1" chance="2.488"/>
+        <item id="6908" min="8" max="8" chance="33.1732"/>
+        <item id="6909" min="2" max="2" chance="24.88"/>
+    </capsule>
+    <capsule itemId="7763">
+        <item id="6904" min="1" max="1" chance="2.544"/>
+        <item id="6908" min="16" max="16" chance="16.96"/>
+        <item id="6909" min="2" max="2" chance="25.44"/>
+    </capsule>
+    <capsule itemId="7764">
+        <item id="6904" min="1" max="1" chance="2.6"/>
+        <item id="6908" min="16" max="16" chance="17.3332"/>
+        <item id="6909" min="2" max="2" chance="26.0"/>
+    </capsule>
+    <capsule itemId="7765">
+        <item id="6910" min="1" max="1" chance="31.872"/>
+    </capsule>
+    <capsule itemId="7766">
+        <item id="6910" min="1" max="1" chance="37.248"/>
+    </capsule>
+    <capsule itemId="7767">
+        <item id="6910" min="1" max="1" chance="38.016"/>
+    </capsule>
+    <capsule itemId="7768">
+        <item id="6910" min="1" max="1" chance="39.168"/>
+    </capsule>
+    <capsule itemId="7769">
+        <item id="6910" min="1" max="1" chance="40.32"/>
+    </capsule>
+    <capsule itemId="7770">
+        <item id="6910" min="1" max="1" chance="41.184"/>
+    </capsule>
+    <capsule itemId="7771">
+        <item id="6910" min="1" max="1" chance="42.048"/>
+    </capsule>
+    <capsule itemId="7772">
+        <item id="6910" min="1" max="1" chance="42.912"/>
+    </capsule>
+    <capsule itemId="7773">
+        <item id="6910" min="1" max="1" chance="43.68"/>
+    </capsule>
+    <capsule itemId="7774">
+        <item id="6910" min="1" max="1" chance="44.64"/>
+    </capsule>
+    <capsule itemId="7775">
+        <item id="6910" min="1" max="1" chance="45.504"/>
+    </capsule>
+    <capsule itemId="7776">
+        <item id="6910" min="2" max="2" chance="26.16"/>
+    </capsule>
+    <capsule itemId="7777">
+        <item id="6910" min="2" max="2" chance="26.688"/>
+    </capsule>
+    <capsule itemId="7778">
+        <item id="6910" min="2" max="2" chance="27.216"/>
+    </capsule>
+    <capsule itemId="7779">
+        <item id="6910" min="2" max="2" chance="27.792"/>
+    </capsule>
+    <capsule itemId="7780">
+        <item id="6910" min="2" max="2" chance="30.672"/>
+    </capsule>
+    <capsule itemId="7781">
+        <item id="6910" min="2" max="2" chance="31.248"/>
+    </capsule>
+    <capsule itemId="7782">
+        <item id="6910" min="2" max="2" chance="31.824"/>
+    </capsule>
+    <capsule itemId="7783">
+        <item id="6910" min="2" max="2" chance="32.448"/>
+    </capsule>
+    <capsule itemId="7784">
+        <item id="6910" min="2" max="2" chance="33.024"/>
+    </capsule>
+    <capsule itemId="7785">
+        <item id="6910" min="2" max="2" chance="33.648"/>
+    </capsule>
+    <capsule itemId="7786">
+        <item id="6910" min="2" max="2" chance="37.872"/>
+    </capsule>
+    <capsule itemId="7787">
+        <item id="6910" min="2" max="2" chance="38.592"/>
+    </capsule>
+    <capsule itemId="7788">
+        <item id="6910" min="2" max="2" chance="41.184"/>
+    </capsule>
+    <capsule itemId="7789">
+        <item id="6910" min="2" max="2" chance="41.952"/>
+    </capsule>
+    <capsule itemId="7790">
+        <item id="6910" min="2" max="2" chance="42.768"/>
+    </capsule>
+    <capsule itemId="7791">
+        <item id="6910" min="2" max="2" chance="43.536"/>
+    </capsule>
+    <capsule itemId="7792">
+        <item id="6910" min="2" max="2" chance="44.4"/>
+    </capsule>
+    <capsule itemId="7793">
+        <item id="6910" min="2" max="2" chance="45.312"/>
+    </capsule>
+    <capsule itemId="7794">
+        <item id="6910" min="2" max="2" chance="46.176"/>
+    </capsule>
+    <capsule itemId="7795">
+        <item id="6910" min="2" max="2" chance="47.088"/>
+    </capsule>
+    <capsule itemId="7796">
+        <item id="6910" min="2" max="2" chance="48.0"/>
+    </capsule>
+    <capsule itemId="7797">
+        <item id="6910" min="2" max="2" chance="48.96"/>
+    </capsule>
+    <capsule itemId="7798">
+        <item id="6910" min="2" max="2" chance="49.968"/>
+    </capsule>
+    <capsule itemId="7799">
+        <item id="6910" min="2" max="2" chance="67.968"/>
+    </capsule>
+    <capsule itemId="7800">
+        <item id="6910" min="2" max="2" chance="69.312"/>
+    </capsule>
+    <capsule itemId="7801">
+        <item id="6910" min="2" max="2" chance="73.92"/>
+    </capsule>
+    <capsule itemId="7802">
+        <item id="6910" min="2" max="2" chance="75.456"/>
+    </capsule>
+    <capsule itemId="7803">
+        <item id="6910" min="2" max="2" chance="76.928"/>
+    </capsule>
+    <capsule itemId="7804">
+        <item id="6910" min="2" max="2" chance="78.464"/>
+    </capsule>
+    <capsule itemId="7805">
+        <item id="6910" min="2" max="2" chance="80.064"/>
+    </capsule>
+    <capsule itemId="7806">
+        <item id="6910" min="2" max="2" chance="81.664"/>
+    </capsule>
+    <capsule itemId="8403">
+        <item id="6913" min="1" max="1" chance="11.04"/>
+        <item id="6911" min="2" max="2" chance="18.4"/>
+        <item id="8353" min="2" max="2" chance="27.6"/>
+    </capsule>
+    <capsule itemId="8404">
+        <item id="6913" min="1" max="1" chance="11.28"/>
+        <item id="6911" min="2" max="2" chance="18.8"/>
+        <item id="8353" min="2" max="2" chance="28.2"/>
+    </capsule>
+    <capsule itemId="8405">
+        <item id="6913" min="1" max="1" chance="12.24"/>
+        <item id="6911" min="2" max="2" chance="20.4"/>
+        <item id="8353" min="2" max="2" chance="30.6"/>
+    </capsule>
+    <capsule itemId="8406">
+        <item id="6913" min="1" max="1" chance="13.36"/>
+        <item id="6911" min="2" max="2" chance="22.2666"/>
+        <item id="8353" min="4" max="4" chance="16.7"/>
+    </capsule>
+    <capsule itemId="8407">
+        <item id="6913" min="1" max="1" chance="14.96"/>
+        <item id="6911" min="2" max="2" chance="24.9332"/>
+        <item id="8353" min="4" max="4" chance="18.7"/>
+    </capsule>
+    <capsule itemId="8408">
+        <item id="6913" min="1" max="1" chance="16.64"/>
+        <item id="6911" min="2" max="2" chance="27.7332"/>
+        <item id="8353" min="4" max="4" chance="20.8"/>
+    </capsule>
+    <capsule itemId="8409">
+        <item id="6913" min="1" max="1" chance="18.0"/>
+        <item id="6911" min="2" max="2" chance="30.0"/>
+        <item id="8353" min="4" max="4" chance="22.5"/>
+    </capsule>
+    <capsule itemId="8410">
+        <item id="6913" min="1" max="1" chance="19.84"/>
+        <item id="6911" min="2" max="2" chance="33.0666"/>
+        <item id="8353" min="4" max="4" chance="24.8"/>
+    </capsule>
+    <capsule itemId="8411">
+        <item id="6913" min="1" max="1" chance="16.96"/>
+        <item id="6911" min="4" max="4" chance="17.6667"/>
+        <item id="8353" min="4" max="4" chance="26.5"/>
+    </capsule>
+    <capsule itemId="8412">
+        <item id="6913" min="1" max="1" chance="22.8"/>
+        <item id="6911" min="2" max="2" chance="28.5"/>
+        <item id="8359" min="4" max="4" chance="19.0"/>
+    </capsule>
+    <capsule itemId="8413">
+        <item id="6913" min="1" max="1" chance="18.88"/>
+        <item id="6911" min="2" max="2" chance="29.5"/>
+        <item id="8359" min="4" max="4" chance="19.6666"/>
+    </capsule>
+    <capsule itemId="8414">
+        <item id="6913" min="1" max="1" chance="19.84"/>
+        <item id="6911" min="2" max="2" chance="31.0"/>
+        <item id="8359" min="4" max="4" chance="20.6666"/>
+    </capsule>
+    <capsule itemId="8415">
+        <item id="6913" min="1" max="1" chance="20.8"/>
+        <item id="6911" min="2" max="2" chance="32.5"/>
+        <item id="8359" min="4" max="4" chance="21.6666"/>
+    </capsule>
+    <capsule itemId="8416">
+        <item id="6913" min="1" max="1" chance="21.76"/>
+        <item id="6911" min="4" max="4" chance="17.0"/>
+        <item id="8359" min="4" max="4" chance="22.6666"/>
+    </capsule>
+    <capsule itemId="8417">
+        <item id="6913" min="1" max="1" chance="22.72"/>
+        <item id="6911" min="4" max="4" chance="17.75"/>
+        <item id="8359" min="4" max="4" chance="23.6666"/>
+    </capsule>
+    <capsule itemId="8418">
+        <item id="6913" min="1" max="1" chance="23.36"/>
+        <item id="6911" min="4" max="4" chance="18.25"/>
+        <item id="8359" min="4" max="4" chance="24.3333"/>
+    </capsule>
+    <capsule itemId="8419">
+        <item id="6913" min="1" max="1" chance="24.0"/>
+        <item id="6911" min="4" max="4" chance="18.75"/>
+        <item id="8359" min="4" max="4" chance="24.9999"/>
+    </capsule>
+    <capsule itemId="8420">
+        <item id="6913" min="1" max="1" chance="24.64"/>
+        <item id="6911" min="4" max="4" chance="19.25"/>
+        <item id="8359" min="4" max="4" chance="25.6666"/>
+    </capsule>
+    <capsule itemId="8421">
+        <item id="6913" min="1" max="1" chance="25.28"/>
+        <item id="6911" min="4" max="4" chance="19.75"/>
+        <item id="8355" min="4" max="4" chance="17.5556"/>
+    </capsule>
+    <capsule itemId="8422">
+        <item id="6913" min="1" max="1" chance="25.6"/>
+        <item id="6911" min="4" max="4" chance="20.0"/>
+        <item id="8355" min="4" max="4" chance="17.7778"/>
+    </capsule>
+    <capsule itemId="8423">
+        <item id="6913" min="1" max="1" chance="26.24"/>
+        <item id="6911" min="4" max="4" chance="20.5"/>
+        <item id="8355" min="4" max="4" chance="18.2223"/>
+    </capsule>
+    <capsule itemId="8424">
+        <item id="6913" min="1" max="1" chance="26.56"/>
+        <item id="6911" min="4" max="4" chance="20.75"/>
+        <item id="8355" min="4" max="4" chance="18.4445"/>
+    </capsule>
+    <capsule itemId="8425">
+        <item id="6913" min="1" max="1" chance="26.752"/>
+        <item id="6911" min="4" max="4" chance="20.9"/>
+        <item id="8355" min="4" max="4" chance="18.5778"/>
+    </capsule>
+    <capsule itemId="8426">
+        <item id="6913" min="1" max="1" chance="26.88"/>
+        <item id="6911" min="4" max="4" chance="21.0"/>
+        <item id="8355" min="4" max="4" chance="18.6667"/>
+    </capsule>
+    <capsule itemId="8427">
+        <item id="6913" min="1" max="1" chance="27.2"/>
+        <item id="6911" min="4" max="4" chance="21.25"/>
+        <item id="8355" min="4" max="4" chance="18.8889"/>
+    </capsule>
+    <capsule itemId="8428">
+        <item id="6913" min="1" max="1" chance="27.584"/>
+        <item id="6911" min="4" max="4" chance="21.55"/>
+        <item id="8355" min="4" max="4" chance="19.1556"/>
+    </capsule>
+    <capsule itemId="8429">
+        <item id="6913" min="1" max="1" chance="27.84"/>
+        <item id="6911" min="4" max="4" chance="21.75"/>
+        <item id="8355" min="4" max="4" chance="19.3334"/>
+    </capsule>
+    <capsule itemId="8430">
+        <item id="6913" min="1" max="1" chance="28.288"/>
+        <item id="6911" min="4" max="4" chance="29.4666"/>
+        <item id="8354" min="2" max="2" chance="22.1"/>
+    </capsule>
+    <capsule itemId="8431">
+        <item id="6913" min="1" max="1" chance="28.608"/>
+        <item id="6911" min="4" max="4" chance="29.7998"/>
+        <item id="8354" min="2" max="2" chance="22.35"/>
+    </capsule>
+    <capsule itemId="8432">
+        <item id="6913" min="1" max="1" chance="28.928"/>
+        <item id="6911" min="4" max="4" chance="30.1332"/>
+        <item id="8354" min="2" max="2" chance="22.6"/>
+    </capsule>
+    <capsule itemId="8433">
+        <item id="6913" min="2" max="2" chance="17.28"/>
+        <item id="6911" min="8" max="8" chance="17.9999"/>
+        <item id="8354" min="2" max="2" chance="27.0"/>
+    </capsule>
+    <capsule itemId="8434">
+        <item id="6913" min="2" max="2" chance="17.696"/>
+        <item id="6911" min="8" max="8" chance="18.4333"/>
+        <item id="8354" min="2" max="2" chance="27.65"/>
+    </capsule>
+    <capsule itemId="8435">
+        <item id="6913" min="2" max="2" chance="18.176"/>
+        <item id="6911" min="8" max="8" chance="18.9333"/>
+        <item id="8354" min="2" max="2" chance="28.4"/>
+    </capsule>
+    <capsule itemId="8436">
+        <item id="6913" min="2" max="2" chance="18.56"/>
+        <item id="6911" min="8" max="8" chance="19.3333"/>
+        <item id="8354" min="2" max="2" chance="29.0"/>
+    </capsule>
+    <capsule itemId="8437">
+        <item id="6913" min="2" max="2" chance="19.008"/>
+        <item id="6911" min="8" max="8" chance="19.7999"/>
+        <item id="8354" min="2" max="2" chance="29.7"/>
+    </capsule>
+    <capsule itemId="8438">
+        <item id="6913" min="2" max="2" chance="19.456"/>
+        <item id="6911" min="8" max="8" chance="20.2666"/>
+        <item id="8354" min="2" max="2" chance="30.4"/>
+    </capsule>
+    <capsule itemId="8439">
+        <item id="6913" min="2" max="2" chance="24.88"/>
+        <item id="6911" min="8" max="8" chance="20.7333"/>
+        <item id="8357" min="2" max="2" chance="19.904"/>
+    </capsule>
+    <capsule itemId="8440">
+        <item id="6913" min="2" max="2" chance="25.4"/>
+        <item id="6911" min="8" max="8" chance="21.1666"/>
+        <item id="8357" min="2" max="2" chance="20.32"/>
+    </capsule>
+    <capsule itemId="8441">
+        <item id="6913" min="2" max="2" chance="25.96"/>
+        <item id="6911" min="8" max="8" chance="21.6333"/>
+        <item id="8357" min="2" max="2" chance="20.768"/>
+    </capsule>
+    <capsule itemId="8442">
+        <item id="6914" min="1" max="1" chance="21.216"/>
+        <item id="6912" min="4" max="4" chance="22.1"/>
+        <item id="8357" min="4" max="4" chance="17.68"/>
+    </capsule>
+    <capsule itemId="8443">
+        <item id="6914" min="1" max="1" chance="18.624"/>
+        <item id="6912" min="4" max="4" chance="19.4"/>
+        <item id="8377" min="1" max="1" chance="4.656"/>
+        <item id="8357" min="4" max="4" chance="15.5201"/>
+    </capsule>
+    <capsule itemId="8444">
+        <item id="6914" min="1" max="1" chance="19.008"/>
+        <item id="6912" min="4" max="4" chance="19.8"/>
+        <item id="8378" min="1" max="1" chance="4.752"/>
+        <item id="8357" min="4" max="4" chance="15.8401"/>
+    </capsule>
+    <capsule itemId="8445">
+        <item id="6914" min="1" max="1" chance="26.112"/>
+        <item id="6912" min="4" max="4" chance="27.2"/>
+        <item id="8357" min="4" max="4" chance="21.76"/>
+    </capsule>
+    <capsule itemId="8446">
+        <item id="6914" min="1" max="1" chance="20.16"/>
+        <item id="6912" min="4" max="4" chance="21.0"/>
+        <item id="8377" min="1" max="1" chance="5.04"/>
+        <item id="8357" min="4" max="4" chance="16.8001"/>
+    </capsule>
+    <capsule itemId="8447">
+        <item id="6914" min="1" max="1" chance="20.592"/>
+        <item id="6912" min="4" max="4" chance="21.45"/>
+        <item id="8378" min="1" max="1" chance="5.148"/>
+        <item id="8357" min="4" max="4" chance="17.1601"/>
+    </capsule>
+    <capsule itemId="8448">
+        <item id="6914" min="1" max="1" chance="28.0"/>
+        <item id="6912" min="8" max="8" chance="19.4445"/>
+        <item id="8358" min="2" max="2" chance="29.1666"/>
+    </capsule>
+    <capsule itemId="8449">
+        <item id="6914" min="1" max="1" chance="21.432"/>
+        <item id="6912" min="8" max="8" chance="14.8833"/>
+        <item id="8377" min="1" max="1" chance="5.358"/>
+        <item id="8358" min="2" max="2" chance="22.325"/>
+    </capsule>
+    <capsule itemId="8450">
+        <item id="6914" min="1" max="1" chance="21.84"/>
+        <item id="6912" min="8" max="8" chance="15.1667"/>
+        <item id="8378" min="1" max="1" chance="5.46"/>
+        <item id="8358" min="2" max="2" chance="22.75"/>
+    </capsule>
+    <capsule itemId="8451">
+        <item id="6914" min="1" max="1" chance="29.76"/>
+        <item id="6912" min="8" max="8" chance="20.6667"/>
+        <item id="8358" min="2" max="2" chance="31.0"/>
+    </capsule>
+    <capsule itemId="8452">
+        <item id="6914" min="1" max="1" chance="22.752"/>
+        <item id="6912" min="8" max="8" chance="15.8"/>
+        <item id="8377" min="1" max="1" chance="5.688"/>
+        <item id="8358" min="2" max="2" chance="23.7"/>
+    </capsule>
+    <capsule itemId="8453">
+        <item id="6914" min="2" max="2" chance="13.08"/>
+        <item id="6912" min="8" max="8" chance="18.1667"/>
+        <item id="8378" min="1" max="1" chance="6.54"/>
+        <item id="8358" min="4" max="4" chance="13.625"/>
+    </capsule>
+    <capsule itemId="8454">
+        <item id="6914" min="2" max="2" chance="17.776"/>
+        <item id="6912" min="9" max="9" chance="16.4592"/>
+        <item id="8358" min="4" max="4" chance="18.5167"/>
+    </capsule>
+    <capsule itemId="8455">
+        <item id="6914" min="2" max="2" chance="13.596"/>
+        <item id="6912" min="8" max="8" chance="18.8833"/>
+        <item id="8377" min="1" max="1" chance="6.798"/>
+        <item id="8358" min="4" max="4" chance="14.1625"/>
+    </capsule>
+    <capsule itemId="8456">
+        <item id="6914" min="2" max="2" chance="13.884"/>
+        <item id="6912" min="8" max="8" chance="19.2833"/>
+        <item id="8378" min="1" max="1" chance="6.942"/>
+        <item id="8358" min="4" max="4" chance="14.4625"/>
+    </capsule>
+    <capsule itemId="8457">
+        <item id="6914" min="2" max="2" chance="20.432"/>
+        <item id="6912" min="9" max="9" chance="18.9184"/>
+        <item id="8352" min="4" max="4" chance="18.2428"/>
+    </capsule>
+    <capsule itemId="8458">
+        <item id="6914" min="2" max="2" chance="15.612"/>
+        <item id="6912" min="9" max="9" chance="14.4556"/>
+        <item id="8377" min="1" max="1" chance="7.806"/>
+        <item id="8352" min="4" max="4" chance="13.9393"/>
+    </capsule>
+    <capsule itemId="8459">
+        <item id="6914" min="2" max="2" chance="15.912"/>
+        <item id="6912" min="9" max="9" chance="14.7332"/>
+        <item id="8378" min="1" max="1" chance="7.956"/>
+        <item id="8352" min="4" max="4" chance="14.2072"/>
+    </capsule>
+    <capsule itemId="8460">
+        <item id="6914" min="2" max="2" chance="16.212"/>
+        <item id="6912" min="8" max="8" chance="22.5166"/>
+        <item id="8373" min="1" max="1" chance="2.0265"/>
+        <item id="8352" min="4" max="4" chance="14.475"/>
+    </capsule>
+    <capsule itemId="8461">
+        <item id="6914" min="2" max="2" chance="13.2096"/>
+        <item id="6912" min="8" max="8" chance="18.3466"/>
+        <item id="8377" min="1" max="1" chance="6.6048"/>
+        <item id="8374" min="1" max="1" chance="1.6512"/>
+        <item id="8352" min="4" max="4" chance="11.7942"/>
+    </capsule>
+    <capsule itemId="8462">
+        <item id="6914" min="2" max="2" chance="13.4592"/>
+        <item id="6912" min="8" max="8" chance="18.6933"/>
+        <item id="8378" min="1" max="1" chance="6.7296"/>
+        <item id="8375" min="1" max="1" chance="1.6824"/>
+        <item id="8352" min="4" max="4" chance="12.0171"/>
+    </capsule>
+    <capsule itemId="8463">
+        <item id="6914" min="2" max="2" chance="18.924"/>
+        <item id="6912" min="9" max="9" chance="17.5224"/>
+        <item id="8373" min="1" max="1" chance="2.3655"/>
+        <item id="8352" min="4" max="4" chance="16.8964"/>
+    </capsule>
+    <capsule itemId="8464">
+        <item id="6914" min="2" max="2" chance="15.4368"/>
+        <item id="6912" min="9" max="9" chance="14.2932"/>
+        <item id="8377" min="1" max="1" chance="7.7184"/>
+        <item id="8374" min="1" max="1" chance="1.9296"/>
+        <item id="8352" min="4" max="4" chance="13.7828"/>
+    </capsule>
+    <capsule itemId="8465">
+        <item id="6914" min="2" max="2" chance="16.464"/>
+        <item id="6912" min="9" max="9" chance="15.2444"/>
+        <item id="8378" min="1" max="1" chance="8.232"/>
+        <item id="8375" min="1" max="1" chance="2.058"/>
+        <item id="8352" min="4" max="4" chance="14.6999"/>
+    </capsule>
+    <capsule itemId="8466">
+        <item id="6914" min="2" max="2" chance="20.964"/>
+        <item id="6912" min="9" max="9" chance="19.4112"/>
+        <item id="8373" min="1" max="1" chance="2.6205"/>
+        <item id="8356" min="4" max="4" chance="16.3781"/>
+    </capsule>
+    <capsule itemId="8467">
+        <item id="6914" min="2" max="2" chance="17.0976"/>
+        <item id="6912" min="9" max="9" chance="15.8312"/>
+        <item id="8377" min="1" max="1" chance="8.5488"/>
+        <item id="8374" min="1" max="1" chance="2.1372"/>
+        <item id="8356" min="4" max="4" chance="13.3575"/>
+    </capsule>
+    <capsule itemId="8468">
+        <item id="6914" min="2" max="2" chance="17.4144"/>
+        <item id="6912" min="9" max="9" chance="16.1244"/>
+        <item id="8378" min="1" max="1" chance="8.7072"/>
+        <item id="8375" min="1" max="1" chance="2.1768"/>
+        <item id="8356" min="4" max="4" chance="13.605"/>
+    </capsule>
+    <capsule itemId="8469">
+        <item id="6914" min="2" max="2" chance="22.188"/>
+        <item id="6912" min="9" max="9" chance="20.5444"/>
+        <item id="8373" min="1" max="1" chance="2.7735"/>
+        <item id="8356" min="4" max="4" chance="17.3344"/>
+    </capsule>
+    <capsule itemId="8470">
+        <item id="6914" min="2" max="2" chance="18.1152"/>
+        <item id="6912" min="9" max="9" chance="16.7732"/>
+        <item id="8377" min="1" max="1" chance="9.0576"/>
+        <item id="8374" min="1" max="1" chance="2.2644"/>
+        <item id="8356" min="4" max="4" chance="14.1525"/>
+    </capsule>
+    <capsule itemId="8471">
+        <item id="6914" min="2" max="2" chance="18.4608"/>
+        <item id="6912" min="9" max="9" chance="17.0932"/>
+        <item id="8378" min="1" max="1" chance="9.2304"/>
+        <item id="8375" min="1" max="1" chance="2.3076"/>
+        <item id="8356" min="4" max="4" chance="14.4225"/>
+    </capsule>
+    <capsule itemId="8472">
+        <item id="6914" min="2" max="2" chance="23.532"/>
+        <item id="6912" min="9" max="9" chance="21.7888"/>
+        <item id="8373" min="1" max="1" chance="2.9415"/>
+        <item id="8356" min="4" max="4" chance="18.3844"/>
+    </capsule>
+    <capsule itemId="8473">
+        <item id="6914" min="2" max="2" chance="19.2"/>
+        <item id="6912" min="9" max="9" chance="17.778"/>
+        <item id="8377" min="1" max="1" chance="9.6"/>
+        <item id="8374" min="1" max="1" chance="2.4"/>
+        <item id="8356" min="4" max="4" chance="15.0"/>
+    </capsule>
+    <capsule itemId="8474">
+        <item id="6914" min="2" max="2" chance="19.5744"/>
+        <item id="6912" min="9" max="9" chance="18.1244"/>
+        <item id="8378" min="1" max="1" chance="9.7872"/>
+        <item id="8375" min="1" max="1" chance="2.4468"/>
+        <item id="8356" min="4" max="4" chance="15.2925"/>
+    </capsule>
+    <capsule itemId="8475">
+        <item id="6914" min="2" max="2" chance="24.972"/>
+        <item id="6912" min="9" max="9" chance="23.1224"/>
+        <item id="8373" min="1" max="1" chance="3.1215"/>
+        <item id="8351" min="4" max="4" chance="17.3416"/>
+    </capsule>
+    <capsule itemId="8476">
+        <item id="6914" min="4" max="4" chance="10.1904"/>
+        <item id="6912" min="9" max="9" chance="18.8712"/>
+        <item id="8377" min="1" max="1" chance="10.1904"/>
+        <item id="8374" min="1" max="1" chance="2.5476"/>
+        <item id="8351" min="4" max="4" chance="14.1534"/>
+    </capsule>
+    <capsule itemId="8477">
+        <item id="6914" min="4" max="4" chance="10.3968"/>
+        <item id="6912" min="9" max="9" chance="19.2532"/>
+        <item id="8378" min="1" max="1" chance="10.3968"/>
+        <item id="8375" min="1" max="1" chance="2.5992"/>
+        <item id="8351" min="4" max="4" chance="14.44"/>
+    </capsule>
+    <capsule itemId="8478">
+        <item id="6914" min="4" max="4" chance="13.854"/>
+        <item id="6912" min="18" max="18" chance="12.8278"/>
+        <item id="8373" min="1" max="1" chance="3.4635"/>
+        <item id="8351" min="4" max="4" chance="19.2417"/>
+    </capsule>
+    <capsule itemId="8479">
+        <item id="6914" min="4" max="4" chance="11.3136"/>
+        <item id="6912" min="18" max="18" chance="10.4756"/>
+        <item id="8377" min="1" max="1" chance="11.3136"/>
+        <item id="8374" min="1" max="1" chance="2.8284"/>
+        <item id="8351" min="4" max="4" chance="15.7134"/>
+    </capsule>
+    <capsule itemId="8480">
+        <item id="6914" min="4" max="4" chance="11.5344"/>
+        <item id="6912" min="18" max="18" chance="10.68"/>
+        <item id="8378" min="1" max="1" chance="11.5344"/>
+        <item id="8375" min="1" max="1" chance="2.8836"/>
+        <item id="8351" min="4" max="4" chance="16.0201"/>
+    </capsule>
+    <capsule itemId="8481">
+        <item id="6914" min="4" max="4" chance="14.712"/>
+        <item id="6912" min="18" max="18" chance="13.6222"/>
+        <item id="8373" min="1" max="1" chance="3.678"/>
+        <item id="8351" min="4" max="4" chance="20.4333"/>
+    </capsule>
+    <capsule itemId="8482">
+        <item id="6914" min="4" max="4" chance="12.0096"/>
+        <item id="6912" min="18" max="18" chance="11.12"/>
+        <item id="8377" min="1" max="1" chance="12.0096"/>
+        <item id="8374" min="1" max="1" chance="3.0024"/>
+        <item id="8351" min="4" max="4" chance="16.6801"/>
+    </capsule>
+    <capsule itemId="8483">
+        <item id="6914" min="4" max="4" chance="12.2496"/>
+        <item id="6912" min="18" max="18" chance="11.3422"/>
+        <item id="8378" min="1" max="1" chance="12.2496"/>
+        <item id="8375" min="1" max="1" chance="3.0624"/>
+        <item id="8351" min="7" max="7" chance="9.722"/>
+    </capsule>
+</list>
