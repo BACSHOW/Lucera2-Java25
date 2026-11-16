@@ -36,6 +36,15 @@ public class GeoMove {
    }
 
    public static List<List<Location>> findMovePath(int var0, int var1, int var2, int var3, int var4, int var5, boolean var6, int var7) {
+      long metricsStart = System.nanoTime();
+      try {
+         return findMovePath0(var0, var1, var2, var3, var4, var5, var6, var7);
+      } finally {
+         l2.gameserver.metrics.ServerMetrics.PATHFIND.record(System.nanoTime() - metricsStart);
+      }
+   }
+
+   private static List<List<Location>> findMovePath0(int var0, int var1, int var2, int var3, int var4, int var5, boolean var6, int var7) {
       // 1. Tenta motor de alta performance Zero-GC Bidirectional A* (NBA*)
       List<Location> nbaPath = l2.gameserver.geodata.pathfinding.NativeBidirectionalPathFinder.getInstance()
          .findPath(var0, var1, var2, var3, var4, var5, var7);

@@ -24,6 +24,7 @@ public final class L2PacketEncoder extends MessageToByteEncoder<ByteBuf> {
             return;
         }
         int totalLength = size + HEADER_SIZE;
+        l2.gameserver.metrics.ServerMetrics.packetOut(totalLength);
 
         byte[] data = new byte[size];
         msg.readBytes(data);

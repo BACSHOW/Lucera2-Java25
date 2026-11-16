@@ -53,6 +53,7 @@ public final class NettyGameDispatcher extends SimpleChannelInboundHandler<ByteB
         if (readable == 0) {
             return;
         }
+        l2.gameserver.metrics.ServerMetrics.packetIn(readable);
 
         byte[] data = new byte[readable];
         msg.readBytes(data);

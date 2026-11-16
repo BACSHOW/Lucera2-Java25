@@ -723,6 +723,7 @@ extends CharacterAI {
             return;
         }
         this.bZ = true;
+        long metricsStart = System.nanoTime();
         try {
             if (!Config.BLOCK_ACTIVE_TASKS && this.getIntention() == CtrlIntention.AI_INTENTION_ACTIVE) {
                 this.thinkActive();
@@ -731,6 +732,7 @@ extends CharacterAI {
             }
         }
         finally {
+            l2.gameserver.metrics.ServerMetrics.AI_THINK.record(System.nanoTime() - metricsStart);
             this.bZ = false;
         }
     }

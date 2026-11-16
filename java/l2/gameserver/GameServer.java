@@ -402,6 +402,8 @@ public class GameServer {
 
     public static void main(String[] stringArray) throws Exception {
         initLogging();
+        // Janela propria do servidor (console + metricas); sem area de trabalho segue so no console.
+        l2.gameserver.gui.ServerGui.startIfEnabled();
         new GameServer();
     }
 
