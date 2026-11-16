@@ -680,7 +680,9 @@ extends MMOClient<MMOConnection<GameClient>> {
         this._state = gameClientState;
         switch (gameClientState) {
             case AUTHED: {
-                if (this.getConnection() == null) break;
+                // No pipeline Netty getConnection() e null; sem este teste o ping nunca era agendado
+                // e o pawn clipping range ficava em 0.
+                if (this.getConnection() == null && this._nettyConnection == null) break;
                 this.onPing(0, 0, DEFAULT_PAWN_CLIPPING_RANGE);
                 break;
             }
@@ -751,7 +753,7 @@ extends MMOClient<MMOConnection<GameClient>> {
     }
 
     public int getPawnClippingRange() {
-        return this.ZV;
+        return this.ZV > 0 ? this.ZV : DEFAULT_PAWN_CLIPPING_RANGE;
     }
 
     private static class PingTask

@@ -83,10 +83,11 @@ public class PathFindBuffers {
       }
 
       if (var1 == null) {
-         for (byte var5 = 64; var5 < 512; var5 += 32) {
+         // O contador era "byte": passava de 127 para -128 e nunca chegava a 512. Com todos os buffers
+         // do tamanho em uso e um pedido acima de 96, a thread ficava presa aqui para sempre.
+         for (int var5 = 64; var5 <= 512; var5 += 32) {
             if (var5 >= var0) {
-               byte var4 = var5;
-               var1 = q(var4);
+               var1 = q(var5);
                break;
             }
          }

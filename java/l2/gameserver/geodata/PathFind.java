@@ -47,9 +47,16 @@ public class PathFind {
             if (bl) {
                 ++this.xU.playableUses;
             }
-            this.bv();
-            this.xU.free();
-            PathFindBuffers.recycle(this.xU);
+            try {
+                this.bv();
+            } finally {
+                // Sem o finally, uma excecao no calculo deixava o buffer marcado como em uso para sempre.
+                try {
+                    this.xU.free();
+                } finally {
+                    PathFindBuffers.recycle(this.xU);
+                }
+            }
         }
     }
 

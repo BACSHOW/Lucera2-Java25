@@ -72,6 +72,31 @@ public final class AutoFarmManager {
         }
     }
 
+    /**
+     * Auto-reparo do contador: recalcula quantos farms realmente ativos usam esta chave
+     * (ignorando o jogador que esta tentando iniciar). Corrige contagens "presas".
+     */
+    public synchronized void recountActiveFarm(String key, Player self) {
+        if (Config.FARM_ACTIVE_LIMITS < 0 || key == null) {
+            return;
+        }
+        int real = 0;
+        for (Player other : GameObjectsStorage.getAllPlayersForIterate()) {
+            if (other == null || other == self || other.isInOfflineMode()) {
+                continue;
+            }
+            if (other.getFarmSystem() != null && other.getFarmSystem().isAutofarming()
+                    && key.equals(other.getFarmSystem().getFarmKey()) && !this.isNonCheckPlayer(other.getObjectId())) {
+                real++;
+            }
+        }
+        Integer cur = this.aqZ.get(key);
+        if (cur != null && cur != real) {
+            _log.warn("AutoFarmManager: contador preso para '" + key + "' (" + cur + " -> " + real + ")");
+            this.aqZ.put(key, real);
+        }
+    }
+
     public void addNonCheckPlayer(int n) {
         if (Config.FARM_ACTIVE_LIMITS < 0) {
             return;

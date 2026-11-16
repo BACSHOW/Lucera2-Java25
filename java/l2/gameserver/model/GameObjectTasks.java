@@ -184,7 +184,7 @@ public class GameObjectTasks {
             }
             creature2.onHitTimer(creature, this._damage, this._crit, this._miss, this._soulshot, this._shld, this._unchargeSS);
             if (creature2.isNpc()) {
-                NpcMovementDebugTracer.getInstance().traceCombat((NpcInstance) creature2, "HIT_TASK_APPLIED", creature,
+                if (NpcMovementDebugTracer.isTracking((NpcInstance) creature2)) NpcMovementDebugTracer.getInstance().traceCombat((NpcInstance) creature2, "HIT_TASK_APPLIED", creature,
                     "dmg=" + this._damage + ", crit=" + this._crit + ", miss=" + this._miss + ", actDelay=" + this._actDelay + "ms");
             }
             if (this._notify) {

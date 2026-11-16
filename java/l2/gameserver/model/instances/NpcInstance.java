@@ -711,6 +711,12 @@ extends Creature {
         if (player.isMoving()) {
             player.stopMove();
         }
+        // Dentro do alcance o servidor nao mandava nada que virasse o personagem.
+        // MoveToPawn com a distancia de interacao so rotaciona o cliente para o NPC.
+        if (!l2.gameserver.utils.PositionUtils.isFacing(player, this, 30)) {
+            player.setHeading(l2.gameserver.utils.PositionUtils.calculateHeadingFrom(player, this));
+            player.broadcastPacket(new l2.gameserver.network.l2.s2c.MoveToPawn(player, this, this.getActingRange()));
+        }
         player.setLastNpcInteractionTime();
         if (this.UI) {
             this.showBusyWindow(player);

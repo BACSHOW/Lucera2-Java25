@@ -97,7 +97,7 @@ extends L2GameServerPacket {
     @Override
     protected final void writeImpl() {
         if (this.getClient() != null && this.getClient().getActiveChar() != null && this.getClient().getActiveChar().getObjectId() == this.aed) {
-            l2.gameserver.utils.MovementTelemetryLogger.logS2C(this.getClient().getActiveChar(), "MagicSkillUse", String.format("SkillId=%d lvl=%d hitTime=%d targetId=%d CasterLoc=(%d,%d,%d) TargetLoc=(%d,%d,%d)", this._skillId, this._skillLevel, this._hitTime, this._targetId, this._x, this._y, this.Di, this.adM, this.adN, this.adO));
+            if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) l2.gameserver.utils.MovementTelemetryLogger.logS2C(this.getClient().getActiveChar(), "MagicSkillUse", String.format("SkillId=%d lvl=%d hitTime=%d targetId=%d CasterLoc=(%d,%d,%d) TargetLoc=(%d,%d,%d)", this._skillId, this._skillLevel, this._hitTime, this._targetId, this._x, this._y, this.Di, this.adM, this.adN, this.adO));
         }
         this.writeC(72);
         this.writeD(this.aed);

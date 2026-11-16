@@ -132,9 +132,13 @@ implements Runnable {
         if (this.getCommittedSummon() == null) {
             this.setCommittedSummon(player.getPet() != null ? player.getPet() : null);
         }
-        if (this.getCommittedOwner() != null && !this.getCommittedOwner().isDead() && this.getAutoFarmContext().isAssistMonsterAttack()) {
+        if (this.getCommittedOwner() != null && !this.getCommittedOwner().isDead() && (this.getAutoFarmContext().isAssistMonsterAttack() || this.canAutoAssist())) {
             Pair<ScheduledFuture<?>, Location> pair;
-            npcInstance2 = this.getAutoFarmContext().getLeaderTarget(this.getCommittedOwner());
+            // "Assist to Party Leader": ataca o alvo do lider (modo estrito AssistMonsterAttack
+            // exige que o monstro ja esteja agredindo o lider).
+            npcInstance2 = this.getAutoFarmContext().isAssistMonsterAttack()
+               ? this.getAutoFarmContext().getLeaderTarget(this.getCommittedOwner())
+               : this.getLeaderAssistTarget(player, this.getCommittedOwner());
             this.setCommittedTarget(npcInstance2);
             if (npcInstance2 != null) {
                 return true;
@@ -157,7 +161,7 @@ implements Runnable {
             if (list.isEmpty() && this.cD()) {
                 return false;
             }
-            Optional<NpcInstance> optional = list.stream().min(Comparator.comparingDouble(player::getDistance));
+            Optional<NpcInstance> optional = Optional.ofNullable(BaseFarmTask.nearestNpc(player, list));
             if (optional.isPresent()) {
                 player.setTarget(this.setCommittedTarget(optional.get()));
                 player.sendPacket((IStaticPacket)new MyTargetSelected(optional.get().getObjectId(), player.getLevel() - optional.get().getLevel()));
@@ -166,6 +170,54 @@ implements Runnable {
             }
         }
         return false;
+    }
+
+    /**
+     * Alvo mais proximo em lote via SimdGeoMath (distancia 2D ao quadrado), sem stream/comparator.
+     * Equivale a min(getDistance): em empate fica o primeiro da lista.
+     */
+    public static NpcInstance nearestNpc(Player player, List<NpcInstance> list) {
+        int n = list.size();
+        if (n == 0) {
+            return null;
+        }
+        if (n == 1) {
+            return list.get(0);
+        }
+        int[] xs = new int[n];
+        int[] ys = new int[n];
+        for (int i = 0; i < n; i++) {
+            NpcInstance npc = list.get(i);
+            xs[i] = npc.getX();
+            ys[i] = npc.getY();
+        }
+        long[] distSq = new long[n];
+        l2.gameserver.geodata.SimdGeoMath.batchDistanceSquared2D(player.getX(), player.getY(), xs, ys, distSq, n);
+        int best = 0;
+        for (int i = 1; i < n; i++) {
+            if (distSq[i] < distSq[best]) {
+                best = i;
+            }
+        }
+        return list.get(best);
+    }
+
+    /** Alvo do lider para o Assist to Party Leader: monstro atacavel, vivo, ao alcance, com o lider em combate. */
+    private NpcInstance getLeaderAssistTarget(Player player, Player leader) {
+        GameObject target = leader.getTarget();
+        if (!(target instanceof NpcInstance) || target == player) {
+            return null;
+        }
+        NpcInstance npc = (NpcInstance)target;
+        if (npc.isDead() || npc.isAlikeDead() || !npc.isAutoAttackable(player)) {
+            return null;
+        }
+        if (player.getDistance(npc) > (double)Math.max(this.getAutoFarmContext().getFarmRadius(), 1000)) {
+            return null;
+        }
+        boolean leaderFighting = leader.isAttackingNow() || leader.isCastingNow()
+            || (npc.hasAI() && npc.getAI().getTargetList().contains(leader));
+        return leaderFighting ? npc : null;
     }
 
     protected boolean spoilCheck() {

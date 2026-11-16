@@ -34,6 +34,64 @@ public class PlayableAI
 extends CharacterAI {
     public static record PendingNextAction(NextAction action, Object arg0, Object arg1, boolean forceUse, boolean dontMove) {}
     private final AtomicReference<PendingNextAction> _pendingNextActionRef = new AtomicReference<>(null);
+
+    // ---- Espera pelo cliente antes do primeiro golpe (movimento comandado pelo servidor, ex.: AutoFarm) ----
+    // O servidor chega ao alcance antes do cliente (o cliente ainda termina a animacao do golpe anterior).
+    // O pacote Attack faz o cliente parar onde estiver, entao ele ficava ate ~130 unidades atras e o
+    // personagem aparecia atacando de longe. Enquanto o ultimo ValidatePosition mostra o cliente fora do
+    // alcance, o golpe espera um pouco e o cliente recebe de novo o MoveToPawn para terminar o trajeto.
+    private static final int CLIENT_SYNC_SLACK = 48;
+    private static final long CLIENT_SYNC_MAX_WAIT_MS = 800L;
+    private static final long CLIENT_SYNC_RETRY_MS = 150L;
+    // Andando, o cliente manda ValidatePosition a cada ~1 s; parado ele quase nao manda. Um relatorio antigo
+    // quase sempre significa cliente parado no mesmo ponto, entao ainda serve (medido: 1,7 s sem relatorio).
+    private static final long CLIENT_REPORT_MAX_AGE_MS = 5000L;
+    private volatile int _clientSyncTargetId;
+    private volatile long _clientSyncDeadline;
+
+    private boolean waitForClientInRange(final Playable playable, final Creature target, int range, int radii) {
+        if (!playable.isPlayer() || target == null) {
+            return false;
+        }
+        final Player player = (Player)playable;
+        Location client = player.getLastClientPosition();
+        long now = System.currentTimeMillis();
+        if (client == null || now - player.getLastClientReportTime() > CLIENT_REPORT_MAX_AGE_MS) {
+            return false;
+        }
+        double dx = client.x - target.getX();
+        double dy = client.y - target.getY();
+        double clientDist = Math.sqrt(dx * dx + dy * dy) - radii;
+        if (clientDist <= range + CLIENT_SYNC_SLACK) {
+            this._clientSyncTargetId = 0;
+            return false;
+        }
+        boolean firstWait = this._clientSyncTargetId != target.getObjectId();
+        if (firstWait) {
+            this._clientSyncTargetId = target.getObjectId();
+            long travel = (long)((clientDist - range) * 1000.0 / Math.max(1, player.getMoveSpeed()));
+            this._clientSyncDeadline = now + Math.min(CLIENT_SYNC_MAX_WAIT_MS, travel + 250L);
+        } else if (now >= this._clientSyncDeadline) {
+            return false; // ja esperou por este alvo: ataca do jeito que estiver
+        }
+        if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) {
+            l2.gameserver.utils.MovementTelemetryLogger.logEvent(player, "CLIENT_SYNC_WAIT", String.format("target=%d clientDist=%.0f range=%d leftMs=%d", target.getObjectId(), clientDist, range, this._clientSyncDeadline - now));
+        }
+        if (firstWait) {
+            // Uma vez por alvo: leva o cliente ate a posicao do servidor (ja no alcance). Repetir reiniciaria
+            // o trajeto a partir de um ponto antigo; e o MoveToPawn o cliente costuma ignorar (medido).
+            player.sendPacket(new l2.gameserver.network.l2.s2c.CharMoveToLocation(player, client.clone(), player.getLoc()));
+        }
+        ThreadPoolManager.getInstance().schedule(new RunnableImpl() {
+            @Override
+            public void runImpl() {
+                if (PlayableAI.this.getIntention() == CtrlIntention.AI_INTENTION_ATTACK && PlayableAI.this.getAttackTarget() == target) {
+                    PlayableAI.this.notifyEvent(CtrlEvent.EVT_THINK);
+                }
+            }
+        }, CLIENT_SYNC_RETRY_MS);
+        return true;
+    }
     private final ReentrantLock tV = new ReentrantLock();
     private volatile int tW = 0;
     private static final int tX = 1;
@@ -398,6 +456,10 @@ extends CharacterAI {
                 playable.sendActionFailed();
                 return;
             }
+            if (!bl5 && this.waitForClientInRange(playable, creature, n4, n2)) {
+                playable.stopMove(false, false);
+                return;
+            }
             boolean wasMoving = playable.isMoving();
             long delay = calculateActionTransitionDelay(playable, creature, wasMoving);
             if (delay > 0L) {
@@ -406,8 +468,9 @@ extends CharacterAI {
                 if (diff < 0) diff += 65536;
                 int side = diff < 32768 ? 1 : 0;
                 playable.broadcastPacket(new l2.gameserver.network.l2.s2c.StartRotating(playable, targetHeading, side, 65535));
+                playable.broadcastPacket(new l2.gameserver.network.l2.s2c.FinishRotating(playable, targetHeading, 65535));
                 playable.setHeading(targetHeading);
-                l2.gameserver.utils.MovementTelemetryLogger.logS2C((l2.gameserver.model.Player)playable, "SmoothTransitionDelay", String.format("delay=%dms targetHeading=%d side=%d doAttack wasMoving=%b", delay, targetHeading, side, wasMoving));
+                if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) l2.gameserver.utils.MovementTelemetryLogger.logS2C((l2.gameserver.model.Player)playable, "SmoothTransitionDelay", String.format("delay=%dms targetHeading=%d side=%d doAttack wasMoving=%b", delay, targetHeading, side, wasMoving));
                 l2.gameserver.ThreadPoolManager.getInstance().schedule(new l2.commons.threading.RunnableImpl() {
                     @Override
                     public void runImpl() {
@@ -503,8 +566,9 @@ extends CharacterAI {
                     if (diff < 0) diff += 65536;
                     int side = diff < 32768 ? 1 : 0;
                     playable.broadcastPacket(new l2.gameserver.network.l2.s2c.StartRotating(playable, targetHeading, side, 65535));
+                    playable.broadcastPacket(new l2.gameserver.network.l2.s2c.FinishRotating(playable, targetHeading, 65535));
                     playable.setHeading(targetHeading);
-                    l2.gameserver.utils.MovementTelemetryLogger.logS2C((l2.gameserver.model.Player)playable, "SmoothTransitionDelay", String.format("delay=%dms targetHeading=%d side=%d skill=%s wasMoving=%b", delay, targetHeading, side, this._skill.getName(), wasMoving));
+                    if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) l2.gameserver.utils.MovementTelemetryLogger.logS2C((l2.gameserver.model.Player)playable, "SmoothTransitionDelay", String.format("delay=%dms targetHeading=%d side=%d skill=%s wasMoving=%b", delay, targetHeading, side, this._skill.getName(), wasMoving));
                     final l2.gameserver.model.Skill skillToCast = this._skill;
                     final boolean force = this._forceUse;
                     l2.gameserver.ThreadPoolManager.getInstance().schedule(new l2.commons.threading.RunnableImpl() {
@@ -714,6 +778,11 @@ extends CharacterAI {
 
     private static long calculateActionTransitionDelay(Playable playable, Creature creature, boolean wasMoving) {
         if (!playable.isPlayer() || creature == null) {
+            return 0L;
+        }
+        // Habilidade em si mesmo (Shock Stomp, Provoke, buffs...): nao ha para onde virar. A direcao calculada
+        // para o proprio ponto dava sempre 0, e o personagem girava para o mesmo lado e "andava" parado.
+        if (creature == playable || playable.getDistance(creature) < 8.0) {
             return 0L;
         }
         int targetHeading = l2.gameserver.utils.PositionUtils.calculateHeadingFrom(playable, creature);

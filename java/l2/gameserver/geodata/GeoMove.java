@@ -40,14 +40,40 @@ public class GeoMove {
       List<Location> nbaPath = l2.gameserver.geodata.pathfinding.NativeBidirectionalPathFinder.getInstance()
          .findPath(var0, var1, var2, var3, var4, var5, var7);
       if (!nbaPath.isEmpty()) {
+         // A rota so vale se todos os trechos forem percorriveis. Antes, um trecho invalido descartava
+         // a rota inteira e o motor classico nem era tentado: o monstro desistia atras de qualquer arvore.
          if (nbaPath.size() > 2) {
-            nbaPath = l2.gameserver.ai.util.RepositioningMath.suppressCollinear(nbaPath);
-            nbaPath = l2.gameserver.ai.util.RepositioningMath.stringPull(nbaPath, (from, to) -> GeoEngine.canMoveWithCollision(from.x, from.y, from.z, to.x, to.y, to.z, var7));
+            List<Location> smoothed = l2.gameserver.ai.util.RepositioningMath.suppressCollinear(nbaPath);
+            smoothed = l2.gameserver.ai.util.RepositioningMath.stringPull(smoothed, (from, to) -> GeoEngine.canMoveWithCollision(from.x, from.y, from.z, to.x, to.y, to.z, var7));
+            List<List<Location>> smoothedLines = lines(smoothed, var6, var7);
+            if (!smoothedLines.isEmpty()) {
+               return smoothedLines;
+            }
          }
-         return b(nbaPath, var7);
+         List<List<Location>> rawLines = lines(nbaPath, var6, var7);
+         if (!rawLines.isEmpty()) {
+            return rawLines;
+         }
       }
       // 2. Fallback clássico
-      return b(b(var0, var1, var2, var3, var4, var5, var6, var7), var7);
+      return lines(b(var0, var1, var2, var3, var4, var5, var6, var7), var6, var7);
+   }
+
+   /**
+    * Trechos percorriveis do caminho. Para NPCs e monstros tenta antes a versao com quinas
+    * suavizadas (SmoothObstacleAvoidance); se ela nao for percorrivel, vale o caminho original.
+    */
+   private static List<List<Location>> lines(List<Location> points, boolean playable, int geoIndex) {
+      if (Config.SMOOTH_OBSTACLE_AVOIDANCE && !playable && points.size() > 2) {
+         List<Location> smooth = l2.gameserver.geodata.pathfinding.SmoothObstacleAvoidance.smooth(points, geoIndex);
+         if (smooth != points) {
+            List<List<Location>> smoothLines = b(smooth, geoIndex);
+            if (!smoothLines.isEmpty()) {
+               return smoothLines;
+            }
+         }
+      }
+      return b(points, geoIndex);
    }
 
    private static List<List<Location>> b(List<Location> var0, int var1) {

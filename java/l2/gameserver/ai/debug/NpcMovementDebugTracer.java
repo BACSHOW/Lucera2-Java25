@@ -27,7 +27,7 @@ public final class NpcMovementDebugTracer {
     private static final Logger LOG = LoggerFactory.getLogger(NpcMovementDebugTracer.class);
     private static final NpcMovementDebugTracer INSTANCE = new NpcMovementDebugTracer();
 
-    public static volatile boolean GLOBAL_TRACE = true;
+    public static volatile boolean GLOBAL_TRACE = false;
     private static final Set<Integer> TRACKED_OBJS = ConcurrentHashMap.newKeySet();
     private final BlockingQueue<String> logQueue = new LinkedTransferQueue<>();
     private final SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss.SSS");
@@ -57,11 +57,7 @@ public final class NpcMovementDebugTracer {
         if (TRACKED_OBJS.contains(npc.getObjectId())) return true;
         if (!GLOBAL_TRACE) return false;
         
-        // Rastreia qualquer monstro cujo alvo seja "agaze" ou que esteja perto de um player
-        Creature target = npc.getAI() != null ? npc.getAI().getAttackTarget() : null;
-        if (target != null && target.isPlayer() && target.getName().equalsIgnoreCase("agaze")) {
-            return true;
-        }
+        // Trace global: qualquer monstro em combate
         if (npc.isMonster() && npc.isInCombat()) {
             return true;
         }

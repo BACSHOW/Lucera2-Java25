@@ -21,7 +21,7 @@ extends L2GameServerPacket {
     @Override
     protected final void writeImpl() {
         if (this.getClient() != null && this.getClient().getActiveChar() != null && this.getClient().getActiveChar().getObjectId() == this.aix) {
-            l2.gameserver.utils.MovementTelemetryLogger.logS2C(this.getClient().getActiveChar(), "*** SNAP CORRECTION (ValidateLocation) ***", String.format("ForcedLoc=(%d,%d,%d, h=%d)", this.cH.x, this.cH.y, this.cH.z + Config.CLIENT_Z_SHIFT, this.cH.h));
+            if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) l2.gameserver.utils.MovementTelemetryLogger.logS2C(this.getClient().getActiveChar(), "*** SNAP CORRECTION (ValidateLocation) ***", String.format("ForcedLoc=(%d,%d,%d, h=%d)", this.cH.x, this.cH.y, this.cH.z + Config.CLIENT_Z_SHIFT, this.cH.h));
         }
         this.writeC(97);
         this.writeD(this.aix);

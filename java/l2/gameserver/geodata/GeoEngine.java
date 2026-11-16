@@ -37,7 +37,14 @@ public class GeoEngine {
    public static final byte BLOCKTYPE_COMPLEX = 1;
    public static final byte BLOCKTYPE_MULTILEVEL = 2;
    public static final int BLOCKS_IN_MAP = 65536;
-   public static int MAX_LAYERS = 1;
+   public static volatile int MAX_LAYERS = 1;
+
+   /** Carga paralela: o read-modify-write precisa ser atomico para nao perder o maior valor. */
+   private static synchronized void raiseMaxLayers(int layers) {
+      if (layers > MAX_LAYERS) {
+         MAX_LAYERS = layers;
+      }
+   }
    private static final ByteBuffer[][] xK = new ByteBuffer[World.WORLD_SIZE_X][World.WORLD_SIZE_Y];
    private static final byte[][][][][] xL = new byte[World.WORLD_SIZE_X][World.WORLD_SIZE_Y][1][][];
 
@@ -1362,7 +1369,9 @@ public class GeoEngine {
 
                for (int var13 = 0; var13 < 64; var13++) {
                   byte var14 = var5.get(var6);
-                  MAX_LAYERS = Math.max(MAX_LAYERS, var14);
+                  if (var14 > MAX_LAYERS) {
+                     raiseMaxLayers(var14);
+                  }
                   var6 += (var14 << 1) + 1;
                   if (var14 > var9) {
                      var9 = var14;

@@ -47,11 +47,12 @@ public class MacroList {
 
     public void registerMacro(Macro macro) {
         if (macro.id == 0) {
-            macro.id = this.Nu++;
-            while (this.Ns.get(macro.id) != null) {
+            // O contador recomeca em 1000 a cada login e as macros salvas ja usam 1000, 1001...
+            // O laco original nunca trocava o id (macro.id = macro.id) e girava para sempre.
+            while (this.Ns.containsKey(this.Nu)) {
                 ++this.Nu;
-                macro.id = macro.id;
             }
+            macro.id = this.Nu++;
             this.Ns.put(macro.id, macro);
             this.a(macro);
         } else {

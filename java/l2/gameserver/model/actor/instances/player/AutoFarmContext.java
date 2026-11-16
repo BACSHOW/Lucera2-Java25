@@ -38,6 +38,12 @@ import l2.gameserver.utils.Location;
 import org.apache.commons.lang3.ArrayUtils;
 
 public class AutoFarmContext {
+   public static final int FARM_TYPE_Physical = 0;
+   public static final int FARM_TYPE_Archer = 1;
+   public static final int FARM_TYPE_Mage = 2;
+   public static final int FARM_TYPE_Heal = 3;
+   public static final int FARM_TYPE_Summon = 4;
+
    private final List<Integer> Mn = Arrays.asList(0, 1, 2, 3);
    private final List<Integer> Mo = Arrays.asList(4, 5);
    private final List<Integer> Mp = Arrays.asList(6, 7, 8, 9);
@@ -525,11 +531,58 @@ public class AutoFarmContext {
       }
    }
 
+   /** Tarefa do farm: a versao com Counter Attack/Respect Hunt (services.AutoFarmPlus) ou a nativa. */
+   private Runnable newFarmTask(int type) {
+      Runnable plus = services.AutoFarmPlus.createTask(this, type);
+      if (plus != null) {
+         return plus;
+      }
+
+      switch (type) {
+         case 0:
+            return new AutoPhysicalFarmTask(this);
+         case 1:
+            return new AutoArcherFarmTask(this);
+         case 2:
+            return new AutoMagicFarmTask(this);
+         case 3:
+            return new AutoHealFarmTask(this);
+         default:
+            return new AutoSummonFarmTask(this);
+      }
+   }
+
+   private volatile String farmKey;
+
+   public String getFarmKey() {
+      return this.farmKey;
+   }
+
+   private String resolveFarmKey(Player var1) {
+      if (this.farmKey != null && var1.getNetConnection() == null) {
+         return this.farmKey;
+      }
+
+      String var2 = Config.ALLOW_CHECK_HWID_LIMIT && var1.getNetConnection() != null ? var1.getNetConnection().getHwid() : var1.getIP();
+      if (var2 == null || var2.trim().isEmpty()) {
+         // sem HWID (cliente sem modulo): usa o IP em vez de uma chave nula compartilhada
+         var2 = var1.getNetConnection() != null ? var1.getNetConnection().getIpAddr() : var1.getIP();
+      }
+
+      return var2 == null ? "unknown" : var2;
+   }
+
    public void startFarmTask() {
       Player var1 = this.getPlayer();
       if (var1 != null && !this.isAutofarming() && Config.ALLOW_AUTO_FARM && (!Config.AUTO_FARM_FOR_PREMIUM || var1.hasBonus())) {
-         int var2 = AutoFarmManager.getInstance().getActiveFarms(Config.ALLOW_CHECK_HWID_LIMIT ? var1.getNetConnection().getHwid() : var1.getIP());
+         String keyChk = this.resolveFarmKey(var1);
+         int var2 = AutoFarmManager.getInstance().getActiveFarms(keyChk);
+         if (var2 <= 0) {
+            AutoFarmManager.getInstance().recountActiveFarm(keyChk, var1);
+            var2 = AutoFarmManager.getInstance().getActiveFarms(keyChk);
+         }
          if (var2 <= 0 && !AutoFarmManager.getInstance().isNonCheckPlayer(var1.getObjectId())) {
+            org.slf4j.LoggerFactory.getLogger("AutoFarmDiag").warn("limite: player=" + var1.getName() + " obj=" + System.identityHashCode(var1) + " key=" + keyChk + " farmKey=" + this.farmKey + " autofarming=" + this.isAutofarming() + " limit=" + Config.FARM_ACTIVE_LIMITS);
             var1.sendMessage(new CustomMessage("EXCEEDED_LIMIT_ON_USE_OF_SERVICE", var1));
          } else {
             if (!Config.AUTO_FARM_LIMIT_ZONE_NAMES.isEmpty()) {
@@ -549,7 +602,8 @@ public class AutoFarmContext {
             } catch (Exception var9) {
             }
 
-            AutoFarmManager.getInstance().addActiveFarm(Config.ALLOW_CHECK_HWID_LIMIT ? var1.getNetConnection().getHwid() : var1.getIP(), var1.getObjectId());
+            this.farmKey = this.resolveFarmKey(var1);
+            AutoFarmManager.getInstance().addActiveFarm(this.farmKey, var1.getObjectId());
             if (this.isKeepLocation()) {
                this.setKeepLocation(var1.getLoc());
             }
@@ -561,21 +615,21 @@ public class AutoFarmContext {
                      var10 = var1.getPAtkSpd() > 1000 ? 500 : 1000;
                   }
 
-                  this.Nj = ThreadPoolManager.getInstance().scheduleAtFixedRate(new AutoPhysicalFarmTask(this), 1000L, var10);
+                  this.Nj = ThreadPoolManager.getInstance().scheduleAtFixedRate(this.newFarmTask(0), 1000L, var10);
                   break;
                case 1:
                   if (var10 <= 0) {
                      var10 = var1.getPAtkSpd() > 1000 ? 500 : 1000;
                   }
 
-                  this.Nj = ThreadPoolManager.getInstance().scheduleAtFixedRate(new AutoArcherFarmTask(this), 1000L, var10);
+                  this.Nj = ThreadPoolManager.getInstance().scheduleAtFixedRate(this.newFarmTask(1), 1000L, var10);
                   break;
                case 2:
                   if (var10 <= 0) {
                      var10 = var1.getMAtkSpd() > 1000 ? 500 : 1000;
                   }
 
-                  this.Nj = ThreadPoolManager.getInstance().scheduleAtFixedRate(new AutoMagicFarmTask(this), 1000L, var10);
+                  this.Nj = ThreadPoolManager.getInstance().scheduleAtFixedRate(this.newFarmTask(2), 1000L, var10);
                   break;
                case 3:
                   if (var10 <= 0) {
@@ -586,13 +640,13 @@ public class AutoFarmContext {
                      }
                   }
 
-                  this.Nj = ThreadPoolManager.getInstance().scheduleAtFixedRate(new AutoHealFarmTask(this), 1000L, var10);
+                  this.Nj = ThreadPoolManager.getInstance().scheduleAtFixedRate(this.newFarmTask(3), 1000L, var10);
                   break;
                case 4:
                   if (var1.getPet() == null) {
                      var1.sendMessage(new CustomMessage("YOU_HAVE_NO_SUMMON_AUTOFARMING_DEACTIVATE", var1));
                      AutoFarmManager.getInstance()
-                        .removeActiveFarm(Config.ALLOW_CHECK_HWID_LIMIT ? var1.getNetConnection().getHwid() : var1.getIP(), var1.getObjectId());
+                        .removeActiveFarm(this.farmKey != null ? this.farmKey : this.resolveFarmKey(var1), var1.getObjectId());
                      return;
                   }
 
@@ -604,7 +658,7 @@ public class AutoFarmContext {
                      }
                   }
 
-                  this.Nj = ThreadPoolManager.getInstance().scheduleAtFixedRate(new AutoSummonFarmTask(this), 1000L, var10);
+                  this.Nj = ThreadPoolManager.getInstance().scheduleAtFixedRate(this.newFarmTask(4), 1000L, var10);
             }
 
             boolean var11 = Config.PREMIUM_FARM_FREE && var1.hasBonus();
@@ -632,6 +686,7 @@ public class AutoFarmContext {
             }
 
             var1.sendMessage(new CustomMessage("AUTOFARMING_ACTIVATED", var1));
+            services.AutoFarmPlus.onFarmStart(var1);
          }
       } else {
          var1.sendMessage(new CustomMessage("AUTO_FARM_PREMIUM_ONLY", var1));
@@ -665,7 +720,7 @@ public class AutoFarmContext {
             this.Nf = 0L;
          }
 
-         AutoFarmManager.getInstance().removeActiveFarm(Config.ALLOW_CHECK_HWID_LIMIT ? var2.getNetConnection().getHwid() : var2.getIP(), var2.getObjectId());
+         AutoFarmManager.getInstance().removeActiveFarm(this.farmKey != null ? this.farmKey : this.resolveFarmKey(var2), var2.getObjectId());
          if (Config.SERVICES_AUTO_FARM_ABNORMAL != AbnormalEffect.NULL) {
             var2.stopAbnormalEffect(Config.SERVICES_AUTO_FARM_ABNORMAL);
          }
@@ -675,6 +730,7 @@ public class AutoFarmContext {
          }
 
          var2.sendMessage(new CustomMessage("AUTOFARMING_DEACTIVATED", var2));
+         services.AutoFarmPlus.onFarmStop(var2);
          if (var1) {
             this.startFarmTask();
          }

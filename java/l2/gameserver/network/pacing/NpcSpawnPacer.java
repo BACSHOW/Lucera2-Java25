@@ -320,7 +320,10 @@ public final class NpcSpawnPacer {
         try (GameClient.PacketBatchScope scope = _player.openPacketBatch()) {
             for (int i = 0; i < count; i++) {
                 NpcInstance npc = resolveNpc(toDispatch[i]);
-                if (npc != null && npc.isVisible() && _player.isInRangeZ(npc, (long) Config.VISIBLE_OBJECT_RADIUS)) {
+                // Nao ha reenvio depois: um NPC descartado aqui ficava invisivel ate o jogador trocar de regiao
+                // (o servidor e o AutoFarm continuavam vendo e atacando). O raio so vale com o filtro ligado.
+                if (npc != null && npc.isVisible() && npc.getReflectionId() == _player.getReflectionId()
+                        && (!Config.ENABLE_VISIBLE_OBJECT_RADIUS_FILTER || _player.isInRangeZ(npc, (long) Config.VISIBLE_OBJECT_RADIUS))) {
                     sendImmediate(npc);
                 }
             }

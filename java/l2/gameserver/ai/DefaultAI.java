@@ -442,7 +442,7 @@ extends CharacterAI {
         if (this._repositioningUntil > System.currentTimeMillis() && npcInstance.isMoving()) {
             return;
         }
-        NpcMovementDebugTracer.getInstance().traceTick(npcInstance, "thinkAttack", this.getAttackTarget(),
+        if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceTick(npcInstance, "thinkAttack", this.getAttackTarget(),
             "timeoutLeft=" + (this.getAttackTimeout() - System.currentTimeMillis()) + "ms, tasks=" + this._tasks.size() + ", fails=" + this._pathfindFails);
         Location location = this.getPursueBaseLoc();
         if (!npcInstance.isInRange(location, (long)this.MAX_PURSUE_RANGE)) {
@@ -492,9 +492,12 @@ extends CharacterAI {
         return this.tryMoveToTarget(creature, DefaultAI.getIndentRange(creature.getActingRange()), creature.getActingRange());
     }
 
+    /** Distancia minima do alvo para uma falha de pathfinding contar para o Return Home (README: 250). */
+    private static final int RETURN_HOME_MIN_DISTANCE = 250;
+
     protected boolean tryMoveToTarget(Creature creature, int n, int n2) {
         NpcInstance npcInstance = this.getActor();
-        NpcMovementDebugTracer.getInstance().traceTick(npcInstance, "tryMoveToTarget", creature,
+        if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceTick(npcInstance, "tryMoveToTarget", creature,
             "dist=" + (creature != null ? npcInstance.getDistance(creature) : -1) + ", targetMoving=" + (creature != null && creature.isMoving()) + ", n=" + n + ", n2=" + n2 + ", fails=" + this._pathfindFails);
 
         if (creature == null) {
@@ -534,7 +537,9 @@ extends CharacterAI {
             this._pathfindFails = 0;
         } else if (!npcInstance.isMoving()) {
             // L2OFF Dhousefe: Nao contabiliza falha de geodata se estiver colado em alcance melee (evita falso positivo)
-            if (npcInstance.getDistance(creature) > actualIndent + 64) {
+            // README (Return Home): so desiste quando falha o pathfinding com o alvo a mais de 250 unidades.
+            // Mais perto que isso o monstro continua tentando, ate o tempo limite de ataque.
+            if (npcInstance.getDistance(creature) > Math.max(actualIndent + 64, RETURN_HOME_MIN_DISTANCE)) {
                 ++this._pathfindFails;
             } else {
                 this._pathfindFails = 0;
@@ -553,7 +558,7 @@ extends CharacterAI {
                 npcInstance.teleToLocation(loc);
             } else if (!npcInstance.isRaid()) {
                 // L2OFF: Monstros normais NUNCA teleportam para o player! Eles desistem do alvo e voltam ao spawn!
-                NpcMovementDebugTracer.getInstance().traceEvent(npcInstance, "PATHFIND_FAIL_RETURN_HOME",
+                if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceEvent(npcInstance, "PATHFIND_FAIL_RETURN_HOME",
                     "Monstro nao alcancou alvo apos falhas consecutivas de obstaculo. Retornando ao spawn.");
                 npcInstance.getAggroList().remove(creature, true);
                 this.returnHome();
@@ -609,7 +614,7 @@ extends CharacterAI {
                 boolean bl = npcInstance.isFlying() || npcInstance.isInWater() || creature.isFlying() || creature.isInWater();
                 int n3 = (int)(!bl ? npcInstance.getDistance(creature) : npcInstance.getDistance3D(creature)) - n2;
                 if (n3 <= n + 16 && GeoEngine.canSeeTarget(npcInstance, creature, bl)) {
-                    NpcMovementDebugTracer.getInstance().traceCombat(npcInstance, "REACHED_ATTACK_RANGE", creature,
+                    if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceCombat(npcInstance, "REACHED_ATTACK_RANGE", creature,
                         "dist3d=" + n3 + ", atkRange=" + n + ", wasMoving=" + npcInstance.isMoving() + ", transitionDelay=0ms (L2OFF)");
                     this.faceTargetForAction(npcInstance, creature);
                     this.clientStopMoving(true);
@@ -866,7 +871,7 @@ extends CharacterAI {
     protected void returnHome(boolean bl, boolean bl2) {
         NpcInstance npcInstance = this.getActor();
         Location location = this.getPursueBaseLoc();
-        NpcMovementDebugTracer.getInstance().traceEvent(npcInstance, "RETURN_HOME",
+        if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceEvent(npcInstance, "RETURN_HOME",
             "spawnLoc=" + location + ", distToSpawn=" + (location != null ? npcInstance.getDistance(location) : -1) + ", teleport=" + bl2);
         this.clearTasks();
         npcInstance.stopMove();
@@ -1411,6 +1416,7 @@ extends CharacterAI {
         }
         int side = diff < 32768 ? 1 : 0;
         npc.broadcastPacket(new StartRotating(npc, targetHeading, side, 65535));
+        npc.broadcastPacket(new l2.gameserver.network.l2.s2c.FinishRotating(npc, targetHeading, 65535));
         npc.setHeading(targetHeading);
     }
 

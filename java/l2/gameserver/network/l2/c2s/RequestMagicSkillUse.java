@@ -108,7 +108,7 @@ extends L2GameClientPacket {
         player.getSkillFloodTracker().tryMarkCastPacketSeen(skill.getId(), targetObjId, DEBOUNCE_MS);
 
         player.setGroundSkillLoc(null);
-        l2.gameserver.utils.MovementTelemetryLogger.logC2S(player, "RequestMagicSkillUse", String.format("Skill=%s [#%d lvl %d] Target=%s dist=%.1f range=%d isCtrl=%b isShift=%b", skill.getName(), skill.getId(), skill.getLevel(), (creature != null ? creature.getName() : "null"), (creature != null ? player.getDistance(creature) : -1.0), skill.getCastRange(), this.aaX, this.aaY));
+        if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) l2.gameserver.utils.MovementTelemetryLogger.logC2S(player, "RequestMagicSkillUse", String.format("Skill=%s [#%d lvl %d] Target=%s dist=%.1f range=%d isCtrl=%b isShift=%b", skill.getName(), skill.getId(), skill.getLevel(), (creature != null ? creature.getName() : "null"), (creature != null ? player.getDistance(creature) : -1.0), skill.getCastRange(), this.aaX, this.aaY));
         player.getAI().Cast(skill, creature, this.aaX, this.aaY);
     }
 }

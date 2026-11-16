@@ -76,11 +76,36 @@ extends AbstractAI {
     protected void onEvtArrivedBlocked(Location location) {
         Creature creature = this.getActor();
         if (creature.isPlayer()) {
-            Location location2 = ((Player)creature).getLastServerPosition();
-            if (location2 != null) {
+            Player player = (Player)creature;
+            // Para o movimento ANTES de aceitar o ponto. Com o movimento ainda ativo, o stopMove
+            // recalculava a posicao pelo percurso e desfazia a aceitacao (medido: 17566 -> 17627).
+            // No barco o StopMove e diferente (inStopMovePacket): la fica o caminho original.
+            boolean wasMoving = creature.isMoving() && !player.isInBoat();
+            if (wasMoving) {
+                creature.stopMove(false, false);
+            }
+            // O cliente informa onde ficou bloqueado (ex.: no corpo de um monstro). Se o ponto for
+            // valido, o servidor passa a usa-lo; senao mantem o comportamento original.
+            boolean accepted = player.tryAcceptClientPosition(location, true);
+            if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) {
+                l2.gameserver.utils.MovementTelemetryLogger.logEvent(player, "ARRIVED_BLOCKED", String.format("ClientLoc=(%d,%d,%d) accepted=%b", location.x, location.y, location.z, accepted));
+            }
+            Location location2 = player.getLastServerPosition();
+            // Quando o proprio servidor para o movimento (geodata bloqueou), o ponto informado e a posicao
+            // atual do servidor, que ja e valida. Voltar para a ultima posicao do ValidatePosition (ate ~1 s
+            // atras) puxava o personagem cerca de 160 unidades para tras sem motivo.
+            boolean serverOwnStop = player.getDistance(location.x, location.y) < 1.0;
+            if (!accepted && !serverOwnStop && location2 != null) {
                 creature.setLoc(location2, true);
             }
-            if (creature.isMoving()) {
+            if (wasMoving) {
+                // O StopMove que antes saia no stopMove(), agora com a posicao ja decidida
+                // (quando aceita, o tryAcceptClientPosition ja enviou o validateLocation).
+                if (!accepted) {
+                    creature.validateLocation(2);
+                }
+                creature.broadcastPacket(new l2.gameserver.network.l2.s2c.StopMove(creature));
+            } else if (creature.isMoving()) {
                 creature.stopMove();
             }
         }

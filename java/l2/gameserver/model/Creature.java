@@ -966,7 +966,7 @@ public abstract class Creature extends GameObject {
          int var3 = 0;
          int var4 = var8;
          if (this.isNpc()) {
-             NpcMovementDebugTracer.getInstance().traceCombat((NpcInstance) this, "DO_ATTACK_START", var1,
+             if (NpcMovementDebugTracer.isTracking((NpcInstance) this)) NpcMovementDebugTracer.getInstance().traceCombat((NpcInstance) this, "DO_ATTACK_START", var1,
                  "animDelay=" + var8 + "ms, pAtkSpd=" + this.getPAtkSpd() + ", dist=" + String.format("%.1f", this.getDistance(var1)));
          }
          this._attackEndTime = var8 + System.currentTimeMillis() - Config.ATTACK_END_DELAY;
@@ -1876,7 +1876,21 @@ public abstract class Creature extends GameObject {
 
    public void broadcastMove() {
       this.validateLocation(this.isPlayer() ? 2 : 1);
-      this.broadcastPacket(this.movePacket());
+      L2GameServerPacket var1 = this.movePacket();
+      Creature.MoveActionBase var2 = this.moveAction;
+      // AutoFarm: o proprio cliente muitas vezes ignora o MoveToPawn (fica parado enquanto o servidor anda e
+      // ataca de longe). Para o dono do personagem vai um CharMoveToLocation ao mesmo destino, que o cliente
+      // sempre segue; os outros jogadores continuam recebendo o MoveToPawn.
+      if (var1 instanceof MoveToPawn && var2 != null && this.isPlayer()
+         && ((Player)this).getFarmSystem() != null && ((Player)this).getFarmSystem().isAutofarming()) {
+         Location var3 = var2.moveTo();
+         if (var3 != null) {
+            this.sendPacket(new CharMoveToLocation(this, this.getLoc(), var3.clone()));
+            this.broadcastPacketToOthers(var1);
+            return;
+         }
+      }
+      this.broadcastPacket(var1);
    }
 
    public void stopMove() {
@@ -4172,7 +4186,9 @@ public abstract class Creature extends GameObject {
                      return true;
                   }
 
-                  this.EA = var5.clone();
+                  // EA guarda a posicao do ALVO para a qual a rota foi feita. Guardar o ponto do anel
+                  // de cerco fazia isPathRebuildRequired() dar true em todo tick contra alvo parado.
+                  this.EA = var2.getLoc().clone();
                } else if (!this.pollPathLine()) {
                   this.onFinish(false, false);
                   return true;
@@ -4258,8 +4274,13 @@ public abstract class Creature extends GameObject {
                      return false;
                   }
 
-                  this.EA = var6.clone();
-                  var3.broadcastMove();
+                  this.EA = var4.getLoc().clone();
+                  // Playable seguindo criatura usa MoveToPawn: o cliente acompanha o alvo sozinho,
+                  // entao reenviar a cada tick so gera rajada de pacotes. NPC usa CharMoveToLocation
+                  // (destino fixo) e precisa do reenvio para corrigir a direcao.
+                  if (!(var3.isPlayable() && var4.isCreature())) {
+                     var3.broadcastMove();
+                  }
                } else if (this.EB && this.isArrived()) {
                   this.onFinish(true, false);
                   return false;

@@ -2101,6 +2101,26 @@ public class Player extends Playable implements PlayerGroup {
       this.GW = var1;
    }
 
+   /** Offline Hunting: solta o cliente SEM parar o farm (setNetConnection(null) pararia). */
+   public synchronized boolean detachNetConnectionKeepFarm(GameClient var1) {
+      if (var1 == null || this.GW != var1) {
+         return false;
+      }
+
+      this.GW = null;
+      return true;
+   }
+
+   /** Offline Hunting: reanexa o cliente original se o detach falhar. */
+   public synchronized boolean reattachNetConnection(GameClient var1) {
+      if (this.GW != null || var1 == null) {
+         return false;
+      }
+
+      this.GW = var1;
+      return true;
+   }
+
    public boolean isConnected() {
       return this.GW != null && this.GW.isConnected();
    }
@@ -7018,6 +7038,105 @@ public class Player extends Playable implements PlayerGroup {
 
    public Location getLastServerPosition() {
       return this.JX;
+   }
+
+   private volatile long _lastPositionAcceptTime;
+   private volatile Location _lastAcceptedClientLoc;
+   private volatile long _lastElasticReconcileTime;
+   private volatile Location _lastElasticClientLoc;
+   private volatile int _elasticAttempts;
+
+   /** ValidatePosition (Yellow Zone): quantas reconciliacoes seguidas o cliente ignorou no mesmo ponto. */
+   public int countElasticAttempt(Location var1) {
+      Location var2 = this._lastElasticClientLoc;
+      this._elasticAttempts = var2 != null && var2.distance(var1) <= 8.0 ? this._elasticAttempts + 1 : 1;
+      this._lastElasticClientLoc = var1.clone();
+      return this._elasticAttempts;
+   }
+
+   public void resetElasticAttempts() {
+      this._elasticAttempts = 0;
+      this._lastElasticClientLoc = null;
+   }
+   private volatile long _lastClientReportTime;
+
+   /** ValidatePosition: momento do ultimo relatorio de posicao recebido do cliente. */
+   public long getLastClientReportTime() {
+      return this._lastClientReportTime;
+   }
+
+   public void setLastClientReportTime(long var1) {
+      this._lastClientReportTime = var1;
+   }
+
+   /** ValidatePosition (Green Zone): momento em que o servidor aceitou a posicao do cliente pela ultima vez. */
+   public long getLastPositionAcceptTime() {
+      return this._lastPositionAcceptTime;
+   }
+
+   public void setLastPositionAcceptTime(long var1) {
+      this._lastPositionAcceptTime = var1;
+   }
+
+   /**
+    * Green Zone: passa a usar a posicao informada pelo cliente, se ela estiver dentro da zona verde,
+    * couber no que o personagem correria desde a ultima aceitacao e for alcancavel pela geodata.
+    * Atacar ou conjurar nao impede: e justamente parado em combate que a diferenca aparece.
+    *
+    * @param whileMoving true quando o proprio cliente avisou que parou (CannotMoveAnymore)
+    * @return true se a posicao do servidor agora e a do cliente
+    */
+   public boolean tryAcceptClientPosition(Location var1, boolean var2) {
+      if (var1 == null) {
+         return false;
+      }
+      // Pelo ValidatePosition so vale parado e fora de ataque/cast: em combate o cliente fica preso na
+      // animacao e nao acompanha o passo que o servidor daria em seguida (medido em jogo).
+      if (!var2 && (this.isMoving() || this.isAttackingNow() || this.isCastingNow())) {
+         return false;
+      }
+      if (this.isTeleporting() || this.isFalling() || this.isSitting() || this.isInBoat() || this.isAlikeDead()
+         || this.isBlocked() || this.isRooted() || this.isImmobilized() || this.isStunned() || this.isSleeping()
+         || this.isParalyzed() || this.isFrozen()) {
+         return false;
+      }
+      double var3 = this.getDistance(var1.x, var1.y);
+      if (var3 < 1.0) {
+         return true;
+      }
+      if (var3 > l2.gameserver.network.l2.c2s.ValidatePosition.GREEN_ZONE) {
+         return false;
+      }
+      long var5 = System.currentTimeMillis();
+      // A mesma posicao do cliente nao e aceita duas vezes seguidas: se o servidor saiu dela de novo
+      // por conta propria, aceitar outra vez so criaria um vai-e-volta.
+      Location var9 = this._lastAcceptedClientLoc;
+      if (var9 != null && var5 - this._lastPositionAcceptTime < 10000L && var9.distance(var1) <= 8.0) {
+         return false;
+      }
+      if (var3 > l2.gameserver.network.l2.c2s.ValidatePosition.acceptBudget(this.getMoveSpeed(), var5 - this._lastPositionAcceptTime)) {
+         return false;
+      }
+      int var7 = this.getGeoIndex();
+      int var8 = l2.gameserver.geodata.GeoEngine.getHeight(var1.x, var1.y, var1.z, var7);
+      if (!l2.gameserver.geodata.GeoEngine.canMoveToCoord(this.getX(), this.getY(), this.getZ(), var1.x, var1.y, var8, var7)) {
+         return false;
+      }
+      this.setXYZ(var1.x, var1.y, var8, true);
+      this._lastPositionAcceptTime = var5;
+      this._lastAcceptedClientLoc = var1.clone();
+      // Os outros jogadores viam o personagem na posicao antiga do servidor.
+      this.validateLocation(2);
+      return true;
+   }
+
+   /** ValidatePosition (Yellow Zone): momento da ultima reconciliacao elastica enviada. */
+   public long getLastElasticReconcileTime() {
+      return this._lastElasticReconcileTime;
+   }
+
+   public void setLastElasticReconcileTime(long var1) {
+      this._lastElasticReconcileTime = var1;
    }
 
    public void setUseSeed(int var1) {

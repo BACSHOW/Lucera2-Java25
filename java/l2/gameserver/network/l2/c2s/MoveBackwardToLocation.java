@@ -84,7 +84,7 @@ extends L2GameClientPacket {
         if (player.isInFlyingTransform()) {
             this.aaN.z = Math.min(5950, Math.max(50, this.aaN.z));
         }
-        l2.gameserver.utils.MovementTelemetryLogger.logC2S(player, "MoveBackwardToLocation", String.format("TargetLoc=(%d,%d,%d) OrigLoc=(%d,%d,%d) mode=%d", this.aaN.x, this.aaN.y, this.aaN.z, this.aaO.x, this.aaO.y, this.aaO.z, this.aaP));
+        if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) l2.gameserver.utils.MovementTelemetryLogger.logC2S(player, "MoveBackwardToLocation", String.format("TargetLoc=(%d,%d,%d) OrigLoc=(%d,%d,%d) mode=%d", this.aaN.x, this.aaN.y, this.aaN.z, this.aaO.x, this.aaO.y, this.aaO.z, this.aaP));
         player.moveBackwardToLocationForPacket(this.aaN, this.aaP != 0 && !player.getVarB("no_pf"));
     }
 }

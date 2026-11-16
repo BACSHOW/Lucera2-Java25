@@ -24,8 +24,14 @@ public class AdminNpcDebug implements IAdminCommandHandler {
                 NpcMovementDebugTracer.GLOBAL_TRACE = enable;
                 activeChar.sendMessage("[NPC Tracer] Global Trace: " + (enable ? "ATIVADO (log/npc_movement_debug.txt)" : "DESATIVADO"));
                 return true;
+            } else if (wordList[1].equalsIgnoreCase("telemetry")) {
+                boolean enable = wordList.length > 2 && wordList[2].equalsIgnoreCase("on");
+                l2.gameserver.utils.MovementTelemetryLogger.ENABLED = enable;
+                activeChar.sendMessage("[Telemetria] Movimento/pacotes: " + (enable ? "ATIVADA (log/movement_debug.txt)" : "DESATIVADA"));
+                return true;
             } else if (wordList[1].equalsIgnoreCase("status")) {
-                activeChar.sendMessage("[NPC Tracer] Global: " + NpcMovementDebugTracer.GLOBAL_TRACE);
+                activeChar.sendMessage("[NPC Tracer] Global: " + NpcMovementDebugTracer.GLOBAL_TRACE
+                    + " | Telemetria: " + l2.gameserver.utils.MovementTelemetryLogger.ENABLED);
                 return true;
             }
         }

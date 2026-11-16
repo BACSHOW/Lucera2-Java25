@@ -21,6 +21,8 @@ public final class MovementTelemetryLogger {
     private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
     private static final ConcurrentLinkedQueue<String> QUEUE = new ConcurrentLinkedQueue<>();
     private static volatile boolean RUNNING = true;
+    /** Desligado por padrao. Ligue em jogo com //track_npc telemetry on. */
+    public static volatile boolean ENABLED = false;
     private static PrintWriter WRITER;
 
     static {
@@ -67,6 +69,9 @@ public final class MovementTelemetryLogger {
     }
 
     public static void logC2S(Player player, String packetName, String details) {
+        if (!ENABLED) {
+            return;
+        }
         if (player == null) return;
         log(String.format("C2S [%s #%d] %-22s | SrvLoc=(%d,%d,%d, h=%d, isMoving=%b) | %s",
                 player.getName(), player.getObjectId(), packetName,
@@ -75,6 +80,9 @@ public final class MovementTelemetryLogger {
     }
 
     public static void logS2C(Player player, String packetName, String details) {
+        if (!ENABLED) {
+            return;
+        }
         if (player == null) return;
         log(String.format("S2C [%s #%d] %-22s | SrvLoc=(%d,%d,%d, h=%d, isMoving=%b) | %s",
                 player.getName(), player.getObjectId(), packetName,
@@ -83,6 +91,9 @@ public final class MovementTelemetryLogger {
     }
 
     public static void logEvent(Player player, String eventName, String details) {
+        if (!ENABLED) {
+            return;
+        }
         if (player == null) return;
         log(String.format("EVT [%s #%d] %-22s | SrvLoc=(%d,%d,%d, h=%d, isMoving=%b) | %s",
                 player.getName(), player.getObjectId(), eventName,

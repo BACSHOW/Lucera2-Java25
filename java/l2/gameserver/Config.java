@@ -1304,6 +1304,9 @@ public class Config {
    public static boolean PATHFIND_DIAGONAL;
    public static boolean PATH_CLEAN;
    public static int PATHFIND_MAX_Z_DIFF;
+   public static boolean SMOOTH_OBSTACLE_AVOIDANCE;
+   public static int SMOOTH_OBSTACLE_OFFSET;
+   public static int SMOOTH_OBSTACLE_CUT;
    public static long PATHFIND_MAX_TIME;
    public static String PATHFIND_BUFFERS;
    public static boolean ALLOW_PAWN_PATHFIND;
@@ -2991,6 +2994,9 @@ public class Config {
       PATHFIND_DIAGONAL = var0.getProperty("PathFindDiagonal", true);
       PATH_CLEAN = var0.getProperty("PathClean", true);
       PATHFIND_MAX_Z_DIFF = var0.getProperty("PathFindMaxZDiff", 32);
+      SMOOTH_OBSTACLE_AVOIDANCE = var0.getProperty("SmoothObstacleAvoidance", false);
+      SMOOTH_OBSTACLE_OFFSET = var0.getProperty("SmoothObstacleOffset", 24);
+      SMOOTH_OBSTACLE_CUT = var0.getProperty("SmoothObstacleCut", 48);
       MAX_Z_DIFF = var0.getProperty("MaxZDiff", 64);
       MIN_LAYER_HEIGHT = var0.getProperty("MinLayerHeight", 64);
       PATHFIND_MAX_TIME = var0.getProperty("PathFindMaxTime", 10000000);

@@ -34,7 +34,7 @@ extends L2GameServerPacket {
     @Override
     protected final void writeImpl() {
         if (this.getClient() != null && this.getClient().getActiveChar() != null && this.getClient().getActiveChar().getObjectId() == this.CS) {
-            l2.gameserver.utils.MovementTelemetryLogger.logS2C(this.getClient().getActiveChar(), "StopMove", String.format("Loc=(%d,%d,%d, h=%d)", this._x, this._y, this.Di, this.amW));
+            if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) l2.gameserver.utils.MovementTelemetryLogger.logS2C(this.getClient().getActiveChar(), "StopMove", String.format("Loc=(%d,%d,%d, h=%d)", this._x, this._y, this.Di, this.amW));
         }
         this.writeC(71);
         this.writeD(this.CS);

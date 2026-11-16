@@ -52,7 +52,7 @@ extends L2GameClientPacket {
             player.sendPacket(SystemMsg.YOU_CANNOT_MOVE_WHILE_FROZEN, ActionFail.STATIC);
             return;
         }
-        l2.gameserver.utils.MovementTelemetryLogger.logC2S(player, "Action", String.format("Target=%s [#%d] isShift=%b curTarget=%s dist=%.1f", gameObject.getName(), gameObject.getObjectId(), this.aat == 1, (player.getTarget() != null ? player.getTarget().getName() : "null"), player.getDistance(gameObject)));
+        if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) l2.gameserver.utils.MovementTelemetryLogger.logC2S(player, "Action", String.format("Target=%s [#%d] isShift=%b curTarget=%s dist=%.1f", gameObject.getName(), gameObject.getObjectId(), this.aat == 1, (player.getTarget() != null ? player.getTarget().getName() : "null"), player.getDistance(gameObject)));
         gameObject.onAction(player, this.aat == 1);
     }
 }

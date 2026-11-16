@@ -59,7 +59,7 @@ extends L2GameServerPacket {
     @Override
     protected final void writeImpl() {
         if (this.getClient() != null && this.getClient().getActiveChar() != null && this.getClient().getActiveChar().getObjectId() == this._attackerId && this.adP.length > 0) {
-            l2.gameserver.utils.MovementTelemetryLogger.logS2C(this.getClient().getActiveChar(), "Attack", String.format("TargetId=%d damage=%d AttackerLoc=(%d,%d,%d)", this.adP[0]._targetId, this.adP[0]._damage, this._x, this._y, this.Di));
+            if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) l2.gameserver.utils.MovementTelemetryLogger.logS2C(this.getClient().getActiveChar(), "Attack", String.format("TargetId=%d damage=%d AttackerLoc=(%d,%d,%d)", this.adP[0]._targetId, this.adP[0]._damage, this._x, this._y, this.Di));
         }
         this.writeC(5);
         this.writeD(this._attackerId);
