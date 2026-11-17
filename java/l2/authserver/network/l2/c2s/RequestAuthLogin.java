@@ -42,7 +42,8 @@ extends L2LoginClientPacket {
         // IP bloqueado: so mostra a mensagem (nem decifra a senha, nem conta tentativa)
         if (l2.authserver.LoginGuard.getInstance().isBanned(ip)) {
             l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
-            RequestAuthLogin.fail(l2LoginClient, Config.MSG_IP_BANNED);
+            // BlackIpList e permanente: mensagem de acesso negado, sem a contagem de tempo do ban temporario
+            RequestAuthLogin.fail(l2LoginClient, Config.BLACK_IPS.contains(ip) ? Config.MSG_ACCOUNT_BANNED : Config.MSG_IP_BANNED);
             return;
         }
         try {
