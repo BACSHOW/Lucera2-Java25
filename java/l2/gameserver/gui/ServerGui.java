@@ -13,16 +13,14 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
-import java.util.ArrayDeque;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
+import java.util.*;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -46,8 +44,13 @@ import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
+
+import l2.gameserver.Config;
+import l2.gameserver.Shutdown;
 import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.metrics.ServerMetrics.Snapshot;
+import l2.gameserver.network.authcomm.AuthServerCommunication;
+import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -83,12 +86,17 @@ public final class ServerGui {
     private final JComboBox<String> range = new JComboBox<>(new String[]{"5 min", "15 min", "30 min", "60 min"});
     private final MetricChart chOnline, chHeap, chPackets, chAi, chPath, chCpu;
     // movimento (contadores por minuto)
-    private final java.util.EnumMap<ServerMetrics.Counter, JLabel[]> moveCards = new java.util.EnumMap<>(ServerMetrics.Counter.class);
+    private final EnumMap<ServerMetrics.Counter, JLabel[]> moveCards = new EnumMap<>(ServerMetrics.Counter.class);
     private final MetricChart chZones, chPaths, chNpcs, chFarm;
     // barra de status / acoes
     private final JLabel status = new JLabel(" ");
     private final JCheckBox telemetry = new JCheckBox("Telemetria de movimento");
     private final JCheckBox npcTrace = new JCheckBox("Trace de NPCs");
+    // faixa fixa no topo: status do login e rates
+    private final JTabbedPane tabs = new JTabbedPane();
+    private final JLabel rates = new JLabel(" ");
+    private PeerStatusPanel loginStatus;
+    private ConfigEditorPanel configEditor;
 
     private ServerGui() {
         this.chOnline = new MetricChart("Jogadores", "", 5)
@@ -192,13 +200,13 @@ public final class ServerGui {
     }
 
     private static void attachLogAppender() {
-        org.slf4j.ILoggerFactory factory = LoggerFactory.getILoggerFactory();
+        ILoggerFactory factory = LoggerFactory.getILoggerFactory();
         if (factory instanceof ch.qos.logback.classic.LoggerContext context) {
             GuiLogAppender appender = new GuiLogAppender();
             appender.setContext(context);
             appender.setName("GUI");
             appender.start();
-            context.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME).addAppender(appender);
+            context.getLogger(Logger.ROOT_LOGGER_NAME).addAppender(appender);
         }
     }
 
@@ -235,15 +243,23 @@ public final class ServerGui {
         StyleConstants.setForeground(this.styleWarn, Theme.WARN);
         StyleConstants.setForeground(this.styleError, Theme.ERROR);
 
-        JTabbedPane tabs = new JTabbedPane();
-        tabs.addTab("Console", this.buildConsole());
-        tabs.addTab("Métricas", this.buildMetrics());
-        tabs.addTab("Movimento", this.buildMovement());
+        this.configEditor = new ConfigEditorPanel(new File(Config.CONFIGURATION_FILE).getAbsoluteFile().getParentFile(),
+                Config::load, "Portas, banco de dados e geodata só mudam depois de reiniciar.");
+        this.tabs.addTab("Console", this.buildConsole());
+        this.tabs.addTab("Métricas", this.buildMetrics());
+        this.tabs.addTab("Movimento", this.buildMovement());
+        this.tabs.addTab("Configurações", this.configEditor);
+
+        JPanel north = new JPanel();
+        north.setLayout(new BoxLayout(north, BoxLayout.Y_AXIS));
+        north.setBackground(Theme.BG);
+        north.add(this.buildToolbar());
+        north.add(this.buildStatusStrip());
 
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(Theme.BG);
-        root.add(this.buildToolbar(), BorderLayout.NORTH);
-        root.add(tabs, BorderLayout.CENTER);
+        root.add(north, BorderLayout.NORTH);
+        root.add(this.tabs, BorderLayout.CENTER);
         this.status.setBorder(BorderFactory.createEmptyBorder(4, 10, 4, 10));
         this.status.setForeground(Theme.MUTED);
         JPanel statusBar = new JPanel(new BorderLayout());
@@ -287,6 +303,44 @@ public final class ServerGui {
         this.telemetry.addActionListener(e -> l2.gameserver.utils.MovementTelemetryLogger.ENABLED = this.telemetry.isSelected());
         this.npcTrace.addActionListener(e -> l2.gameserver.ai.debug.NpcMovementDebugTracer.GLOBAL_TRACE = this.npcTrace.isSelected());
         return bar;
+    }
+
+    /** Faixa sempre visivel (qualquer aba): status do login e rates do servidor. */
+    private JComponent buildStatusStrip() {
+        this.loginStatus = new PeerStatusPanel("Login",
+                () -> AuthServerCommunication.getInstance().isRegistered(),
+                null,
+                () -> new InetSocketAddress(Config.GAME_SERVER_LOGIN_HOST, Config.GAME_SERVER_LOGIN_PORT),
+                new File("../login"), "StartAuthServerGui.vbs", "StartAuthServer.bat");
+        this.rates.setForeground(Theme.TEXT);
+        this.rates.setBorder(BorderFactory.createEmptyBorder(0, 16, 0, 8));
+        JButton editRates = button("Editar rates", e -> {
+            this.tabs.setSelectedComponent(this.configEditor);
+            this.configEditor.showFile(new File(Config.CONFIGURATION_FILE).getName(), "Rate");
+        });
+        JPanel east = new JPanel(new FlowLayout(FlowLayout.RIGHT, 6, 0));
+        east.setOpaque(false);
+        east.add(editRates);
+
+        JPanel strip = new JPanel(new BorderLayout());
+        strip.setBackground(Theme.PANEL);
+        strip.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, Theme.BORDER),
+                BorderFactory.createEmptyBorder(5, 8, 5, 8)));
+        strip.add(this.loginStatus, BorderLayout.WEST);
+        strip.add(this.rates, BorderLayout.CENTER);
+        strip.add(east, BorderLayout.EAST);
+        return strip;
+    }
+
+    private void refreshStatusStrip() {
+        this.loginStatus.refresh();
+        this.rates.setText("Rates   XP x" + rate(Config.RATE_XP) + "   SP x" + rate(Config.RATE_SP)
+                + "   Adena x" + rate(Config.RATE_DROP_ADENA) + "   Drop x" + rate(Config.RATE_DROP_ITEMS)
+                + "   Spoil x" + rate(Config.RATE_DROP_SPOIL) + "   Quest x" + rate(Config.RATE_QUESTS_REWARD));
+    }
+
+    private static String rate(double v) {
+        return v == Math.rint(v) ? String.valueOf((long) v) : String.valueOf(v).replace('.', ',');
     }
 
     private JComponent buildConsole() {
@@ -371,16 +425,16 @@ public final class ServerGui {
 
     private JComponent buildMovement() {
         ServerMetrics.Counter[] shown = {
-            ServerMetrics.Counter.VP_GREEN, ServerMetrics.Counter.VP_YELLOW, ServerMetrics.Counter.VP_RED,
-            ServerMetrics.Counter.ARRIVED_BLOCKED, ServerMetrics.Counter.CLIENT_SYNC_WAIT, ServerMetrics.Counter.CLIENT_SYNC_TIMEOUT,
-            ServerMetrics.Counter.PATH_NBA_SMOOTH, ServerMetrics.Counter.PATH_NBA_RAW, ServerMetrics.Counter.PATH_CLASSIC,
-            ServerMetrics.Counter.PATH_NONE, ServerMetrics.Counter.SMOOTH_CORNERS, ServerMetrics.Counter.NPC_RETURN_HOME,
-            ServerMetrics.Counter.NPC_RETURN_HOME_PATHFAIL, ServerMetrics.Counter.PATH_BUFFERS_EXHAUSTED, ServerMetrics.Counter.NPC_INFO_DROPPED};
+                ServerMetrics.Counter.VP_GREEN, ServerMetrics.Counter.VP_YELLOW, ServerMetrics.Counter.VP_RED,
+                ServerMetrics.Counter.ARRIVED_BLOCKED, ServerMetrics.Counter.CLIENT_SYNC_WAIT, ServerMetrics.Counter.CLIENT_SYNC_TIMEOUT,
+                ServerMetrics.Counter.PATH_NBA_SMOOTH, ServerMetrics.Counter.PATH_NBA_RAW, ServerMetrics.Counter.PATH_CLASSIC,
+                ServerMetrics.Counter.PATH_NONE, ServerMetrics.Counter.SMOOTH_CORNERS, ServerMetrics.Counter.NPC_RETURN_HOME,
+                ServerMetrics.Counter.NPC_RETURN_HOME_PATHFAIL, ServerMetrics.Counter.PATH_BUFFERS_EXHAUSTED, ServerMetrics.Counter.NPC_INFO_DROPPED};
         String[] titles = {"Zona verde (aceita)", "Zona amarela (suave)", "Zona vermelha (salto)",
-            "Bloqueios ao andar", "AutoFarm: esperas", "AutoFarm: esgotadas",
-            "Caminho NBA* suavizado", "Caminho NBA* bruto", "Caminho clássico",
-            "Sem caminho", "Quinas suavizadas", "Voltas ao spawn",
-            "Voltas por falha de caminho", "Buffers esgotados", "NPCs não enviados"};
+                "Bloqueios ao andar", "AutoFarm: esperas", "AutoFarm: esgotadas",
+                "Caminho NBA* suavizado", "Caminho NBA* bruto", "Caminho clássico",
+                "Sem caminho", "Quinas suavizadas", "Voltas ao spawn",
+                "Voltas por falha de caminho", "Buffers esgotados", "NPCs não enviados"};
         JPanel cards = new JPanel(new GridLayout(3, 5, 8, 8));
         cards.setBackground(Theme.BG);
         for (int i = 0; i < shown.length; i++) {
@@ -563,6 +617,7 @@ public final class ServerGui {
         this.telemetry.setSelected(l2.gameserver.utils.MovementTelemetryLogger.ENABLED);
         this.npcTrace.setSelected(l2.gameserver.ai.debug.NpcMovementDebugTracer.GLOBAL_TRACE);
         this.updateStatus(s);
+        this.refreshStatusStrip();
         if (s == null) {
             return;
         }
@@ -592,7 +647,7 @@ public final class ServerGui {
         this.vUptime.setText(duration(s.uptimeMillis));
         this.sUptime.setText("desde " + new SimpleDateFormat("dd/MM HH:mm").format(new Date(s.timeMillis - s.uptimeMillis)));
 
-        for (java.util.Map.Entry<ServerMetrics.Counter, JLabel[]> e : this.moveCards.entrySet()) {
+        for (Map.Entry<ServerMetrics.Counter, JLabel[]> e : this.moveCards.entrySet()) {
             ServerMetrics.Counter c = e.getKey();
             long perMin = s.perMin(c);
             e.getValue()[0].setText(String.valueOf(perMin));
@@ -608,6 +663,7 @@ public final class ServerGui {
                 c.setData(data, secs);
             }
         }
+
         if (this.chOnline.isShowing()) {
             int secs = this.rangeSeconds();
             Snapshot[] data = ServerMetrics.history(secs);
@@ -623,10 +679,10 @@ public final class ServerGui {
             sb.append("Online: ").append(s.playersOnline).append("   |   Ligado há ").append(duration(s.uptimeMillis));
         }
         try {
-            int secs = l2.gameserver.Shutdown.getInstance().getSeconds();
-            int mode = l2.gameserver.Shutdown.getInstance().getMode();
-            if (secs >= 0 && mode != l2.gameserver.Shutdown.NONE) {
-                sb.append("   |   ").append(mode == l2.gameserver.Shutdown.RESTART ? "Reinício" : "Desligamento")
+            int secs = Shutdown.getInstance().getSeconds();
+            int mode = Shutdown.getInstance().getMode();
+            if (secs >= 0 && mode != Shutdown.NONE) {
+                sb.append("   |   ").append(mode == Shutdown.RESTART ? "Reinício" : "Desligamento")
                         .append(" em ").append(duration(secs * 1000L));
                 this.status.setForeground(Theme.WARN);
             } else {

@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
 import java.nio.charset.StandardCharsets;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -52,7 +54,9 @@ import l2.authserver.LoginGuard;
 import l2.authserver.LoginMetrics;
 import l2.authserver.LoginMetrics.Snapshot;
 import l2.authserver.network.gamecomm.GameServer;
+import l2.gameserver.gui.ConfigEditorPanel;
 import l2.gameserver.gui.GuiLogAppender;
+import l2.gameserver.gui.PeerStatusPanel;
 import l2.gameserver.gui.ServerGui;
 import l2.gameserver.gui.Theme;
 import l2.gameserver.gui.TimeSeriesChart;
@@ -97,6 +101,7 @@ public final class LoginGui {
     private final JTable banTable = new JTable(this.banModel);
     private final GsModel gsModel = new GsModel();
     private final JLabel status = new JLabel(" ");
+    private PeerStatusPanel gameStatus;
 
     // ------------------------------------------------------------------ inicializacao
 
@@ -167,10 +172,19 @@ public final class LoginGui {
         tabs.addTab("Visão geral", this.buildOverview());
         tabs.addTab("Bans", this.buildBans());
         tabs.addTab("GameServers", this.buildGameServers());
+        tabs.addTab("Configurações", new ConfigEditorPanel(new File(Config.LOGIN_CONFIGURATION_FILE).getAbsoluteFile().getParentFile(),
+                Config::reloadSecuritySettings,
+                "Proteção, contas e mensagens valem na hora; portas, banco e chaves só depois de reiniciar o login."));
+
+        JPanel north = new JPanel();
+        north.setLayout(new BoxLayout(north, BoxLayout.Y_AXIS));
+        north.setBackground(Theme.BG);
+        north.add(this.buildToolbar());
+        north.add(this.buildStatusStrip());
 
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(Theme.BG);
-        root.add(this.buildToolbar(), BorderLayout.NORTH);
+        root.add(north, BorderLayout.NORTH);
         root.add(tabs, BorderLayout.CENTER);
         this.status.setBorder(BorderFactory.createEmptyBorder(4, 10, 4, 10));
         this.status.setForeground(Theme.MUTED);
@@ -205,6 +219,47 @@ public final class LoginGui {
         bar.add(button("Desligar...", e -> this.exit(false)));
         bar.add(button("Salvar thread dump", e -> this.threadDump()));
         return bar;
+    }
+
+    /** Faixa sempre visivel (qualquer aba): status do GameServer. */
+    private JComponent buildStatusStrip() {
+        this.gameStatus = new PeerStatusPanel("GameServer",
+                () -> {
+                    Snapshot s = LoginMetrics.last();
+                    return s != null && s.gameServersOnline > 0;
+                },
+                () -> {
+                    Snapshot s = LoginMetrics.last();
+                    return s == null ? null : s.playersOnline + " jogadores";
+                },
+                LoginGui::gameServerAddress,
+                new File("../game"), "StartGameServerGui.vbs", "StartGameServer.bat");
+        JPanel strip = new JPanel(new BorderLayout());
+        strip.setBackground(Theme.PANEL);
+        strip.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, Theme.BORDER),
+                BorderFactory.createEmptyBorder(5, 8, 5, 8)));
+        strip.add(this.gameStatus, BorderLayout.WEST);
+        return strip;
+    }
+
+    /** Porta do GameServer lida do config dele (../game/config/server.properties), para saber se ja esta no ar. */
+    private static InetSocketAddress gameServerAddress() {
+        File f = new File("../game/config/server.properties");
+        if (!f.isFile()) {
+            return null;
+        }
+        Properties p = new Properties();
+        try (InputStream in = new FileInputStream(f)) {
+            p.load(in);
+        } catch (Exception e) {
+            return null;
+        }
+        String port = p.getProperty("GameserverPort", "7777").trim().split("[,;\\s]+")[0];
+        try {
+            return new InetSocketAddress("127.0.0.1", Integer.parseInt(port));
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     private JComponent buildConsole() {
@@ -458,6 +513,7 @@ public final class LoginGui {
     }
 
     private void refresh() {
+        this.gameStatus.refresh();
         Snapshot s = LoginMetrics.last();
         this.banModel.reload();
         this.gsModel.reload();

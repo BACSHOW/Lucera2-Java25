@@ -26,6 +26,7 @@ extends ReceivablePacket {
     protected void runImpl() {
         String[] stringArray;
         _log.info("Registered on authserver as " + this.pv + " [" + this.ZA + "]");
+        AuthServerCommunication.getInstance().setRegistered(true);
         this.sendPacket(new OnlineStatus(true));
         for (String string : stringArray = AuthServerCommunication.getInstance().getAccounts()) {
             this.sendPacket(new PlayerInGame(string));

@@ -44,6 +44,8 @@ public class AuthServerCommunication extends Thread {
    private Selector oz;
    private boolean oA;
    private boolean Zy;
+   /** Registrado no login (AuthResponse recebido); volta a false quando a conexao cai. Usado pela janela. */
+   private volatile boolean registered;
 
    public static final AuthServerCommunication getInstance() {
       return Zv;
@@ -309,6 +311,7 @@ public class AuthServerCommunication extends Thread {
    }
 
    private void close() {
+      this.registered = false;
       this.Zy = !this.oA;
       this.sendLock.lock();
 
@@ -346,6 +349,14 @@ public class AuthServerCommunication extends Thread {
 
    public boolean isShutdown() {
       return this.oA || this.Zy;
+   }
+
+   public boolean isRegistered() {
+      return this.registered && !this.isShutdown();
+   }
+
+   public void setRegistered(boolean registered) {
+      this.registered = registered;
    }
 
    public void restart() {
