@@ -2,8 +2,14 @@
 rem Login Server com console visivel. Para iniciar so com a janela propria, use StartAuthServerGui.vbs.
 rem Flags do Java 25: cabecalhos de objeto compactos (menos memoria) e devolucao periodica de memoria livre.
 cd /d "%~dp0"
+rem ---- Java 25 ------------------------------------------------------------
+rem  Se o Java do PATH/JAVA_HOME nao for o 25, coloque aqui a pasta do JDK 25
+rem  (a mesma do seu StartGameServer.bat), ex.: set "JAVA25_HOME=C:\Program Files\Java\jdk-25"
+set "JAVA25_HOME="
+rem -------------------------------------------------------------------------
 set "JAVA_EXE=java"
 if defined JAVA_HOME set "JAVA_EXE=%JAVA_HOME%\bin\java"
+if defined JAVA25_HOME set "JAVA_EXE=%JAVA25_HOME%\bin\java"
 :start
 echo Starting AuthServer.
 echo.
