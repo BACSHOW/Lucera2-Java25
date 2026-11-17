@@ -34,6 +34,48 @@ public final class ServerMetrics {
     private static final LongAdder PACKETS_OUT = new LongAdder();
     private static final LongAdder BYTES_OUT = new LongAdder();
 
+    /** Eventos das correcoes de movimento, geodata e AutoFarm (contados por segundo e por minuto). */
+    public enum Counter {
+        VP_GREEN("ValidatePosition: zona verde (posicao do cliente aceita)"),
+        VP_YELLOW("ValidatePosition: zona amarela (correcao suave)"),
+        VP_RED("ValidatePosition: zona vermelha (salto)"),
+        ARRIVED_BLOCKED("Bloqueio ao andar (parede/corpos)"),
+        CLIENT_SYNC_WAIT("AutoFarm: espera pelo cliente antes do golpe"),
+        CLIENT_SYNC_TIMEOUT("AutoFarm: espera esgotada (golpe sem o cliente)"),
+        PATH_NBA_SMOOTH("Caminho NBA* suavizado"),
+        PATH_NBA_RAW("Caminho NBA* bruto (fallback 1)"),
+        PATH_CLASSIC("Caminho classico (fallback 2)"),
+        PATH_NONE("Sem caminho possivel"),
+        SMOOTH_CORNERS("Caminhos de NPC com quinas suavizadas"),
+        NPC_RETURN_HOME("Monstros que voltaram ao spawn"),
+        NPC_RETURN_HOME_PATHFAIL("Voltaram ao spawn por falha de caminho"),
+        PATH_BUFFERS_EXHAUSTED("Buffers do pathfinding esgotados"),
+        NPC_INFO_DROPPED("NPCs nao enviados ao cliente (filtro de raio)");
+
+        public final String label;
+
+        Counter(String label) {
+            this.label = label;
+        }
+    }
+
+    private static final Counter[] COUNTERS = Counter.values();
+    private static final LongAdder[] COUNTS = new LongAdder[COUNTERS.length];
+    private static final long[] COUNTS_PREV = new long[COUNTERS.length];
+    /** Ultimos 60 segundos de cada contador, para a soma "por minuto". */
+    private static final long[][] MINUTE_RING = new long[60][COUNTERS.length];
+    private static int minuteNext;
+
+    static {
+        for (int i = 0; i < COUNTS.length; i++) {
+            COUNTS[i] = new LongAdder();
+        }
+    }
+
+    public static void count(Counter c) {
+        COUNTS[c.ordinal()].increment();
+    }
+
     /** Tempo de pensamento da IA dos NPCs. */
     public static final Timing AI_THINK = new Timing();
     /** Tempo de cada busca de caminho (geodata). */
@@ -121,12 +163,28 @@ public final class ServerMetrics {
         public final int deadlockedThreads;
         public final long gcPerSec;
         public final long gcMsPerSec;
+        /** Eventos de cada {@link Counter} no ultimo segundo, nos ultimos 60 s e desde o boot. */
+        public final long[] countPerSec;
+        public final long[] countPerMin;
+        public final long[] countTotal;
+
+        public long perMin(Counter c) {
+            return this.countPerMin[c.ordinal()];
+        }
+
+        public long total(Counter c) {
+            return this.countTotal[c.ordinal()];
+        }
 
         Snapshot(long timeMillis, long uptimeMillis, int playersOnline, int offlineTraders, double packetsInPerSec,
                 double packetsOutPerSec, double kbInPerSec, double kbOutPerSec, long totalPacketsIn, long totalPacketsOut,
                 long aiThinksPerSec, double aiAvgMs, double aiMaxMs, long pathfindsPerSec, double pathfindAvgMs,
                 double pathfindMaxMs, long heapUsedMb, long heapMaxMb, long nonHeapUsedMb, double processCpuPercent,
-                int threads, int deadlockedThreads, long gcPerSec, long gcMsPerSec) {
+                int threads, int deadlockedThreads, long gcPerSec, long gcMsPerSec, long[] countPerSec,
+                long[] countPerMin, long[] countTotal) {
+            this.countPerSec = countPerSec;
+            this.countPerMin = countPerMin;
+            this.countTotal = countTotal;
             this.timeMillis = timeMillis;
             this.uptimeMillis = uptimeMillis;
             this.playersOnline = playersOnline;
@@ -239,6 +297,22 @@ public final class ServerMetrics {
         totalPacketsIn = pin;
         totalPacketsOut = pout;
 
+        long[] perSec = new long[COUNTERS.length];
+        long[] total = new long[COUNTERS.length];
+        long[] perMin = new long[COUNTERS.length];
+        for (int i = 0; i < COUNTERS.length; i++) {
+            total[i] = COUNTS[i].sum();
+            perSec[i] = total[i] - COUNTS_PREV[i];
+            COUNTS_PREV[i] = total[i];
+        }
+        MINUTE_RING[minuteNext] = perSec;
+        minuteNext = (minuteNext + 1) % MINUTE_RING.length;
+        for (long[] sec : MINUTE_RING) {
+            for (int i = 0; i < perMin.length; i++) {
+                perMin[i] += sec[i];
+            }
+        }
+
         long[] ai = AI_THINK.drain();
         long[] pf = PATHFIND.drain();
 
@@ -279,7 +353,7 @@ public final class ServerMetrics {
                 ai[0], ai[0] == 0 ? 0.0 : ai[1] / (double) ai[0] / 1.0E6, ai[2] / 1.0E6,
                 pf[0], pf[0] == 0 ? 0.0 : pf[1] / (double) pf[0] / 1.0E6, pf[2] / 1.0E6,
                 heap.getUsed() >> 20, heapMax >> 20, nonHeap.getUsed() >> 20, cpu,
-                threads.getThreadCount(), dead == null ? 0 : dead.length, gcDelta, gcMs);
+                threads.getThreadCount(), dead == null ? 0 : dead.length, gcDelta, gcMs, perSec, perMin, total);
     }
 
     // ------------------------------------------------------------------ Prometheus
@@ -307,6 +381,9 @@ public final class ServerMetrics {
         gauge(sb, "l2_jvm_threads", "Threads", s.threads);
         gauge(sb, "l2_jvm_deadlocked_threads", "Threads em deadlock", s.deadlockedThreads);
         gauge(sb, "l2_uptime_seconds", "Tempo ligado", s.uptimeMillis / 1000L);
+        for (Counter c : COUNTERS) {
+            counter(sb, "l2_" + c.name().toLowerCase(java.util.Locale.ROOT) + "_total", c.label, s.total(c));
+        }
         return sb.toString();
     }
 

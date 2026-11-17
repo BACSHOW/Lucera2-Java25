@@ -72,12 +72,17 @@ extends CharacterAI {
             long travel = (long)((clientDist - range) * 1000.0 / Math.max(1, player.getMoveSpeed()));
             this._clientSyncDeadline = now + Math.min(CLIENT_SYNC_MAX_WAIT_MS, travel + 250L);
         } else if (now >= this._clientSyncDeadline) {
+            if (this._clientSyncDeadline != Long.MIN_VALUE) {
+                this._clientSyncDeadline = Long.MIN_VALUE; // conta a espera esgotada uma vez so
+                l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.CLIENT_SYNC_TIMEOUT);
+            }
             return false; // ja esperou por este alvo: ataca do jeito que estiver
         }
         if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) {
             l2.gameserver.utils.MovementTelemetryLogger.logEvent(player, "CLIENT_SYNC_WAIT", String.format("target=%d clientDist=%.0f range=%d leftMs=%d", target.getObjectId(), clientDist, range, this._clientSyncDeadline - now));
         }
         if (firstWait) {
+            l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.CLIENT_SYNC_WAIT);
             // Uma vez por alvo: leva o cliente ate a posicao do servidor (ja no alcance). Repetir reiniciaria
             // o trajeto a partir de um ponto antigo; e o MoveToPawn o cliente costuma ignorar (medido).
             player.sendPacket(new l2.gameserver.network.l2.s2c.CharMoveToLocation(player, client.clone(), player.getLoc()));

@@ -207,6 +207,9 @@ extends L2GameClientPacket {
     }
 
     private void logZone(Player player, String zone, double delta2D) {
+        l2.gameserver.metrics.ServerMetrics.count(zone.startsWith("RED") ? l2.gameserver.metrics.ServerMetrics.Counter.VP_RED
+                : zone.startsWith("YELLOW") ? l2.gameserver.metrics.ServerMetrics.Counter.VP_YELLOW
+                : l2.gameserver.metrics.ServerMetrics.Counter.VP_GREEN);
         if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) {
             l2.gameserver.utils.MovementTelemetryLogger.logEvent(player, "VALIDATE_ZONE", String.format("zone=%s delta2D=%.1f ClientLoc=(%d,%d,%d) moving=%b", zone, delta2D, this.cH.x, this.cH.y, this.cH.z, player.isMoving()));
         }

@@ -87,6 +87,7 @@ extends AbstractAI {
             // O cliente informa onde ficou bloqueado (ex.: no corpo de um monstro). Se o ponto for
             // valido, o servidor passa a usa-lo; senao mantem o comportamento original.
             boolean accepted = player.tryAcceptClientPosition(location, true);
+            l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.ARRIVED_BLOCKED);
             if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) {
                 l2.gameserver.utils.MovementTelemetryLogger.logEvent(player, "ARRIVED_BLOCKED", String.format("ClientLoc=(%d,%d,%d) accepted=%b", location.x, location.y, location.z, accepted));
             }

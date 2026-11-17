@@ -445,7 +445,33 @@ public class GameServer {
 
                 consoleAppender.setEncoder(encoder);
                 consoleAppender.start();
-                rootLogger.addAppender(consoleAppender);
+                // Iniciado pelo StartGameServerGui.vbs (console oculto): a saida do console vai para log/stdout.log,
+                // entao o log completo fica so no log/server.log abaixo, sem duplicar.
+                if (!Boolean.getBoolean("l2.hiddenConsole")) {
+                    rootLogger.addAppender(consoleAppender);
+                }
+
+                // Log geral tambem em arquivo (um por dia, 30 dias). O detachAndStopAllAppenders acima removia o
+                // log/java.log do logback.xml, e sem o console visivel nao sobrava registro de erros ou quedas.
+                ch.qos.logback.core.rolling.RollingFileAppender<ch.qos.logback.classic.spi.ILoggingEvent> fileAppender = new ch.qos.logback.core.rolling.RollingFileAppender<>();
+                fileAppender.setContext(context);
+                fileAppender.setName("SERVER_FILE");
+                fileAppender.setFile("log/server.log");
+                ch.qos.logback.core.rolling.TimeBasedRollingPolicy<ch.qos.logback.classic.spi.ILoggingEvent> policy = new ch.qos.logback.core.rolling.TimeBasedRollingPolicy<>();
+                policy.setContext(context);
+                policy.setParent(fileAppender);
+                policy.setFileNamePattern("log/server.%d{yyyy-MM-dd}.log");
+                policy.setMaxHistory(30);
+                policy.start();
+                fileAppender.setRollingPolicy(policy);
+                ch.qos.logback.classic.encoder.PatternLayoutEncoder fileEncoder = new ch.qos.logback.classic.encoder.PatternLayoutEncoder();
+                fileEncoder.setContext(context);
+                fileEncoder.setPattern("[%d{dd/MM HH:mm:ss}] %-5level %m%n");
+                fileEncoder.setCharset(java.nio.charset.StandardCharsets.UTF_8);
+                fileEncoder.start();
+                fileAppender.setEncoder(fileEncoder);
+                fileAppender.start();
+                rootLogger.addAppender(fileAppender);
 
                 context.getLogger("com.zaxxer.hikari").setLevel(ch.qos.logback.classic.Level.WARN);
                 context.getLogger("org.mariadb.jdbc").setLevel(ch.qos.logback.classic.Level.WARN);

@@ -561,6 +561,7 @@ extends CharacterAI {
                 if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceEvent(npcInstance, "PATHFIND_FAIL_RETURN_HOME",
                     "Monstro nao alcancou alvo apos falhas consecutivas de obstaculo. Retornando ao spawn.");
                 npcInstance.getAggroList().remove(creature, true);
+                l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.NPC_RETURN_HOME_PATHFAIL);
                 this.returnHome();
                 return false;
             }
@@ -872,6 +873,7 @@ extends CharacterAI {
 
     protected void returnHome(boolean bl, boolean bl2) {
         NpcInstance npcInstance = this.getActor();
+        l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.NPC_RETURN_HOME);
         Location location = this.getPursueBaseLoc();
         if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceEvent(npcInstance, "RETURN_HOME",
             "spawnLoc=" + location + ", distToSpawn=" + (location != null ? npcInstance.getDistance(location) : -1) + ", teleport=" + bl2);

@@ -82,6 +82,9 @@ public final class ServerGui {
             sAi = sub(), sPath = sub(), sGc = sub(), sUptime = sub();
     private final JComboBox<String> range = new JComboBox<>(new String[]{"5 min", "15 min", "30 min", "60 min"});
     private final MetricChart chOnline, chHeap, chPackets, chAi, chPath, chCpu;
+    // movimento (contadores por minuto)
+    private final java.util.EnumMap<ServerMetrics.Counter, JLabel[]> moveCards = new java.util.EnumMap<>(ServerMetrics.Counter.class);
+    private final MetricChart chZones, chPaths, chNpcs, chFarm;
     // barra de status / acoes
     private final JLabel status = new JLabel(" ");
     private final JCheckBox telemetry = new JCheckBox("Telemetria de movimento");
@@ -105,6 +108,22 @@ public final class ServerGui {
                 .add("pior", Theme.ORANGE, s -> s.pathfindMaxMs);
         this.chCpu = new MetricChart("CPU do processo", "%", 10)
                 .add("cpu", Theme.PURPLE, s -> Math.max(0.0, s.processCpuPercent));
+        this.chZones = new MetricChart("Correções de posição do jogador", "por minuto", 5)
+                .add("amarela (suave)", Theme.ORANGE, s -> s.perMin(ServerMetrics.Counter.VP_YELLOW))
+                .add("vermelha (salto)", Theme.ERROR, s -> s.perMin(ServerMetrics.Counter.VP_RED))
+                .add("bloqueios", Theme.GRAY, s -> s.perMin(ServerMetrics.Counter.ARRIVED_BLOCKED));
+        this.chPaths = new MetricChart("Como os caminhos foram achados", "por minuto", 10)
+                .add("NBA* suavizado", Theme.GREEN, s -> s.perMin(ServerMetrics.Counter.PATH_NBA_SMOOTH))
+                .add("NBA* bruto", Theme.BLUE, s -> s.perMin(ServerMetrics.Counter.PATH_NBA_RAW))
+                .add("clássico", Theme.ORANGE, s -> s.perMin(ServerMetrics.Counter.PATH_CLASSIC))
+                .add("sem caminho", Theme.ERROR, s -> s.perMin(ServerMetrics.Counter.PATH_NONE));
+        this.chNpcs = new MetricChart("Monstros", "por minuto", 5)
+                .add("quinas suavizadas", Theme.GREEN, s -> s.perMin(ServerMetrics.Counter.SMOOTH_CORNERS))
+                .add("voltaram ao spawn", Theme.BLUE, s -> s.perMin(ServerMetrics.Counter.NPC_RETURN_HOME))
+                .add("por falha de caminho", Theme.ERROR, s -> s.perMin(ServerMetrics.Counter.NPC_RETURN_HOME_PATHFAIL));
+        this.chFarm = new MetricChart("AutoFarm: espera pelo cliente", "por minuto", 5)
+                .add("esperas", Theme.PURPLE, s -> s.perMin(ServerMetrics.Counter.CLIENT_SYNC_WAIT))
+                .add("esgotadas", Theme.ORANGE, s -> s.perMin(ServerMetrics.Counter.CLIENT_SYNC_TIMEOUT));
     }
 
     // ------------------------------------------------------------------ inicializacao
@@ -113,6 +132,7 @@ public final class ServerGui {
     public static void startIfEnabled() {
         ServerMetrics.start();
         if (!isEnabled()) {
+            abortIfHidden("a janela esta desligada (EnableServerGui = False, -Dl2.gui=false ou sem area de trabalho)");
             return;
         }
         attachLogAppender();
@@ -124,8 +144,23 @@ public final class ServerGui {
                 instance = gui;
             });
         } catch (Throwable t) {
-            LOG.warn("Janela do servidor nao pode ser aberta, seguindo so no console: " + t);
+            LOG.warn("Janela do servidor nao pode ser aberta, seguindo so no console: " + t, t);
+            abortIfHidden("a janela nao pode ser aberta (" + t + ")");
         }
+    }
+
+    /**
+     * Iniciado com o console oculto (StartGameServerGui.vbs), a janela e o unico jeito de ver e desligar o
+     * servidor. Sem ela o servidor rodaria invisivel, entao encerra antes de carregar qualquer coisa
+     * (codigo 1: o GameServerGui.bat mostra o aviso).
+     */
+    private static void abortIfHidden(String reason) {
+        if (!Boolean.getBoolean("l2.hiddenConsole")) {
+            return;
+        }
+        LOG.error("Servidor iniciado sem console, mas " + reason + ". Encerrando para nao rodar invisivel. "
+                + "Use StartGameServer.bat ou ligue EnableServerGui = True no config/server.properties.");
+        System.exit(1);
     }
 
     public static boolean isOpen() {
@@ -197,6 +232,7 @@ public final class ServerGui {
         JTabbedPane tabs = new JTabbedPane();
         tabs.addTab("Console", this.buildConsole());
         tabs.addTab("Métricas", this.buildMetrics());
+        tabs.addTab("Movimento", this.buildMovement());
 
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(Theme.BG);
@@ -324,6 +360,51 @@ public final class ServerGui {
         p.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         p.add(cards, BorderLayout.NORTH);
         p.add(center, BorderLayout.CENTER);
+        return p;
+    }
+
+    private JComponent buildMovement() {
+        ServerMetrics.Counter[] shown = {
+            ServerMetrics.Counter.VP_GREEN, ServerMetrics.Counter.VP_YELLOW, ServerMetrics.Counter.VP_RED,
+            ServerMetrics.Counter.ARRIVED_BLOCKED, ServerMetrics.Counter.CLIENT_SYNC_WAIT, ServerMetrics.Counter.CLIENT_SYNC_TIMEOUT,
+            ServerMetrics.Counter.PATH_NBA_SMOOTH, ServerMetrics.Counter.PATH_NBA_RAW, ServerMetrics.Counter.PATH_CLASSIC,
+            ServerMetrics.Counter.PATH_NONE, ServerMetrics.Counter.SMOOTH_CORNERS, ServerMetrics.Counter.NPC_RETURN_HOME,
+            ServerMetrics.Counter.NPC_RETURN_HOME_PATHFAIL, ServerMetrics.Counter.PATH_BUFFERS_EXHAUSTED, ServerMetrics.Counter.NPC_INFO_DROPPED};
+        String[] titles = {"Zona verde (aceita)", "Zona amarela (suave)", "Zona vermelha (salto)",
+            "Bloqueios ao andar", "AutoFarm: esperas", "AutoFarm: esgotadas",
+            "Caminho NBA* suavizado", "Caminho NBA* bruto", "Caminho clássico",
+            "Sem caminho", "Quinas suavizadas", "Voltas ao spawn",
+            "Voltas por falha de caminho", "Buffers esgotados", "NPCs não enviados"};
+        JPanel cards = new JPanel(new GridLayout(3, 5, 8, 8));
+        cards.setBackground(Theme.BG);
+        for (int i = 0; i < shown.length; i++) {
+            JLabel v = value();
+            JLabel sub = sub();
+            this.moveCards.put(shown[i], new JLabel[]{v, sub});
+            JComponent c = card(titles[i], v, sub);
+            c.setToolTipText(shown[i].label);
+            cards.add(c);
+        }
+        JLabel hint = new JLabel("Valores do último minuto; abaixo, o total desde que o servidor ligou. "
+                + "Vermelho em \"Buffers esgotados\" ou \"NPCs não enviados\" indica problema.");
+        hint.setForeground(Theme.MUTED);
+
+        JPanel charts = new JPanel(new GridLayout(2, 2, 8, 8));
+        charts.setBackground(Theme.BG);
+        for (MetricChart c : new MetricChart[]{this.chZones, this.chPaths, this.chNpcs, this.chFarm}) {
+            c.setBorder(BorderFactory.createLineBorder(Theme.BORDER));
+            charts.add(c);
+        }
+        JPanel north = new JPanel(new BorderLayout(0, 6));
+        north.setBackground(Theme.BG);
+        north.add(cards, BorderLayout.CENTER);
+        north.add(hint, BorderLayout.SOUTH);
+
+        JPanel p = new JPanel(new BorderLayout(0, 10));
+        p.setBackground(Theme.BG);
+        p.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        p.add(north, BorderLayout.NORTH);
+        p.add(charts, BorderLayout.CENTER);
         return p;
     }
 
@@ -505,6 +586,22 @@ public final class ServerGui {
         this.vUptime.setText(duration(s.uptimeMillis));
         this.sUptime.setText("desde " + new SimpleDateFormat("dd/MM HH:mm").format(new Date(s.timeMillis - s.uptimeMillis)));
 
+        for (java.util.Map.Entry<ServerMetrics.Counter, JLabel[]> e : this.moveCards.entrySet()) {
+            ServerMetrics.Counter c = e.getKey();
+            long perMin = s.perMin(c);
+            e.getValue()[0].setText(String.valueOf(perMin));
+            e.getValue()[1].setText("total " + s.total(c));
+            boolean alarm = (c == ServerMetrics.Counter.PATH_BUFFERS_EXHAUSTED || c == ServerMetrics.Counter.NPC_INFO_DROPPED) && perMin > 0;
+            boolean warn = c == ServerMetrics.Counter.VP_RED && perMin > 0;
+            e.getValue()[0].setForeground(alarm ? Theme.ERROR : warn ? Theme.WARN : Theme.TEXT);
+        }
+        if (this.chZones.isShowing()) {
+            int secs = this.rangeSeconds();
+            Snapshot[] data = ServerMetrics.history(secs);
+            for (MetricChart c : new MetricChart[]{this.chZones, this.chPaths, this.chNpcs, this.chFarm}) {
+                c.setData(data, secs);
+            }
+        }
         if (this.chOnline.isShowing()) {
             int secs = this.rangeSeconds();
             Snapshot[] data = ServerMetrics.history(secs);
@@ -524,7 +621,7 @@ public final class ServerGui {
             int mode = l2.gameserver.Shutdown.getInstance().getMode();
             if (secs >= 0 && mode != l2.gameserver.Shutdown.NONE) {
                 sb.append("   |   ").append(mode == l2.gameserver.Shutdown.RESTART ? "Reinício" : "Desligamento")
-                        .append(" em ").append(secs).append(" s");
+                        .append(" em ").append(duration(secs * 1000L));
                 this.status.setForeground(Theme.WARN);
             } else {
                 this.status.setForeground(Theme.MUTED);

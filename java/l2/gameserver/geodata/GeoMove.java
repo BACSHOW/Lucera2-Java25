@@ -56,16 +56,24 @@ public class GeoMove {
             smoothed = l2.gameserver.ai.util.RepositioningMath.stringPull(smoothed, (from, to) -> GeoEngine.canMoveWithCollision(from.x, from.y, from.z, to.x, to.y, to.z, var7));
             List<List<Location>> smoothedLines = lines(smoothed, var6, var7);
             if (!smoothedLines.isEmpty()) {
+               l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.PATH_NBA_SMOOTH);
                return smoothedLines;
             }
          }
          List<List<Location>> rawLines = lines(nbaPath, var6, var7);
          if (!rawLines.isEmpty()) {
+            l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.PATH_NBA_RAW);
             return rawLines;
          }
       }
       // 2. Fallback clássico
-      return lines(b(var0, var1, var2, var3, var4, var5, var6, var7), var6, var7);
+      List<List<Location>> classic = lines(b(var0, var1, var2, var3, var4, var5, var6, var7), var6, var7);
+      if (classic.isEmpty()) {
+         l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.PATH_NONE);
+      } else {
+         l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.PATH_CLASSIC);
+      }
+      return classic;
    }
 
    /**
@@ -78,6 +86,7 @@ public class GeoMove {
          if (smooth != points) {
             List<List<Location>> smoothLines = b(smooth, geoIndex);
             if (!smoothLines.isEmpty()) {
+               l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.SMOOTH_CORNERS);
                return smoothLines;
             }
          }

@@ -93,6 +93,9 @@ public class PathFindBuffers {
          }
       }
 
+      if (var1 == null) {
+         l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.PATH_BUFFERS_EXHAUSTED);
+      }
       return var1;
    }
 

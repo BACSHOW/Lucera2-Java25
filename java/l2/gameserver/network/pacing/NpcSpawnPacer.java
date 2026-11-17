@@ -325,6 +325,8 @@ public final class NpcSpawnPacer {
                 if (npc != null && npc.isVisible() && npc.getReflectionId() == _player.getReflectionId()
                         && (!Config.ENABLE_VISIBLE_OBJECT_RADIUS_FILTER || _player.isInRangeZ(npc, (long) Config.VISIBLE_OBJECT_RADIUS))) {
                     sendImmediate(npc);
+                } else if (npc != null && npc.isVisible()) {
+                    l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.NPC_INFO_DROPPED);
                 }
             }
         }
