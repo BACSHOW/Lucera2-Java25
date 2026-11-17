@@ -72,15 +72,15 @@ public class Config {
     public static long IP_BAN_RESET;
     public static boolean TRUST_LOCAL_NETWORK;
     public static boolean PERSIST_IP_BANS;
+    /** false: senhas erradas e excesso de conexoes nunca banem (bans manuais e BlackIpList continuam). */
+    public static boolean AUTO_BAN;
     // Mensagens mostradas ao jogador na caixinha do login (codigos do LoginFail)
-    public static int[] MSG_IP_BANNED;
+    public static int MSG_IP_BANNED;
     public static int MSG_LAST_ATTEMPT;
     public static int MSG_INVALID_PASSWORD;
     public static int MSG_INVALID_ACCOUNT_NAME;
     public static int MSG_ACCOUNT_BANNED;
     public static String MSG_TEST_ACCOUNT;
-    /** true: as mensagens proprias saem pelo AccountKicked (motivos que outros servidores nao usam). */
-    public static boolean MSG_USE_ACCOUNT_KICKED;
     private static ScrambledKeyPair[] mT;
     private static byte[][] mU;
     public static PasswordHash DEFAULT_CRYPT;
@@ -246,35 +246,20 @@ public class Config {
         IP_BAN_RESET = (long)exProperties.getProperty("IpBanResetHours", 24) * 3600000L;
         TRUST_LOCAL_NETWORK = exProperties.getProperty("TrustLocalNetwork", true);
         PERSIST_IP_BANS = exProperties.getProperty("PersistIpBans", true);
-        String[] banCodes = exProperties.getProperty("LoginMsgIpBanned", new String[]{"21"});
-        ArrayList<Integer> codes = new ArrayList<Integer>();
-        for (String c : banCodes) {
-            int v = loginMsgCode(c, -1);
-            if (v >= 0) {
-                codes.add(v);
-            }
-        }
-        if (codes.isEmpty()) {
-            codes.add(21);
-        }
-        int[] codeArr = new int[codes.size()];
-        for (int i = 0; i < codeArr.length; ++i) {
-            codeArr[i] = codes.get(i);
-        }
-        MSG_IP_BANNED = codeArr;
+        AUTO_BAN = exProperties.getProperty("EnableAutoBan", true);
+        MSG_IP_BANNED = loginMsgCode(exProperties.getProperty("LoginMsgIpBanned", "21"), 21);
         MSG_LAST_ATTEMPT = loginMsgCode(exProperties.getProperty("LoginMsgLastAttempt", "3"), 3);
         MSG_INVALID_PASSWORD = loginMsgCode(exProperties.getProperty("LoginMsgInvalidPassword", "5"), 5);
         MSG_INVALID_ACCOUNT_NAME = loginMsgCode(exProperties.getProperty("LoginMsgInvalidAccountName", "5"), 5);
         MSG_ACCOUNT_BANNED = loginMsgCode(exProperties.getProperty("LoginMsgAccountBanned", "21"), 21);
         MSG_TEST_ACCOUNT = exProperties.getProperty("LoginMsgTestAccount", "").trim().toLowerCase();
-        MSG_USE_ACCOUNT_KICKED = "AccountKicked".equalsIgnoreCase(exProperties.getProperty("LoginMsgPacket", "LoginFail").trim());
     }
 
-    /** Codigo de mensagem do login: 0 a 127 (LoginFail usa ate 22; AccountKicked usa 0 a 64). */
+    /** Codigo de mensagem do login (LoginFail): 1 a 22, a faixa que o cliente Interlude tem texto. */
     private static int loginMsgCode(String value, int def) {
         try {
             int v = Integer.parseInt(value.trim());
-            return v >= 0 && v <= 127 ? v : def;
+            return v >= 1 && v <= 22 ? v : def;
         }
         catch (Exception e) {
             return def;

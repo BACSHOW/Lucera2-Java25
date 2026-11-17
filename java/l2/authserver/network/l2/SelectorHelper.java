@@ -4,7 +4,6 @@
 package l2.authserver.network.l2;
 
 import java.nio.channels.SocketChannel;
-import l2.authserver.IpBanManager;
 import l2.authserver.ThreadPoolManager;
 import l2.authserver.network.l2.L2LoginClient;
 import l2.authserver.network.l2.s2c.Init;

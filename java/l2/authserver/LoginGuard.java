@@ -130,21 +130,6 @@ public final class LoginGuard {
         return b != null && b.isActive(System.currentTimeMillis());
     }
 
-    /**
-     * Nivel do ban ativo (0 = primeiro ban, 1 = segundo...), ou -1 se o IP nao esta banido.
-     * IP da BlackIpList conta como o ultimo nivel.
-     */
-    public int getActiveBanLevel(String ip) {
-        if (ip == null || this.isTrusted(ip) && !Config.BLACK_IPS.contains(ip)) {
-            return -1;
-        }
-        if (Config.BLACK_IPS.contains(ip)) {
-            return Integer.MAX_VALUE;
-        }
-        Ban b = this.bans.get(ip);
-        return b != null && b.isActive(System.currentTimeMillis()) ? b.level : -1;
-    }
-
     /** Bans ativos, do que termina antes ao que termina depois. */
     public List<Ban> getActiveBans() {
         long now = System.currentTimeMillis();
@@ -194,8 +179,10 @@ public final class LoginGuard {
             }
         }
         if (flood) {
-            this.ban(ip, "excesso de conexoes");
-            return false;
+            if (Config.AUTO_BAN) {
+                this.ban(ip, "excesso de conexoes");
+            }
+            return false; // sem ban automatico so recusa as conexoes a mais desta janela
         }
         return true;
     }

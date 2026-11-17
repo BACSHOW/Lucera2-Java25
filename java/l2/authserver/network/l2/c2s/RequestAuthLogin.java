@@ -11,7 +11,6 @@ import l2.authserver.accounts.SessionManager;
 import l2.authserver.crypt.PasswordHash;
 import l2.authserver.network.l2.L2LoginClient;
 import l2.authserver.network.l2.c2s.L2LoginClientPacket;
-import l2.authserver.network.l2.s2c.AccountKicked;
 import l2.authserver.network.l2.s2c.LoginFail;
 import l2.authserver.network.l2.s2c.LoginOk;
 import l2.authserver.utils.Log;
@@ -41,10 +40,9 @@ extends L2LoginClientPacket {
         L2LoginClient l2LoginClient = (L2LoginClient)this.getClient();
         String ip = l2LoginClient.getIpAddr();
         // IP bloqueado: so mostra a mensagem (nem decifra a senha, nem conta tentativa)
-        int banLevel = l2.authserver.LoginGuard.getInstance().getActiveBanLevel(ip);
-        if (banLevel >= 0) {
+        if (l2.authserver.LoginGuard.getInstance().isBanned(ip)) {
             l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
-            RequestAuthLogin.custom(l2LoginClient, RequestAuthLogin.ipBannedCode(banLevel));
+            RequestAuthLogin.fail(l2LoginClient, Config.MSG_IP_BANNED);
             return;
         }
         try {
@@ -64,8 +62,7 @@ extends L2LoginClientPacket {
         n |= (byArray[126] & 0xFF) << 16;
         n |= (byArray[127] & 0xFF) << 24;
         int n2 = (int)(System.currentTimeMillis() / 1000L);
-        // Conta de teste das mensagens: senha = numero do codigo (0 a 127), nada e contado.
-        // Usa o mesmo pacote das mensagens proprias (LoginMsgPacket).
+        // Conta de teste das mensagens: senha = numero do codigo (1 a 22), nada e contado.
         if (!Config.MSG_TEST_ACCOUNT.isEmpty() && Config.MSG_TEST_ACCOUNT.equals(object)) {
             int code;
             try {
@@ -74,10 +71,9 @@ extends L2LoginClientPacket {
             catch (NumberFormatException e) {
                 code = 0;
             }
-            if (code >= 0 && code <= 127) {
-                org.slf4j.LoggerFactory.getLogger(RequestAuthLogin.class).info("Teste de mensagem do login: "
-                        + (Config.MSG_USE_ACCOUNT_KICKED ? "AccountKicked motivo " : "LoginFail codigo ") + code + " enviado para " + ip + ".");
-                RequestAuthLogin.custom(l2LoginClient, code);
+            if (code >= 1 && code <= 22) {
+                org.slf4j.LoggerFactory.getLogger(RequestAuthLogin.class).info("Teste de mensagem do login: codigo " + code + " enviado para " + ip + ".");
+                RequestAuthLogin.fail(l2LoginClient, code);
                 return;
             }
         }
@@ -94,13 +90,13 @@ extends L2LoginClientPacket {
                 // aleatorios nunca levava a ban.
                 l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
                 if (!IpBanManager.getInstance().tryLogin(ip, false)) {
-                    RequestAuthLogin.failBanned(l2LoginClient, ip);
+                    RequestAuthLogin.fail(l2LoginClient, Config.MSG_IP_BANNED); // esta tentativa causou o ban
                     return;
                 }
                 if (Config.AUTO_CREATE_ACCOUNTS && !((String)object).matches(Config.ANAME_TEMPLATE)) {
-                    RequestAuthLogin.custom(l2LoginClient, Config.MSG_INVALID_ACCOUNT_NAME);
+                    RequestAuthLogin.fail(l2LoginClient, Config.MSG_INVALID_ACCOUNT_NAME);
                 } else if (Config.AUTO_CREATE_ACCOUNTS) {
-                    RequestAuthLogin.custom(l2LoginClient, Config.MSG_INVALID_PASSWORD);
+                    RequestAuthLogin.fail(l2LoginClient, Config.MSG_INVALID_PASSWORD);
                 } else {
                     RequestAuthLogin.failWrongPassword(l2LoginClient, ip);
                 }
@@ -117,7 +113,7 @@ extends L2LoginClientPacket {
         }
         if (!IpBanManager.getInstance().tryLogin(ip, bl)) {
             l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
-            RequestAuthLogin.failBanned(l2LoginClient, ip);
+            RequestAuthLogin.fail(l2LoginClient, Config.MSG_IP_BANNED); // esta tentativa causou o ban
             return;
         }
         if (!bl) {
@@ -150,43 +146,21 @@ extends L2LoginClientPacket {
         l2LoginClient.sendPacket(new LoginOk(l2LoginClient.getSessionKey()));
     }
 
-    /** Mensagem original do jogo (senha errada, conta banida): sempre pelo LoginFail. */
+    /**
+     * Fecha a conexao mostrando a mensagem do numero (LoginFail). Os numeros das mensagens proprias
+     * (17, 18, 19) tem o texto trocado pela interface do cliente (TrueWnd.uc).
+     */
     private static void fail(L2LoginClient client, int code) {
         client.close(new LoginFail(code));
-    }
-
-    /**
-     * Mensagem propria (bloqueio de IP, ultima tentativa, senha/nome invalido): pelo pacote de LoginMsgPacket.
-     * Com AccountKicked, a interface do cliente troca o texto pela mensagem nova; em outro servidor esses
-     * motivos nunca chegam, entao la aparecem sempre as mensagens originais.
-     */
-    private static void custom(L2LoginClient client, int code) {
-        if (Config.MSG_USE_ACCOUNT_KICKED) {
-            client.close(new AccountKicked(code));
-        } else {
-            client.close(new LoginFail(code));
-        }
     }
 
     /** Senha errada; se a proxima errada causar o ban, avisa que e a ultima tentativa. */
     private static void failWrongPassword(L2LoginClient client, String ip) {
         int left = IpBanManager.getInstance().remainingTries(ip);
         if (left == 1) {
-            RequestAuthLogin.custom(client, Config.MSG_LAST_ATTEMPT);
+            RequestAuthLogin.fail(client, Config.MSG_LAST_ATTEMPT);
         } else {
             RequestAuthLogin.fail(client, LoginFail.LoginFailReason.REASON_USER_OR_PASS_WRONG.getCode());
         }
-    }
-
-    /** O IP acabou de ser banido por esta tentativa. */
-    private static void failBanned(L2LoginClient client, String ip) {
-        int level = l2.authserver.LoginGuard.getInstance().getActiveBanLevel(ip);
-        RequestAuthLogin.custom(client, RequestAuthLogin.ipBannedCode(Math.max(0, level)));
-    }
-
-    /** Codigo da mensagem para o nivel do ban (LoginMsgIpBanned: um por nivel, o ultimo vale para os seguintes). */
-    private static int ipBannedCode(int level) {
-        int[] codes = Config.MSG_IP_BANNED;
-        return codes[Math.min(level, codes.length - 1)];
     }
 }

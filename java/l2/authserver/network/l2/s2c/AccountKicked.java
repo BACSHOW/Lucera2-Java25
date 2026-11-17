@@ -13,11 +13,6 @@ extends L2LoginServerPacket {
         this.oH = accountKickedReason.getCode();
     }
 
-    /** Motivo cru (configuravel no authserver.properties): o cliente mostra o texto desse motivo. */
-    public AccountKicked(int code) {
-        this.oH = code;
-    }
-
     @Override
     protected void writeImpl() {
         this.writeC(2);

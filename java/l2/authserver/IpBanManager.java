@@ -40,7 +40,7 @@ public class IpBanManager {
                     Iterator iterator = IpBanManager.this.nj.values().iterator();
                     while (iterator.hasNext()) {
                         IpSession ipSession = (IpSession)iterator.next();
-                        if (ipSession.banExpire >= l || ipSession.lastTry >= l - Config.LOGIN_TRY_TIMEOUT) continue;
+                        if (ipSession.lastTry >= l - Config.LOGIN_TRY_TIMEOUT) continue;
                         iterator.remove();
                     }
                 }
@@ -49,14 +49,6 @@ public class IpBanManager {
                 }
             }
         }, 1000L, 1000L);
-    }
-
-    /*
-     * WARNING - Removed try catching itself - possible behaviour change.
-     */
-    public boolean isIpBanned(String string) {
-        // Bans agora ficam no LoginGuard (progressivos e salvos no banco).
-        return LoginGuard.getInstance().isBanned(string);
     }
 
     /** Zera as tentativas do IP (usado ao desbanir pela janela). */
@@ -72,7 +64,7 @@ public class IpBanManager {
 
     /** Quantas tentativas erradas ainda faltam para o ban (Integer.MAX_VALUE para IP confiavel). */
     public int remainingTries(String string) {
-        if (LoginGuard.getInstance().isTrusted(string)) {
+        if (!Config.AUTO_BAN || LoginGuard.getInstance().isTrusted(string)) {
             return Integer.MAX_VALUE;
         }
         this.readLock.lock();
@@ -89,7 +81,7 @@ public class IpBanManager {
      * WARNING - Removed try catching itself - possible behaviour change.
      */
     public boolean tryLogin(String string, boolean bl) {
-        if (LoginGuard.getInstance().isTrusted(string)) {
+        if (!Config.AUTO_BAN || LoginGuard.getInstance().isTrusted(string)) {
             return true;
         }
         this.writeLock.lock();
@@ -113,8 +105,7 @@ public class IpBanManager {
             ipSession.lastTry = l;
             if (ipSession.tryCount >= Config.LOGIN_TRY_BEFORE_BAN) {
                 // ban progressivo (IpBanSteps) pelo LoginGuard; as tentativas recomecam do zero
-                long duration = LoginGuard.getInstance().ban(string, "senhas erradas");
-                ipSession.banExpire = l + duration;
+                LoginGuard.getInstance().ban(string, "senhas erradas");
                 ipSession.tryCount = 0;
                 boolean bl2 = false;
                 return bl2;
@@ -130,7 +121,6 @@ public class IpBanManager {
     private class IpSession {
         public int tryCount;
         public long lastTry;
-        public long banExpire;
 
         private IpSession() {
         }
