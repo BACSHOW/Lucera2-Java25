@@ -247,12 +247,22 @@ public class Config {
         TRUST_LOCAL_NETWORK = exProperties.getProperty("TrustLocalNetwork", true);
         PERSIST_IP_BANS = exProperties.getProperty("PersistIpBans", true);
         AUTO_BAN = exProperties.getProperty("EnableAutoBan", true);
-        MSG_IP_BANNED = loginMsgCode(exProperties.getProperty("LoginMsgIpBanned", "21"), 21);
-        MSG_LAST_ATTEMPT = loginMsgCode(exProperties.getProperty("LoginMsgLastAttempt", "3"), 3);
-        MSG_INVALID_PASSWORD = loginMsgCode(exProperties.getProperty("LoginMsgInvalidPassword", "5"), 5);
-        MSG_INVALID_ACCOUNT_NAME = loginMsgCode(exProperties.getProperty("LoginMsgInvalidAccountName", "5"), 5);
-        MSG_ACCOUNT_BANNED = loginMsgCode(exProperties.getProperty("LoginMsgAccountBanned", "21"), 21);
-        MSG_TEST_ACCOUNT = exProperties.getProperty("LoginMsgTestAccount", "").trim().toLowerCase();
+        if (exProperties.getProperty("EnableCustomLoginMessages", true)) {
+            MSG_IP_BANNED = loginMsgCode(exProperties.getProperty("LoginMsgIpBanned", "21"), 21);
+            MSG_LAST_ATTEMPT = loginMsgCode(exProperties.getProperty("LoginMsgLastAttempt", "3"), 3);
+            MSG_INVALID_PASSWORD = loginMsgCode(exProperties.getProperty("LoginMsgInvalidPassword", "3"), 3);
+            MSG_INVALID_ACCOUNT_NAME = loginMsgCode(exProperties.getProperty("LoginMsgInvalidAccountName", "3"), 3);
+            MSG_ACCOUNT_BANNED = loginMsgCode(exProperties.getProperty("LoginMsgAccountBanned", "21"), 21);
+            MSG_TEST_ACCOUNT = exProperties.getProperty("LoginMsgTestAccount", "").trim().toLowerCase();
+        } else {
+            // Mensagens originais do jogo, como antes das alteracoes: acesso negado (21) e senha errada (3)
+            MSG_IP_BANNED = 21;
+            MSG_LAST_ATTEMPT = 3;
+            MSG_INVALID_PASSWORD = 3;
+            MSG_INVALID_ACCOUNT_NAME = 3;
+            MSG_ACCOUNT_BANNED = 21;
+            MSG_TEST_ACCOUNT = "";
+        }
     }
 
     /** Codigo de mensagem do login (LoginFail): 1 a 22, a faixa que o cliente Interlude tem texto. */
