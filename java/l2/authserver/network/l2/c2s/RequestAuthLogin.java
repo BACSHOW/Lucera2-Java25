@@ -38,6 +38,14 @@ extends L2LoginClientPacket {
         byte[] byArray;
         Object object;
         L2LoginClient l2LoginClient = (L2LoginClient)this.getClient();
+        String ip = l2LoginClient.getIpAddr();
+        // IP bloqueado: so mostra a mensagem (nem decifra a senha, nem conta tentativa)
+        int banLevel = l2.authserver.LoginGuard.getInstance().getActiveBanLevel(ip);
+        if (banLevel >= 0) {
+            l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
+            RequestAuthLogin.fail(l2LoginClient, RequestAuthLogin.ipBannedCode(banLevel));
+            return;
+        }
         try {
             object = Cipher.getInstance("RSA/ECB/nopadding");
             ((Cipher)object).init(2, l2LoginClient.getRSAPrivateKey());
@@ -55,6 +63,21 @@ extends L2LoginClientPacket {
         n |= (byArray[126] & 0xFF) << 16;
         n |= (byArray[127] & 0xFF) << 24;
         int n2 = (int)(System.currentTimeMillis() / 1000L);
+        // Conta de teste das mensagens: senha = numero do codigo (1 a 63), nada e contado
+        if (!Config.MSG_TEST_ACCOUNT.isEmpty() && Config.MSG_TEST_ACCOUNT.equals(object)) {
+            int code;
+            try {
+                code = Integer.parseInt(string.trim());
+            }
+            catch (NumberFormatException e) {
+                code = 0;
+            }
+            if (code >= 1 && code <= 63) {
+                org.slf4j.LoggerFactory.getLogger(RequestAuthLogin.class).info("Teste de mensagem do login: codigo " + code + " enviado para " + ip + ".");
+                RequestAuthLogin.fail(l2LoginClient, code);
+                return;
+            }
+        }
         Account account = new Account((String)object);
         account.restore();
         String string2 = Config.DEFAULT_CRYPT.encrypt(string);
@@ -67,11 +90,17 @@ extends L2LoginClientPacket {
                 // Conta inexistente tambem conta como tentativa errada: sem isso, testar nomes
                 // aleatorios nunca levava a ban.
                 l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
-                if (!IpBanManager.getInstance().tryLogin(l2LoginClient.getIpAddr(), false)) {
-                    l2LoginClient.closeNow(false);
+                if (!IpBanManager.getInstance().tryLogin(ip, false)) {
+                    RequestAuthLogin.failBanned(l2LoginClient, ip);
                     return;
                 }
-                l2LoginClient.close(LoginFail.LoginFailReason.REASON_USER_OR_PASS_WRONG);
+                if (Config.AUTO_CREATE_ACCOUNTS && !((String)object).matches(Config.ANAME_TEMPLATE)) {
+                    RequestAuthLogin.fail(l2LoginClient, Config.MSG_INVALID_ACCOUNT_NAME);
+                } else if (Config.AUTO_CREATE_ACCOUNTS) {
+                    RequestAuthLogin.fail(l2LoginClient, Config.MSG_INVALID_PASSWORD);
+                } else {
+                    RequestAuthLogin.failWrongPassword(l2LoginClient, ip);
+                }
                 return;
             }
         }
@@ -83,22 +112,22 @@ extends L2LoginClientPacket {
                 break;
             }
         }
-        if (!IpBanManager.getInstance().tryLogin(l2LoginClient.getIpAddr(), bl)) {
+        if (!IpBanManager.getInstance().tryLogin(ip, bl)) {
             l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
-            l2LoginClient.closeNow(false);
+            RequestAuthLogin.failBanned(l2LoginClient, ip);
             return;
         }
         if (!bl) {
             l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
-            l2LoginClient.close(LoginFail.LoginFailReason.REASON_USER_OR_PASS_WRONG);
+            RequestAuthLogin.failWrongPassword(l2LoginClient, ip);
             return;
         }
         if (account.getAccessLevel() < 0) {
-            l2LoginClient.close(LoginFail.LoginFailReason.REASON_ACCESS_FAILED);
+            RequestAuthLogin.fail(l2LoginClient, Config.MSG_ACCOUNT_BANNED);
             return;
         }
         if (account.getBanExpire() > n2) {
-            l2LoginClient.close(LoginFail.LoginFailReason.REASON_ACCESS_FAILED);
+            RequestAuthLogin.fail(l2LoginClient, Config.MSG_ACCOUNT_BANNED);
             return;
         }
         if (!account.isAllowedIP(l2LoginClient.getIpAddr())) {
@@ -117,5 +146,26 @@ extends L2LoginClientPacket {
         l2.authserver.LoginMetrics.LOGINS_OK.increment();
         l2LoginClient.sendPacket(new LoginOk(l2LoginClient.getSessionKey()));
     }
-}
 
+    private static void fail(L2LoginClient client, int code) {
+        client.close(new LoginFail(code));
+    }
+
+    /** Senha errada; se a proxima errada causar o ban, avisa que e a ultima tentativa. */
+    private static void failWrongPassword(L2LoginClient client, String ip) {
+        int left = IpBanManager.getInstance().remainingTries(ip);
+        RequestAuthLogin.fail(client, left == 1 ? Config.MSG_LAST_ATTEMPT : LoginFail.LoginFailReason.REASON_USER_OR_PASS_WRONG.getCode());
+    }
+
+    /** O IP acabou de ser banido por esta tentativa. */
+    private static void failBanned(L2LoginClient client, String ip) {
+        int level = l2.authserver.LoginGuard.getInstance().getActiveBanLevel(ip);
+        RequestAuthLogin.fail(client, RequestAuthLogin.ipBannedCode(Math.max(0, level)));
+    }
+
+    /** Codigo da mensagem para o nivel do ban (LoginMsgIpBanned: um por nivel, o ultimo vale para os seguintes). */
+    private static int ipBannedCode(int level) {
+        int[] codes = Config.MSG_IP_BANNED;
+        return codes[Math.min(level, codes.length - 1)];
+    }
+}

@@ -40,8 +40,9 @@ IMMOExecutor<L2LoginClient> {
     @Override
     public boolean accept(SocketChannel socketChannel) {
         String ip = socketChannel.socket().getInetAddress().getHostAddress();
-        // IP banido, ou abrindo conexoes demais (LoginGuard bane e recusa)
-        if (IpBanManager.getInstance().isIpBanned(ip) || !l2.authserver.LoginGuard.getInstance().onConnection(ip)) {
+        // Abrindo conexoes demais: o LoginGuard bane e recusa. O IP ja banido continua sendo aceito
+        // (dentro desse limite) so para receber a mensagem de bloqueio no RequestAuthLogin.
+        if (!l2.authserver.LoginGuard.getInstance().onConnection(ip)) {
             l2.authserver.LoginMetrics.CONNECTIONS_REFUSED.increment();
             return false;
         }

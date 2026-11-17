@@ -70,6 +70,21 @@ public class IpBanManager {
         }
     }
 
+    /** Quantas tentativas erradas ainda faltam para o ban (Integer.MAX_VALUE para IP confiavel). */
+    public int remainingTries(String string) {
+        if (LoginGuard.getInstance().isTrusted(string)) {
+            return Integer.MAX_VALUE;
+        }
+        this.readLock.lock();
+        try {
+            IpSession ipSession = this.nj.get(string);
+            return Config.LOGIN_TRY_BEFORE_BAN - (ipSession == null ? 0 : ipSession.tryCount);
+        }
+        finally {
+            this.readLock.unlock();
+        }
+    }
+
     /*
      * WARNING - Removed try catching itself - possible behaviour change.
      */

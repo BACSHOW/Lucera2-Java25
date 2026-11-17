@@ -13,6 +13,11 @@ extends L2LoginServerPacket {
         this.pA = loginFailReason.getCode();
     }
 
+    /** Codigo cru (configuravel no authserver.properties): o cliente mostra o texto desse codigo. */
+    public LoginFail(int code) {
+        this.pA = code;
+    }
+
     @Override
     protected void writeImpl() {
         this.writeC(1);

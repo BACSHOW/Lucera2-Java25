@@ -72,6 +72,13 @@ public class Config {
     public static long IP_BAN_RESET;
     public static boolean TRUST_LOCAL_NETWORK;
     public static boolean PERSIST_IP_BANS;
+    // Mensagens mostradas ao jogador na caixinha do login (codigos do LoginFail)
+    public static int[] MSG_IP_BANNED;
+    public static int MSG_LAST_ATTEMPT;
+    public static int MSG_INVALID_PASSWORD;
+    public static int MSG_INVALID_ACCOUNT_NAME;
+    public static int MSG_ACCOUNT_BANNED;
+    public static String MSG_TEST_ACCOUNT;
     private static ScrambledKeyPair[] mT;
     private static byte[][] mU;
     public static PasswordHash DEFAULT_CRYPT;
@@ -237,6 +244,38 @@ public class Config {
         IP_BAN_RESET = (long)exProperties.getProperty("IpBanResetHours", 24) * 3600000L;
         TRUST_LOCAL_NETWORK = exProperties.getProperty("TrustLocalNetwork", true);
         PERSIST_IP_BANS = exProperties.getProperty("PersistIpBans", true);
+        String[] banCodes = exProperties.getProperty("LoginMsgIpBanned", new String[]{"21"});
+        ArrayList<Integer> codes = new ArrayList<Integer>();
+        for (String c : banCodes) {
+            int v = loginMsgCode(c, -1);
+            if (v > 0) {
+                codes.add(v);
+            }
+        }
+        if (codes.isEmpty()) {
+            codes.add(21);
+        }
+        int[] codeArr = new int[codes.size()];
+        for (int i = 0; i < codeArr.length; ++i) {
+            codeArr[i] = codes.get(i);
+        }
+        MSG_IP_BANNED = codeArr;
+        MSG_LAST_ATTEMPT = loginMsgCode(exProperties.getProperty("LoginMsgLastAttempt", "3"), 3);
+        MSG_INVALID_PASSWORD = loginMsgCode(exProperties.getProperty("LoginMsgInvalidPassword", "5"), 5);
+        MSG_INVALID_ACCOUNT_NAME = loginMsgCode(exProperties.getProperty("LoginMsgInvalidAccountName", "5"), 5);
+        MSG_ACCOUNT_BANNED = loginMsgCode(exProperties.getProperty("LoginMsgAccountBanned", "21"), 21);
+        MSG_TEST_ACCOUNT = exProperties.getProperty("LoginMsgTestAccount", "").trim().toLowerCase();
+    }
+
+    /** Codigo de mensagem do login: 1 a 63 (o cliente so tem textos nessa faixa). */
+    private static int loginMsgCode(String value, int def) {
+        try {
+            int v = Integer.parseInt(value.trim());
+            return v >= 1 && v <= 63 ? v : def;
+        }
+        catch (Exception e) {
+            return def;
+        }
     }
 
     /** Relê so as opcoes de contas e protecao do authserver.properties. */
