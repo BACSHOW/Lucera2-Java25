@@ -101,6 +101,12 @@ public class GameServer {
     private AtomicBoolean tx = new AtomicBoolean(false);
     private static int[] ty;
 
+    /** Java nao cria array de tipo generico direto; o cast e seguro porque so entram conexoes do jogo. */
+    @SuppressWarnings("unchecked")
+    private static SelectorThread<GameClient>[] newSelectorArray(int size) {
+        return (SelectorThread<GameClient>[]) new SelectorThread<?>[size];
+    }
+
     public SelectorThread<GameClient>[] getSelectorThreads() {
         return this.tr;
     }
@@ -291,9 +297,9 @@ public class GameServer {
         if (Config.USE_NETTY) {
             _log.debug("[Netty] Starting Netty game network engine...");
             l2.gameserver.network.l2.netty.NettyGameServer.getInstance().start(inetAddress, Config.PORTS_GAME, Config.HAPROXY_PORT_GAME, gamePacketHandler);
-            this.tr = new SelectorThread[0];
+            this.tr = GameServer.newSelectorArray(0);
         } else {
-            this.tr = Config.HAPROXY_PORT_GAME > 0 ? new SelectorThread[Config.PORTS_GAME.length + 1] : new SelectorThread[Config.PORTS_GAME.length];
+            this.tr = GameServer.newSelectorArray(Config.HAPROXY_PORT_GAME > 0 ? Config.PORTS_GAME.length + 1 : Config.PORTS_GAME.length);
             for (int i = 0; i < this.tr.length; ++i) {
                 int n;
                 block18: {
