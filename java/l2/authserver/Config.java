@@ -79,6 +79,8 @@ public class Config {
     public static int MSG_INVALID_ACCOUNT_NAME;
     public static int MSG_ACCOUNT_BANNED;
     public static String MSG_TEST_ACCOUNT;
+    /** true: as mensagens proprias saem pelo AccountKicked (motivos que outros servidores nao usam). */
+    public static boolean MSG_USE_ACCOUNT_KICKED;
     private static ScrambledKeyPair[] mT;
     private static byte[][] mU;
     public static PasswordHash DEFAULT_CRYPT;
@@ -248,7 +250,7 @@ public class Config {
         ArrayList<Integer> codes = new ArrayList<Integer>();
         for (String c : banCodes) {
             int v = loginMsgCode(c, -1);
-            if (v > 0) {
+            if (v >= 0) {
                 codes.add(v);
             }
         }
@@ -265,13 +267,14 @@ public class Config {
         MSG_INVALID_ACCOUNT_NAME = loginMsgCode(exProperties.getProperty("LoginMsgInvalidAccountName", "5"), 5);
         MSG_ACCOUNT_BANNED = loginMsgCode(exProperties.getProperty("LoginMsgAccountBanned", "21"), 21);
         MSG_TEST_ACCOUNT = exProperties.getProperty("LoginMsgTestAccount", "").trim().toLowerCase();
+        MSG_USE_ACCOUNT_KICKED = "AccountKicked".equalsIgnoreCase(exProperties.getProperty("LoginMsgPacket", "LoginFail").trim());
     }
 
-    /** Codigo de mensagem do login: 1 a 63 (o cliente so tem textos nessa faixa). */
+    /** Codigo de mensagem do login: 0 a 127 (LoginFail usa ate 22; AccountKicked usa 0 a 64). */
     private static int loginMsgCode(String value, int def) {
         try {
             int v = Integer.parseInt(value.trim());
-            return v >= 1 && v <= 63 ? v : def;
+            return v >= 0 && v <= 127 ? v : def;
         }
         catch (Exception e) {
             return def;
