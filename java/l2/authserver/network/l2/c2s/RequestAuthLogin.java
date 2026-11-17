@@ -62,7 +62,15 @@ extends L2LoginClientPacket {
             if (Config.AUTO_CREATE_ACCOUNTS && ((String)object).matches(Config.ANAME_TEMPLATE) && string.matches(Config.APASSWD_TEMPLATE)) {
                 account.setPasswordHash(string2);
                 account.save();
+                l2.authserver.LoginMetrics.ACCOUNTS_CREATED.increment();
             } else {
+                // Conta inexistente tambem conta como tentativa errada: sem isso, testar nomes
+                // aleatorios nunca levava a ban.
+                l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
+                if (!IpBanManager.getInstance().tryLogin(l2LoginClient.getIpAddr(), false)) {
+                    l2LoginClient.closeNow(false);
+                    return;
+                }
                 l2LoginClient.close(LoginFail.LoginFailReason.REASON_USER_OR_PASS_WRONG);
                 return;
             }
@@ -76,10 +84,12 @@ extends L2LoginClientPacket {
             }
         }
         if (!IpBanManager.getInstance().tryLogin(l2LoginClient.getIpAddr(), bl)) {
+            l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
             l2LoginClient.closeNow(false);
             return;
         }
         if (!bl) {
+            l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
             l2LoginClient.close(LoginFail.LoginFailReason.REASON_USER_OR_PASS_WRONG);
             return;
         }
@@ -104,6 +114,7 @@ extends L2LoginClientPacket {
         l2LoginClient.setAccount(account);
         l2LoginClient.setSessionKey(session.getSessionKey());
         l2LoginClient.setState(L2LoginClient.LoginClientState.AUTHED);
+        l2.authserver.LoginMetrics.LOGINS_OK.increment();
         l2LoginClient.sendPacket(new LoginOk(l2LoginClient.getSessionKey()));
     }
 }

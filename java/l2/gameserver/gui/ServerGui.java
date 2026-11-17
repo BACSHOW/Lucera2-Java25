@@ -185,6 +185,12 @@ public final class ServerGui {
         return Boolean.parseBoolean(p.getProperty("EnableServerGui", "true").trim());
     }
 
+    /** Liga o log (logback) e o System.err a janela. Tambem usado pela janela do login. */
+    public static void captureLogs() {
+        attachLogAppender();
+        teeSystemErr();
+    }
+
     private static void attachLogAppender() {
         org.slf4j.ILoggerFactory factory = LoggerFactory.getILoggerFactory();
         if (factory instanceof ch.qos.logback.classic.LoggerContext context) {

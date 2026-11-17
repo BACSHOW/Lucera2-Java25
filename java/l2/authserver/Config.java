@@ -65,6 +65,13 @@ public class Config {
     public static long IP_BAN_TIME;
     public static Set<String> WHITE_IPS;
     public static Set<String> BLACK_IPS;
+    // Protecao do login (LoginGuard)
+    public static int CONNECTION_FLOOD_MAX;
+    public static long CONNECTION_FLOOD_WINDOW;
+    public static long[] IP_BAN_STEPS;
+    public static long IP_BAN_RESET;
+    public static boolean TRUST_LOCAL_NETWORK;
+    public static boolean PERSIST_IP_BANS;
     private static ScrambledKeyPair[] mT;
     private static byte[][] mU;
     public static PasswordHash DEFAULT_CRYPT;
@@ -181,18 +188,61 @@ public class Config {
         ACCEPT_NEW_GAMESERVER = exProperties.getProperty("AcceptNewGameServer", true);
         DEFAULT_PASSWORD_HASH = exProperties.getProperty("PasswordHash", "whirlpool2");
         LEGACY_PASSWORD_HASH = exProperties.getProperty("LegacyPasswordHash", "sha1");
-        AUTO_CREATE_ACCOUNTS = exProperties.getProperty("AutoCreateAccounts", true);
-        ANAME_TEMPLATE = exProperties.getProperty("AccountTemplate", "[A-Za-z0-9]{4,14}");
-        APASSWD_TEMPLATE = exProperties.getProperty("PasswordTemplate", "[A-Za-z0-9]{4,16}");
-        LOGIN_TRY_BEFORE_BAN = exProperties.getProperty("LoginTryBeforeBan", 10);
-        LOGIN_TRY_TIMEOUT = (long)exProperties.getProperty("LoginTryTimeout", 5) * 1000L;
-        IP_BAN_TIME = (long)exProperties.getProperty("IpBanTime", 300) * 1000L;
-        WHITE_IPS.addAll(Arrays.asList(exProperties.getProperty("WhiteIpList", new String[]{"127.0.0.1"})));
-        BLACK_IPS.addAll(Arrays.asList(exProperties.getProperty("BlackIpList", ArrayUtils.EMPTY_STRING_ARRAY)));
+        Config.loadSecuritySettings(exProperties);
         GAME_SERVER_PING_DELAY = (long)exProperties.getProperty("GameServerPingDelay", 30) * 1000L;
         GAME_SERVER_PING_RETRY = exProperties.getProperty("GameServerPingRetry", 4);
         LOGIN_LOG = exProperties.getProperty("LoginLog", true);
         RESTART_AT_TIME = exProperties.getProperty("AutoRestartAt", "");
+    }
+
+    /**
+     * Contas e protecao contra abuso. Separado do resto para poder ser recarregado com o servidor
+     * ligado (botao da janela do login), sem mexer em portas, banco ou chaves.
+     */
+    private static void loadSecuritySettings(ExProperties exProperties) {
+        AUTO_CREATE_ACCOUNTS = exProperties.getProperty("AutoCreateAccounts", true);
+        ANAME_TEMPLATE = exProperties.getProperty("AccountTemplate", "[A-Za-z0-9]{4,14}");
+        APASSWD_TEMPLATE = exProperties.getProperty("PasswordTemplate", "[A-Za-z0-9]{6,16}");
+        LOGIN_TRY_BEFORE_BAN = exProperties.getProperty("LoginTryBeforeBan", 10);
+        LOGIN_TRY_TIMEOUT = (long)exProperties.getProperty("LoginTryTimeout", 5) * 1000L;
+        IP_BAN_TIME = (long)exProperties.getProperty("IpBanTime", 300) * 1000L;
+        Set<String> white = new HashSet<String>(Arrays.asList(exProperties.getProperty("WhiteIpList", new String[]{"127.0.0.1"})));
+        Set<String> black = new HashSet<String>(Arrays.asList(exProperties.getProperty("BlackIpList", ArrayUtils.EMPTY_STRING_ARRAY)));
+        white.remove("");
+        black.remove("");
+        WHITE_IPS = white;
+        BLACK_IPS = black;
+        CONNECTION_FLOOD_MAX = exProperties.getProperty("ConnectionFloodMax", 15);
+        CONNECTION_FLOOD_WINDOW = (long)exProperties.getProperty("ConnectionFloodWindow", 10) * 1000L;
+        String[] steps = exProperties.getProperty("IpBanSteps", new String[]{String.valueOf(IP_BAN_TIME / 1000L), "3600", "86400"});
+        ArrayList<Long> parsed = new ArrayList<Long>();
+        for (String step : steps) {
+            try {
+                long v = Long.parseLong(step.trim());
+                if (v > 0L) {
+                    parsed.add(v * 1000L);
+                }
+            }
+            catch (NumberFormatException ignored) {
+            }
+        }
+        if (parsed.isEmpty()) {
+            parsed.add(IP_BAN_TIME);
+        }
+        long[] arr = new long[parsed.size()];
+        for (int i = 0; i < arr.length; ++i) {
+            arr[i] = parsed.get(i);
+        }
+        IP_BAN_STEPS = arr;
+        IP_BAN_RESET = (long)exProperties.getProperty("IpBanResetHours", 24) * 3600000L;
+        TRUST_LOCAL_NETWORK = exProperties.getProperty("TrustLocalNetwork", true);
+        PERSIST_IP_BANS = exProperties.getProperty("PersistIpBans", true);
+    }
+
+    /** Relê so as opcoes de contas e protecao do authserver.properties. */
+    public static void reloadSecuritySettings() {
+        Config.loadSecuritySettings(Config.load(LOGIN_CONFIGURATION_FILE));
+        _log.info("Login: opcoes de contas e protecao recarregadas.");
     }
 
     public static ExProperties load(String string) {

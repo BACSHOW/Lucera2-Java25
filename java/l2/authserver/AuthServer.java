@@ -133,11 +133,16 @@ public class AuthServer {
 
     public static void main(String[] stringArray) throws Throwable {
         new File("./log/").mkdir();
+        // Janela propria do login (console, metricas, bans); sem area de trabalho segue so no console.
+        l2.authserver.gui.LoginGui.startIfEnabled();
         Config.load();
         AuthServer.checkFreePorts();
         L2DatabaseFactory.getInstance().getConnection().close();
         AuthServer.aK();
+        // Protecao: limite de conexoes por IP e bans progressivos salvos no banco
+        LoginGuard.getInstance().init();
         mQ = new AuthServer();
+        LoginMetrics.setServerReady();
         if (!Config.RESTART_AT_TIME.isEmpty()) {
             mQ.scheduleRestartByCron(Config.RESTART_AT_TIME);
         }

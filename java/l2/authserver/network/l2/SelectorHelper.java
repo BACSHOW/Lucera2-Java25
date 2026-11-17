@@ -39,7 +39,14 @@ IMMOExecutor<L2LoginClient> {
 
     @Override
     public boolean accept(SocketChannel socketChannel) {
-        return !IpBanManager.getInstance().isIpBanned(socketChannel.socket().getInetAddress().getHostAddress());
+        String ip = socketChannel.socket().getInetAddress().getHostAddress();
+        // IP banido, ou abrindo conexoes demais (LoginGuard bane e recusa)
+        if (IpBanManager.getInstance().isIpBanned(ip) || !l2.authserver.LoginGuard.getInstance().onConnection(ip)) {
+            l2.authserver.LoginMetrics.CONNECTIONS_REFUSED.increment();
+            return false;
+        }
+        l2.authserver.LoginMetrics.CONNECTIONS_ACCEPTED.increment();
+        return true;
     }
 }
 
