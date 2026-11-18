@@ -121,6 +121,7 @@ public final class ServerGui {
         this.chZones = new MetricChart("Correções de posição do jogador", "por minuto", 5)
                 .add("amarela (suave)", Theme.ORANGE, s -> s.perMin(ServerMetrics.Counter.VP_YELLOW))
                 .add("vermelha (salto)", Theme.ERROR, s -> s.perMin(ServerMetrics.Counter.VP_RED))
+                .add("vermelha (atraso)", Theme.PURPLE, s -> s.perMin(ServerMetrics.Counter.VP_RED_LAG))
                 .add("bloqueios", Theme.GRAY, s -> s.perMin(ServerMetrics.Counter.ARRIVED_BLOCKED));
         this.chPaths = new MetricChart("Como os caminhos foram achados", "por minuto", 10)
                 .add("NBA* suavizado", Theme.GREEN, s -> s.perMin(ServerMetrics.Counter.PATH_NBA_SMOOTH))

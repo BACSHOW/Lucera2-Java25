@@ -40,6 +40,7 @@ public final class ServerMetrics {
         VP_GREEN("ValidatePosition: zona verde (posicao do cliente aceita)"),
         VP_YELLOW("ValidatePosition: zona amarela (correcao suave)"),
         VP_RED("ValidatePosition: zona vermelha (salto)"),
+        VP_RED_LAG("Zona vermelha com a conexao atrasada (nao conta para a cidade)"),
         ARRIVED_BLOCKED("Bloqueio ao andar (parede/corpos)"),
         CLIENT_SYNC_WAIT("AutoFarm: espera pelo cliente antes do golpe"),
         CLIENT_SYNC_TIMEOUT("AutoFarm: espera esgotada (golpe sem o cliente)"),
