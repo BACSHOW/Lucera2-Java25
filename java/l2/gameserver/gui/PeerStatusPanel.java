@@ -114,7 +114,19 @@ public final class PeerStatusPanel extends JPanel {
         }
     }
 
+    /**
+     * Testa a porta so quando o outro nao esta registrado (verde ja diz que esta no ar). Cada teste abre e fecha
+     * uma conexao, e o outro servidor registra isso no console dele.
+     */
     private void probePort() {
+        try {
+            if (this.registered.getAsBoolean()) {
+                this.portOpen = false;
+                return;
+            }
+        } catch (Throwable ignored) {
+            // segue testando
+        }
         InetSocketAddress addr;
         try {
             addr = this.probe.get();
