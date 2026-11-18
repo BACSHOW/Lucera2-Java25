@@ -71,6 +71,7 @@ import l2.gameserver.model.entity.oly.NoblesController;
 import l2.gameserver.model.entity.oly.OlyController;
 import l2.gameserver.network.authcomm.AuthServerCommunication;
 import l2.gameserver.network.l2.CGModule;
+import l2.gameserver.network.l2.ConnectionQualityMonitor;
 import l2.gameserver.network.l2.GameClient;
 import l2.gameserver.network.l2.GamePacketHandler;
 import l2.gameserver.network.telnet.TelnetServer;
@@ -294,6 +295,7 @@ public class GameServer {
         }
         InetAddress inetAddress = Config.GAMESERVER_HOSTNAME.equalsIgnoreCase("*") ? null : InetAddress.getByName(Config.GAMESERVER_HOSTNAME);
         CGModule.getInstance();
+        ConnectionQualityMonitor.start();
         if (Config.USE_NETTY) {
             _log.debug("[Netty] Starting Netty game network engine...");
             l2.gameserver.network.l2.netty.NettyGameServer.getInstance().start(inetAddress, Config.PORTS_GAME, Config.HAPROXY_PORT_GAME, gamePacketHandler);

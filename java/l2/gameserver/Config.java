@@ -93,6 +93,14 @@ public class Config {
    public static boolean NETTY_SLOW_CLIENT_SHEDDING;
    /** A partir de quantos bytes na fila de envio o cliente conta como atrasado (padrao 64 KB). */
    public static int NETTY_SLOW_CLIENT_SHED_BYTES;
+   /** Intervalo da medicao de ping (RequestNetPing), em ms. Original: 30000. */
+   public static long NET_PING_INTERVAL_MS;
+   /** Tarja na tela quando a conexao do jogador fica ruim e quando volta ao normal. */
+   public static boolean CONNECTION_WARNING;
+   public static int CONNECTION_WARNING_PING_MS;
+   public static long CONNECTION_WARNING_COOLDOWN_MS;
+   public static String CONNECTION_WARNING_BAD_TEXT;
+   public static String CONNECTION_WARNING_GOOD_TEXT;
    public static boolean USE_DISRUPTOR;
    public static boolean ENABLE_VISIBLE_OBJECT_RADIUS_FILTER;
    public static int VISIBLE_OBJECT_RADIUS;
@@ -1447,6 +1455,12 @@ public class Config {
       NETTY_WRITE_HIGH_WATER_MARK = var0.getProperty("NettyWriteHighWaterMark", 1048576);
       NETTY_SLOW_CLIENT_SHEDDING = var0.getProperty("NettySlowClientShedding", false);
       NETTY_SLOW_CLIENT_SHED_BYTES = Math.max(8192, var0.getProperty("NettySlowClientShedBytes", 65536));
+      NET_PING_INTERVAL_MS = Math.max(5, Math.min(60, var0.getProperty("NetPingInterval", 30))) * 1000L;
+      CONNECTION_WARNING = var0.getProperty("ConnectionWarning", false);
+      CONNECTION_WARNING_PING_MS = Math.max(100, var0.getProperty("ConnectionWarningPing", 400));
+      CONNECTION_WARNING_COOLDOWN_MS = Math.max(10, var0.getProperty("ConnectionWarningCooldown", 60)) * 1000L;
+      CONNECTION_WARNING_BAD_TEXT = var0.getProperty("ConnectionWarningBadText", "Sua conexao esta instavel. Alguns efeitos podem ser pulados.").trim();
+      CONNECTION_WARNING_GOOD_TEXT = var0.getProperty("ConnectionWarningGoodText", "Conexao normalizada.").trim();
       USE_DISRUPTOR = var0.getProperty("UseDisruptor", true);
       ENABLE_VISIBLE_OBJECT_RADIUS_FILTER = var0.getProperty("EnableVisibleObjectRadiusFilter", true);
       VISIBLE_OBJECT_RADIUS = Math.max(0, var0.getProperty("VisibleObjectRadius", 3500));

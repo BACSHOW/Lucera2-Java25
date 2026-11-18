@@ -104,6 +104,12 @@ extends MMOClient<MMOConnection<GameClient>> {
     private int ZU = 0;
     private int ZV = 0;
     private ScheduledFuture<?> ZW;
+    /** Horario (ms) do ultimo RequestNetPing enviado e da ultima resposta; aguardando = sem resposta ainda. */
+    private volatile long pingSentAt;
+    private volatile long pingAnsweredAt;
+    private volatile boolean pingAwaiting;
+    /** Estado do aviso de conexao ruim (so o ConnectionQualityMonitor mexe). */
+    private final ConnectionQualityMonitor.State connectionState = new ConnectionQualityMonitor.State();
     private final FermataContext _fermata = new FermataContext();
 
     public GameClient(MMOConnection<GameClient> mMOConnection) {
@@ -770,8 +776,12 @@ extends MMOClient<MMOConnection<GameClient>> {
             this.ZT = this.ZS > 0 ? (int)(l - l2 - (long)n) : 0;
             this.ZU = n2;
             this.ZV = n3;
+            if (this.ZS > 0) {
+                this.pingAwaiting = false;
+                this.pingAnsweredAt = l;
+            }
             if (this.ZW == null) {
-                this.ZW = ThreadPoolManager.getInstance().schedule(new PingTask(this), 30000L);
+                this.ZW = ThreadPoolManager.getInstance().schedule(new PingTask(this), Config.NET_PING_INTERVAL_MS);
             }
         }
     }
@@ -781,12 +791,35 @@ extends MMOClient<MMOConnection<GameClient>> {
         long l = System.currentTimeMillis();
         long l2 = GameServer.getInstance().getServerStartTime();
         this.ZS = n = (int)(l - l2);
+        this.pingSentAt = l;
+        this.pingAwaiting = true;
         this.sendPacket((L2GameServerPacket)new RequestNetPing(n));
         this.ZW = null;
     }
 
     public int getPing() {
         return this.ZT;
+    }
+
+    /**
+     * Ping "ao vivo": se a ultima medicao ainda nao voltou, conta o tempo que ela esta esperando (numa conexao
+     * travada o ping cresce na hora, sem esperar a proxima medicao). -1 = ainda nao mediu.
+     */
+    public int getLivePing() {
+        if (this.pingAwaiting) {
+            long waiting = System.currentTimeMillis() - this.pingSentAt;
+            return (int) Math.min(Integer.MAX_VALUE, Math.max(this.ZT, waiting));
+        }
+        return this.pingAnsweredAt == 0L ? -1 : this.ZT;
+    }
+
+    /** Ha quantos ms veio a ultima resposta de ping (-1 = nenhuma ainda). */
+    public long getPingAgeMs() {
+        return this.pingAnsweredAt == 0L ? -1L : System.currentTimeMillis() - this.pingAnsweredAt;
+    }
+
+    public ConnectionQualityMonitor.State getConnectionState() {
+        return this.connectionState;
     }
 
     public int getFps() {
