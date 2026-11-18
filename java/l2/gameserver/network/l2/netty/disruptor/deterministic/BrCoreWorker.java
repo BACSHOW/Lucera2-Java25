@@ -1,5 +1,8 @@
 package l2.gameserver.network.l2.netty.disruptor.deterministic;
 
+import com.sun.jna.Library;
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
 import net.openhft.affinity.Affinity;
 import org.agrona.DirectBuffer;
 import org.agrona.MutableDirectBuffer;
@@ -12,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import java.nio.ByteBuffer;
 import java.util.BitSet;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -28,6 +32,35 @@ public final class BrCoreWorker implements Runnable {
     private static final Logger _log = LoggerFactory.getLogger(BrCoreWorker.class);
     /** O aviso de afinidade nao aplicada sai uma vez so (e igual para todos os workers). */
     private static final AtomicBoolean AFFINITY_NOTICE = new AtomicBoolean();
+    private static final boolean WINDOWS = System.getProperty("os.name", "").toLowerCase(Locale.ROOT).contains("win");
+
+    /**
+     * SetThreadAffinityMask direto do kernel32. A biblioteca OpenHFT fixa a thread com essa mesma funcao, mas no
+     * Windows confere o resultado lendo a mascara do PROCESSO (GetProcessAffinityMask), que continua com todos os
+     * nucleos: por isso avisava "Tried to set affinity ... insufficient access rights" mesmo tendo dado certo.
+     * Aqui o retorno da propria funcao diz se funcionou (0 = falhou).
+     */
+    private interface Kernel32Affinity extends Library {
+        Kernel32Affinity INSTANCE = Native.load("kernel32", Kernel32Affinity.class);
+
+        Pointer GetCurrentThread();
+
+        long SetThreadAffinityMask(Pointer thread, long mask);
+    }
+
+    /** Fixa a thread atual no nucleo; true se o sistema aceitou. */
+    private static boolean pinCurrentThread(int core) {
+        if (WINDOWS) {
+            if (core < 0 || core > 63) {
+                return false;
+            }
+            Kernel32Affinity k32 = Kernel32Affinity.INSTANCE;
+            return k32.SetThreadAffinityMask(k32.GetCurrentThread(), 1L << core) != 0L;
+        }
+        Affinity.setAffinity(core);
+        BitSet now = Affinity.getAffinity();
+        return now.cardinality() == 1 && now.get(core);
+    }
 
     public static final long TICK_BUDGET_NANOS = 8_333_333L; // 120 Hz (1s / 120 = 8.333.333 ns)
     public static final int DEFAULT_RING_BUFFER_CAPACITY = 1024 * 1024; // 1 MB off-heap por anel (potência de 2)
@@ -103,10 +136,7 @@ public final class BrCoreWorker implements Runnable {
     public void run() {
         // 1. Aplicação de Afinidade de CPU (Thread Pinning nos núcleos P-Core)
         try {
-            Affinity.setAffinity(this.physicalCoreId);
-            // Confere se o sistema aceitou: no Windows sem permissao a thread continua em todos os nucleos
-            BitSet now = Affinity.getAffinity();
-            if (now.cardinality() == 1 && now.get(this.physicalCoreId)) {
+            if (pinCurrentThread(this.physicalCoreId)) {
                 _log.info("[BrCoreWorker-{}] Afinidade amarrada com sucesso ao Core #{}", this.workerIndex, this.physicalCoreId);
             } else if (AFFINITY_NOTICE.compareAndSet(false, true)) {
                 _log.info("[BrCoreWorker] O sistema nao permitiu fixar os workers em nucleos especificos; eles rodam em qualquer nucleo (sem impacto no jogo).");
