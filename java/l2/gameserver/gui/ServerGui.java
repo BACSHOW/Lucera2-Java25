@@ -116,9 +116,8 @@ public final class ServerGui {
                 .add("pior", Theme.ORANGE, s -> s.pathfindMaxMs);
         this.chCpu = new MetricChart("CPU do processo", "%", 10)
                 .add("cpu", Theme.PURPLE, s -> Math.max(0.0, s.processCpuPercent));
-        this.chNet = new MetricChart("Fila de envio", "KB", 64)
-                .add("maior", Theme.ORANGE, s -> s.netMaxPendingKb)
-                .add("cheias", Theme.ERROR, s -> s.netFullNow);
+        this.chNet = new MetricChart("Fila de envio (maior)", "KB", 64)
+                .add("KB", Theme.ORANGE, s -> s.netMaxPendingKb);
         this.chZones = new MetricChart("Correções de posição do jogador", "por minuto", 5)
                 .add("amarela (suave)", Theme.ORANGE, s -> s.perMin(ServerMetrics.Counter.VP_YELLOW))
                 .add("vermelha (salto)", Theme.ERROR, s -> s.perMin(ServerMetrics.Counter.VP_RED))
@@ -675,7 +674,8 @@ public final class ServerGui {
         this.sNetQueue.setText(s.netSlowedNow > 0 ? s.netSlowedNow + " com //netslow" : "esperando para sair");
         this.vNetQueue.setForeground(s.netMaxPendingKb >= 512 ? Theme.WARN : Theme.TEXT);
         this.vNetFull.setText(String.valueOf(s.netFullNow));
-        this.sNetFull.setText(s.perMin(ServerMetrics.Counter.NET_UNWRITABLE) + " no último minuto");
+        this.sNetFull.setText(s.perMin(ServerMetrics.Counter.NET_UNWRITABLE) + " no último minuto | total "
+                + s.total(ServerMetrics.Counter.NET_UNWRITABLE));
         this.vNetFull.setForeground(s.netFullNow > 0 ? Theme.ERROR : Theme.TEXT);
 
         for (Map.Entry<ServerMetrics.Counter, JLabel[]> e : this.moveCards.entrySet()) {
