@@ -21,6 +21,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Wrapper de conexão por canal do Netty.
@@ -38,6 +39,10 @@ public final class NettyGameConnection {
 
     private final Channel channel;
     private volatile boolean shedPending;
+    /** Correcoes de posicao enviadas / ja entregues ao socket (ValidatePosition). */
+    private final AtomicLong correctionsSent = new AtomicLong();
+    private volatile long correctionsDelivered;
+    private volatile long lastCorrectionDeliveredAt;
     private final AtomicBoolean resyncScheduled = new AtomicBoolean();
     private volatile long lastResyncAt;
     private final MMOExecutableQueue<GameClient> packetQueue;
@@ -103,6 +108,37 @@ public final class NettyGameConnection {
                 this.channel.pipeline().addFirst(NETSLOW, shaping);
             }
         });
+    }
+
+    // ------------------------------------------------------------------ correcao de posicao em transito
+
+    /**
+     * Chamar logo depois de enviar uma correcao de posicao (ValidateLocation). Um buffer vazio entra na fila
+     * atras dela: quando ele sai para o socket, a correcao tambem saiu (a fila e em ordem). O buffer vazio nao
+     * gera pacote nem mexe na criptografia (o L2PacketEncoder ignora tamanho 0).
+     */
+    public void markPositionCorrectionSent() {
+        long seq = this.correctionsSent.incrementAndGet();
+        if (!this.channel.isActive()) {
+            return;
+        }
+        this.channel.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(f -> {
+            if (seq > this.correctionsDelivered) {
+                this.correctionsDelivered = seq;
+                this.lastCorrectionDeliveredAt = System.currentTimeMillis();
+            }
+        });
+    }
+
+    /**
+     * true enquanto a ultima correcao ainda nao saiu para o cliente, ou saiu ha menos de graceMs (o cliente
+     * precisa de um instante para aplicar e mandar a posicao nova).
+     */
+    public boolean isPositionCorrectionPending(long graceMs) {
+        if (this.correctionsDelivered < this.correctionsSent.get()) {
+            return true;
+        }
+        return System.currentTimeMillis() - this.lastCorrectionDeliveredAt < graceMs;
     }
 
     // ------------------------------------------------------------------ cliente lento (NettySlowClientShedding)

@@ -112,6 +112,10 @@ extends L2GameClientPacket {
                 player.setIncorrectValidateCount(fails + 1);
                 this.logZone(player, "RED_SNAP", d);
                 player.validateLocation(1);
+                NettyGameConnection conn = connection(player);
+                if (conn != null) {
+                    conn.markPositionCorrectionSent();
+                }
             }
         } else if (d > GREEN_ZONE) {
             // Yellow Zone: reconciliacao elastica, sem teleporte.
@@ -141,6 +145,8 @@ extends L2GameClientPacket {
     public static final double RED_ZONE = 500.0;
     /** Acima disso na fila de envio, o cliente ainda nao recebeu a ultima correcao de posicao. */
     private static final long LAG_PENDING_BYTES = 32L * 1024L;
+    /** Depois que a correcao sai, tempo para o cliente aplicar e mandar a posicao nova. */
+    private static final long CORRECTION_GRACE_MS = 1500L;
     /** Abaixo disto a diferenca e ruido de latencia/quantizacao e nada e feito. */
     public static final double ACCEPT_MIN_DELTA = 32.0;
     /** O cliente e considerado parado quando dois relatorios seguidos diferem menos que isto. */
@@ -214,11 +220,20 @@ extends L2GameClientPacket {
         return 1;
     }
 
-    /** Fila de envio desse cliente acima de 32 KB, ou a conexao marcada como cheia. */
+    /**
+     * O cliente ainda nao pode ter visto a ultima correcao: ela esta na fila de envio (ou saiu ha menos de 1,5 s),
+     * a conexao esta cheia, ou a fila passa de 32 KB. Medir pela entrega da correcao vale para qualquer velocidade
+     * de conexao (32 KB e meio segundo numa conexao boa, mas 30 s numa de 1 KB/s).
+     */
     private static boolean clientLagging(Player player) {
+        NettyGameConnection conn = connection(player);
+        return conn != null && (conn.isPositionCorrectionPending(CORRECTION_GRACE_MS) || !conn.isWritable()
+                || conn.pendingWriteBytes() > LAG_PENDING_BYTES);
+    }
+
+    private static NettyGameConnection connection(Player player) {
         GameClient client = player.getNetConnection();
-        NettyGameConnection conn = client == null ? null : client.getNettyConnection();
-        return conn != null && (!conn.isWritable() || conn.pendingWriteBytes() > LAG_PENDING_BYTES);
+        return client == null ? null : client.getNettyConnection();
     }
 
     private void logZone(Player player, String zone, double delta2D) {
