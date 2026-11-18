@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.ByteBuffer;
+import java.util.BitSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -25,6 +26,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public final class BrCoreWorker implements Runnable {
     private static final Logger _log = LoggerFactory.getLogger(BrCoreWorker.class);
+    /** O aviso de afinidade nao aplicada sai uma vez so (e igual para todos os workers). */
+    private static final AtomicBoolean AFFINITY_NOTICE = new AtomicBoolean();
 
     public static final long TICK_BUDGET_NANOS = 8_333_333L; // 120 Hz (1s / 120 = 8.333.333 ns)
     public static final int DEFAULT_RING_BUFFER_CAPACITY = 1024 * 1024; // 1 MB off-heap por anel (potência de 2)
@@ -101,7 +104,13 @@ public final class BrCoreWorker implements Runnable {
         // 1. Aplicação de Afinidade de CPU (Thread Pinning nos núcleos P-Core)
         try {
             Affinity.setAffinity(this.physicalCoreId);
-            _log.info("[BrCoreWorker-{}] Afinidade amarrada com sucesso ao Core #{}", this.workerIndex, this.physicalCoreId);
+            // Confere se o sistema aceitou: no Windows sem permissao a thread continua em todos os nucleos
+            BitSet now = Affinity.getAffinity();
+            if (now.cardinality() == 1 && now.get(this.physicalCoreId)) {
+                _log.info("[BrCoreWorker-{}] Afinidade amarrada com sucesso ao Core #{}", this.workerIndex, this.physicalCoreId);
+            } else if (AFFINITY_NOTICE.compareAndSet(false, true)) {
+                _log.info("[BrCoreWorker] O sistema nao permitiu fixar os workers em nucleos especificos; eles rodam em qualquer nucleo (sem impacto no jogo).");
+            }
         } catch (Throwable t) {
             _log.warn("[BrCoreWorker-{}] CPU Pinning direto indisponível no host (fallback para tempo real JVM): {}",
                 this.workerIndex, t.getMessage());
