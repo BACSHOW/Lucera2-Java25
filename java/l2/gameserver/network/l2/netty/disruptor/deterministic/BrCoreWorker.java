@@ -45,6 +45,8 @@ public final class BrCoreWorker implements Runnable {
 
         Pointer GetCurrentThread();
 
+        int GetCurrentThreadId();
+
         long SetThreadAffinityMask(Pointer thread, long mask);
     }
 
@@ -143,7 +145,9 @@ public final class BrCoreWorker implements Runnable {
         // 1. Aplicação de Afinidade de CPU (Thread Pinning nos núcleos P-Core)
         try {
             if (pinCurrentThread(this.physicalCoreId)) {
-                _log.info("[BrCoreWorker-{}] Afinidade amarrada com sucesso ao Core #{}", this.workerIndex, this.physicalCoreId);
+                // TID = id da thread no Windows (coluna TID do System Informer / Process Explorer)
+                _log.info("[BrCoreWorker-{}] Afinidade amarrada com sucesso ao Core #{}{}", this.workerIndex, this.physicalCoreId,
+                        WINDOWS ? " (TID " + Kernel32Affinity.INSTANCE.GetCurrentThreadId() + ")" : "");
             } else if (AFFINITY_NOTICE.compareAndSet(false, true)) {
                 _log.info("[BrCoreWorker] O sistema nao permitiu fixar os workers em nucleos especificos; eles rodam em qualquer nucleo (sem impacto no jogo).");
             }
