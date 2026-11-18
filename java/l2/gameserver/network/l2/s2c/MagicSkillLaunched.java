@@ -11,7 +11,8 @@ import l2.gameserver.model.Skill;
 import l2.gameserver.network.l2.s2c.L2GameServerPacket;
 
 public class MagicSkillLaunched
-extends L2GameServerPacket {
+extends L2GameServerPacket
+implements SlowClientSheddable {
     private final int ajD;
     private final int _skillId;
     private final int _skillLevel;
@@ -53,6 +54,11 @@ extends L2GameServerPacket {
         this._skillId = skill.getDisplayId();
         this._skillLevel = skill.getDisplayLevel();
         this.ajG = collection;
+    }
+
+    @Override
+    public int getSubjectObjectId() {
+        return this.ajD;
     }
 
     @Override

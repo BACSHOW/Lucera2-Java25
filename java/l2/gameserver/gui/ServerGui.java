@@ -671,7 +671,10 @@ public final class ServerGui {
         this.vUptime.setText(duration(s.uptimeMillis));
         this.sUptime.setText("desde " + new SimpleDateFormat("dd/MM HH:mm").format(new Date(s.timeMillis - s.uptimeMillis)));
         this.vNetQueue.setText(s.netMaxPendingKb + " KB");
-        this.sNetQueue.setText(s.netSlowedNow > 0 ? s.netSlowedNow + " com //netslow" : "esperando para sair");
+        long shed = s.perMin(ServerMetrics.Counter.NET_SHED);
+        long resync = s.perMin(ServerMetrics.Counter.NET_RESYNC);
+        this.sNetQueue.setText((s.netSlowedNow > 0 ? s.netSlowedNow + " com //netslow | " : "")
+                + (shed > 0 || resync > 0 ? shed + " pulados, " + resync + " resync/min" : "esperando para sair"));
         this.vNetQueue.setForeground(s.netMaxPendingKb >= 512 ? Theme.WARN : Theme.TEXT);
         this.vNetFull.setText(String.valueOf(s.netFullNow));
         this.sNetFull.setText(s.perMin(ServerMetrics.Counter.NET_UNWRITABLE) + " no último minuto | total "

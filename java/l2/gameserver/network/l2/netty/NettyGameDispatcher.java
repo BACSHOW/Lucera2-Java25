@@ -48,6 +48,11 @@ public final class NettyGameDispatcher extends SimpleChannelInboundHandler<ByteB
     public void channelWritabilityChanged(ChannelHandlerContext ctx) throws Exception {
         if (!ctx.channel().isWritable()) {
             ServerMetrics.count(ServerMetrics.Counter.NET_UNWRITABLE);
+        } else {
+            NettyGameConnection conn = NettyGameConnection.of(ctx.channel());
+            if (conn != null) {
+                conn.onWritableAgain();
+            }
         }
         super.channelWritabilityChanged(ctx);
     }

@@ -25,9 +25,14 @@ import l2.gameserver.cache.Msg;
 import l2.gameserver.dao.CharacterDAO;
 import l2.gameserver.database.DatabaseFactory;
 import l2.gameserver.instancemanager.BypassManager;
+import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.model.CharSelectInfoPackage;
+import l2.gameserver.model.Creature;
+import l2.gameserver.model.GameObject;
 import l2.gameserver.model.GameObjectsStorage;
 import l2.gameserver.model.Player;
+import l2.gameserver.model.Summon;
+import l2.gameserver.model.World;
 import l2.gameserver.network.authcomm.AuthServerCommunication;
 import l2.gameserver.network.authcomm.SessionKey;
 import l2.gameserver.network.authcomm.gs2as.PlayerLogout;
@@ -36,9 +41,13 @@ import l2.gameserver.network.l2.GameCrypt;
 import l2.gameserver.network.l2.SecondPasswordAuth;
 import l2.gameserver.network.l2.c2s.L2GameClientPacket;
 import l2.gameserver.network.l2.components.IStaticPacket;
+import l2.gameserver.network.l2.s2c.CharMoveToLocation;
 import l2.gameserver.network.l2.s2c.L2GameServerPacket;
 import l2.gameserver.network.l2.s2c.NpcHtmlMessage;
 import l2.gameserver.network.l2.s2c.RequestNetPing;
+import l2.gameserver.network.l2.s2c.SlowClientSheddable;
+import l2.gameserver.network.l2.s2c.StatusUpdate;
+import l2.gameserver.network.l2.s2c.StopMove;
 import l2.gameserver.network.pfilter.PacketFilter;
 import l2.gameserver.network.l2.netty.NettyGameConnection;
 import l2.gameserver.network.l2.fermata.FermataContext;
@@ -513,6 +522,9 @@ extends MMOClient<MMOConnection<GameClient>> {
             return;
         }
         if (this._nettyConnection != null) {
+            if (this.shedWhenSlow(l2GameServerPacket)) {
+                return;
+            }
             byte[] payload = this.serializeNettyPacket(l2GameServerPacket);
             if (payload != null) {
                 // Tudo sai na ordem em que foi gerado. NpcInfo/CharInfo/DeleteObject nao passam mais por uma fila
@@ -525,6 +537,60 @@ extends MMOClient<MMOConnection<GameClient>> {
             ((NpcHtmlMessage) l2GameServerPacket).processHtml(this);
         }
         ((MMOConnection)((Object)this.getConnection())).sendPacket((SendablePacket<GameClient>)l2GameServerPacket);
+    }
+
+    // ------------------------------------------------------------------ cliente com conexao lenta
+
+    /**
+     * Conexao cheia (fila de envio acima de NettyWriteHighWaterMark) e NettySlowClientShedding ligado: pula
+     * pacotes visuais de OUTROS objetos (movimento, animacao de ataque/skill, gestos, HP de outros). Eles iam
+     * chegar atrasados e ser substituidos pelos proximos de qualquer jeito; quando a conexao esvazia, a
+     * ressincronizacao manda o estado atual. Nunca pula nada do proprio jogador ou do pet dele, nem pacotes que
+     * apresentam/removem objetos (NpcInfo, CharInfo, DeleteObject nao sao SlowClientSheddable).
+     */
+    private boolean shedWhenSlow(L2GameServerPacket packet) {
+        if (!Config.NETTY_SLOW_CLIENT_SHEDDING || !(packet instanceof SlowClientSheddable sheddable)
+                || this._nettyConnection.isWritable()) {
+            return false;
+        }
+        Player player = this.zT;
+        if (player == null) {
+            return false;
+        }
+        int subject = sheddable.getSubjectObjectId();
+        Summon pet = player.getPet();
+        if (subject == player.getObjectId() || pet != null && subject == pet.getObjectId()) {
+            return false;
+        }
+        ServerMetrics.count(ServerMetrics.Counter.NET_SHED);
+        this._nettyConnection.markShed();
+        return true;
+    }
+
+    /**
+     * A conexao esvaziou depois de pacotes pulados: manda a posicao atual de quem esta em volta (andando ou
+     * parado) e o HP do alvo. So objetos ja apresentados ao cliente (os que estao na area visivel).
+     */
+    public void resyncAfterSlowLink() {
+        Player player = this.zT;
+        if (player == null || !this.isConnected()) {
+            return;
+        }
+        List<L2GameServerPacket> out = new ArrayList<>();
+        for (Creature c : World.getAroundCharacters(player)) {
+            if (c == null || c == player || !c.isVisible() || c.isInvisible()) {
+                continue;
+            }
+            out.add(c.isMoving() && c.getDestination() != null ? new CharMoveToLocation(c) : new StopMove(c));
+        }
+        GameObject target = player.getTarget();
+        if (target instanceof Creature t && t != player) {
+            out.add(new StatusUpdate(t).addAttribute(StatusUpdate.CUR_HP, (int) t.getCurrentHp()).addAttribute(StatusUpdate.MAX_HP, t.getMaxHp()));
+        }
+        ServerMetrics.count(ServerMetrics.Counter.NET_RESYNC);
+        if (!out.isEmpty()) {
+            this.sendNettyBatch(out);
+        }
     }
 
     private byte[] serializeNettyPacket(L2GameServerPacket packet) {
@@ -570,7 +636,7 @@ extends MMOClient<MMOConnection<GameClient>> {
         }
         List<byte[]> payloads = new ArrayList<>(packets.size());
         for (L2GameServerPacket packet : packets) {
-            if (packet != null) {
+            if (packet != null && !this.shedWhenSlow(packet)) {
                 byte[] payload = this.serializeNettyPacket(packet);
                 if (payload != null) {
                     payloads.add(payload);

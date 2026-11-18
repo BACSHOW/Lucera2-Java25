@@ -10,7 +10,8 @@ import l2.gameserver.utils.Location;
 import l2.gameserver.utils.Log;
 
 public class CharMoveToLocation
-extends L2GameServerPacket {
+extends L2GameServerPacket
+implements SlowClientSheddable {
     private int CS;
     private int afc;
     private Location afd;
@@ -46,6 +47,11 @@ extends L2GameServerPacket {
         this.CS = n;
         this.afd = location;
         this._destination = location2;
+    }
+
+    @Override
+    public int getSubjectObjectId() {
+        return this.CS;
     }
 
     @Override

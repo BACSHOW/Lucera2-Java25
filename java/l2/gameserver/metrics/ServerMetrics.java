@@ -52,7 +52,9 @@ public final class ServerMetrics {
         NPC_RETURN_HOME_PATHFAIL("Voltaram ao spawn por falha de caminho"),
         PATH_BUFFERS_EXHAUSTED("Buffers do pathfinding esgotados"),
         NPC_INFO_DROPPED("NPCs nao enviados ao cliente (filtro de raio)"),
-        NET_UNWRITABLE("Conexoes que ficaram cheias (fila de envio acima do limite)");
+        NET_UNWRITABLE("Conexoes que ficaram cheias (fila de envio acima do limite)"),
+        NET_SHED("Pacotes visuais pulados para clientes com a conexao cheia"),
+        NET_RESYNC("Ressincronizacoes depois de a conexao esvaziar");
 
         public final String label;
 

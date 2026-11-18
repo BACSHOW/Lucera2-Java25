@@ -89,6 +89,8 @@ public class Config {
    public static int NETTY_SO_BACKLOG;
    public static int NETTY_WRITE_LOW_WATER_MARK;
    public static int NETTY_WRITE_HIGH_WATER_MARK;
+   /** Conexao cheia: pula pacotes visuais de outros objetos e ressincroniza quando esvaziar. */
+   public static boolean NETTY_SLOW_CLIENT_SHEDDING;
    public static boolean USE_DISRUPTOR;
    public static boolean ENABLE_VISIBLE_OBJECT_RADIUS_FILTER;
    public static int VISIBLE_OBJECT_RADIUS;
@@ -1441,6 +1443,7 @@ public class Config {
       NETTY_SO_BACKLOG = var0.getProperty("NettySoBacklog", 1024);
       NETTY_WRITE_LOW_WATER_MARK = var0.getProperty("NettyWriteLowWaterMark", 262144);
       NETTY_WRITE_HIGH_WATER_MARK = var0.getProperty("NettyWriteHighWaterMark", 1048576);
+      NETTY_SLOW_CLIENT_SHEDDING = var0.getProperty("NettySlowClientShedding", false);
       USE_DISRUPTOR = var0.getProperty("UseDisruptor", true);
       ENABLE_VISIBLE_OBJECT_RADIUS_FILTER = var0.getProperty("EnableVisibleObjectRadiusFilter", true);
       VISIBLE_OBJECT_RADIUS = Math.max(0, var0.getProperty("VisibleObjectRadius", 3500));

@@ -8,7 +8,8 @@ import l2.gameserver.model.GameObject;
 import l2.gameserver.network.l2.s2c.L2GameServerPacket;
 
 public class Attack
-extends L2GameServerPacket {
+extends L2GameServerPacket
+implements SlowClientSheddable {
     public final int _attackerId;
     public final boolean _soulshot;
     private final int Tl;
@@ -54,6 +55,11 @@ extends L2GameServerPacket {
 
     public boolean hasHits() {
         return this.adP.length > 0;
+    }
+
+    @Override
+    public int getSubjectObjectId() {
+        return this._attackerId;
     }
 
     @Override

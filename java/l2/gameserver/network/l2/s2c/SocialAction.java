@@ -6,7 +6,8 @@ package l2.gameserver.network.l2.s2c;
 import l2.gameserver.network.l2.s2c.L2GameServerPacket;
 
 public class SocialAction
-extends L2GameServerPacket {
+extends L2GameServerPacket
+implements SlowClientSheddable {
     private int afo;
     private int aat;
     public static final int GREETING = 2;
@@ -28,6 +29,11 @@ extends L2GameServerPacket {
     public SocialAction(int n, int n2) {
         this.afo = n;
         this.aat = n2;
+    }
+
+    @Override
+    public int getSubjectObjectId() {
+        return this.afo;
     }
 
     @Override

@@ -8,7 +8,8 @@ import l2.gameserver.model.GameObject;
 import l2.gameserver.network.l2.s2c.L2GameServerPacket;
 
 public class MoveToPawn
-extends L2GameServerPacket {
+extends L2GameServerPacket
+implements SlowClientSheddable {
     private int aed;
     private int _targetId;
     private int ajO;
@@ -23,6 +24,11 @@ extends L2GameServerPacket {
         this._x = creature.getX();
         this._y = creature.getY();
         this.Di = creature.getZ();
+    }
+
+    @Override
+    public int getSubjectObjectId() {
+        return this.aed;
     }
 
     @Override

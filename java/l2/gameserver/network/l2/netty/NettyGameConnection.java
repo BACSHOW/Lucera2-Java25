@@ -19,6 +19,7 @@ import java.net.SocketAddress;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -32,8 +33,13 @@ public final class NettyGameConnection {
     private static final String NETSLOW = "netslow";
     /** Conexoes abertas, para as metricas da fila de envio. */
     private static final Set<NettyGameConnection> OPEN = ConcurrentHashMap.newKeySet();
+    /** Ressincronizacao no maximo a cada 2 s por cliente (ela mesma pode encher uma conexao lenta de novo). */
+    private static final long RESYNC_MIN_INTERVAL_MS = 2000L;
 
     private final Channel channel;
+    private volatile boolean shedPending;
+    private final AtomicBoolean resyncScheduled = new AtomicBoolean();
+    private volatile long lastResyncAt;
     private final MMOExecutableQueue<GameClient> packetQueue;
     private GameClient client;
     private String overrideIp = null;
@@ -97,6 +103,36 @@ public final class NettyGameConnection {
                 this.channel.pipeline().addFirst(NETSLOW, shaping);
             }
         });
+    }
+
+    // ------------------------------------------------------------------ cliente lento (NettySlowClientShedding)
+
+    /** Algum pacote visual foi pulado enquanto a conexao estava cheia: falta ressincronizar. */
+    public void markShed() {
+        this.shedPending = true;
+    }
+
+    /**
+     * A conexao voltou a aceitar dados (chamado pelo NettyGameDispatcher). Se pacotes foram pulados, agenda a
+     * ressincronizacao fora da thread de rede, respeitando o intervalo minimo.
+     */
+    public void onWritableAgain() {
+        if (!this.shedPending || !this.resyncScheduled.compareAndSet(false, true)) {
+            return;
+        }
+        long wait = Math.max(0L, RESYNC_MIN_INTERVAL_MS - (System.currentTimeMillis() - this.lastResyncAt));
+        ThreadPoolManager.getInstance().schedule(() -> {
+            this.resyncScheduled.set(false);
+            if (!this.channel.isActive() || !this.channel.isWritable()) {
+                return; // encheu de novo: a proxima vez que esvaziar agenda outra
+            }
+            this.shedPending = false;
+            this.lastResyncAt = System.currentTimeMillis();
+            GameClient c = this.client;
+            if (c != null) {
+                c.resyncAfterSlowLink();
+            }
+        }, wait);
     }
 
     /** {conexoes cheias agora, maior fila em bytes, conexoes com //netslow} para o ServerMetrics. */

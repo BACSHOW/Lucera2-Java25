@@ -9,7 +9,8 @@ import l2.gameserver.model.Creature;
 import l2.gameserver.network.l2.s2c.L2GameServerPacket;
 
 public class StatusUpdate
-extends L2GameServerPacket {
+extends L2GameServerPacket
+implements SlowClientSheddable {
     public static final int CUR_HP = 9;
     public static final int MAX_HP = 10;
     public static final int CUR_MP = 11;
@@ -34,6 +35,11 @@ extends L2GameServerPacket {
     public StatusUpdate addAttribute(int n, int n2) {
         this.amV.add(new Attribute(n, n2));
         return this;
+    }
+
+    @Override
+    public int getSubjectObjectId() {
+        return this.CS;
     }
 
     @Override
