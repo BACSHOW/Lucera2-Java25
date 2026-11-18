@@ -16,11 +16,20 @@ import java.nio.charset.CharacterCodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.CodingErrorAction;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.ClosedWatchServiceException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.function.BiPredicate;
 import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -53,6 +62,11 @@ import org.slf4j.LoggerFactory;
  * O comentario acima da opcao no arquivo aparece como descricao. Ao salvar, so a linha da opcao alterada e
  * reescrita: comentarios, ordem, espacos e codificacao do arquivo ficam como estavam. Depois de salvar, as
  * configuracoes sao recarregadas (a acao de recarga e passada por quem usa o painel).</p>
+ *
+ * <p>A pasta e vigiada: arquivo novo, apagado ou editado por fora (Bloco de Notas) aparece sozinho na lista.
+ * Um arquivo com alteracoes ainda nao salvas na janela nao e trocado; o aviso pede para recarregar.</p>
+ *
+ * <p>Opcoes que so valem depois de reiniciar (portas, banco...) ficam marcadas com "(reiniciar)".</p>
  */
 public final class ConfigEditorPanel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -73,6 +87,8 @@ public final class ConfigEditorPanel extends JPanel {
     private final JButton save = button("Salvar e recarregar", e -> this.saveAll());
     private final JButton discard = button("Descartar", e -> this.discardAll());
     private final Timer searchDebounce = new Timer(200, e -> this.applyFilter());
+    private final Timer diskDebounce = new Timer(700, e -> this.refreshFromDisk());
+    private final BiPredicate<String, String> restartOnly;
     private final List<PropFile> files = new ArrayList<>();
     private boolean busy;
 
@@ -82,8 +98,16 @@ public final class ConfigEditorPanel extends JPanel {
      * @param reloadNote   aviso mostrado depois de salvar (ex.: o que so vale apos reiniciar)
      */
     public ConfigEditorPanel(File dir, Runnable reloadAction, String reloadNote) {
+        this(dir, reloadAction, reloadNote, null);
+    }
+
+    /**
+     * @param restartOnly (nome do arquivo, opcao) -> true quando a opcao so vale depois de reiniciar; null = nenhuma
+     */
+    public ConfigEditorPanel(File dir, Runnable reloadAction, String reloadNote, BiPredicate<String, String> restartOnly) {
         super(new BorderLayout(0, 6));
         this.dir = dir;
+        this.restartOnly = restartOnly;
         this.reloadAction = reloadAction;
         this.reloadNote = reloadNote;
         this.setBackground(Theme.BG);
@@ -149,6 +173,8 @@ public final class ConfigEditorPanel extends JPanel {
         this.add(this.info, BorderLayout.SOUTH);
 
         this.loadFiles();
+        this.diskDebounce.setRepeats(false);
+        this.startWatcher();
     }
 
     /** Mostra um arquivo ja filtrado (ex.: o atalho "Editar rates" abre server.properties com "Rate"). */
@@ -166,22 +192,27 @@ public final class ConfigEditorPanel extends JPanel {
 
     // ------------------------------------------------------------------ arquivos
 
+    /** Os .properties da pasta: server/authserver primeiro, o resto em ordem alfabetica. */
+    private File[] listPropertyFiles() {
+        File[] list = this.dir.listFiles((d, n) -> n.toLowerCase(Locale.ROOT).endsWith(".properties"));
+        if (list == null) {
+            return new File[0];
+        }
+        Arrays.sort(list, (a, b) -> {
+            int pa = a.getName().matches("(?i)(server|authserver)\\.properties") ? 0 : 1;
+            int pb = b.getName().matches("(?i)(server|authserver)\\.properties") ? 0 : 1;
+            return pa != pb ? pa - pb : a.getName().compareToIgnoreCase(b.getName());
+        });
+        return list;
+    }
+
     private void loadFiles() {
         this.files.clear();
-        File[] list = this.dir.listFiles((d, n) -> n.toLowerCase(Locale.ROOT).endsWith(".properties"));
-        if (list != null) {
-            Arrays.sort(list, (a, b) -> {
-                // server/authserver primeiro, o resto em ordem alfabetica
-                int pa = a.getName().matches("(?i)(server|authserver)\\.properties") ? 0 : 1;
-                int pb = b.getName().matches("(?i)(server|authserver)\\.properties") ? 0 : 1;
-                return pa != pb ? pa - pb : a.getName().compareToIgnoreCase(b.getName());
-            });
-            for (File f : list) {
-                try {
-                    this.files.add(PropFile.read(f));
-                } catch (IOException e) {
-                    LOG.warn("Editor de configs: nao foi possivel ler " + f, e);
-                }
+        for (File f : this.listPropertyFiles()) {
+            try {
+                this.files.add(PropFile.read(f));
+            } catch (IOException e) {
+                LOG.warn("Editor de configs: nao foi possivel ler " + f, e);
             }
         }
         this.applyFilter();
@@ -189,6 +220,100 @@ public final class ConfigEditorPanel extends JPanel {
             this.fileList.setSelectedIndex(0);
         }
         this.updateButtons();
+    }
+
+    /** Vigia a pasta (sem ficar consultando: o sistema avisa quando algo muda). */
+    private void startWatcher() {
+        Thread t = new Thread(() -> {
+            try (WatchService ws = FileSystems.getDefault().newWatchService()) {
+                this.dir.toPath().register(ws, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_MODIFY,
+                        StandardWatchEventKinds.ENTRY_DELETE);
+                while (true) {
+                    WatchKey key = ws.take();
+                    boolean relevant = false;
+                    for (WatchEvent<?> ev : key.pollEvents()) {
+                        Object name = ev.context();
+                        relevant |= ev.kind() == StandardWatchEventKinds.OVERFLOW
+                                || name != null && name.toString().toLowerCase(Locale.ROOT).endsWith(".properties");
+                    }
+                    if (!key.reset()) {
+                        return;
+                    }
+                    if (relevant) {
+                        SwingUtilities.invokeLater(this.diskDebounce::restart);
+                    }
+                }
+            } catch (InterruptedException | ClosedWatchServiceException e) {
+                // janela fechando
+            } catch (IOException e) {
+                LOG.warn("Editor de configs: nao foi possivel vigiar " + this.dir + "; use \"Recarregar do disco\".", e);
+            }
+        }, "ConfigEditor-watch");
+        t.setDaemon(true);
+        t.start();
+    }
+
+    /**
+     * Algo mudou na pasta: rele so os arquivos que mudaram. Arquivo com alteracoes nao salvas na janela fica como
+     * esta (o salvar dele e bloqueado ate recarregar), para nao perder o que foi digitado.
+     */
+    private void refreshFromDisk() {
+        if (this.busy) {
+            return;
+        }
+        Map<String, PropFile> old = new HashMap<>();
+        for (PropFile pf : this.files) {
+            old.put(pf.file.getName(), pf);
+        }
+        PropFile current = this.fileList.getSelectedValue();
+        List<PropFile> next = new ArrayList<>();
+        List<String> updated = new ArrayList<>();
+        List<String> conflicts = new ArrayList<>();
+        boolean currentReplaced = false;
+        for (File f : this.listPropertyFiles()) {
+            PropFile o = old.remove(f.getName());
+            if (o != null && f.lastModified() == o.lastModified) {
+                next.add(o);
+                continue;
+            }
+            if (o != null && o.changes() > 0) {
+                next.add(o);
+                conflicts.add(f.getName());
+                continue;
+            }
+            try {
+                next.add(PropFile.read(f));
+                updated.add(f.getName() + (o == null ? " (novo)" : ""));
+                currentReplaced |= o != null && o == current;
+            } catch (IOException e) {
+                if (o != null) {
+                    next.add(o);
+                }
+            }
+        }
+        for (String removed : old.keySet()) {
+            updated.add(removed + " (apagado)");
+            currentReplaced |= current != null && current.file.getName().equals(removed);
+        }
+        if (updated.isEmpty() && conflicts.isEmpty()) {
+            return;
+        }
+        int scroll = this.rowsScroll.getVerticalScrollBar().getValue();
+        this.files.clear();
+        this.files.addAll(next);
+        this.applyFilter();
+        if (!currentReplaced) {
+            SwingUtilities.invokeLater(() -> this.rowsScroll.getVerticalScrollBar().setValue(scroll));
+        }
+        this.updateButtons();
+        if (!conflicts.isEmpty()) {
+            this.info.setForeground(Theme.WARN);
+            this.info.setText("Alterado fora da janela: " + String.join(", ", conflicts)
+                    + ". Você tem alterações não salvas nele(s): salve não será possível até usar \"Recarregar do disco\".");
+        } else {
+            this.info.setForeground(Theme.OK);
+            this.info.setText("Atualizado do disco: " + String.join(", ", updated) + ".");
+        }
     }
 
     private void applyFilter() {
@@ -201,7 +326,13 @@ public final class ConfigEditorPanel extends JPanel {
                 this.fileModel.addElement(pf);
             }
         }
-        int idx = selected == null ? -1 : this.fileModel.indexOf(selected);
+        int idx = -1;
+        for (int i = 0; selected != null && i < this.fileModel.size(); i++) {
+            if (this.fileModel.get(i).file.getName().equals(selected.file.getName())) {
+                idx = i;
+                break;
+            }
+        }
         if (idx < 0 && !this.fileModel.isEmpty()) {
             idx = 0;
         }
@@ -239,7 +370,8 @@ public final class ConfigEditorPanel extends JPanel {
                 BorderFactory.createEmptyBorder(5, 8, 5, 8)));
         JPanel texts = new JPanel(new BorderLayout(0, 1));
         texts.setOpaque(false);
-        JLabel key = new JLabel(en.key);
+        boolean restart = this.isRestartOnly(pf, en);
+        JLabel key = new JLabel(restart ? "<html>" + escape(en.key) + " &nbsp;<font color='#e3a03a'>(reiniciar)</font></html>" : en.key);
         key.setForeground(Theme.TEXT);
         key.setFont(key.getFont().deriveFont(Font.BOLD));
         texts.add(key, BorderLayout.NORTH);
@@ -250,6 +382,7 @@ public final class ConfigEditorPanel extends JPanel {
             texts.add(c, BorderLayout.CENTER);
         }
         String tip = "<html><b>" + escape(en.key) + "</b> = " + escape(en.original)
+                + (restart ? "<br><font color='#e3a03a'>Só vale depois de reiniciar o servidor.</font>" : "")
                 + (en.comment.isEmpty() ? "" : "<br>" + escape(en.comment).replace("\n", "<br>")) + "</html>";
         r.setToolTipText(tip);
         texts.setToolTipText(tip);
@@ -307,6 +440,14 @@ public final class ConfigEditorPanel extends JPanel {
         r.setMaximumSize(new Dimension(Integer.MAX_VALUE, r.getPreferredSize().height));
         r.setAlignmentX(Component.LEFT_ALIGNMENT);
         return r;
+    }
+
+    private boolean isRestartOnly(PropFile pf, Entry en) {
+        try {
+            return this.restartOnly != null && this.restartOnly.test(pf.file.getName(), en.key);
+        } catch (RuntimeException e) {
+            return false;
+        }
     }
 
     private void paintRow(JPanel r, Entry en) {
@@ -367,6 +508,14 @@ public final class ConfigEditorPanel extends JPanel {
                 return;
             }
         }
+        List<String> needRestart = new ArrayList<>();
+        for (PropFile pf : dirty) {
+            for (Entry en : pf.entries) {
+                if (en.isChanged() && this.isRestartOnly(pf, en)) {
+                    needRestart.add(en.key);
+                }
+            }
+        }
         this.busy = true;
         this.updateButtons();
         this.info.setForeground(Theme.MUTED);
@@ -397,9 +546,12 @@ public final class ConfigEditorPanel extends JPanel {
                     this.info.setForeground(Theme.ERROR);
                     this.info.setText("Falha: " + err);
                     JOptionPane.showMessageDialog(this, "Falha ao salvar/recarregar:\n" + err, "Erro", JOptionPane.ERROR_MESSAGE);
+                } else if (!needRestart.isEmpty()) {
+                    this.info.setForeground(Theme.WARN);
+                    this.info.setText("Salvo e recarregado. Só valem depois de reiniciar: " + String.join(", ", needRestart) + ".");
                 } else {
                     this.info.setForeground(Theme.OK);
-                    this.info.setText("Salvo e recarregado. " + this.reloadNote);
+                    this.info.setText("Salvo e recarregado. Tudo já está valendo.");
                 }
             });
         }, "ConfigEditor-save");

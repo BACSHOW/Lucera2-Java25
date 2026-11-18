@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
+import java.util.Set;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -174,7 +175,7 @@ public final class LoginGui {
         tabs.addTab("GameServers", this.buildGameServers());
         tabs.addTab("Configurações", new ConfigEditorPanel(new File(Config.LOGIN_CONFIGURATION_FILE).getAbsoluteFile().getParentFile(),
                 Config::reloadSecuritySettings,
-                "Proteção, contas e mensagens valem na hora; portas, banco e chaves só depois de reiniciar o login."));
+                "Opções marcadas com (reiniciar) só valem depois de reiniciar o login.", LoginGui::restartOnly));
 
         JPanel north = new JPanel();
         north.setLayout(new BoxLayout(north, BoxLayout.Y_AXIS));
@@ -240,6 +241,17 @@ public final class LoginGui {
                 BorderFactory.createEmptyBorder(5, 8, 5, 8)));
         strip.add(this.gameStatus, BorderLayout.WEST);
         return strip;
+    }
+
+    /** O botao "Recarregar protecao" so rele estas opcoes do authserver.properties; o resto vale ao reiniciar. */
+    private static final Set<String> LIVE_KEYS = Set.of("AccountTemplate", "AutoCreateAccounts", "BlackIpList", "ConnectionFloodMax",
+            "ConnectionFloodWindow", "EnableAutoBan", "EnableCustomLoginMessages", "IpBanResetHours", "IpBanSteps", "IpBanTime",
+            "LoginMsgAccountBanned", "LoginMsgInvalidAccountName", "LoginMsgInvalidPassword", "LoginMsgIpBanned", "LoginMsgLastAttempt",
+            "LoginMsgTestAccount", "LoginTryBeforeBan", "LoginTryTimeout", "PasswordTemplate", "PersistIpBans", "TrustLocalNetwork",
+            "WhiteIpList");
+
+    private static boolean restartOnly(String file, String key) {
+        return file.equalsIgnoreCase("authserver.properties") && !LIVE_KEYS.contains(key);
     }
 
     /** Porta do GameServer lida do config dele (../game/config/server.properties), para saber se ja esta no ar. */

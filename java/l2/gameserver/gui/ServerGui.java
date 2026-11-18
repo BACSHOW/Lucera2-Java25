@@ -244,7 +244,7 @@ public final class ServerGui {
         StyleConstants.setForeground(this.styleError, Theme.ERROR);
 
         this.configEditor = new ConfigEditorPanel(new File(Config.CONFIGURATION_FILE).getAbsoluteFile().getParentFile(),
-                Config::load, "Portas, banco de dados e geodata só mudam depois de reiniciar.");
+                Config::load, "Opções marcadas com (reiniciar) só valem depois de reiniciar o servidor.", ServerGui::restartOnly);
         this.tabs.addTab("Console", this.buildConsole());
         this.tabs.addTab("Métricas", this.buildMetrics());
         this.tabs.addTab("Movimento", this.buildMovement());
@@ -337,6 +337,26 @@ public final class ServerGui {
         this.rates.setText("Rates   XP x" + rate(Config.RATE_XP) + "   SP x" + rate(Config.RATE_SP)
                 + "   Adena x" + rate(Config.RATE_DROP_ADENA) + "   Drop x" + rate(Config.RATE_DROP_ITEMS)
                 + "   Spoil x" + rate(Config.RATE_DROP_SPOIL) + "   Quest x" + rate(Config.RATE_QUESTS_REWARD));
+    }
+
+    /**
+     * Opcoes lidas so ao ligar o servidor (rede, banco, carga do geodata, threads): o editor marca "(reiniciar)".
+     * Lista conservadora: o que nao esta aqui e recarregado pelo Config.load().
+     */
+    private static boolean restartOnly(String file, String key) {
+        String f = file.toLowerCase(Locale.ROOT);
+        if (f.equals("telnet.properties") || key.equals("EnableServerGui") || key.matches("(?i).*(Threads?|ThreadPool.*)")) {
+            return true;
+        }
+        if (f.equals("server.properties")) {
+            return key.matches("Gameserver(Hostname|Port)|(External|Internal)Hostname|Login(Port|Host|UseCrypt)|RequestServerID"
+                    + "|AcceptAlternateID|Database.*|HAProxy.*|UseNetty|Netty.*|UseDisruptor|Disruptor.*|EnableDeterministic120HzPipeline"
+                    + "|Deterministic120HzPort|EnableNetworkJitWarmup|EnableZstdGeodataCache");
+        }
+        if (f.equals("geodata.properties")) {
+            return key.matches("Geo(First|Last)[XY]|GeoFilesPattern|AllowGeodata|CompactGeoData|PathFindBuffers");
+        }
+        return false;
     }
 
     private static String rate(double v) {
