@@ -9,6 +9,7 @@ import java.util.Set;
 import l2.commons.data.xml.AbstractHolder;
 import l2.gameserver.handler.admincommands.IAdminCommandHandler;
 import l2.gameserver.handler.admincommands.impl.AdminAdmin;
+import l2.gameserver.handler.admincommands.impl.AdminNetSlow;
 import l2.gameserver.handler.admincommands.impl.AdminNpcDebug;
 import l2.gameserver.handler.admincommands.impl.AdminAnnouncements;
 import l2.gameserver.handler.admincommands.impl.AdminBan;
@@ -76,6 +77,7 @@ extends AbstractHolder {
     private AdminCommandHandler() {
         this.registerAdminCommandHandler(new AdminAdmin());
         this.registerAdminCommandHandler(new AdminNpcDebug());
+        this.registerAdminCommandHandler(new AdminNetSlow());
         this.registerAdminCommandHandler(new AdminAnnouncements());
         this.registerAdminCommandHandler(new AdminBan());
         this.registerAdminCommandHandler(new AdminCamera());

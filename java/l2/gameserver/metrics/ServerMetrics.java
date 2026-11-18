@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import l2.gameserver.model.GameObjectsStorage;
 
 /**
@@ -50,7 +51,8 @@ public final class ServerMetrics {
         NPC_RETURN_HOME("Monstros que voltaram ao spawn"),
         NPC_RETURN_HOME_PATHFAIL("Voltaram ao spawn por falha de caminho"),
         PATH_BUFFERS_EXHAUSTED("Buffers do pathfinding esgotados"),
-        NPC_INFO_DROPPED("NPCs nao enviados ao cliente (filtro de raio)");
+        NPC_INFO_DROPPED("NPCs nao enviados ao cliente (filtro de raio)"),
+        NET_UNWRITABLE("Conexoes que ficaram cheias (fila de envio acima do limite)");
 
         public final String label;
 
@@ -167,6 +169,10 @@ public final class ServerMetrics {
         public final long[] countPerSec;
         public final long[] countPerMin;
         public final long[] countTotal;
+        /** Fila de envio: conexoes cheias agora, maior fila (KB) e conexoes com //netslow. */
+        public final int netFullNow;
+        public final long netMaxPendingKb;
+        public final int netSlowedNow;
 
         public long perMin(Counter c) {
             return this.countPerMin[c.ordinal()];
@@ -181,7 +187,10 @@ public final class ServerMetrics {
                 long aiThinksPerSec, double aiAvgMs, double aiMaxMs, long pathfindsPerSec, double pathfindAvgMs,
                 double pathfindMaxMs, long heapUsedMb, long heapMaxMb, long nonHeapUsedMb, double processCpuPercent,
                 int threads, int deadlockedThreads, long gcPerSec, long gcMsPerSec, long[] countPerSec,
-                long[] countPerMin, long[] countTotal) {
+                long[] countPerMin, long[] countTotal, long[] net) {
+            this.netFullNow = (int) net[0];
+            this.netMaxPendingKb = net[1] / 1024L;
+            this.netSlowedNow = (int) net[2];
             this.countPerSec = countPerSec;
             this.countPerMin = countPerMin;
             this.countTotal = countTotal;
@@ -353,7 +362,23 @@ public final class ServerMetrics {
                 ai[0], ai[0] == 0 ? 0.0 : ai[1] / (double) ai[0] / 1.0E6, ai[2] / 1.0E6,
                 pf[0], pf[0] == 0 ? 0.0 : pf[1] / (double) pf[0] / 1.0E6, pf[2] / 1.0E6,
                 heap.getUsed() >> 20, heapMax >> 20, nonHeap.getUsed() >> 20, cpu,
-                threads.getThreadCount(), dead == null ? 0 : dead.length, gcDelta, gcMs, perSec, perMin, total);
+                threads.getThreadCount(), dead == null ? 0 : dead.length, gcDelta, gcMs, perSec, perMin, total, netQueue());
+    }
+
+    /** Quem informa a fila de envio (o NettyGameServer registra ao ligar); sem Netty fica zerado. */
+    private static volatile Supplier<long[]> netQueueProbe;
+
+    public static void setNetQueueProbe(Supplier<long[]> probe) {
+        netQueueProbe = probe;
+    }
+
+    private static long[] netQueue() {
+        Supplier<long[]> p = netQueueProbe;
+        try {
+            return p == null ? new long[3] : p.get();
+        } catch (Throwable t) {
+            return new long[3];
+        }
     }
 
     // ------------------------------------------------------------------ Prometheus
@@ -381,6 +406,8 @@ public final class ServerMetrics {
         gauge(sb, "l2_jvm_threads", "Threads", s.threads);
         gauge(sb, "l2_jvm_deadlocked_threads", "Threads em deadlock", s.deadlockedThreads);
         gauge(sb, "l2_uptime_seconds", "Tempo ligado", s.uptimeMillis / 1000L);
+        gauge(sb, "l2_net_full_connections", "Conexoes com a fila de envio cheia agora", s.netFullNow);
+        gauge(sb, "l2_net_max_pending_kb", "Maior fila de envio de um cliente (KB)", s.netMaxPendingKb);
         for (Counter c : COUNTERS) {
             counter(sb, "l2_" + c.name().toLowerCase(java.util.Locale.ROOT) + "_total", c.label, s.total(c));
         }

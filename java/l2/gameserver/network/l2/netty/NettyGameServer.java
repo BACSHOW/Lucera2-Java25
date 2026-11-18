@@ -7,6 +7,7 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.WriteBufferWaterMark;
 import l2.gameserver.Config;
+import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.network.l2.GamePacketHandler;
 import l2.gameserver.network.l2.netty.disruptor.DisruptorPipeline;
 import l2.gameserver.network.l2.netty.disruptor.deterministic.BrNetworkBootstrap;
@@ -84,6 +85,9 @@ public final class NettyGameServer {
                 _log.warn("[120Hz Engine] enabled but Deterministic120HzPort is not configured; keeping dedicated pipeline disabled");
             }
         }
+
+        // fila de envio de cada cliente na aba Metricas da janela
+        ServerMetrics.setNetQueueProbe(NettyGameConnection::queueStats);
 
         int bossThreads = Config.NETTY_BOSS_THREADS > 0 ? Config.NETTY_BOSS_THREADS : 1;
         int workerThreads = Config.NETTY_WORKER_THREADS > 0 ? Config.NETTY_WORKER_THREADS : 0;

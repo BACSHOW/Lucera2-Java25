@@ -80,11 +80,11 @@ public final class ServerGui {
     private int searchFrom;
     // metricas
     private final JLabel vOnline = value(), vCpu = value(), vHeap = value(), vThreads = value(), vIn = value(),
-            vOut = value(), vAi = value(), vPath = value(), vGc = value(), vUptime = value();
+            vOut = value(), vAi = value(), vPath = value(), vGc = value(), vUptime = value(), vNetQueue = value(), vNetFull = value();
     private final JLabel sOnline = sub(), sCpu = sub(), sHeap = sub(), sThreads = sub(), sIn = sub(), sOut = sub(),
-            sAi = sub(), sPath = sub(), sGc = sub(), sUptime = sub();
+            sAi = sub(), sPath = sub(), sGc = sub(), sUptime = sub(), sNetQueue = sub(), sNetFull = sub();
     private final JComboBox<String> range = new JComboBox<>(new String[]{"5 min", "15 min", "30 min", "60 min"});
-    private final MetricChart chOnline, chHeap, chPackets, chAi, chPath, chCpu;
+    private final MetricChart chOnline, chHeap, chPackets, chAi, chPath, chCpu, chNet;
     // movimento (contadores por minuto)
     private final EnumMap<ServerMetrics.Counter, JLabel[]> moveCards = new EnumMap<>(ServerMetrics.Counter.class);
     private final MetricChart chZones, chPaths, chNpcs, chFarm;
@@ -116,6 +116,9 @@ public final class ServerGui {
                 .add("pior", Theme.ORANGE, s -> s.pathfindMaxMs);
         this.chCpu = new MetricChart("CPU do processo", "%", 10)
                 .add("cpu", Theme.PURPLE, s -> Math.max(0.0, s.processCpuPercent));
+        this.chNet = new MetricChart("Fila de envio", "KB", 64)
+                .add("maior", Theme.ORANGE, s -> s.netMaxPendingKb)
+                .add("cheias", Theme.ERROR, s -> s.netFullNow);
         this.chZones = new MetricChart("Correções de posição do jogador", "por minuto", 5)
                 .add("amarela (suave)", Theme.ORANGE, s -> s.perMin(ServerMetrics.Counter.VP_YELLOW))
                 .add("vermelha (salto)", Theme.ERROR, s -> s.perMin(ServerMetrics.Counter.VP_RED))
@@ -401,22 +404,24 @@ public final class ServerGui {
     }
 
     private JComponent buildMetrics() {
-        JPanel cards = new JPanel(new GridLayout(2, 5, 8, 8));
+        JPanel cards = new JPanel(new GridLayout(2, 6, 8, 8));
         cards.setBackground(Theme.BG);
         cards.add(card("Jogadores online", this.vOnline, this.sOnline));
         cards.add(card("CPU do processo", this.vCpu, this.sCpu));
         cards.add(card("Memória (heap)", this.vHeap, this.sHeap));
         cards.add(card("Threads", this.vThreads, this.sThreads));
         cards.add(card("Tempo ligado", this.vUptime, this.sUptime));
+        cards.add(card("Fila de envio (maior)", this.vNetQueue, this.sNetQueue));
         cards.add(card("Pacotes recebidos/s", this.vIn, this.sIn));
         cards.add(card("Pacotes enviados/s", this.vOut, this.sOut));
         cards.add(card("IA dos NPCs", this.vAi, this.sAi));
         cards.add(card("Pathfinding", this.vPath, this.sPath));
         cards.add(card("Coleta de lixo (GC)", this.vGc, this.sGc));
+        cards.add(card("Conexões cheias", this.vNetFull, this.sNetFull));
 
-        JPanel charts = new JPanel(new GridLayout(2, 3, 8, 8));
+        JPanel charts = new JPanel(new GridLayout(2, 4, 8, 8));
         charts.setBackground(Theme.BG);
-        for (MetricChart c : new MetricChart[]{this.chOnline, this.chHeap, this.chCpu, this.chPackets, this.chAi, this.chPath}) {
+        for (MetricChart c : new MetricChart[]{this.chOnline, this.chHeap, this.chCpu, this.chNet, this.chPackets, this.chAi, this.chPath}) {
             c.setBorder(BorderFactory.createLineBorder(Theme.BORDER));
             charts.add(c);
         }
@@ -666,6 +671,12 @@ public final class ServerGui {
         this.sGc.setText(s.gcPerSec + " coletas no último segundo");
         this.vUptime.setText(duration(s.uptimeMillis));
         this.sUptime.setText("desde " + new SimpleDateFormat("dd/MM HH:mm").format(new Date(s.timeMillis - s.uptimeMillis)));
+        this.vNetQueue.setText(s.netMaxPendingKb + " KB");
+        this.sNetQueue.setText(s.netSlowedNow > 0 ? s.netSlowedNow + " com //netslow" : "esperando para sair");
+        this.vNetQueue.setForeground(s.netMaxPendingKb >= 512 ? Theme.WARN : Theme.TEXT);
+        this.vNetFull.setText(String.valueOf(s.netFullNow));
+        this.sNetFull.setText(s.perMin(ServerMetrics.Counter.NET_UNWRITABLE) + " no último minuto");
+        this.vNetFull.setForeground(s.netFullNow > 0 ? Theme.ERROR : Theme.TEXT);
 
         for (Map.Entry<ServerMetrics.Counter, JLabel[]> e : this.moveCards.entrySet()) {
             ServerMetrics.Counter c = e.getKey();
@@ -687,7 +698,7 @@ public final class ServerGui {
         if (this.chOnline.isShowing()) {
             int secs = this.rangeSeconds();
             Snapshot[] data = ServerMetrics.history(secs);
-            for (MetricChart c : new MetricChart[]{this.chOnline, this.chHeap, this.chPackets, this.chAi, this.chPath, this.chCpu}) {
+            for (MetricChart c : new MetricChart[]{this.chOnline, this.chHeap, this.chPackets, this.chAi, this.chPath, this.chCpu, this.chNet}) {
                 c.setData(data, secs);
             }
         }

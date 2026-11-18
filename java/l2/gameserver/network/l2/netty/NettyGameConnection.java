@@ -2,10 +2,14 @@ package l2.gameserver.network.l2.netty;
 
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelOutboundBuffer;
+import io.netty.handler.traffic.ChannelTrafficShapingHandler;
 import io.netty.util.AttributeKey;
 import l2.commons.net.nio.impl.IMMOExecutor;
 import l2.commons.net.nio.impl.MMOExecutableQueue;
 import l2.commons.net.nio.impl.ReceivablePacket;
+import l2.gameserver.Config;
 import l2.gameserver.ThreadPoolManager;
 import l2.gameserver.network.l2.GameClient;
 
@@ -13,6 +17,8 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import l2.gameserver.network.l2.netty.disruptor.OutboundFloodQueue;
 
@@ -23,6 +29,10 @@ import l2.gameserver.network.l2.netty.disruptor.OutboundFloodQueue;
 public final class NettyGameConnection {
     private static final AttributeKey<NettyGameConnection> CONNECTION_KEY = AttributeKey.valueOf("l2.connection");
     private static final int MAX_BATCH_PACKETS_BEFORE_FLUSH = 64;
+    /** Nome do limitador de velocidade de teste (//netslow) no pipeline do canal. */
+    private static final String NETSLOW = "netslow";
+    /** Conexoes abertas, para as metricas da fila de envio. */
+    private static final Set<NettyGameConnection> OPEN = ConcurrentHashMap.newKeySet();
 
     private final Channel channel;
     private final MMOExecutableQueue<GameClient> packetQueue;
@@ -42,6 +52,74 @@ public final class NettyGameConnection {
         this.channel.attr(CONNECTION_KEY).set(this);
         this.packetQueue = new MMOExecutableQueue<>(executor != null ? executor : runnable -> ThreadPoolManager.getInstance().execute(runnable));
         this.outboundFloodQueue = new OutboundFloodQueue(this, 1024);
+        OPEN.add(this);
+        this.channel.closeFuture().addListener(f -> OPEN.remove(this));
+    }
+
+    // ------------------------------------------------------------------ fila de envio (metricas e //netslow)
+
+    /**
+     * Bytes esperando para sair para este cliente: a fila do Netty e, com //netslow ligado, a fila do limitador.
+     * Cresce quando o cliente recebe mais devagar do que o servidor envia.
+     */
+    public long pendingWriteBytes() {
+        long n = 0L;
+        ChannelOutboundBuffer out = this.channel.unsafe().outboundBuffer();
+        if (out != null) {
+            n += out.totalPendingWriteBytes();
+        }
+        ChannelHandler h = this.channel.pipeline().get(NETSLOW);
+        if (h instanceof ChannelTrafficShapingHandler shaping) {
+            n += shaping.queueSize();
+        }
+        return n;
+    }
+
+    /** Limite de teste em KB/s (0 = sem limite). */
+    public int getThrottleKbps() {
+        ChannelHandler h = this.channel.pipeline().get(NETSLOW);
+        return h instanceof ChannelTrafficShapingHandler shaping ? (int) (shaping.getWriteLimit() / 1024L) : 0;
+    }
+
+    /**
+     * Teste de conexao lenta (//netslow): limita o envio para este cliente a kbps KB/s; 0 tira o limite.
+     * O limitador marca a conexao como cheia no mesmo limite real (NettyWriteHighWaterMark), entao as metricas
+     * se comportam como numa conexao lenta de verdade.
+     */
+    public void setThrottleKbps(int kbps) {
+        this.channel.eventLoop().execute(() -> {
+            if (!this.channel.isActive()) {
+                return;
+            }
+            if (this.channel.pipeline().get(NETSLOW) != null) {
+                this.channel.pipeline().remove(NETSLOW);
+            }
+            if (kbps > 0) {
+                ChannelTrafficShapingHandler shaping = new ChannelTrafficShapingHandler(kbps * 1024L, 0L, 100L, 60_000L);
+                shaping.setMaxWriteSize(Config.NETTY_WRITE_HIGH_WATER_MARK);
+                // ultimo a tratar a saida: limita os bytes ja criptografados que vao para o socket
+                this.channel.pipeline().addFirst(NETSLOW, shaping);
+            }
+        });
+    }
+
+    /** {conexoes cheias agora, maior fila em bytes, conexoes com //netslow} para o ServerMetrics. */
+    public static long[] queueStats() {
+        long full = 0L, max = 0L, slowed = 0L;
+        for (NettyGameConnection c : OPEN) {
+            try {
+                if (!c.channel.isWritable()) {
+                    full++;
+                }
+                if (c.channel.pipeline().get(NETSLOW) != null) {
+                    slowed++;
+                }
+                max = Math.max(max, c.pendingWriteBytes());
+            } catch (Throwable ignored) {
+                // canal fechando
+            }
+        }
+        return new long[]{full, max, slowed};
     }
 
     public static NettyGameConnection of(Channel channel) {

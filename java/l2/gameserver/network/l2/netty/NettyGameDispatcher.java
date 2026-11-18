@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import l2.gameserver.ThreadPoolManager;
+import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.network.l2.CGModule;
 import l2.gameserver.network.l2.GameClient;
 import l2.gameserver.network.l2.GamePacketHandler;
@@ -42,6 +43,15 @@ public final class NettyGameDispatcher extends SimpleChannelInboundHandler<ByteB
         conn.attachClient(client);
     }
 
+    /** Conta quando a fila de envio de um cliente passa do limite (NettyWriteHighWaterMark). */
+    @Override
+    public void channelWritabilityChanged(ChannelHandlerContext ctx) throws Exception {
+        if (!ctx.channel().isWritable()) {
+            ServerMetrics.count(ServerMetrics.Counter.NET_UNWRITABLE);
+        }
+        super.channelWritabilityChanged(ctx);
+    }
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) {
         NettyGameConnection conn = NettyGameConnection.of(ctx.channel());
@@ -53,7 +63,7 @@ public final class NettyGameDispatcher extends SimpleChannelInboundHandler<ByteB
         if (readable == 0) {
             return;
         }
-        l2.gameserver.metrics.ServerMetrics.packetIn(readable);
+        ServerMetrics.packetIn(readable);
 
         byte[] data = new byte[readable];
         msg.readBytes(data);
