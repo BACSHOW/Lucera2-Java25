@@ -55,7 +55,13 @@ public final class BrCoreWorker implements Runnable {
                 return false;
             }
             Kernel32Affinity k32 = Kernel32Affinity.INSTANCE;
-            return k32.SetThreadAffinityMask(k32.GetCurrentThread(), 1L << core) != 0L;
+            long mask = 1L << core;
+            if (k32.SetThreadAffinityMask(k32.GetCurrentThread(), mask) == 0L) {
+                return false;
+            }
+            // A funcao devolve a mascara que a thread tinha: chamando de novo, ela devolve a que acabamos de
+            // gravar. Se for so o nucleo pedido, o Windows realmente aplicou.
+            return k32.SetThreadAffinityMask(k32.GetCurrentThread(), mask) == mask;
         }
         Affinity.setAffinity(core);
         BitSet now = Affinity.getAffinity();
