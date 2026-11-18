@@ -542,7 +542,7 @@ extends MMOClient<MMOConnection<GameClient>> {
     // ------------------------------------------------------------------ cliente com conexao lenta
 
     /**
-     * Conexao cheia (fila de envio acima de NettyWriteHighWaterMark) e NettySlowClientShedding ligado: pula
+     * Cliente atrasado (fila de envio acima de NettySlowClientShedBytes) e NettySlowClientShedding ligado: pula
      * pacotes visuais de OUTROS objetos (movimento, animacao de ataque/skill, gestos, HP de outros). Eles iam
      * chegar atrasados e ser substituidos pelos proximos de qualquer jeito; quando a conexao esvazia, a
      * ressincronizacao manda o estado atual. Nunca pula nada do proprio jogador ou do pet dele, nem pacotes que
@@ -550,7 +550,7 @@ extends MMOClient<MMOConnection<GameClient>> {
      */
     private boolean shedWhenSlow(L2GameServerPacket packet) {
         if (!Config.NETTY_SLOW_CLIENT_SHEDDING || !(packet instanceof SlowClientSheddable sheddable)
-                || this._nettyConnection.isWritable()) {
+                || !this._nettyConnection.isLagging()) {
             return false;
         }
         Player player = this.zT;

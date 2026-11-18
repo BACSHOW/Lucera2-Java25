@@ -36,6 +36,8 @@ public final class NettyGameConnection {
     private static final Set<NettyGameConnection> OPEN = ConcurrentHashMap.newKeySet();
     /** Ressincronizacao no maximo a cada 2 s por cliente (ela mesma pode encher uma conexao lenta de novo). */
     private static final long RESYNC_MIN_INTERVAL_MS = 2000L;
+    /** Intervalo para conferir se a fila esvaziou depois de pacotes pulados. */
+    private static final long DRAIN_CHECK_MS = 500L;
 
     private final Channel channel;
     private volatile boolean shedPending;
@@ -143,24 +145,47 @@ public final class NettyGameConnection {
 
     // ------------------------------------------------------------------ cliente lento (NettySlowClientShedding)
 
-    /** Algum pacote visual foi pulado enquanto a conexao estava cheia: falta ressincronizar. */
+    /**
+     * Fila de envio acima do limite de descarte (NettySlowClientShedBytes) ou conexao cheia: o cliente esta
+     * atrasado e pacotes visuais de outros objetos podem ser pulados.
+     */
+    public boolean isLagging() {
+        return !this.channel.isWritable() || this.pendingWriteBytes() > Config.NETTY_SLOW_CLIENT_SHED_BYTES;
+    }
+
+    /** Algum pacote visual foi pulado: quando a fila esvaziar, ressincroniza. */
     public void markShed() {
-        this.shedPending = true;
+        if (!this.shedPending) {
+            this.shedPending = true;
+            this.scheduleDrainCheck(DRAIN_CHECK_MS);
+        }
+    }
+
+    /** A conexao voltou a aceitar dados (NettyGameDispatcher): confere ja se da para ressincronizar. */
+    public void onWritableAgain() {
+        if (this.shedPending) {
+            this.scheduleDrainCheck(0L);
+        }
     }
 
     /**
-     * A conexao voltou a aceitar dados (chamado pelo NettyGameDispatcher). Se pacotes foram pulados, agenda a
-     * ressincronizacao fora da thread de rede, respeitando o intervalo minimo.
+     * Confere a cada meio segundo se a fila esvaziou (abaixo da metade do limite de descarte). Quando esvazia,
+     * manda o estado atual de quem esta em volta, no maximo a cada RESYNC_MIN_INTERVAL_MS.
      */
-    public void onWritableAgain() {
-        if (!this.shedPending || !this.resyncScheduled.compareAndSet(false, true)) {
+    private void scheduleDrainCheck(long delay) {
+        if (!this.resyncScheduled.compareAndSet(false, true)) {
             return;
         }
-        long wait = Math.max(0L, RESYNC_MIN_INTERVAL_MS - (System.currentTimeMillis() - this.lastResyncAt));
         ThreadPoolManager.getInstance().schedule(() -> {
             this.resyncScheduled.set(false);
-            if (!this.channel.isActive() || !this.channel.isWritable()) {
-                return; // encheu de novo: a proxima vez que esvaziar agenda outra
+            if (!this.channel.isActive() || !this.shedPending) {
+                return;
+            }
+            boolean drained = this.channel.isWritable() && this.pendingWriteBytes() <= Config.NETTY_SLOW_CLIENT_SHED_BYTES / 2;
+            long sinceLast = System.currentTimeMillis() - this.lastResyncAt;
+            if (!drained || sinceLast < RESYNC_MIN_INTERVAL_MS) {
+                this.scheduleDrainCheck(drained ? RESYNC_MIN_INTERVAL_MS - sinceLast : DRAIN_CHECK_MS);
+                return;
             }
             this.shedPending = false;
             this.lastResyncAt = System.currentTimeMillis();
@@ -168,7 +193,7 @@ public final class NettyGameConnection {
             if (c != null) {
                 c.resyncAfterSlowLink();
             }
-        }, wait);
+        }, delay);
     }
 
     /** {conexoes cheias agora, maior fila em bytes, conexoes com //netslow} para o ServerMetrics. */
