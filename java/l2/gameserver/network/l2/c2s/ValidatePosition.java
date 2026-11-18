@@ -10,6 +10,7 @@ import l2.gameserver.model.Player;
 import l2.gameserver.model.entity.boat.Boat;
 import l2.gameserver.network.l2.GameClient;
 import l2.gameserver.network.l2.c2s.L2GameClientPacket;
+import l2.gameserver.network.l2.netty.NettyGameConnection;
 import l2.gameserver.network.l2.s2c.CharMoveToLocation;
 import l2.gameserver.utils.Location;
 
@@ -95,6 +96,11 @@ extends L2GameClientPacket {
                 this.ad(player);
                 player.setIncorrectValidateCount(player.getIncorrectValidateCount() + 1);
             }
+        } else if (d2 > RED_ZONE && clientLagging(player)) {
+            // Conexao atrasada: a correcao anterior ainda esta na fila de envio, entao o cliente esta reportando
+            // uma posicao de antes dela. A posicao do servidor ja e a valida; nao manda outra correcao (so encheria
+            // mais a fila) e nao conta como tentativa invalida (senao a conexao lenta levava o jogador a cidade).
+            this.logZone(player, "RED_LAG", d);
         } else if (d2 > RED_ZONE) {
             // Red Zone: snap de seguranca; tentativas invalidas consecutivas levam a cidade.
             int fails = player.getIncorrectValidateCount();
@@ -133,6 +139,8 @@ extends L2GameClientPacket {
     public static final double GREEN_ZONE = 180.0;
     /** Limite da Yellow Zone (README: 180u < delta <= 500u); acima disso e Red Zone. */
     public static final double RED_ZONE = 500.0;
+    /** Acima disso na fila de envio, o cliente ainda nao recebeu a ultima correcao de posicao. */
+    private static final long LAG_PENDING_BYTES = 32L * 1024L;
     /** Abaixo disto a diferenca e ruido de latencia/quantizacao e nada e feito. */
     public static final double ACCEPT_MIN_DELTA = 32.0;
     /** O cliente e considerado parado quando dois relatorios seguidos diferem menos que isto. */
@@ -204,6 +212,13 @@ extends L2GameClientPacket {
         player.setLastClientPosition(this.cH);
         player.sendPacket(new CharMoveToLocation(player, this.cH.clone(), player.getLoc()));
         return 1;
+    }
+
+    /** Fila de envio desse cliente acima de 32 KB, ou a conexao marcada como cheia. */
+    private static boolean clientLagging(Player player) {
+        GameClient client = player.getNetConnection();
+        NettyGameConnection conn = client == null ? null : client.getNettyConnection();
+        return conn != null && (!conn.isWritable() || conn.pendingWriteBytes() > LAG_PENDING_BYTES);
     }
 
     private void logZone(Player player, String zone, double delta2D) {
