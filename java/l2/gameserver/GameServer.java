@@ -483,8 +483,6 @@ public class GameServer {
                 context.getLogger("org.mariadb.jdbc").setLevel(ch.qos.logback.classic.Level.WARN);
                 context.getLogger("net.sf.ehcache").setLevel(ch.qos.logback.classic.Level.WARN);
                 context.getLogger("io.netty").setLevel(ch.qos.logback.classic.Level.WARN);
-                // "Tried to set affinity ... insufficient access rights": o BrCoreWorker ja confere e avisa uma vez
-                context.getLogger("net.openhft.affinity").setLevel(ch.qos.logback.classic.Level.ERROR);
                 context.getLogger("l2.gameserver.data.xml.holder.MultiSellHolder").setLevel(ch.qos.logback.classic.Level.ERROR);
                 context.getLogger("l2.commons.threading.ParallelBoot").setLevel(ch.qos.logback.classic.Level.WARN);
                 context.getLogger("l2.commons.util.SysUtil").setLevel(ch.qos.logback.classic.Level.WARN);
