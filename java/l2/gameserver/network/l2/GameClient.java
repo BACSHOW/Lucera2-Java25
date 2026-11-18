@@ -38,12 +38,6 @@ import l2.gameserver.network.l2.c2s.L2GameClientPacket;
 import l2.gameserver.network.l2.components.IStaticPacket;
 import l2.gameserver.network.l2.s2c.L2GameServerPacket;
 import l2.gameserver.network.l2.s2c.NpcHtmlMessage;
-import l2.gameserver.network.l2.s2c.DeleteObject;
-import l2.gameserver.network.l2.s2c.CharInfo;
-import l2.gameserver.network.l2.s2c.NpcInfo;
-import l2.gameserver.network.l2.s2c.SkillList;
-import l2.gameserver.network.l2.s2c.EtcStatusUpdate;
-import l2.gameserver.network.l2.netty.disruptor.OutboundFloodQueue;
 import l2.gameserver.network.l2.s2c.RequestNetPing;
 import l2.gameserver.network.pfilter.PacketFilter;
 import l2.gameserver.network.l2.netty.NettyGameConnection;
@@ -521,7 +515,9 @@ extends MMOClient<MMOConnection<GameClient>> {
         if (this._nettyConnection != null) {
             byte[] payload = this.serializeNettyPacket(l2GameServerPacket);
             if (payload != null) {
-                this.sendSerializedNetty(l2GameServerPacket, payload);
+                // Tudo sai na ordem em que foi gerado. NpcInfo/CharInfo/DeleteObject nao passam mais por uma fila
+                // separada com atraso: chegavam depois do movimento do mesmo objeto e fora de ordem entre si.
+                this._nettyConnection.send(payload);
             }
             return;
         }
@@ -529,22 +525,6 @@ extends MMOClient<MMOConnection<GameClient>> {
             ((NpcHtmlMessage) l2GameServerPacket).processHtml(this);
         }
         ((MMOConnection)((Object)this.getConnection())).sendPacket((SendablePacket<GameClient>)l2GameServerPacket);
-    }
-
-    private void sendSerializedNetty(L2GameServerPacket packet, byte[] payload) {
-        if (packet instanceof DeleteObject) {
-            this._nettyConnection.sendFlood(payload, OutboundFloodQueue.Kind.DELETE_OBJECT, ((DeleteObject) packet).getObjectId());
-        } else if (packet instanceof CharInfo) {
-            this._nettyConnection.sendFlood(payload, OutboundFloodQueue.Kind.CHAR_INFO, ((CharInfo) packet).getObjectId());
-        } else if (packet instanceof NpcInfo) {
-            this._nettyConnection.sendFlood(payload, OutboundFloodQueue.Kind.NPC_INFO, ((NpcInfo) packet).getObjectId());
-        } else if (packet instanceof SkillList) {
-            this._nettyConnection.sendFlood(payload, OutboundFloodQueue.Kind.SKILL_LIST, 0);
-        } else if (packet instanceof EtcStatusUpdate) {
-            this._nettyConnection.sendFlood(payload, OutboundFloodQueue.Kind.ETC_STATUS, 0);
-        } else {
-            this._nettyConnection.send(payload);
-        }
     }
 
     private byte[] serializeNettyPacket(L2GameServerPacket packet) {
@@ -593,12 +573,7 @@ extends MMOClient<MMOConnection<GameClient>> {
             if (packet != null) {
                 byte[] payload = this.serializeNettyPacket(packet);
                 if (payload != null) {
-                    if (packet instanceof DeleteObject || packet instanceof CharInfo || packet instanceof NpcInfo
-                        || packet instanceof SkillList || packet instanceof EtcStatusUpdate) {
-                        this.sendSerializedNetty(packet, payload);
-                    } else {
-                        payloads.add(payload);
-                    }
+                    payloads.add(payload);
                 }
             }
         }

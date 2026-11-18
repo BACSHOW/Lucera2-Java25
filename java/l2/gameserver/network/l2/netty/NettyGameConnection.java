@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import l2.gameserver.network.l2.netty.disruptor.OutboundFloodQueue;
 
 /**
  * Wrapper de conexão por canal do Netty.
@@ -38,8 +37,6 @@ public final class NettyGameConnection {
     private final MMOExecutableQueue<GameClient> packetQueue;
     private GameClient client;
     private String overrideIp = null;
-    private final OutboundFloodQueue outboundFloodQueue;
-    private final OutboundFloodQueue.State outboundFloodState = new OutboundFloodQueue.State();
     private final AtomicInteger batchDepth = new AtomicInteger();
     private final AtomicInteger batchPacketCount = new AtomicInteger();
 
@@ -51,7 +48,6 @@ public final class NettyGameConnection {
         this.channel = channel;
         this.channel.attr(CONNECTION_KEY).set(this);
         this.packetQueue = new MMOExecutableQueue<>(executor != null ? executor : runnable -> ThreadPoolManager.getInstance().execute(runnable));
-        this.outboundFloodQueue = new OutboundFloodQueue(this, 1024);
         OPEN.add(this);
         this.channel.closeFuture().addListener(f -> OPEN.remove(this));
     }
@@ -209,14 +205,6 @@ public final class NettyGameConnection {
         }
     }
 
-    public void sendFlood(byte[] payload, OutboundFloodQueue.Kind kind, int objectId) {
-        this.outboundFloodQueue.publish(payload, kind, objectId);
-    }
-
-    public void acceptFloodEvent(byte[] payload, OutboundFloodQueue.Kind kind, int objectId) {
-        this.outboundFloodState.accept(this.channel, payload, kind, objectId);
-    }
-
     public void sendBatch(List<byte[]> payloads) {
         this.writeBatch(payloads, false);
     }
@@ -266,7 +254,6 @@ public final class NettyGameConnection {
     }
 
     public void close() {
-        this.outboundFloodQueue.shutdown();
         if (this.channel.isActive()) {
             this.channel.close();
         }
