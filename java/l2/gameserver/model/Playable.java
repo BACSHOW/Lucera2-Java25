@@ -43,6 +43,7 @@ import l2.gameserver.tables.SkillTable;
 import l2.gameserver.templates.CharTemplate;
 import l2.gameserver.templates.item.EtcItemTemplate;
 import l2.gameserver.templates.item.WeaponTemplate;
+import l2.gameserver.utils.MovementTelemetryLogger;
 import l2.gameserver.utils.Location;
 
 public abstract class Playable
@@ -139,9 +140,12 @@ public abstract class Playable
             return false;
         }
         if (creature.isInvisible() || this.getReflection() != creature.getReflection() || !GeoEngine.canSeeTarget(this, creature, false)) {
-            l2.gameserver.utils.MovementTelemetryLogger.logEvent(player, "CANNOT_SEE_TARGET", String.format("target=%s #%d TgtLoc=(%d,%d,%d) dist2D=%.1f invisible=%b sameReflection=%b geoCanSee=%b moving=%b",
-                    creature.getName(), creature.getObjectId(), creature.getX(), creature.getY(), creature.getZ(), this.getDistance(creature),
-                    creature.isInvisible(), this.getReflection() == creature.getReflection(), GeoEngine.canSeeTarget(this, creature, false), this.isMoving()));
+            if (MovementTelemetryLogger.ENABLED) {
+                // so monta o texto (e repete o teste de geodata) com a telemetria ligada
+                MovementTelemetryLogger.logEvent(player, "CANNOT_SEE_TARGET", String.format("target=%s #%d TgtLoc=(%d,%d,%d) dist2D=%.1f invisible=%b sameReflection=%b geoCanSee=%b moving=%b",
+                        creature.getName(), creature.getObjectId(), creature.getX(), creature.getY(), creature.getZ(), this.getDistance(creature),
+                        creature.isInvisible(), this.getReflection() == creature.getReflection(), GeoEngine.canSeeTarget(this, creature, false), this.isMoving()));
+            }
             player.sendPacket((IStaticPacket)SystemMsg.CANNOT_SEE_TARGET);
             return false;
         }
