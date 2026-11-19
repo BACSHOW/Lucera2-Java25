@@ -134,14 +134,8 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 	}
 
 	private static void loadSettings() {
+		// Configuracao do Monster Data: so config/custom/monsterdata.properties (sem o arquivo, tudo ligado).
 		Properties properties = new Properties();
-		for (String path : new String[] { "config/custom/interfaceSBlack.properties", "config/Custom/interfaceSBlack.properties" }) {
-			File file = new File(path);
-			if (!file.isFile()) continue;
-			try (FileInputStream input = new FileInputStream(file)) { properties.load(input); }
-			catch (IOException failure) { LOG.warn("MobInformer: failed to read interface configuration", failure); }
-			break;
-		}
 		File localSettings = new File("config/custom/monsterdata.properties");
 		if (localSettings.isFile()) try (FileInputStream input = new FileInputStream(localSettings)) { properties.load(input); }
 		catch (IOException failure) { LOG.warn("MobInformer: failed to read Monster Data settings", failure); }

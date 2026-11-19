@@ -52,7 +52,7 @@ import org.slf4j.LoggerFactory;
  * server.jar is not patched or replaced.
  *
  * Config:
- *   config/custom/interfaceSBlack.properties
+ *   config/autofarm_plus.properties
  */
 /**
  * AutoFarm Plus: Counter Attack, Respect Hunt, tipos de farm e Keep Location.
