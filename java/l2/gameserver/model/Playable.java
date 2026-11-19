@@ -46,7 +46,7 @@ import l2.gameserver.templates.item.WeaponTemplate;
 import l2.gameserver.utils.Location;
 
 public abstract class Playable
-extends Creature {
+        extends Creature {
     private AtomicState GS = new AtomicState();
     private boolean GT;
     protected final ReadWriteLock questLock = new ReentrantReadWriteLock();
@@ -139,6 +139,9 @@ extends Creature {
             return false;
         }
         if (creature.isInvisible() || this.getReflection() != creature.getReflection() || !GeoEngine.canSeeTarget(this, creature, false)) {
+            l2.gameserver.utils.MovementTelemetryLogger.logEvent(player, "CANNOT_SEE_TARGET", String.format("target=%s #%d TgtLoc=(%d,%d,%d) dist2D=%.1f invisible=%b sameReflection=%b geoCanSee=%b moving=%b",
+                    creature.getName(), creature.getObjectId(), creature.getX(), creature.getY(), creature.getZ(), this.getDistance(creature),
+                    creature.isInvisible(), this.getReflection() == creature.getReflection(), GeoEngine.canSeeTarget(this, creature, false), this.isMoving()));
             player.sendPacket((IStaticPacket)SystemMsg.CANNOT_SEE_TARGET);
             return false;
         }
@@ -621,4 +624,3 @@ extends Creature {
         return true;
     }
 }
-

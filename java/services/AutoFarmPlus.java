@@ -150,7 +150,7 @@ public class AutoFarmPlus
                 {
                     sendInterfaceFeatures(player);
                     sendAutoFarmOptions(player);
-                    
+
                 }
             }
         }, INTERFACE_FEATURE_SYNC_DELAY_MS);
@@ -323,7 +323,7 @@ public class AutoFarmPlus
 
                 sendInterfaceFeatures(player);
                 sendAutoFarmOptions(player);
-                
+
             }, INTERFACE_FEATURE_SYNC_DELAY_MS);
         }
     }
@@ -517,7 +517,7 @@ public class AutoFarmPlus
 
             // If Counter/core restarted the native task, re-attach only our
             // Respect wrapper. The wrapper itself no longer owns PvP combat.
-            
+
         }
     }
 
@@ -1288,7 +1288,7 @@ public class AutoFarmPlus
         player.sendMessage("Counter Attack: " + (enabled ? "ON" : "OFF"));
         sendAutoFarmModeToast(player, "Counter Attack: " + (enabled ? "ON" : "OFF"));
         sendAutoFarmOptions(player);
-        
+
     }
 
     public static void toggleRespectHunt(Player player)
@@ -1308,7 +1308,7 @@ public class AutoFarmPlus
         player.sendMessage("Respect Hunt: " + (enabled ? "ON" : "OFF"));
         sendAutoFarmModeToast(player, "Respect Hunt: " + (enabled ? "ON" : "OFF"));
         sendAutoFarmOptions(player);
-        
+
     }
 
     public static void toggleKeepLocation(Player player)
@@ -1397,7 +1397,7 @@ public class AutoFarmPlus
 
         // The native setter can replace the running task when farm is active.
         // Re-apply our EXT-only wrapper immediately so Counter/Respect remain live.
-        
+
         sendFarmTypeUi(player, requested);
         sendAutoFarmModeToast(player, "Farm Type: " + getFarmTypeName(requested));
     }
@@ -1433,14 +1433,14 @@ public class AutoFarmPlus
 
         final String payload =
                 "AUTOFARM_OPTIONS|" +
-                "COUNTER=" + (isCounterAttackEnabled(player) ? "1" : "0") + "|" +
-                "RESPECT=" + (isRespectHuntEnabled(player) ? "1" : "0") + "|" +
-                "KEEP_LOCATION=" + (player.getFarmSystem() != null && player.getFarmSystem().isKeepLocation() ? "1" : "0") + "|" +
-                "COUNTER_VISIBLE=" + (isCounterAttackFeatureEnabled() ? "1" : "0") + "|" +
-                "RESPECT_VISIBLE=" + (isRespectHuntFeatureEnabled() ? "1" : "0") + "|" +
-                "FARM_ACTIVE=" + (player.getFarmSystem() != null && player.getFarmSystem().isAutofarming() ? "1" : "0") + "|" +
-                "OFFLINE_VISIBLE=" + (OfflineHuntingService.isButtonVisible() ? "1" : "0") + "|" +
-                "OFFLINE_ACTIVE=" + (OfflineHuntingService.isOffline(player) ? "1" : "0") + "|";
+                        "COUNTER=" + (isCounterAttackEnabled(player) ? "1" : "0") + "|" +
+                        "RESPECT=" + (isRespectHuntEnabled(player) ? "1" : "0") + "|" +
+                        "KEEP_LOCATION=" + (player.getFarmSystem() != null && player.getFarmSystem().isKeepLocation() ? "1" : "0") + "|" +
+                        "COUNTER_VISIBLE=" + (isCounterAttackFeatureEnabled() ? "1" : "0") + "|" +
+                        "RESPECT_VISIBLE=" + (isRespectHuntFeatureEnabled() ? "1" : "0") + "|" +
+                        "FARM_ACTIVE=" + (player.getFarmSystem() != null && player.getFarmSystem().isAutofarming() ? "1" : "0") + "|" +
+                        "OFFLINE_VISIBLE=" + (OfflineHuntingService.isButtonVisible() ? "1" : "0") + "|" +
+                        "OFFLINE_ACTIVE=" + (OfflineHuntingService.isOffline(player) ? "1" : "0") + "|";
 
         player.sendPacket(new TutorialShowHtml(payload));
     }
@@ -1452,12 +1452,12 @@ public class AutoFarmPlus
 
         final String payload =
                 "SBLACK_FEATURES|" +
-                "AUTOFARM=" + (INTERFACE_SHOW_AUTOFARM ? "1" : "0") + "|" +
-                "TELEPORT=" + (INTERFACE_SHOW_TELEPORT ? "1" : "0") + "|" +
-                "SIDEBAR=" + (INTERFACE_SHOW_SIDEBAR ? "1" : "0") + "|" +
-                "COUNTER_BUTTON=" + (INTERFACE_SHOW_COUNTER_ATTACK ? "1" : "0") + "|" +
-                "RESPECT_BUTTON=" + (INTERFACE_SHOW_RESPECT_HUNT ? "1" : "0") + "|" +
-                "AUTOSKILL_BUTTON=" + (INTERFACE_SHOW_AUTO_SKILL ? "1" : "0") + "|";
+                        "AUTOFARM=" + (INTERFACE_SHOW_AUTOFARM ? "1" : "0") + "|" +
+                        "TELEPORT=" + (INTERFACE_SHOW_TELEPORT ? "1" : "0") + "|" +
+                        "SIDEBAR=" + (INTERFACE_SHOW_SIDEBAR ? "1" : "0") + "|" +
+                        "COUNTER_BUTTON=" + (INTERFACE_SHOW_COUNTER_ATTACK ? "1" : "0") + "|" +
+                        "RESPECT_BUTTON=" + (INTERFACE_SHOW_RESPECT_HUNT ? "1" : "0") + "|" +
+                        "AUTOSKILL_BUTTON=" + (INTERFACE_SHOW_AUTO_SKILL ? "1" : "0") + "|";
 
         player.sendPacket(new TutorialShowHtml(payload));
     }

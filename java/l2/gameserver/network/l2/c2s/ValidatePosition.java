@@ -15,7 +15,7 @@ import l2.gameserver.network.l2.s2c.CharMoveToLocation;
 import l2.gameserver.utils.Location;
 
 public class ValidatePosition
-extends L2GameClientPacket {
+        extends L2GameClientPacket {
     private final Location cH = new Location();
     private int ach;
     private Location JW;
@@ -268,4 +268,3 @@ extends L2GameClientPacket {
         }
     }
 }
-

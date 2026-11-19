@@ -14,6 +14,7 @@ import l2.gameserver.ai.CtrlIntention;
 import l2.gameserver.ai.NextAction;
 import l2.gameserver.cache.Msg;
 import l2.gameserver.geodata.GeoEngine;
+import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.model.Creature;
 import l2.gameserver.model.GameObject;
 import l2.gameserver.model.Playable;
@@ -25,13 +26,15 @@ import l2.gameserver.model.items.ItemInstance;
 import l2.gameserver.network.l2.GameClient;
 import l2.gameserver.network.l2.components.IStaticPacket;
 import l2.gameserver.network.l2.components.SystemMsg;
+import l2.gameserver.network.l2.s2c.CharMoveToLocation;
 import l2.gameserver.network.l2.s2c.MyTargetSelected;
 import l2.gameserver.utils.Location;
+import l2.gameserver.utils.MovementTelemetryLogger;
 
 import java.util.concurrent.atomic.AtomicReference;
 
 public class PlayableAI
-extends CharacterAI {
+        extends CharacterAI {
     public static record PendingNextAction(NextAction action, Object arg0, Object arg1, boolean forceUse, boolean dontMove) {}
     private final AtomicReference<PendingNextAction> _pendingNextActionRef = new AtomicReference<>(null);
 
@@ -74,18 +77,18 @@ extends CharacterAI {
         } else if (now >= this._clientSyncDeadline) {
             if (this._clientSyncDeadline != Long.MIN_VALUE) {
                 this._clientSyncDeadline = Long.MIN_VALUE; // conta a espera esgotada uma vez so
-                l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.CLIENT_SYNC_TIMEOUT);
+                ServerMetrics.count(ServerMetrics.Counter.CLIENT_SYNC_TIMEOUT);
             }
             return false; // ja esperou por este alvo: ataca do jeito que estiver
         }
-        if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) {
-            l2.gameserver.utils.MovementTelemetryLogger.logEvent(player, "CLIENT_SYNC_WAIT", String.format("target=%d clientDist=%.0f range=%d leftMs=%d", target.getObjectId(), clientDist, range, this._clientSyncDeadline - now));
+        if (MovementTelemetryLogger.ENABLED) {
+            MovementTelemetryLogger.logEvent(player, "CLIENT_SYNC_WAIT", String.format("target=%d clientDist=%.0f range=%d leftMs=%d", target.getObjectId(), clientDist, range, this._clientSyncDeadline - now));
         }
         if (firstWait) {
-            l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.CLIENT_SYNC_WAIT);
+            ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.CLIENT_SYNC_WAIT);
             // Uma vez por alvo: leva o cliente ate a posicao do servidor (ja no alcance). Repetir reiniciaria
             // o trajeto a partir de um ponto antigo; e o MoveToPawn o cliente costuma ignorar (medido).
-            player.sendPacket(new l2.gameserver.network.l2.s2c.CharMoveToLocation(player, client.clone(), player.getLoc()));
+            player.sendPacket(new CharMoveToLocation(player, client.clone(), player.getLoc()));
         }
         ThreadPoolManager.getInstance().schedule(new RunnableImpl() {
             @Override
@@ -819,7 +822,7 @@ extends CharacterAI {
     }
 
     protected static class ThinkFollow
-    extends RunnableImpl {
+            extends RunnableImpl {
         private final HardReference<? extends Playable> ue;
 
         public ThinkFollow(Playable playable) {
@@ -865,4 +868,3 @@ extends CharacterAI {
         }
     }
 }
-

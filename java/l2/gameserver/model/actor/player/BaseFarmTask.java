@@ -31,7 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public abstract class BaseFarmTask
-implements Runnable {
+        implements Runnable {
     private static final Logger _log = LoggerFactory.getLogger(BaseFarmTask.class);
     protected static final int RUN_AWAY_STATIC_DISTANCE = 500;
     protected static final int RUN_AWAY_RANDOM_DISTANCE = 100;
@@ -137,8 +137,8 @@ implements Runnable {
             // "Assist to Party Leader": ataca o alvo do lider (modo estrito AssistMonsterAttack
             // exige que o monstro ja esteja agredindo o lider).
             npcInstance2 = this.getAutoFarmContext().isAssistMonsterAttack()
-               ? this.getAutoFarmContext().getLeaderTarget(this.getCommittedOwner())
-               : this.getLeaderAssistTarget(player, this.getCommittedOwner());
+                    ? this.getAutoFarmContext().getLeaderTarget(this.getCommittedOwner())
+                    : this.getLeaderAssistTarget(player, this.getCommittedOwner());
             this.setCommittedTarget(npcInstance2);
             if (npcInstance2 != null) {
                 return true;
@@ -216,7 +216,7 @@ implements Runnable {
             return null;
         }
         boolean leaderFighting = leader.isAttackingNow() || leader.isCastingNow()
-            || (npc.hasAI() && npc.getAI().getTargetList().contains(leader));
+                || (npc.hasAI() && npc.getAI().getTargetList().contains(leader));
         return leaderFighting ? npc : null;
     }
 

@@ -4,8 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import l2.gameserver.Config;
+import l2.gameserver.ai.util.RepositioningMath;
+import l2.gameserver.geodata.pathfinding.NativeBidirectionalPathFinder;
+import l2.gameserver.geodata.pathfinding.SmoothObstacleAvoidance;
+import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.utils.Location;
 import l2.gameserver.utils.PositionUtils;
+
+import static l2.gameserver.ai.util.RepositioningMath.stringPull;
 
 public class GeoMove {
    private static List<Location> b(int var0, int var1, int var2, int var3, int var4, int var5, boolean var6, int var7) {
@@ -40,38 +46,38 @@ public class GeoMove {
       try {
          return findMovePath0(var0, var1, var2, var3, var4, var5, var6, var7);
       } finally {
-         l2.gameserver.metrics.ServerMetrics.PATHFIND.record(System.nanoTime() - metricsStart);
+         ServerMetrics.PATHFIND.record(System.nanoTime() - metricsStart);
       }
    }
 
    private static List<List<Location>> findMovePath0(int var0, int var1, int var2, int var3, int var4, int var5, boolean var6, int var7) {
-      // 1. Tenta motor de alta performance Zero-GC Bidirectional A* (NBA*)
-      List<Location> nbaPath = l2.gameserver.geodata.pathfinding.NativeBidirectionalPathFinder.getInstance()
-         .findPath(var0, var1, var2, var3, var4, var5, var7);
+   // 1. Tenta motor de alta performance Zero-GC Bidirectional A* (NBA*)
+      List<Location> nbaPath = NativeBidirectionalPathFinder.getInstance()
+              .findPath(var0, var1, var2, var3, var4, var5, var7);
       if (!nbaPath.isEmpty()) {
          // A rota so vale se todos os trechos forem percorriveis. Antes, um trecho invalido descartava
          // a rota inteira e o motor classico nem era tentado: o monstro desistia atras de qualquer arvore.
          if (nbaPath.size() > 2) {
-            List<Location> smoothed = l2.gameserver.ai.util.RepositioningMath.suppressCollinear(nbaPath);
-            smoothed = l2.gameserver.ai.util.RepositioningMath.stringPull(smoothed, (from, to) -> GeoEngine.canMoveWithCollision(from.x, from.y, from.z, to.x, to.y, to.z, var7));
+            List<Location> smoothed = RepositioningMath.suppressCollinear(nbaPath);
+            smoothed = stringPull(smoothed, (from, to) -> GeoEngine.canMoveWithCollision(from.x, from.y, from.z, to.x, to.y, to.z, var7));
             List<List<Location>> smoothedLines = lines(smoothed, var6, var7);
             if (!smoothedLines.isEmpty()) {
-               l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.PATH_NBA_SMOOTH);
+               ServerMetrics.count(ServerMetrics.Counter.PATH_NBA_SMOOTH);
                return smoothedLines;
             }
          }
          List<List<Location>> rawLines = lines(nbaPath, var6, var7);
          if (!rawLines.isEmpty()) {
-            l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.PATH_NBA_RAW);
+            ServerMetrics.count(ServerMetrics.Counter.PATH_NBA_RAW);
             return rawLines;
          }
       }
       // 2. Fallback clássico
       List<List<Location>> classic = lines(b(var0, var1, var2, var3, var4, var5, var6, var7), var6, var7);
       if (classic.isEmpty()) {
-         l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.PATH_NONE);
+         ServerMetrics.count(ServerMetrics.Counter.PATH_NONE);
       } else {
-         l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.PATH_CLASSIC);
+         ServerMetrics.count(ServerMetrics.Counter.PATH_CLASSIC);
       }
       return classic;
    }
@@ -82,11 +88,11 @@ public class GeoMove {
     */
    private static List<List<Location>> lines(List<Location> points, boolean playable, int geoIndex) {
       if (Config.SMOOTH_OBSTACLE_AVOIDANCE && !playable && points.size() > 2) {
-         List<Location> smooth = l2.gameserver.geodata.pathfinding.SmoothObstacleAvoidance.smooth(points, geoIndex);
+         List<Location> smooth = SmoothObstacleAvoidance.smooth(points, geoIndex);
          if (smooth != points) {
             List<List<Location>> smoothLines = b(smooth, geoIndex);
             if (!smoothLines.isEmpty()) {
-               l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.SMOOTH_CORNERS);
+               ServerMetrics.count(ServerMetrics.Counter.SMOOTH_CORNERS);
                return smoothLines;
             }
          }
@@ -183,8 +189,8 @@ public class GeoMove {
 
    private static boolean a(Location var0, Location var1, Location var2) {
       return (var0.x != var2.x || var2.x != var1.x) && (var0.y != var2.y || var2.y != var1.y)
-         ? (var0.x - var1.x) * (var0.y - var1.y) == (var1.x - var2.x) * (var1.y - var2.y)
-         : true;
+              ? (var0.x - var1.x) * (var0.y - var1.y) == (var1.x - var2.x) * (var1.y - var2.y)
+              : true;
    }
 
    public static List<Location> applyGeoIndent(List<Location> var0, int var1) {
@@ -291,19 +297,19 @@ public class GeoMove {
    }
 
    public static boolean buildGeoPath(
-      List<List<Location>> var0,
-      Location var1,
-      Location var2,
-      int var3,
-      int var4,
-      int var5,
-      int var6,
-      boolean var7,
-      boolean var8,
-      boolean var9,
-      boolean var10,
-      int var11,
-      boolean var12
+           List<List<Location>> var0,
+           Location var1,
+           Location var2,
+           int var3,
+           int var4,
+           int var5,
+           int var6,
+           boolean var7,
+           boolean var8,
+           boolean var9,
+           boolean var10,
+           int var11,
+           boolean var12
    ) {
       var0.clear();
       if (var1.equals(var2)) {

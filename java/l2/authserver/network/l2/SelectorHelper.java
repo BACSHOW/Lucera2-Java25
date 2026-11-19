@@ -4,8 +4,9 @@
 package l2.authserver.network.l2;
 
 import java.nio.channels.SocketChannel;
+import l2.authserver.LoginGuard;
+import l2.authserver.LoginMetrics;
 import l2.authserver.ThreadPoolManager;
-import l2.authserver.network.l2.L2LoginClient;
 import l2.authserver.network.l2.s2c.Init;
 import l2.commons.net.nio.impl.IAcceptFilter;
 import l2.commons.net.nio.impl.IClientFactory;
@@ -41,11 +42,11 @@ IMMOExecutor<L2LoginClient> {
         String ip = socketChannel.socket().getInetAddress().getHostAddress();
         // Abrindo conexoes demais: o LoginGuard bane e recusa. O IP ja banido continua sendo aceito
         // (dentro desse limite) so para receber a mensagem de bloqueio no RequestAuthLogin.
-        if (!l2.authserver.LoginGuard.getInstance().onConnection(ip)) {
-            l2.authserver.LoginMetrics.CONNECTIONS_REFUSED.increment();
+        if (!LoginGuard.getInstance().onConnection(ip)) {
+            LoginMetrics.CONNECTIONS_REFUSED.increment();
             return false;
         }
-        l2.authserver.LoginMetrics.CONNECTIONS_ACCEPTED.increment();
+        LoginMetrics.CONNECTIONS_ACCEPTED.increment();
         return true;
     }
 }

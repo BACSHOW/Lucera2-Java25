@@ -397,11 +397,11 @@ public class AutoFarmContext {
    private List<Integer> k(List<Integer> var1) {
       Player var2 = this.getPlayer();
       return var2 == null
-         ? Collections.emptyList()
-         : Arrays.stream(var2.getShortCuts())
-            .filter(var2x -> var2x.getPage() == this.getShortcutsIndex() && var2x.getType() == 2 && var1.contains(var2x.getSlot()))
-            .map(ShortCut::getId)
-            .collect(Collectors.toList());
+              ? Collections.emptyList()
+              : Arrays.stream(var2.getShortCuts())
+              .filter(var2x -> var2x.getPage() == this.getShortcutsIndex() && var2x.getType() == 2 && var1.contains(var2x.getSlot()))
+              .map(ShortCut::getId)
+              .collect(Collectors.toList());
    }
 
    private void O(Player var1) {
@@ -412,20 +412,20 @@ public class AutoFarmContext {
             int var4 = ((Number)__raw_var4_404).intValue();
             Skill var5 = var1.getKnownSkill(var4);
             if (var5 != null
-               && (
-                  var5.getSkillType() == Skill.SkillType.DOT
-                     || var5.getSkillType() == Skill.SkillType.MDOT
-                     || var5.getSkillType() == Skill.SkillType.POISON
-                     || var5.getSkillType() == Skill.SkillType.BLEED
-                     || var5.getSkillType() == Skill.SkillType.DEBUFF
-                     || var5.getSkillType() == Skill.SkillType.SLEEP
-                     || var5.getSkillType() == Skill.SkillType.ROOT
-                     || var5.getSkillType() == Skill.SkillType.PARALYZE
-                     || var5.getSkillType() == Skill.SkillType.MUTE
-                     || var5.isSpoilSkill()
-                     || var5.isSweepSkill()
-                     || var5.getId() == 1263
-               )) {
+                    && (
+                    var5.getSkillType() == Skill.SkillType.DOT
+                            || var5.getSkillType() == Skill.SkillType.MDOT
+                            || var5.getSkillType() == Skill.SkillType.POISON
+                            || var5.getSkillType() == Skill.SkillType.BLEED
+                            || var5.getSkillType() == Skill.SkillType.DEBUFF
+                            || var5.getSkillType() == Skill.SkillType.SLEEP
+                            || var5.getSkillType() == Skill.SkillType.ROOT
+                            || var5.getSkillType() == Skill.SkillType.PARALYZE
+                            || var5.getSkillType() == Skill.SkillType.MUTE
+                            || var5.isSpoilSkill()
+                            || var5.isSweepSkill()
+                            || var5.getId() == 1263
+            )) {
                this.Ms.add(var4);
             }
          }
@@ -447,18 +447,18 @@ public class AutoFarmContext {
             int var4 = ((Number)__raw_var4_438).intValue();
             Skill var5 = var1.getKnownSkill(var4);
             if (var5 != null
-               && !var5.isSpoilSkill()
-               && !var5.isSweepSkill()
-               && var5.getId() != 1263
-               && (
-                  var5.getSkillType() == Skill.SkillType.AGGRESSION
-                     || var5.getSkillType() == Skill.SkillType.PDAM
-                     || var5.getSkillType() == Skill.SkillType.MANADAM
-                     || var5.getSkillType() == Skill.SkillType.MDAM
-                     || var5.getSkillType() == Skill.SkillType.DRAIN
-                     || var5.getSkillType() == Skill.SkillType.CPDAM
-                     || var5.getSkillType() == Skill.SkillType.STUN
-               )) {
+                    && !var5.isSpoilSkill()
+                    && !var5.isSweepSkill()
+                    && var5.getId() != 1263
+                    && (
+                    var5.getSkillType() == Skill.SkillType.AGGRESSION
+                            || var5.getSkillType() == Skill.SkillType.PDAM
+                            || var5.getSkillType() == Skill.SkillType.MANADAM
+                            || var5.getSkillType() == Skill.SkillType.MDAM
+                            || var5.getSkillType() == Skill.SkillType.DRAIN
+                            || var5.getSkillType() == Skill.SkillType.CPDAM
+                            || var5.getSkillType() == Skill.SkillType.STUN
+            )) {
                this.Mr.add(var4);
             }
          }
@@ -501,13 +501,13 @@ public class AutoFarmContext {
             int var4 = ((Number)__raw_var4_490).intValue();
             Skill var5 = var1.getKnownSkill(var4);
             if (var5 != null
-               && (
-                  var5.getSkillType() == Skill.SkillType.DRAIN
-                     || var5.getSkillType() == Skill.SkillType.HEAL
-                     || var5.getSkillType() == Skill.SkillType.HEAL_PERCENT
-                     || var5.getSkillType() == Skill.SkillType.MANAHEAL
-                     || var5.getSkillType() == Skill.SkillType.MANAHEAL_PERCENT
-               )) {
+                    && (
+                    var5.getSkillType() == Skill.SkillType.DRAIN
+                            || var5.getSkillType() == Skill.SkillType.HEAL
+                            || var5.getSkillType() == Skill.SkillType.HEAL_PERCENT
+                            || var5.getSkillType() == Skill.SkillType.MANAHEAL
+                            || var5.getSkillType() == Skill.SkillType.MANAHEAL_PERCENT
+            )) {
                this.Mu.add(var4);
             }
          }
@@ -646,7 +646,7 @@ public class AutoFarmContext {
                   if (var1.getPet() == null) {
                      var1.sendMessage(new CustomMessage("YOU_HAVE_NO_SUMMON_AUTOFARMING_DEACTIVATE", var1));
                      AutoFarmManager.getInstance()
-                        .removeActiveFarm(this.farmKey != null ? this.farmKey : this.resolveFarmKey(var1), var1.getObjectId());
+                             .removeActiveFarm(this.farmKey != null ? this.farmKey : this.resolveFarmKey(var1), var1.getObjectId());
                      return;
                   }
 
@@ -783,8 +783,8 @@ public class AutoFarmContext {
    public boolean isActiveAutofarm() {
       Player var1 = this.getPlayer();
       return var1 == null
-         ? false
-         : this.Nk != null || Config.AUTO_FARM_FREE || Config.PREMIUM_FARM_FREE && var1.hasBonus() || Config.FARM_ONLINE_TYPE && this.isActiveFarmOnlineTime();
+              ? false
+              : this.Nk != null || Config.AUTO_FARM_FREE || Config.PREMIUM_FARM_FREE && var1.hasBonus() || Config.FARM_ONLINE_TYPE && this.isActiveFarmOnlineTime();
    }
 
    public boolean isActiveFarmTask() {
@@ -1039,13 +1039,13 @@ public class AutoFarmContext {
 
       for (NpcInstance var5 : World.getAroundNpc(var1, this.getFarmRadius(), 600)) {
          if (var5.isMonster()
-            && !var5.isDead()
-            && var5.isVisible()
-            && !(var5 instanceof ChestInstance)
-            && !var5.isRaid()
-            && (Boolean)var2.apply(var5)
-            && !ArrayUtils.contains(Config.AUTO_FARM_IGNORED_NPC_ID, var5.getNpcId())
-            && var5.hasAI()) {
+                 && !var5.isDead()
+                 && var5.isVisible()
+                 && !(var5 instanceof ChestInstance)
+                 && !var5.isRaid()
+                 && (Boolean)var2.apply(var5)
+                 && !ArrayUtils.contains(Config.AUTO_FARM_IGNORED_NPC_ID, var5.getNpcId())
+                 && var5.hasAI()) {
             if (var5.getAI().getTargetList().isEmpty() || var5.getAI().getTargetList().contains(var1)) {
                var3.add(var5);
             } else if (var1.getParty() != null) {
@@ -1083,8 +1083,8 @@ public class AutoFarmContext {
       for (int var8 : this.getAttackSpells()) {
          Skill var9 = var4.getKnownSkill(var8);
          if (var9 != null
-            && var9.checkCondition(var4, var1, false, false, false, true)
-            && (!var9.isOffensive() || var9.getTargetType() != Skill.SkillTargetType.TARGET_ONE || var1 != null)) {
+                 && var9.checkCondition(var4, var1, false, false, false, true)
+                 && (!var9.isOffensive() || var9.getTargetType() != Skill.SkillTargetType.TARGET_ONE || var1 != null)) {
             assert var1 != null;
             var4.setTarget(var1);
             var4.sendPacket(new MyTargetSelected(var1.getObjectId(), var4.getLevel() - var1.getLevel()));
@@ -1108,8 +1108,8 @@ public class AutoFarmContext {
       for (int var6 : this.getAttackSpells()) {
          Skill var7 = var2.getKnownSkill(var6);
          if (var7 != null
-            && var7.checkCondition(var2, var1, false, false, false, true)
-            && (!var7.isOffensive() || var7.getTargetType() != Skill.SkillTargetType.TARGET_ONE || var1 != null)) {
+                 && var7.checkCondition(var2, var1, false, false, false, true)
+                 && (!var7.isOffensive() || var7.getTargetType() != Skill.SkillTargetType.TARGET_ONE || var1 != null)) {
             var3.add(var7);
          }
       }
@@ -1145,10 +1145,10 @@ public class AutoFarmContext {
          for (int var8 : this.getChanceSpells()) {
             Skill var9 = var4.getKnownSkill(var8);
             if (var9 != null
-               && var9.checkCondition(var4, var1, false, false, false, true)
-               && (!var9.isSpoilSkill() || !((MonsterInstance)var1).isSpoiled())
-               && (!var9.isSweepSkill() || var1.isDead())
-               && var1.getEffectList().getEffectsBySkillId(var8) == null) {
+                    && var9.checkCondition(var4, var1, false, false, false, true)
+                    && (!var9.isSpoilSkill() || !((MonsterInstance)var1).isSpoiled())
+                    && (!var9.isSweepSkill() || var1.isDead())
+                    && var1.getEffectList().getEffectsBySkillId(var8) == null) {
                return var9;
             }
          }
@@ -1171,10 +1171,10 @@ public class AutoFarmContext {
       for (int var6 : this.getChanceSpells()) {
          Skill var7 = var2.getKnownSkill(var6);
          if (var7 != null
-            && var7.checkCondition(var2, var1, false, false, false, true)
-            && (!var7.isSpoilSkill() || !((MonsterInstance)var1).isSpoiled())
-            && (!var7.isSweepSkill() || var1.isDead())
-            && var1.getEffectList().getEffectsBySkillId(var6) == null) {
+                 && var7.checkCondition(var2, var1, false, false, false, true)
+                 && (!var7.isSpoilSkill() || !((MonsterInstance)var1).isSpoiled())
+                 && (!var7.isSweepSkill() || var1.isDead())
+                 && var1.getEffectList().getEffectsBySkillId(var6) == null) {
             var3.add(var7);
          }
       }
@@ -1294,15 +1294,15 @@ public class AutoFarmContext {
          for (int var14 : this.getLowLifeSpells()) {
             Skill var15 = var3.getKnownSkill(var14);
             if (var15 != null
-               && var15.checkCondition(var3, var15.isOffensive() ? var1 : var3, false, false, false, true)
-               && (!var15.isOffensive() || var1 != null)) {
+                    && var15.checkCondition(var3, var15.isOffensive() ? var1 : var3, false, false, false, true)
+                    && (!var15.isOffensive() || var1 != null)) {
                if (!d(var15)) {
                   if (c(var15)
-                     && this.isTargetRestoreMp()
-                     && var2 != null
-                     && var12
-                     && !var2.isDead()
-                     && var15.getTargetType() != Skill.SkillTargetType.TARGET_SELF) {
+                          && this.isTargetRestoreMp()
+                          && var2 != null
+                          && var12
+                          && !var2.isDead()
+                          && var15.getTargetType() != Skill.SkillTargetType.TARGET_SELF) {
                      var3.setTarget(var2);
                      return var15;
                   }
@@ -1357,23 +1357,23 @@ public class AutoFarmContext {
       for (int var16 : this.getLowLifeSpells()) {
          Skill var17 = var3.getKnownSkill(var16);
          if (var17 != null
-            && var17.checkCondition(var3, var17.isOffensive() ? var1 : var3, false, false, false, true)
-            && (!var17.isOffensive() || var1 != null)) {
+                 && var17.checkCondition(var3, var17.isOffensive() ? var1 : var3, false, false, false, true)
+                 && (!var17.isOffensive() || var1 != null)) {
             if (!var12 && !var13) {
                if (var14
-                  && c(var17)
-                  && this.isTargetRestoreMp()
-                  && var2 != null
-                  && !var2.isDead()
-                  && var17.getTargetType() != Skill.SkillTargetType.TARGET_SELF) {
+                       && c(var17)
+                       && this.isTargetRestoreMp()
+                       && var2 != null
+                       && !var2.isDead()
+                       && var17.getTargetType() != Skill.SkillTargetType.TARGET_SELF) {
                   var4.add(var17);
                }
             } else if (d(var17)) {
                if (var12) {
                   if (var2 != null
-                     && !var2.isDead()
-                     && var17.getTargetType() != Skill.SkillTargetType.TARGET_SELF
-                     && (var17.getTargetType() != Skill.SkillTargetType.TARGET_PET || var2.isSummon())) {
+                          && !var2.isDead()
+                          && var17.getTargetType() != Skill.SkillTargetType.TARGET_SELF
+                          && (var17.getTargetType() != Skill.SkillTargetType.TARGET_PET || var2.isSummon())) {
                      var4.add(var17);
                   }
                } else if (var13 && var17.getTargetType() != Skill.SkillTargetType.TARGET_PET) {
@@ -1432,7 +1432,7 @@ public class AutoFarmContext {
          if (var9 > 0) {
             Skill var10 = SkillTable.getInstance().getInfo(var8, var9);
             if (var10.checkCondition(var2, var1, false, false, false, true)
-               && (!var10.isOffensive() || var10.getTargetType() != Skill.SkillTargetType.TARGET_ONE || var1 != null)) {
+                    && (!var10.isOffensive() || var10.getTargetType() != Skill.SkillTargetType.TARGET_ONE || var1 != null)) {
                return var10;
             }
          }
@@ -1450,7 +1450,7 @@ public class AutoFarmContext {
          if (var7 > 0) {
             Skill var8 = SkillTable.getInstance().getInfo(var6, var7);
             if (var8.checkCondition(var2, var1, false, false, false, true)
-               && (!var8.isOffensive() || var8.getTargetType() != Skill.SkillTargetType.TARGET_ONE || var1 != null)) {
+                    && (!var8.isOffensive() || var8.getTargetType() != Skill.SkillTargetType.TARGET_ONE || var1 != null)) {
                var3.add(var8);
             }
          }
@@ -1485,9 +1485,9 @@ public class AutoFarmContext {
                   }
 
                   if (var2 != null
-                     && var2.getEffectList().getEffectsBySkillId(var6) == null
-                     && var8.getTargetType() != Skill.SkillTargetType.TARGET_SELF
-                     && var8.getTargetType() != Skill.SkillTargetType.TARGET_PET) {
+                          && var2.getEffectList().getEffectsBySkillId(var6) == null
+                          && var8.getTargetType() != Skill.SkillTargetType.TARGET_SELF
+                          && var8.getTargetType() != Skill.SkillTargetType.TARGET_PET) {
                      var1.setTarget(var2);
                      return var8;
                   }
@@ -1519,9 +1519,9 @@ public class AutoFarmContext {
                   var3.add(var9);
                } else {
                   if (var2 != null
-                     && var2.getEffectList().getEffectsBySkillId(var7) == null
-                     && var9.getTargetType() != Skill.SkillTargetType.TARGET_SELF
-                     && var9.getTargetType() != Skill.SkillTargetType.TARGET_PET) {
+                          && var2.getEffectList().getEffectsBySkillId(var7) == null
+                          && var9.getTargetType() != Skill.SkillTargetType.TARGET_SELF
+                          && var9.getTargetType() != Skill.SkillTargetType.TARGET_PET) {
                      var4.add(var9);
                   }
 
@@ -1638,9 +1638,9 @@ public class AutoFarmContext {
                } else if (d(var18)) {
                   if (var12) {
                      if (var3 != null
-                        && !var3.isDead()
-                        && var18.getTargetType() != Skill.SkillTargetType.TARGET_SELF
-                        && (var18.getTargetType() != Skill.SkillTargetType.TARGET_PET || var3.isSummon())) {
+                             && !var3.isDead()
+                             && var18.getTargetType() != Skill.SkillTargetType.TARGET_SELF
+                             && (var18.getTargetType() != Skill.SkillTargetType.TARGET_PET || var3.isSummon())) {
                         var4.add(var18);
                      }
                   } else if (var13) {
@@ -1672,12 +1672,12 @@ public class AutoFarmContext {
    public NpcInstance getLeaderTarget(Player var1) {
       GameObject var2 = var1.getTarget();
       return var2 != null
-            && var2 != var1
-            && var2 instanceof NpcInstance
-            && ((NpcInstance)var2).hasAI()
-            && ((NpcInstance)var2).getAI().getTargetList().contains(var1)
-         ? (NpcInstance)var2
-         : null;
+              && var2 != var1
+              && var2 instanceof NpcInstance
+              && ((NpcInstance)var2).hasAI()
+              && ((NpcInstance)var2).getAI().getTargetList().contains(var1)
+              ? (NpcInstance)var2
+              : null;
    }
 
    public long getLastFarmOnlineTime() {

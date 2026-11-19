@@ -682,5 +682,365 @@ extends StatTemplate {
             return this.auE;
         }
     }
+
+    public boolean searchItemByType(String itemType)
+    {
+        switch (itemType.toUpperCase())
+        {
+            // ============================================================
+            // TODAS AS CATEGORIAS
+            // ============================================================
+            case "ALL":
+            {
+                return true;
+            }
+
+            // ============================================================
+            // WEAPON
+            // ============================================================
+            case "WEAPON":
+            {
+                return this instanceof WeaponTemplate;
+            }
+
+            // WEAPON - SUBCATEGORIAS
+            case "SWORD":
+            {
+                return getItemType() == WeaponTemplate.WeaponType.SWORD;
+            }
+
+            case "DAGGER":
+            {
+                return getItemType() == WeaponTemplate.WeaponType.DAGGER;
+            }
+
+            case "BLUNT":
+            {
+                return getItemType() == WeaponTemplate.WeaponType.BLUNT;
+            }
+
+            case "BOW":
+            {
+                return getItemType() == WeaponTemplate.WeaponType.BOW;
+            }
+
+            case "POLE":
+            {
+                return getItemType() == WeaponTemplate.WeaponType.POLE;
+            }
+
+            case "FIST":
+            {
+                return getItemType() == WeaponTemplate.WeaponType.FIST;
+            }
+
+            case "DUAL":
+            {
+                return getItemType() == WeaponTemplate.WeaponType.DUAL;
+            }
+
+            case "DUALFIST":
+            {
+                return getItemType() == WeaponTemplate.WeaponType.DUALFIST;
+            }
+
+            case "BIGSWORD":
+            {
+                return getItemType() == WeaponTemplate.WeaponType.BIGSWORD;
+            }
+
+            case "BIGBLUNT":
+            {
+                return getItemType() == WeaponTemplate.WeaponType.BIGBLUNT;
+            }
+
+            // ============================================================
+            // ARMOR
+            // ============================================================
+            case "ARMOR":
+            {
+                return getBodyPart() == SLOT_CHEST ||
+                        getBodyPart() == SLOT_FULL_ARMOR ||
+                        getBodyPart() == SLOT_LEGS ||
+                        getBodyPart() == SLOT_HEAD ||
+                        getBodyPart() == SLOT_GLOVES ||
+                        getBodyPart() == SLOT_FEET ||
+                        getBodyPart() == SLOT_L_HAND;
+            }
+
+            // ARMOR - SUBCATEGORIAS
+            case "HELMET":
+            {
+                return getBodyPart() == SLOT_HEAD;
+            }
+
+            case "CHEST":
+            {
+                return getBodyPart() == SLOT_CHEST ||
+                        getBodyPart() == SLOT_FULL_ARMOR;
+            }
+
+            case "LEGS":
+            {
+                return getBodyPart() == SLOT_LEGS;
+            }
+
+            case "GLOVES":
+            {
+                return getBodyPart() == SLOT_GLOVES;
+            }
+
+            case "BOOTS":
+            {
+                return getBodyPart() == SLOT_FEET;
+            }
+
+            case "SHIELD":
+            {
+                return getBodyPart() == SLOT_L_HAND;
+            }
+
+            // ============================================================
+            // JEWELS
+            // ============================================================
+            case "JEWELS":
+            {
+                return getBodyPart() == SLOT_R_EAR ||
+                        getBodyPart() == SLOT_L_EAR ||
+                        getBodyPart() == SLOT_NECK ||
+                        getBodyPart() == SLOT_R_FINGER ||
+                        getBodyPart() == SLOT_L_FINGER;
+            }
+
+            // JEWELS - SUBCATEGORIAS
+            case "RING":
+            {
+                return getBodyPart() == SLOT_R_FINGER ||
+                        getBodyPart() == SLOT_L_FINGER;
+            }
+
+            case "EARRING":
+            {
+                return getBodyPart() == SLOT_R_EAR ||
+                        getBodyPart() == SLOT_L_EAR;
+            }
+
+            case "NECKLACE":
+            {
+                return getBodyPart() == SLOT_NECK;
+            }
+
+            // ============================================================
+            // ACCESSORY
+            // ============================================================
+            case "ACCESSORY":
+            {
+                return isAccessory() ||
+                        isBracelet() ||
+                        isBelt() ||
+                        isCloak() ||
+                        isTalisman() ||
+                        getBodyPart() == SLOT_HAIR ||
+                        getBodyPart() == SLOT_HAIRALL;
+            }
+
+            // ACCESSORY - SUBCATEGORIAS
+            case "HAIR":
+            {
+                return getBodyPart() == SLOT_HAIR ||
+                        getBodyPart() == SLOT_HAIRALL;
+            }
+
+            case "BRACELET":
+            {
+                return isBracelet();
+            }
+
+            case "BELT":
+            {
+                return isBelt();
+            }
+
+            case "CLOAK":
+            {
+                return isCloak();
+            }
+
+            case "TALISMAN":
+            {
+                return isTalisman();
+            }
+
+            // ============================================================
+            // CONSUMABLE
+            // ============================================================
+            case "CONSUMABLE":
+            {
+                if (this instanceof EtcItemTemplate)
+                {
+                    EtcItemTemplate.EtcItemType type = (EtcItemTemplate.EtcItemType) getItemType();
+
+                    return type == EtcItemTemplate.EtcItemType.POTION ||
+                            type == EtcItemTemplate.EtcItemType.HERB ||
+                            type == EtcItemTemplate.EtcItemType.BAIT ||
+                            type == EtcItemTemplate.EtcItemType.SHOT ||
+                            type == EtcItemTemplate.EtcItemType.ARROW ||
+                            type == EtcItemTemplate.EtcItemType.BOLT ||
+                            type == EtcItemTemplate.EtcItemType.RUNE;
+                }
+
+                return false;
+            }
+
+            // CONSUMABLE - SUBCATEGORIAS
+            case "POTION":
+            {
+                return this instanceof EtcItemTemplate
+                        && getItemType() == EtcItemTemplate.EtcItemType.POTION;
+            }
+
+            case "HERB":
+            {
+                return this instanceof EtcItemTemplate
+                        && getItemType() == EtcItemTemplate.EtcItemType.HERB;
+            }
+
+            case "BAIT":
+            {
+                return this instanceof EtcItemTemplate
+                        && getItemType() == EtcItemTemplate.EtcItemType.BAIT;
+            }
+
+            case "SHOT":
+            {
+                return this instanceof EtcItemTemplate
+                        && getItemType() == EtcItemTemplate.EtcItemType.SHOT;
+            }
+
+            case "ARROW":
+            {
+                return this instanceof EtcItemTemplate
+                        && getItemType() == EtcItemTemplate.EtcItemType.ARROW;
+            }
+
+            case "BOLT":
+            {
+                return this instanceof EtcItemTemplate
+                        && getItemType() == EtcItemTemplate.EtcItemType.BOLT;
+            }
+
+            case "RUNE":
+            {
+                return this instanceof EtcItemTemplate
+                        && getItemType() == EtcItemTemplate.EtcItemType.RUNE;
+            }
+
+
+            // ============================================================
+            // PET
+            // ============================================================
+            case "PET":
+            {
+                return isForPet();
+            }
+
+            // PET - SUBCATEGORIAS
+            case "WOLF":
+            {
+                return isForWolf();
+            }
+
+            case "HATCHLING":
+            {
+                return isForHatchling();
+            }
+
+            case "STRIDER":
+            {
+                return isForStrider();
+            }
+
+            case "BABY":
+            {
+                return isForPetBaby();
+            }
+
+            case "GREAT_WOLF":
+            {
+                return isForGWolf();
+            }
+
+            case "PENDANT":
+            {
+                return isPendant();
+            }
+
+            // ============================================================
+            // MISC
+            // ============================================================
+            case "MISC":
+            {
+                if (this instanceof EtcItemTemplate)
+                {
+                    EtcItemTemplate.EtcItemType type = (EtcItemTemplate.EtcItemType) getItemType();
+
+                    return type == EtcItemTemplate.EtcItemType.SCROLL ||
+                            type == EtcItemTemplate.EtcItemType.LIFESTONE ||
+                            type == EtcItemTemplate.EtcItemType.MATERIAL ||
+                            type == EtcItemTemplate.EtcItemType.RECIPE ||
+                            type == EtcItemTemplate.EtcItemType.SPELLBOOK;
+                }
+
+                return false;
+            }
+
+            // ============================================================
+            // SCROLLS
+            // ============================================================
+            case "SCROLL":
+            {
+                return this instanceof EtcItemTemplate
+                        && getItemType() == EtcItemTemplate.EtcItemType.SCROLL;
+            }
+
+            // ============================================================
+            // LIFE STONES
+            // ============================================================
+            case "LIFESTONE":
+            {
+                return this instanceof EtcItemTemplate
+                        &&  getItemType() == EtcItemTemplate.EtcItemType.LIFESTONE;
+            }
+
+            // ============================================================
+            // MATERIALS
+            // ============================================================
+            case "MATERIAL":
+            {
+                return this instanceof EtcItemTemplate
+                        &&  getItemType() == EtcItemTemplate.EtcItemType.MATERIAL;
+            }
+
+            // ============================================================
+            // RECIPES
+            // ============================================================
+            case "RECIPE":
+            {
+                return this instanceof EtcItemTemplate
+                        &&  getItemType() == EtcItemTemplate.EtcItemType.RECIPE;
+            }
+
+            // ============================================================
+            // SPELLBOOKS
+            // ============================================================
+            case "SPELLBOOK":
+            {
+                return this instanceof EtcItemTemplate
+                        &&  getItemType() == EtcItemTemplate.EtcItemType.SPELLBOOK;
+            }
+        }
+
+        return false;
+    }
 }
 

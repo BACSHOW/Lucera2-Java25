@@ -11,13 +11,14 @@ import java.util.concurrent.locks.ReentrantLock;
 import l2.commons.lang.ArrayUtils;
 import l2.commons.text.StrTable;
 import l2.gameserver.Config;
+import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.utils.Location;
 
 public class PathFindBuffers {
    public static final int MIN_MAP_SIZE = 64;
    public static final int STEP_MAP_SIZE = 32;
    public static final int MAX_MAP_SIZE = 512;
-   private static TIntObjectHashMap<PathFindBuffers.PathFindBuffer[]> yc = new TIntObjectHashMap();
+   private static TIntObjectHashMap<PathFindBuffers.PathFindBuffer[]> yc = new TIntObjectHashMap<>();
    private static int[] sizes = new int[0];
    private static Lock lock = new ReentrantLock();
 
@@ -94,7 +95,7 @@ public class PathFindBuffers {
       }
 
       if (var1 == null) {
-         l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.PATH_BUFFERS_EXHAUSTED);
+         ServerMetrics.count(ServerMetrics.Counter.PATH_BUFFERS_EXHAUSTED);
       }
       return var1;
    }

@@ -38,6 +38,7 @@ import l2.gameserver.network.l2.components.ChatType;
 import l2.gameserver.network.pfilter.PacketFilterParser;
 import l2.gameserver.skills.AbnormalEffect;
 import l2.gameserver.templates.item.ItemTemplate;
+import l2.gameserver.data.xml.holder.ItemHolder;
 import l2.gameserver.utils.Location;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.BooleanUtils;
@@ -1420,6 +1421,25 @@ public class Config {
    public static int[] OLY_RESTRICTED_SKILL_IDS;
    public static Map<Integer, QuestRates> QUEST_RATES = new ConcurrentHashMap<>();
 
+   /** Variáveis Community */
+   public static int[] MARKETPLACE_FEE = new int[2];
+   public static int COR_LOJA_AUCTION_ANUNCIE;
+   public static boolean ENABLE_AUCTION_COMMUNITY;
+   public static int TICKET_MARKE_PLACE; // Mantido para compatibilidade
+   public static int[] MARKETPLACE_CURRENCIES = {57, 9511, 6392}; // NOVO: Array de moedas
+   public static boolean ENABLE_GRADE_ITEMS_MARKETPLACE;
+   public static List<ItemTemplate.Grade> GRADE_ITEMS_MARKETPLACE = new ArrayList<>();
+   public static List<Integer> ITEMS_NO_RULES_MARKETPLACE;
+   public static String ITEMS_NO_RULES_MARKETPLACE_ID;
+   public static boolean ENABLE_TIME_ZONE_SYSTEM;
+   public static double AUCTION_TAX_RATE;
+   public static int AUCTION_TAX_MINIMUM_ITEM_COUNT;
+   public static int AUCTION_MAX_PER_PLAYER;   // leilões ativos por personagem (0 = sem limite)
+   public static int AUCTION_MY_PER_PAGE;      // linhas por página em "Meus itens a venda"
+   public static int AUCTION_MIN_BID_PERCENT;       // NOVO: lance mínimo = atual + X% (0 = só +1)
+   public static int AUCTION_SNIPE_MINUTES;         // NOVO: anti-sniping: janela final em minutos (0 = desligado)
+   public static int AUCTION_SNIPE_EXTEND_MINUTES;  // NOVO: anti-sniping: o leilão passa a terminar em agora + X min
+
    public static void loadServerConfig() {
       ExProperties var0 = load("config/server.properties");
       GAME_SERVER_LOGIN_HOST = var0.getProperty("LoginHost", "127.0.0.1");
@@ -1823,6 +1843,154 @@ public class Config {
          }
       } else {
          throw new RuntimeException("ERROR: CONFIG StartingItems WRONG SIZE");
+      }
+   }
+
+   public static void loadAuctionHouseConfig() {
+      ExProperties var0 = load("config/auction_house.properties");
+      // ===== CARREGAR CONFIGURAÇÕES DO MARKETPLACE =====
+      ENABLE_GRADE_ITEMS_MARKETPLACE = Boolean.parseBoolean(var0.getProperty("EnableGradeItemsMarket", "False"));
+
+      // Carregar grades permitidas
+      for (String list : var0.getProperty("GradeItemsMarketPlace", "A;S").split(";"))
+         GRADE_ITEMS_MARKETPLACE.add(ItemTemplate.Grade.valueOf(list));
+
+      // Carregar itens sem regras
+      ITEMS_NO_RULES_MARKETPLACE_ID = var0.getProperty("ItemNoBlockMarketPlace", "0,0");
+      ITEMS_NO_RULES_MARKETPLACE = new ArrayList<>();
+      for (String val : ITEMS_NO_RULES_MARKETPLACE_ID.split(","))
+      {
+         int ItemsIDS = Integer.parseInt(val);
+         ITEMS_NO_RULES_MARKETPLACE.add(ItemsIDS);
+      }
+
+      // ✅ NOVO: Carregar IDs das moedas permitidas
+      String currenciesConfig = var0.getProperty("MarketplaceCurrencies", "57,9511,6392");
+      String[] currencyIds = currenciesConfig.split(",");
+      MARKETPLACE_CURRENCIES = new int[currencyIds.length];
+      for (int i = 0; i < currencyIds.length; i++)
+      {
+         try
+         {
+            MARKETPLACE_CURRENCIES[i] = Integer.parseInt(currencyIds[i].trim());
+         }
+         catch (NumberFormatException e)
+         {
+            _log.warn("Moeda inválida no marketplace: " + currencyIds[i]);
+         }
+      }
+
+      // ✅ DEBUG: Verificar nomes
+      _log.info("=== CONFIGURAÇÃO DE MOEDAS ===");
+      for (int i = 0; i < MARKETPLACE_CURRENCIES.length; i++) {
+         ItemTemplate item = ItemHolder.getInstance().getTemplate(MARKETPLACE_CURRENCIES[i]);
+         if (item != null) {
+            _log.info("Moeda " + i + ": ID=" + MARKETPLACE_CURRENCIES[i] + ", Nome='" + item.getName() + "'");
+         } else {
+            _log.warn("Moeda " + i + ": ID=" + MARKETPLACE_CURRENCIES[i] + " NÃO ENCONTRADO!");
+         }
+      }
+      _log.info("==============================");
+
+      // ✅ DEBUG: Verificar nomes
+      debugCurrencyConfig();
+
+      // Carregar ticket (mantido para compatibilidade)
+      TICKET_MARKE_PLACE = Integer.parseInt(var0.getProperty("TicketMarkePlace", "6392"));
+
+      // Carregar outras configurações
+      ENABLE_AUCTION_COMMUNITY = var0.getProperty("EnableCommunityAuction", true);
+      COR_LOJA_AUCTION_ANUNCIE = Integer.parseInt(var0.getProperty("ColorChatAnnuncieAuction", "6392"));
+
+      // Carregar taxa do marketplace
+      String[] properSplit = var0.getProperty("CBBMarketPlaceFee", "0,0").split(",");
+      try
+      {
+         MARKETPLACE_FEE[0] = Integer.parseInt(properSplit[0]);
+         MARKETPLACE_FEE[1] = Integer.parseInt(properSplit[1]);
+      }
+      catch (NumberFormatException nfe)
+      {
+         if (properSplit.length > 0)
+         {
+            _log.warn("jmods: invalid config property -> MarketPlaceFee");
+         }
+      }
+
+      // Carregar taxa de leilão
+      try
+      {
+         AUCTION_TAX_RATE = Double.parseDouble(var0.getProperty("AuctionTaxRate", "0.05"));
+      }
+      catch (NumberFormatException e)
+      {
+         _log.warn("Invalid value for AuctionTaxRate, using default 0.05");
+         AUCTION_TAX_RATE = 0.05;
+      }
+
+      // Carregar taxa mínima
+      try
+      {
+         AUCTION_TAX_MINIMUM_ITEM_COUNT = Integer.parseInt(var0.getProperty("AuctionTaxMinimumItemCount", "5"));
+      }
+      catch (NumberFormatException e)
+      {
+         _log.warn("Invalid value for AuctionTaxMinimumItemCount, using default 5");
+         AUCTION_TAX_MINIMUM_ITEM_COUNT = 5;
+      }
+
+      // Limite de leilões ativos por personagem (0 = sem limite)
+      try
+      {
+         AUCTION_MAX_PER_PLAYER = Math.max(0, Integer.parseInt(var0.getProperty("MaxAuctionsPerPlayer", "10").trim()));
+      }
+      catch (NumberFormatException e)
+      {
+         _log.warn("Invalid value for MaxAuctionsPerPlayer, using default 10");
+         AUCTION_MAX_PER_PLAYER = 10;
+      }
+
+      // Linhas por página da lista "Meus itens a venda" (aba Criar leilão)
+      try
+      {
+         AUCTION_MY_PER_PAGE = Math.max(1, Integer.parseInt(var0.getProperty("MyAuctionsPerPage", "11").trim()));
+      }
+      catch (NumberFormatException e)
+      {
+         _log.warn("Invalid value for MyAuctionsPerPage, using default 11");
+         AUCTION_MY_PER_PAGE = 11;
+      }
+
+      // NOVO: incremento mínimo do lance, em % do lance atual
+      try
+      {
+         AUCTION_MIN_BID_PERCENT = Math.max(0, Integer.parseInt(var0.getProperty("MinBidIncreasePercent", "5").trim()));
+      }
+      catch (NumberFormatException e)
+      {
+         _log.warn("Invalid value for MinBidIncreasePercent, using default 5");
+         AUCTION_MIN_BID_PERCENT = 5;
+      }
+
+      // NOVO: anti-sniping (lance nos últimos X minutos estende o leilão)
+      try
+      {
+         AUCTION_SNIPE_MINUTES = Math.max(0, Integer.parseInt(var0.getProperty("AntiSnipeMinutes", "5").trim()));
+      }
+      catch (NumberFormatException e)
+      {
+         _log.warn("Invalid value for AntiSnipeMinutes, using default 5");
+         AUCTION_SNIPE_MINUTES = 5;
+      }
+
+      try
+      {
+         AUCTION_SNIPE_EXTEND_MINUTES = Math.max(0, Integer.parseInt(var0.getProperty("AntiSnipeExtendMinutes", "5").trim()));
+      }
+      catch (NumberFormatException e)
+      {
+         _log.warn("Invalid value for AntiSnipeExtendMinutes, using default 5");
+         AUCTION_SNIPE_EXTEND_MINUTES = 5;
       }
    }
 
@@ -3500,5 +3668,19 @@ public class Config {
          var1.setHwidsLimit(this.hwidLimits);
          return var1;
       }
+   }
+
+   // ===== DEBUG: Verificar moedas =====
+   public static void debugCurrencyConfig() {
+      _log.info("=== CONFIGURAÇÃO DE MOEDAS ===");
+      for (int i = 0; i < Config.MARKETPLACE_CURRENCIES.length; i++) {
+         ItemTemplate item = ItemHolder.getInstance().getTemplate(Config.MARKETPLACE_CURRENCIES[i]);
+         if (item != null) {
+            _log.info("Moeda " + i + ": ID=" + Config.MARKETPLACE_CURRENCIES[i] + ", Nome='" + item.getName() + "'");
+         } else {
+            _log.warn("Moeda " + i + ": ID=" + Config.MARKETPLACE_CURRENCIES[i] + " NÃO ENCONTRADO!");
+         }
+      }
+      _log.info("==============================");
    }
 }

@@ -26,6 +26,7 @@ import l2.gameserver.ai.CtrlIntention;
 import l2.gameserver.ai.debug.NpcMovementDebugTracer;
 import l2.gameserver.data.xml.holder.NpcHolder;
 import l2.gameserver.geodata.GeoEngine;
+import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.model.AggroList;
 import l2.gameserver.model.Creature;
 import l2.gameserver.model.GameObject;
@@ -56,7 +57,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DefaultAI
-extends CharacterAI {
+        extends CharacterAI {
     protected static final Logger _log = LoggerFactory.getLogger(DefaultAI.class);
     public static final int TaskDefaultWeight = 10000;
     protected long AI_TASK_ATTACK_DELAY = Config.AI_TASK_ATTACK_DELAY;
@@ -443,7 +444,7 @@ extends CharacterAI {
             return;
         }
         if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceTick(npcInstance, "thinkAttack", this.getAttackTarget(),
-            "timeoutLeft=" + (this.getAttackTimeout() - System.currentTimeMillis()) + "ms, tasks=" + this._tasks.size() + ", fails=" + this._pathfindFails);
+                "timeoutLeft=" + (this.getAttackTimeout() - System.currentTimeMillis()) + "ms, tasks=" + this._tasks.size() + ", fails=" + this._pathfindFails);
         Location location = this.getPursueBaseLoc();
         if (!npcInstance.isInRange(location, (long)this.MAX_PURSUE_RANGE)) {
             this.teleportHome();
@@ -498,7 +499,7 @@ extends CharacterAI {
     protected boolean tryMoveToTarget(Creature creature, int n, int n2) {
         NpcInstance npcInstance = this.getActor();
         if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceTick(npcInstance, "tryMoveToTarget", creature,
-            "dist=" + (creature != null ? npcInstance.getDistance(creature) : -1) + ", targetMoving=" + (creature != null && creature.isMoving()) + ", n=" + n + ", n2=" + n2 + ", fails=" + this._pathfindFails);
+                "dist=" + (creature != null ? npcInstance.getDistance(creature) : -1) + ", targetMoving=" + (creature != null && creature.isMoving()) + ", n=" + n + ", n2=" + n2 + ", fails=" + this._pathfindFails);
 
         if (creature == null) {
             return false;
@@ -559,9 +560,9 @@ extends CharacterAI {
             } else if (!npcInstance.isRaid()) {
                 // L2OFF: Monstros normais NUNCA teleportam para o player! Eles desistem do alvo e voltam ao spawn!
                 if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceEvent(npcInstance, "PATHFIND_FAIL_RETURN_HOME",
-                    "Monstro nao alcancou alvo apos falhas consecutivas de obstaculo. Retornando ao spawn.");
+                        "Monstro nao alcancou alvo apos falhas consecutivas de obstaculo. Retornando ao spawn.");
                 npcInstance.getAggroList().remove(creature, true);
-                l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.NPC_RETURN_HOME_PATHFAIL);
+                ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.NPC_RETURN_HOME_PATHFAIL);
                 this.returnHome();
                 return false;
             }
@@ -616,7 +617,7 @@ extends CharacterAI {
                 int n3 = (int)(!bl ? npcInstance.getDistance(creature) : npcInstance.getDistance3D(creature)) - n2;
                 if (n3 <= n + 16 && GeoEngine.canSeeTarget(npcInstance, creature, bl)) {
                     if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceCombat(npcInstance, "REACHED_ATTACK_RANGE", creature,
-                        "dist3d=" + n3 + ", atkRange=" + n + ", wasMoving=" + npcInstance.isMoving() + ", transitionDelay=0ms (L2OFF)");
+                            "dist3d=" + n3 + ", atkRange=" + n + ", wasMoving=" + npcInstance.isMoving() + ", transitionDelay=0ms (L2OFF)");
                     this.faceTargetForAction(npcInstance, creature);
                     this.clientStopMoving(true);
                     this._pathfindFails = 0;
@@ -733,7 +734,7 @@ extends CharacterAI {
             }
         }
         finally {
-            l2.gameserver.metrics.ServerMetrics.AI_THINK.record(System.nanoTime() - metricsStart);
+            ServerMetrics.AI_THINK.record(System.nanoTime() - metricsStart);
             this.bZ = false;
         }
     }
@@ -873,10 +874,10 @@ extends CharacterAI {
 
     protected void returnHome(boolean bl, boolean bl2) {
         NpcInstance npcInstance = this.getActor();
-        l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.NPC_RETURN_HOME);
+        ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.NPC_RETURN_HOME);
         Location location = this.getPursueBaseLoc();
         if (NpcMovementDebugTracer.isTracking(npcInstance)) NpcMovementDebugTracer.getInstance().traceEvent(npcInstance, "RETURN_HOME",
-            "spawnLoc=" + location + ", distToSpawn=" + (location != null ? npcInstance.getDistance(location) : -1) + ", teleport=" + bl2);
+                "spawnLoc=" + location + ", distToSpawn=" + (location != null ? npcInstance.getDistance(location) : -1) + ", teleport=" + bl2);
         this.clearTasks();
         npcInstance.stopMove();
         if (npcInstance.hasAI()) {
@@ -1425,7 +1426,7 @@ extends CharacterAI {
     }
 
     protected class NearestTargetComparator
-    implements Comparator<Creature> {
+            implements Comparator<Creature> {
         private final Creature actor;
 
         public NearestTargetComparator(Creature creature) {
@@ -1443,7 +1444,7 @@ extends CharacterAI {
     }
 
     public class MadnessTask
-    extends RunnableImpl {
+            extends RunnableImpl {
         @Override
         public void runImpl() throws Exception {
             NpcInstance npcInstance = DefaultAI.this.getActor();
@@ -1455,7 +1456,7 @@ extends CharacterAI {
     }
 
     protected class RunningTask
-    extends RunnableImpl {
+            extends RunnableImpl {
         protected RunningTask() {
         }
 
@@ -1470,7 +1471,7 @@ extends CharacterAI {
     }
 
     protected class Teleport
-    extends RunnableImpl {
+            extends RunnableImpl {
         Location _destination;
 
         public Teleport(Location location) {
@@ -1487,7 +1488,7 @@ extends CharacterAI {
     }
 
     private static class TaskComparator
-    implements Comparator<Task> {
+            implements Comparator<Task> {
         private static final Comparator<Task> tS = new TaskComparator();
 
         private TaskComparator() {

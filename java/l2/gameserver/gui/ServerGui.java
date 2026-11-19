@@ -819,17 +819,17 @@ public final class ServerGui {
 
     private void writeDump(PrintWriter w) {
         {
-                long[] dead = ManagementFactory.getThreadMXBean().findDeadlockedThreads();
-                w.println("Thread dump " + new Date() + (dead == null ? "" : "  -- DEADLOCK em " + dead.length + " threads"));
-                for (ThreadInfo info : ManagementFactory.getThreadMXBean().dumpAllThreads(true, true)) {
-                    w.println();
-                    w.println("\"" + info.getThreadName() + "\" id=" + info.getThreadId() + " " + info.getThreadState()
-                            + (info.getLockName() == null ? "" : " em " + info.getLockName())
-                            + (info.getLockOwnerName() == null ? "" : " (dono: " + info.getLockOwnerName() + ")"));
-                    for (StackTraceElement e : info.getStackTrace()) {
-                        w.println("    at " + e);
-                    }
+            long[] dead = ManagementFactory.getThreadMXBean().findDeadlockedThreads();
+            w.println("Thread dump " + new Date() + (dead == null ? "" : "  -- DEADLOCK em " + dead.length + " threads"));
+            for (ThreadInfo info : ManagementFactory.getThreadMXBean().dumpAllThreads(true, true)) {
+                w.println();
+                w.println("\"" + info.getThreadName() + "\" id=" + info.getThreadId() + " " + info.getThreadState()
+                        + (info.getLockName() == null ? "" : " em " + info.getLockName())
+                        + (info.getLockOwnerName() == null ? "" : " (dono: " + info.getLockOwnerName() + ")"));
+                for (StackTraceElement e : info.getStackTrace()) {
+                    w.println("    at " + e);
                 }
+            }
         }
     }
 

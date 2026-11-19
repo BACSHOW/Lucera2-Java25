@@ -143,7 +143,7 @@ public final class NettyGameConnection {
         return System.currentTimeMillis() - this.lastCorrectionDeliveredAt < graceMs;
     }
 
-    // ------------------------------------------------------------------ cliente lento (NettySlowClientShedding)
+    // --------------- cliente lento (NettySlowClientShedding)
 
     /**
      * Fila de envio acima do limite de descarte (NettySlowClientShedBytes) ou conexao cheia: o cliente esta

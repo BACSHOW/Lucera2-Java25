@@ -7,6 +7,7 @@ public enum RewardType {
     RATED_GROUPED,
     NOT_RATED_NOT_GROUPED,
     NOT_RATED_GROUPED,
+    DISABLED,
     SWEEP;
 
     public static final RewardType[] VALUES;

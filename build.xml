@@ -1,42 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="L2JLucera2" default="all" basedir=".">
-    <description>Compila o servidor e os scripts recuperados usando Java 8 e Apache Ant.</description>
+<project name="L2JLucera2" default="dist" basedir=".">
+    <description>Compila o servidor (Java 21+) e gera libs/server.jar e libs/scripts.jar.</description>
 
     <property name="source.dir" value="java"/>
     <property name="bin.dir" value="bin"/>
-    <property name="build.dir" value="build"/>
     <property name="libs.dir" value="libs"/>
     <property name="database.dir" value="database"/>
     <property name="encoding" value="UTF-8"/>
-    <property environment="env"/>
+    <property name="java.release" value="21"/>
 
+    <!-- Todas as jars de libs entram no classpath. As classes do projeto vem SEMPRE dos fontes. -->
     <path id="compile.classpath">
         <fileset dir="${libs.dir}" includes="*.jar"/>
     </path>
 
-    <target name="clean" description="Remove classes e JARs gerados">
+    <!-- clean NAO apaga mais libs/server.jar nem libs/scripts.jar -->
+    <target name="clean" description="Remove apenas as classes compiladas (bin)">
         <delete dir="${bin.dir}"/>
-        <delete dir="${build.dir}"/>
-        <delete file="${libs.dir}/server.jar"/>
-        <delete file="${libs.dir}/scripts.jar"/>
     </target>
 
-    <target name="init">
+    <!--
+      server-base.jar = copia do server.jar ORIGINAL (bibliotecas Netty 4, Disruptor, Hikari, MariaDB,
+      Agrona, fastutil, zstd, OSHI... e as 4 classes Kotlin). E criada UMA vez e nunca sobrescrita.
+    -->
+    <target name="check-base">
+        <available file="${libs.dir}/server-base.jar" property="base.exists"/>
+        <fail message="Nao ha libs/server.jar nem libs/server-base.jar. Restaure libs/server.jar do repositorio.">
+            <condition>
+                <and>
+                    <not><isset property="base.exists"/></not>
+                    <not><available file="${libs.dir}/server.jar"/></not>
+                </and>
+            </condition>
+        </fail>
+    </target>
+
+    <target name="make-base" depends="check-base" unless="base.exists">
+        <copy file="${libs.dir}/server.jar" tofile="${libs.dir}/server-base.jar"/>
+    </target>
+
+    <target name="init" depends="make-base">
         <mkdir dir="${bin.dir}"/>
     </target>
 
-    <target name="compile" depends="init" description="Compila todos os fontes recuperados">
+    <target name="compile" depends="init" description="Compila todos os fontes">
         <javac srcdir="${source.dir}"
                destdir="${bin.dir}"
-               source="1.8"
-               target="1.8"
+               release="${java.release}"
                encoding="${encoding}"
                fork="true"
-               
+               memoryMaximumSize="1g"
                includeantruntime="false"
                debug="true"
                failonerror="true">
             <compilerarg value="-Xlint:-options"/>
+            <compilerarg value="-proc:none"/>
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="5000"/>
             <classpath refid="compile.classpath"/>
@@ -46,13 +64,31 @@
     </target>
 
     <target name="jar-server" depends="compile" description="Gera libs/server.jar">
-        <jar destfile="${libs.dir}/server.jar">
+        <jar destfile="${libs.dir}/server.jar" duplicate="preserve" level="6">
+            <!-- 1) classes do projeto recem compiladas (tem prioridade) -->
             <fileset dir="${bin.dir}" includes="l2/**,authd.json,gamed.json"/>
+            <!-- 2) classes Kotlin (compiladas so pelo Gradle) vindas do jar original -->
+            <zipfileset src="${libs.dir}/server-base.jar">
+                <include name="l2/commons/threading/CoroutinePool*.class"/>
+                <include name="l2/commons/threading/ParallelBoot*.class"/>
+                <include name="l2/commons/util/SysUtil*.class"/>
+                <include name="l2/gameserver/utils/JvmOptimizer*.class"/>
+            </zipfileset>
+            <!-- 3) bibliotecas embutidas (Netty 4, Disruptor, Hikari, MariaDB, ...) -->
+            <zipfileset src="${libs.dir}/server-base.jar">
+                <exclude name="l2/**"/>
+                <exclude name="authd.json"/>
+                <exclude name="gamed.json"/>
+                <exclude name="META-INF/MANIFEST.MF"/>
+                <exclude name="META-INF/*.SF"/>
+                <exclude name="META-INF/*.DSA"/>
+                <exclude name="META-INF/*.RSA"/>
+            </zipfileset>
             <manifest>
                 <attribute name="Manifest-Version" value="1.0"/>
-                <attribute name="Created-By" value="Projeto recuperado com Vineflower e CFR"/>
-                <attribute name="Implementation-Version" value="1.0-recovered"/>
-                <attribute name="Class-Path" value="ehcache-core-2.4.3.jar gson-2.8.6.jar commons-math-2.2.jar logback-core-1.2.9.jar org.napile.primitive.jar netty-3.2.3.jar mysql-connector-java-5.1.48.jar mesp-1.02.jar dbmsstruct-1.0.jar logback-classic-1.2.9.jar commons-lang3-3.9.jar ecj-3.7.jar slf4j-api-1.7.32.jar dom4j-2.1.1.jar trove-2.1.0.jar commons-io-2.0.1.jar commons-pool-1.5.6.jar jacksum-1.7.0.jar"/>
+                <attribute name="Main-Class" value="l2.gameserver.GameServer"/>
+                <attribute name="Created-By" value="L2JLucera2 Ant"/>
+                <attribute name="Implementation-Version" value="1.0"/>
             </manifest>
         </jar>
     </target>
@@ -62,13 +98,12 @@
             <fileset dir="${bin.dir}" excludes="l2/**,authd.json,gamed.json"/>
             <manifest>
                 <attribute name="Manifest-Version" value="1.0"/>
-                <attribute name="Created-By" value="Projeto recuperado com Vineflower e CFR"/>
-                <attribute name="Implementation-Version" value="1.0-recovered"/>
-                <attribute name="Class-Path" value="server.jar ehcache-core-2.4.3.jar gson-2.8.6.jar commons-math-2.2.jar logback-core-1.2.9.jar org.napile.primitive.jar netty-3.2.3.jar mysql-connector-java-5.1.48.jar mesp-1.02.jar dbmsstruct-1.0.jar logback-classic-1.2.9.jar commons-lang3-3.9.jar ecj-3.7.jar slf4j-api-1.7.32.jar dom4j-2.1.1.jar trove-2.1.0.jar commons-io-2.0.1.jar commons-pool-1.5.6.jar jacksum-1.7.0.jar"/>
+                <attribute name="Created-By" value="L2JLucera2 Ant"/>
+                <attribute name="Implementation-Version" value="1.0"/>
             </manifest>
         </jar>
     </target>
 
-    <target name="dist" depends="jar-server,jar-scripts" description="Gera os dois JARs em libs"/>
-    <target name="all" depends="clean,dist" description="Limpa, compila e gera todos os JARs"/>
+    <target name="dist" depends="jar-server,jar-scripts" description="Gera server.jar e scripts.jar em libs"/>
+    <target name="all" depends="clean,dist" description="Limpa, compila e gera os JARs"/>
 </project>

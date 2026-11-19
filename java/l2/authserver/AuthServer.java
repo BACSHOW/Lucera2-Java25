@@ -17,6 +17,7 @@ import l2.authserver.GameServerManager;
 import l2.authserver.Shutdown;
 import l2.authserver.ThreadPoolManager;
 import l2.authserver.database.L2DatabaseFactory;
+import l2.authserver.gui.LoginGui;
 import l2.authserver.network.gamecomm.GameServerCommunication;
 import l2.authserver.network.l2.L2LoginClient;
 import l2.authserver.network.l2.L2LoginPacketHandler;
@@ -134,7 +135,7 @@ public class AuthServer {
     public static void main(String[] stringArray) throws Throwable {
         new File("./log/").mkdir();
         // Janela propria do login (console, metricas, bans); sem area de trabalho segue so no console.
-        l2.authserver.gui.LoginGui.startIfEnabled();
+        LoginGui.startIfEnabled();
         Config.load();
         AuthServer.checkFreePorts();
         L2DatabaseFactory.getInstance().getConnection().close();

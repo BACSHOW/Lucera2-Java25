@@ -7,9 +7,8 @@ import l2.gameserver.model.Creature;
 import l2.gameserver.model.GameObject;
 import l2.gameserver.network.l2.s2c.L2GameServerPacket;
 
-public class Attack
-extends L2GameServerPacket
-implements SlowClientSheddable {
+public class Attack extends L2GameServerPacket implements SlowClientSheddable
+{
     public final int _attackerId;
     public final boolean _soulshot;
     private final int Tl;

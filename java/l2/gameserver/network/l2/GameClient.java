@@ -36,9 +36,6 @@ import l2.gameserver.model.World;
 import l2.gameserver.network.authcomm.AuthServerCommunication;
 import l2.gameserver.network.authcomm.SessionKey;
 import l2.gameserver.network.authcomm.gs2as.PlayerLogout;
-import l2.gameserver.network.l2.CGModule;
-import l2.gameserver.network.l2.GameCrypt;
-import l2.gameserver.network.l2.SecondPasswordAuth;
 import l2.gameserver.network.l2.c2s.L2GameClientPacket;
 import l2.gameserver.network.l2.components.IStaticPacket;
 import l2.gameserver.network.l2.s2c.CharMoveToLocation;
@@ -607,8 +604,8 @@ extends MMOClient<MMOConnection<GameClient>> {
         int[] depthRef = NETTY_SERIALIZATION_DEPTH.get();
         int depth = depthRef[0]++;
         ByteBuffer buf = depth < MAX_NETTY_SERIALIZATION_DEPTH
-            ? NETTY_WRITE_BUFFERS.get()[depth]
-            : ByteBuffer.allocate(NETTY_BUFFER_SIZE).order(ByteOrder.LITTLE_ENDIAN);
+                ? NETTY_WRITE_BUFFERS.get()[depth]
+                : ByteBuffer.allocate(NETTY_BUFFER_SIZE).order(ByteOrder.LITTLE_ENDIAN);
         if (depth >= MAX_NETTY_SERIALIZATION_DEPTH) {
             _log.warn("[Netty Reentrancy] Serialization depth overflow (" + depth + ") for " + packet.getClass().getSimpleName() + " to " + this);
         }

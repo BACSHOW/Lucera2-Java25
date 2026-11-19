@@ -4,7 +4,6 @@
 package l2.gameserver.network.l2.c2s;
 
 import java.util.HashMap;
-import java.util.Set;
 import java.util.StringTokenizer;
 import l2.gameserver.Config;
 import l2.gameserver.data.xml.holder.MultiSellHolder;
@@ -36,7 +35,6 @@ import org.slf4j.LoggerFactory;
 
 public class RequestBypassToServer
 extends L2GameClientPacket {
-    private static final Set<String> BLOCKED_SCRIPT_METHODS = Set.of("onLoad", "onReload", "onShutdown");
     private static final Logger _log = LoggerFactory.getLogger(RequestBypassToServer.class);
     private BypassManager.DecodedBypass abr = null;
     private String _bypass;
@@ -78,12 +76,6 @@ extends L2GameClientPacket {
                 String[] stringArray3 = stringArray[0].split(":");
                 if (stringArray3.length != 2) {
                     _log.warn("Bad Script bypass!");
-                    return;
-                }
-                // onLoad / onReload / onShutdown sao do ciclo de vida do script (ScriptFile), nunca de bypass:
-                // chamados pelo cliente, re-registrariam listeners (pontos em dobro) ou desligariam o servico.
-                if (BLOCKED_SCRIPT_METHODS.contains(stringArray3[1])) {
-                    _log.warn("Blocked script bypass: " + this.abr.bypass + " / " + player);
                     return;
                 }
                 HashMap<String, Object> hashMap = null;

@@ -25,11 +25,7 @@ public class BypassManager {
     public static final String SIMPLE_DONATE_URL = "interface?donate_ru";
     public static final String SIMPLE_VK_URL = "interface?vk";
     public static final String SIMPLE_FACEBOOK_URL = "interface?facebook";
-    private static final String[] zY = new String[]{"_mrsl", "_diary", "_match", "manor_menu_select", "_olympiad", "_dispel", "interface?dispell=", "interface?autoloot_on", "interface?autoloot_off", "interface?exp_on", "interface?exp_off", "interface?donate_ru", "interface?vk", "interface?facebook",
-        // janelas da interface personalizada: o .uc manda o bypass direto (RequestBypassToServer), sem HTML.
-        // Toda classe aqui tem os metodos publicos chamaveis pelo cliente: so liste servicos feitos para isso.
-        "scripts_services.Interface:", "scripts_services.MobInformer:", "scripts_services.RandomCraft:",
-        "scripts_services.BattlePass:", "scripts_services.MailBox:"};
+    private static final String[] zY = new String[]{"_mrsl", "_diary", "_match", "manor_menu_select", "_olympiad", "_dispel", "interface?dispell=", "interface?autoloot_on", "interface?autoloot_off", "interface?exp_on", "interface?exp_off", "interface?donate_ru", "interface?vk", "interface?facebook", "scripts_services.Interface:", "scripts_services.MobInformer:", "scripts_services.TeleportZones:", "scripts_services.RandomCraft:", "scripts_services.BattlePass:", "scripts_services.MailBox:"};
     private static final String[] zZ = new String[]{"_bbshome", "_bbsgetfav", "_bbslink", "_bbsloc", "_bbsclan", "_bbsmemo", "_maillist_0_1_0_", "_friendlist_0_", "_bbsaddfav"};
 
     private static boolean b(String string, boolean bl) {

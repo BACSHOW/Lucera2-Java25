@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Teleporte da interface (TeleportWnd). O servidor envia esta lista ao cliente: para criar ou mudar
+  uma zona basta editar este arquivo, sem recompilar a interface.
+
+  <category> monta as listas da janela.
+    type  = main (aba Principais) ou hunt (aba Zonas de caca)
+    id    = numero da categoria dentro da aba (ordem de exibicao)
+    icon  = village (icone grande de cidade), boss (icone de boss) ou hunt (padrao)
+    match = (so hunt) partes do nome da zona atual do jogador que levam a esta categoria no botao
+            "minha zona"; separadas por virgula, "=" na frente exige o nome exato.
+  <teleport> e um destino.
+    id = numero unico (o cliente envia este numero ao clicar); type/cat = categoria; name = texto exibido
+    x/y/z = destino e posicao do icone no mapa; price = adena (gratis abaixo do nivel 40);
+    isNoble = so para nobres; SkillEffectId = animacao ao teleportar.
+-->
+<list>
+    <category type="main" id="0" name="Towns &amp; Village" icon="village"/>
+    <category type="main" id="1" name="Catacombs" icon="hunt"/>
+    <category type="main" id="2" name="Necropolises" icon="hunt"/>
+    <category type="main" id="3" name="Arenas" icon="hunt"/>
+    <category type="main" id="4" name="Raid Bosses (lvl 70+)" icon="boss"/>
+    <category type="main" id="5" name="Grand Bosses" icon="boss"/>
+    <category type="main" id="6" name="Special" icon="hunt"/>
+    <category type="hunt" id="0" name="Talking Island Village" icon="hunt" match="Talking,Einhov,Cedric"/>
+    <category type="hunt" id="1" name="Elf Village" icon="hunt" match="=Elven Village,Mother"/>
+    <category type="hunt" id="2" name="Dark Elf Village" icon="hunt" match="Dark,Misty,Shilen"/>
+    <category type="hunt" id="3" name="Orc Village" icon="hunt" match="=Orc Village,Immortal,Heroes,Pa'agrio"/>
+    <category type="hunt" id="4" name="Dvarven Village" icon="hunt" match="=Dwarven Village,Spine,Mining,Mine"/>
+    <category type="hunt" id="5" name="Gludin" icon="hunt" match="Gludin"/>
+    <category type="hunt" id="6" name="Gludio" icon="hunt" match="Gludio,Ruined,Maille,Incubator"/>
+    <category type="hunt" id="7" name="Dion" icon="hunt" match="Dion,Cruma,Partisan,Floran,Monster Race"/>
+    <category type="hunt" id="8" name="Giran Castle Town" icon="hunt" match="Giran,=Death Pass,Pirate,Anthar"/>
+    <category type="hunt" id="9" name="Heine" icon="hunt" match="Heine,Innadril"/>
+    <category type="hunt" id="10" name="Hunter Village" icon="hunt" match="=Hunters Village,Hardin,Enchanted"/>
+    <category type="hunt" id="11" name="Oren" icon="hunt" match="Oren,Crater"/>
+    <category type="hunt" id="12" name="Aden" icon="hunt" match="Insolence,Giant's Cave,Aden,Cemetery,Forbidden Gateway,Coliseum,Narsell"/>
+    <category type="hunt" id="13" name="Goddard" icon="hunt" match="Goddard,Varka,Ketra,Monastery,Rainbow,Forge,Imperial,Flames,Valak"/>
+    <category type="hunt" id="14" name="Rune" icon="hunt" match="Rune,Farm,Primeval"/>
+    <category type="hunt" id="15" name="Schuttgard" icon="hunt" match="Schuttgart,Railroad,Brigand,Labyrinth,Caron's"/>
+
+
+    <teleport id="1" type="main" cat="0" name="Town of Schuttgart" x="87393" y="-143389" z="-1288" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="2" type="main" cat="0" name="Rune Township" x="43823" y="-48148" z="-792" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="3" type="main" cat="0" name="Town of Goddard" x="147681" y="-55451" z="-2726" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="4" type="main" cat="0" name="Town of Aden" x="147464" y="25949" z="-2008" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="5" type="main" cat="0" name="Town of Oren" x="82795" y="53366" z="-1488" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="6" type="main" cat="0" name="Hunters Village" x="116716" y="76502" z="-2728" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="7" type="main" cat="0" name="Giran Castle Town" x="83456" y="148609" z="-3400" price="13000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="8" type="main" cat="0" name="Heine" x="111397" y="219036" z="-3536" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="9" type="main" cat="0" name="The Town of Dion" x="15245" y="143096" z="-2688" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="10" type="main" cat="0" name="Entrance to Floran Village" x="17811" y="170219" z="-3504" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="11" type="main" cat="0" name="The Town of Gludio" x="-12672" y="122776" z="-3116" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="12" type="main" cat="0" name="The Village of Gludin" x="-80877" y="150183" z="-3040" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="13" type="main" cat="0" name="Dark Elf Village" x="9841" y="15578" z="-4568" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="14" type="main" cat="0" name="Dwarven Village" x="115376" y="-178058" z="-928" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="15" type="main" cat="0" name="Elven Village" x="47015" y="51182" z="-2992" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="16" type="main" cat="0" name="Orc Village" x="-45031" y="-112669" z="-240" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="17" type="main" cat="0" name="Talking Island Village" x="-84570" y="244403" z="-3728" price="50000" isNoble="false" SkillEffectId="2036"/>
+
+    <teleport id="30" type="main" cat="1" name="Catacomb of the Witch" x="136672" y="79328" z="-3696" price="31000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="31" type="main" cat="1" name="Catacomb of the Forbidden Path" x="110912" y="84912" z="-4816" price="41000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="32" type="main" cat="1" name="Catacomb of Dark Omens" x="-22480" y="13872" z="-3168" price="25000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="33" type="main" cat="1" name="Catacomb of the Heretic" x="39232" y="143568" z="-3648" price="34000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="34" type="main" cat="1" name="Catacomb of the Branded" x="43200" y="170688" z="-3248" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="35" type="main" cat="1" name="Catacomb of the Apostate" x="74672" y="78032" z="-3392" price="44000" isNoble="false" SkillEffectId="2036"/>
+
+    <teleport id="36" type="main" cat="2" name="The Saint's Necropolis" x="79296" y="209584" z="-3712" price="73000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="37" type="main" cat="2" name="The Disciple's Necropolis" x="168560" y="-17968" z="-3168" price="35000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="38" type="main" cat="2" name="The Pilgrim's Necropolis" x="45600" y="126944" z="-3680" price="32000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="39" type="main" cat="2" name="The Patriot's Necropolis" x="-25472" y="77728" z="-3440" price="49000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="40" type="main" cat="2" name="Necropolis of Sacrifice" x="-41184" y="206752" z="-3360" price="29000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="41" type="main" cat="2" name="Necropolis of Worship" x="107514" y="174329" z="-3712" price="38000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="42" type="main" cat="2" name="Necropolis of Devotion" x="-56064" y="78720" z="-3008" price="39000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="43" type="main" cat="2" name="Necropolis of Martyrdom" x="114496" y="132416" z="-3104" price="38000" isNoble="false" SkillEffectId="2036"/>
+
+    <teleport id="50" type="main" cat="3" name="Gludin Arena" x="-87328" y="142266" z="-3640" price="1000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="51" type="main" cat="3" name="Giran Arena" x="73579" y="142709" z="-3768" price="1000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="52" type="main" cat="3" name="Coliseum" x="146440" y="46723" z="-3440" price="1000" isNoble="false" SkillEffectId="2036"/>
+
+    <teleport id="200" type="main" cat="4" name="Ember" x="184983" y="-105923" z="-6304" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="201" type="main" cat="4" name="Queen Shyeed" x="78882" y="-54904" z="-6136" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="202" type="main" cat="4" name="Cherub Galaxia" x="112744" y="14168" z="6992" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="203" type="main" cat="4" name="Ocean Flame Ashakiel" x="123808" y="153408" z="-3664" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="204" type="main" cat="4" name="Flamestone Giant" x="79298" y="18462" z="-5232" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="205" type="main" cat="4" name="Longhorn Golkonda" x="115928" y="17288" z="6760" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="206" type="main" cat="4" name="Varka's Chief Horus" x="105997" y="-42739" z="-1744" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="207" type="main" cat="4" name="Varka's Hero Shadith" x="114933" y="-35997" z="-2264" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="208" type="main" cat="4" name="Varka's Commander Mos" x="108825" y="-35997" z="-880" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="209" type="main" cat="4" name="Ketra's Chief Brakki" x="144885" y="-85226" z="-6224" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="210" type="main" cat="4" name="Ketra's Hero Hekaton" x="148080" y="-73116" z="-4912" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="211" type="main" cat="4" name="Ketra's Commander Tayr" x="146032" y="-81437" z="-6000" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="212" type="main" cat="4" name="Fire of Wrath Shuriel" x="113102" y="16358" z="6992" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="213" type="main" cat="4" name="Lesser Giant Glaki" x="188800" y="48273" z="-5872" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="214" type="main" cat="4" name="Hestia Guardian Deity of the Hot Springs" x="134645" y="-116016" z="-1216" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="215" type="main" cat="4" name="Shilen's Messenger Cabrio" x="181110" y="11907" z="-2736" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="216" type="main" cat="4" name="Hekaton Prime" x="191643" y="56473" z="-7624" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="217" type="main" cat="4" name="Water Dragon Seer Sheshark" x="108096" y="157408" z="-3680" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="218" type="main" cat="4" name="Fafurion's Herald Lokness" x="102656" y="157424" z="-3728" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="219" type="main" cat="4" name="Krokian Padisha Sobekk" x="119760" y="157392" z="-3744" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="220" type="main" cat="4" name="Last Lesser Giant Olkuth" x="171958" y="55145" z="-5920" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="221" type="main" cat="4" name="Doom Blade Tanatos" x="127843" y="-13171" z="-3744" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="222" type="main" cat="4" name="Beast Lord Behemoth" x="122588" y="-23326" z="-3504" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="223" type="main" cat="4" name="Anakim's Nemesis Zakaron" x="150893" y="88005" z="-5424" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="224" type="main" cat="4" name="Immortal Savior Mardil" x="113125" y="17821" z="-1408" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="225" type="main" cat="4" name="Meanas Anor" x="156666" y="-6009" z="-4192" price="50000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="226" type="main" cat="4" name="Plague Golem" x="90480" y="16975" z="-5280" price="50000" isNoble="false" SkillEffectId="2036"/>
+
+    <teleport id="100" type="main" cat="5" name="Entrance to The Hall of Flames (Valakas)" x="183615" y="-114800" z="-3336" price="95000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="101" type="main" cat="5" name="Frintezza" x="181382" y="-80803" z="-2728" price="95000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="102" type="main" cat="5" name="ToI: 14th Floor (Baium)" x="112744" y="14168" z="6992" price="95000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="103" type="main" cat="5" name="Heart of Warding (Antharas)" x="154401" y="121225" z="-3808" price="95000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="104" type="main" cat="5" name="Zaken" x="52221" y="217240" z="-3336" price="95000" isNoble="false" SkillEffectId="2036"/> <!-- conferir o andar -->
+    <teleport id="105" type="main" cat="5" name="Orfen" x="55024" y="17368" z="-5520" price="95000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="106" type="main" cat="5" name="Core" x="17734" y="111811" z="-6584" price="95000" isNoble="false" SkillEffectId="2036"/> <!-- conferir o andar -->
+    <teleport id="107" type="main" cat="5" name="Queen Ant" x="-21718" y="182931" z="-5720" price="95000" isNoble="false" SkillEffectId="2036"/>
+
+    <teleport id="150" type="main" cat="6" name="Test Zone" x="183615" y="-114800" z="-3336" price="95000" isNoble="false" SkillEffectId="2036"/>
+
+    <teleport id="301" type="hunt" cat="0" name="Elven Ruins" x="-112367" y="234703" z="-3696" price="830" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="302" type="hunt" cat="0" name="Singing Waterfall" x="-111728" y="244330" z="-3456" price="770" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="303" type="hunt" cat="0" name="Talking Island, Western Territory" x="-106696" y="214691" z="-3424" price="1000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="304" type="hunt" cat="0" name="Obelisk of Victory" x="-99586" y="237637" z="-3568" price="470" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="305" type="hunt" cat="0" name="Center of the Elven Ruins" x="49315" y="248452" z="-5960" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="310" type="hunt" cat="1" name="Elven Forest" x="21362" y="51122" z="-3688" price="710" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="311" type="hunt" cat="1" name="Elven Fortress" x="29294" y="74968" z="-3776" price="820" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="312" type="hunt" cat="1" name="Neutral Zone" x="-10600" y="76363" z="-3600" price="1700" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="313" type="hunt" cat="1" name="The Center of the Neutral Zone" x="-10600" y="76363" z="-3600" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="320" type="hunt" cat="2" name="Dark Forest" x="-22224" y="14168" z="-3232" price="890" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="321" type="hunt" cat="2" name="Swampland" x="-21966" y="40544" z="-3192" price="1100" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="322" type="hunt" cat="2" name="Spider Nest" x="-61137" y="75021" z="-3360" price="3600" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="323" type="hunt" cat="2" name="Neutral Zone" x="-10600" y="76363" z="-3600" price="1700" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="324" type="hunt" cat="2" name="The Center of the Neutral Zone" x="-18415" y="85624" z="-3680" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="325" type="hunt" cat="2" name="The Center of the Dark Forest" x="-22224" y="14168" z="-3232" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="326" type="hunt" cat="2" name="Center of the School of Dark Arts" x="-49185" y="49441" z="-3352" price="1000" isNoble="true" SkillEffectId="2036"/> <!-- conferir o andar -->
+
+    <teleport id="330" type="hunt" cat="3" name="The Immortal Plateau, Southern Region" x="-4190" y="-80040" z="-2704" price="2000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="331" type="hunt" cat="3" name="The Immortal Plateau" x="10983" y="-117484" z="-3128" price="960" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="332" type="hunt" cat="3" name="Cave of Trials" x="9340" y="-112509" z="-2544" price="1500" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="333" type="hunt" cat="3" name="Frozen Waterfalls" x="8652" y="-139941" z="-1144" price="1600" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="334" type="hunt" cat="3" name="Immortal Plateau, Northern Region" x="-8804" y="-114748" z="-3088" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="340" type="hunt" cat="4" name="Mithril Mines" x="171946" y="-173352" z="3440" price="2200" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="341" type="hunt" cat="4" name="Abandoned Coal Mines" x="139714" y="-177456" z="-1536" price="690" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="342" type="hunt" cat="4" name="Eastern Mining Zone (Northeastern Shore)" x="169008" y="-208272" z="-3520" price="2400" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="343" type="hunt" cat="4" name="Western Mining Zone (Central Shore)" x="136910" y="-205082" z="-3696" price="970" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="344" type="hunt" cat="4" name="The Center of the Mithril Mines" x="175499" y="-181586" z="200" price="1000" isNoble="true" SkillEffectId="2036"/> <!-- conferir o andar -->
+    <teleport id="345" type="hunt" cat="4" name="The Center of the Abandoned Coal Mines" x="144706" y="-173223" z="-1520" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="350" type="hunt" cat="5" name="Langk Lizardmen Dwellings" x="-44763" y="203497" z="-3600" price="1800" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="351" type="hunt" cat="5" name="Windmill Hill" x="-75437" y="168800" z="-3632" price="550" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="352" type="hunt" cat="5" name="Fellmere Harvesting Grounds" x="-63736" y="101522" z="-3552" price="1400" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="353" type="hunt" cat="5" name="Forgotten Temple" x="-53001" y="191425" z="-3584" price="2000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="354" type="hunt" cat="5" name="Orc Barracks" x="-89763" y="105359" z="-3584" price="1800" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="355" type="hunt" cat="5" name="Windy Hill" x="-88539" y="83389" z="-2896" price="2600" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="356" type="hunt" cat="5" name="Abandoned Camp" x="-49853" y="147089" z="-2800" price="1200" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="357" type="hunt" cat="5" name="Wasteland" x="-16526" y="208032" z="-3664" price="3400" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="358" type="hunt" cat="5" name="Red Rock Ridge" x="-42256" y="198333" z="-2800" price="3700" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="359" type="hunt" cat="5" name="Center of the Forgotten Temple" x="-54026" y="179504" z="-4640" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="360" type="hunt" cat="5" name="Wasteland, Western Region" x="-46744" y="179272" z="-3695" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="361" type="hunt" cat="6" name="Ruins of Agony" x="-41248" y="122848" z="-2928" price="790" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="362" type="hunt" cat="6" name="Ruins of Despair" x="-20344" y="136840" z="-3904" price="610" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="363" type="hunt" cat="6" name="The Ant Nest" x="-9944" y="176664" z="-4176" price="2100" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="364" type="hunt" cat="6" name="Windawood Manor" x="-28327" y="155125" z="-3520" price="1400" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="365" type="hunt" cat="6" name="Evil Hunting Grounds" x="-6989" y="109503" z="-3072" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="370" type="hunt" cat="7" name="Cruma Marshlands" x="5106" y="126916" z="-3680" price="760" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="371" type="hunt" cat="7" name="Cruma Tower" x="17204" y="114109" z="-3440" price="2300" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="372" type="hunt" cat="7" name="Fortress of Resistance" x="47382" y="111278" z="-2112" price="1700" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="373" type="hunt" cat="7" name="Plains of Dion" x="-760" y="178952" z="-3712" price="1500" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="374" type="hunt" cat="7" name="Bee Hive" x="34475" y="188095" z="-2976" price="2900" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="375" type="hunt" cat="7" name="Tanor Canyon" x="59288" y="164984" z="-2880" price="3900" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="376" type="hunt" cat="7" name="Execution Grounds" x="46728" y="150872" z="-2832" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="377" type="hunt" cat="7" name="Floran Agricultural Area" x="15227" y="161866" z="-3616" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="378" type="hunt" cat="7" name="The Center of the Cruma Marshlands" x="5941" y="125455" z="-3648" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="379" type="hunt" cat="7" name="Cruma Tower - First Floor" x="17204" y="114109" z="-3440" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="380" type="hunt" cat="7" name="Cruma Tower - Second Floor" x="17723" y="108284" z="-9056" price="1000" isNoble="true" SkillEffectId="2036"/> <!-- conferir o andar -->
+
+    <teleport id="381" type="hunt" cat="8" name="Giran Harbor" x="47938" y="186864" z="-3480" price="5200" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="382" type="hunt" cat="8" name="Hardin's Private Academy" x="105918" y="109759" z="-3216" price="4400" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="383" type="hunt" cat="8" name="Dragon Valley" x="73024" y="118485" z="-3712" price="1800" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="384" type="hunt" cat="8" name="Antharas' Lair" x="131570" y="114488" z="-3712" price="7000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="385" type="hunt" cat="8" name="Devil's Isle" x="43408" y="206881" z="-3752" price="5700" isNoble="false" SkillEffectId="2036"/> <!-- conferir o andar -->
+    <teleport id="386" type="hunt" cat="8" name="Breka's Stronghold" x="85304" y="131848" z="-3680" price="1000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="387" type="hunt" cat="8" name="Gorgon Flower Garden" x="113553" y="134813" z="-3640" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="388" type="hunt" cat="8" name="Antharas' Lair - 1st Level" x="147071" y="120156" z="-4520" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="389" type="hunt" cat="8" name="Antharas' Lair - 2nd Level" x="151689" y="112615" z="-5520" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="390" type="hunt" cat="8" name="Antharas' Lair - Magic Force Field Bridge" x="146425" y="109898" z="-3424" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="391" type="hunt" cat="8" name="The Heart of Antharas' Lair" x="154396" y="121235" z="-3808" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="392" type="hunt" cat="8" name="The Center of Dragon Valley" x="122748" y="111013" z="-3744" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="393" type="hunt" cat="8" name="Hardin's Private Academy" x="105918" y="109759" z="-3216" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="400" type="hunt" cat="9" name="Field of Silence" x="91088" y="182384" z="-3216" price="2500" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="401" type="hunt" cat="9" name="Field of Whispers" x="74592" y="207656" z="-3056" price="2300" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="402" type="hunt" cat="9" name="Alligator Island" x="115583" y="192261" z="-3504" price="2100" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="403" type="hunt" cat="9" name="Garden of Eva" x="84413" y="234334" z="-3680" price="2400" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="404" type="hunt" cat="9" name="Field of Silence (Western Section)" x="69748" y="186111" z="-2864" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="405" type="hunt" cat="9" name="Field of Whispers (Eastern Section)" x="97786" y="209303" z="-3072" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="406" type="hunt" cat="9" name="The Center of Alligator Island" x="113708" y="178387" z="-3232" price="1000" isNoble="true" SkillEffectId="2036"/> <!-- conferir o andar -->
+    <teleport id="407" type="hunt" cat="9" name="Inside the Garden of Eva" x="82744" y="241784" z="-6712" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="408" type="hunt" cat="9" name="Garden of Eva - 2nd level" x="79248" y="247390" z="-8816" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="409" type="hunt" cat="9" name="Garden of Eva - 3rd level" x="77868" y="250400" z="-9328" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="410" type="hunt" cat="9" name="Garden of Eva - 4th level" x="78721" y="253309" z="-9840" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="411" type="hunt" cat="9" name="Garden of Eva - 5th level" x="82570" y="252464" z="-10592" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="420" type="hunt" cat="10" name="Hardin's Private Academy" x="105846" y="109762" z="-3216" price="3400" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="421" type="hunt" cat="10" name="Enchanted Valley, Southern Region" x="124968" y="61784" z="-4000" price="1300" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="422" type="hunt" cat="10" name="Enchanted Valley, Northern Region" x="104426" y="33746" z="-3800" price="3600" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="423" type="hunt" cat="10" name="The Forest of Mirrors" x="142065" y="81300" z="-3000" price="2000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="424" type="hunt" cat="10" name="The Center of the Forest of Mirrors" x="166080" y="75574" z="-3024" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="425" type="hunt" cat="10" name="The Center of the Enchanted Valley" x="114674" y="44150" z="-3392" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="426" type="hunt" cat="10" name="Hunters Valley" x="114306" y="86573" z="-3120" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="430" type="hunt" cat="11" name="Ivory Tower" x="85391" y="16228" z="-3672" price="3700" isNoble="false" SkillEffectId="2036"/> <!-- conferir o andar -->
+    <teleport id="431" type="hunt" cat="11" name="Hardin's Private Academy" x="105884" y="109744" z="-3216" price="6100" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="432" type="hunt" cat="11" name="Skyshadow Meadow" x="89914" y="46276" z="-3616" price="780" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="433" type="hunt" cat="11" name="Plains of the Lizardmen" x="87252" y="85514" z="-3072" price="1900" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="434" type="hunt" cat="11" name="Outlaw Forest" x="91539" y="-12204" z="-2440" price="5200" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="435" type="hunt" cat="11" name="Sea of Spores" x="64328" y="26803" z="-3776" price="2500" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="436" type="hunt" cat="11" name="Forest of Evil" x="93218" y="16969" z="-3936" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="437" type="hunt" cat="11" name="Timak Outpost" x="67097" y="68815" z="-3664" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="438" type="hunt" cat="11" name="Altar of Rites" x="-44566" y="77508" z="-3744" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="440" type="hunt" cat="12" name="Forsaken Plains" x="168280" y="38120" z="-4096" price="1900" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="441" type="hunt" cat="12" name="Seal of Shilen" x="185448" y="20344" z="-3264" price="3000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="442" type="hunt" cat="12" name="The Forest of Mirrors" x="142065" y="81300" z="-3000" price="4400" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="443" type="hunt" cat="12" name="Blazing Swamp" x="155310" y="-16339" z="-3320" price="6800" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="444" type="hunt" cat="12" name="Fields of Massacre" x="183560" y="-14936" z="-2784" price="6500" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="445" type="hunt" cat="12" name="Ancient Battleground" x="106545" y="-2852" z="-3424" price="5900" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="446" type="hunt" cat="12" name="Silent Valley" x="170838" y="55776" z="-5280" price="6100" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="447" type="hunt" cat="12" name="Tower of Insolence" x="114552" y="12354" z="2960" price="4200" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="448" type="hunt" cat="12" name="Entrance to The Giant's Cave" x="181737" y="46469" z="-4360" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="449" type="hunt" cat="12" name="Plains of Glory" x="135580" y="19467" z="-3456" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="450" type="hunt" cat="12" name="War-Torn Plains" x="156898" y="11217" z="-4048" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="451" type="hunt" cat="12" name="Tower of Insolence, 3rd Floor" x="110963" y="16147" z="3968" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="452" type="hunt" cat="12" name="Tower of Insolence, 5th Floor" x="118344" y="16104" z="832" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="453" type="hunt" cat="12" name="Tower of Insolence, 7th Floor" x="114552" y="12354" z="2960" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="454" type="hunt" cat="12" name="Tower of Insolence, 10th Floor" x="118472" y="16248" z="5984" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="455" type="hunt" cat="12" name="Tower of Insolence, 13th Floor" x="115928" y="17288" z="6760" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="456" type="hunt" cat="12" name="Hunters Valley" x="114306" y="86573" z="-3120" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="457" type="hunt" cat="12" name="Anghel Waterfall" x="166182" y="91560" z="-3184" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="460" type="hunt" cat="13" name="Varka Silenos Stronghold" x="125752" y="-40904" z="-3760" price="4200" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="461" type="hunt" cat="13" name="Ketra Orc Outpost" x="146990" y="-67128" z="-3648" price="1800" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="462" type="hunt" cat="13" name="Hot Springs" x="144880" y="-113468" z="-2576" price="9300" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="463" type="hunt" cat="13" name="Wall of Argos" x="164536" y="-48152" z="-3552" price="2200" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="464" type="hunt" cat="13" name="Monastery of Silence (Southeast)" x="124687" y="-75394" z="-2912" price="10000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="465" type="hunt" cat="13" name="Varka Silenos Village" x="107929" y="-52248" z="-2432" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="466" type="hunt" cat="13" name="Ketra Orc Village" x="149817" y="-80053" z="-5584" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="467" type="hunt" cat="13" name="Devil's Pass" x="106349" y="-61870" z="-2928" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="468" type="hunt" cat="13" name="Garden of Beasts" x="132997" y="-60608" z="-2976" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="469" type="hunt" cat="13" name="The Center of the Hot Springs" x="144625" y="-101291" z="-3408" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="470" type="hunt" cat="13" name="The Center of the Wall of Argos" x="183140" y="-53307" z="-1904" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="471" type="hunt" cat="13" name="Shrine of Loyalty" x="187987" y="-59566" z="-2816" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="472" type="hunt" cat="13" name="Four Sepulchers" x="178127" y="-84435" z="-7216" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="473" type="hunt" cat="13" name="Imperial Tomb" x="186699" y="-75915" z="-2824" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="474" type="hunt" cat="13" name="Entrance to the Forge of the Gods" x="169016" y="-116280" z="-2464" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="475" type="hunt" cat="13" name="Forge of the Gods - Top Level" x="173436" y="-112725" z="-3680" price="1000" isNoble="true" SkillEffectId="2036"/> <!-- conferir o andar -->
+    <teleport id="476" type="hunt" cat="13" name="Forge of the Gods - Lower Level" x="180260" y="-111913" z="-5824" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="477" type="hunt" cat="13" name="Monastery of Silence (Northwest)" x="106374" y="-87931" z="-2920" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="480" type="hunt" cat="14" name="Wild Beast Pastures" x="43805" y="-88010" z="-2752" price="4800" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="481" type="hunt" cat="14" name="Valley of Saints" x="65335" y="-71497" z="-3704" price="3800" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="482" type="hunt" cat="14" name="Forest of the Dead" x="52063" y="-54448" z="-3168" price="1200" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="483" type="hunt" cat="14" name="Swamp of Screams" x="69815" y="-50057" z="-3280" price="3000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="484" type="hunt" cat="14" name="Monastery of Silence (Southeast)" x="106374" y="-87931" z="-2920" price="14000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="485" type="hunt" cat="14" name="The Center of the Forest of the Dead" x="54425" y="-41692" z="-3072" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="486" type="hunt" cat="14" name="The Center of the Valley of Saints" x="84092" y="-80084" z="-3504" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="487" type="hunt" cat="14" name="Cursed Village" x="57670" y="-41672" z="-3152" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="488" type="hunt" cat="14" name="Stakato Nest" x="89816" y="-44584" z="-2136" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="489" type="hunt" cat="14" name="Monastery of Silence (Northwest)" x="106374" y="-87931" z="-2920" price="1000" isNoble="true" SkillEffectId="2036"/>
+
+    <teleport id="490" type="hunt" cat="15" name="Den of Evil" x="68693" y="-110438" z="-1936" price="3000" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="491" type="hunt" cat="15" name="Plunderous Plains" x="111965" y="-154172" z="-1536" price="1600" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="492" type="hunt" cat="15" name="Ice Merchant Cabin" x="113903" y="-108752" z="-864" price="3500" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="493" type="hunt" cat="15" name="Crypts of Disgrace" x="47692" y="-115745" z="-3744" price="1900" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="494" type="hunt" cat="15" name="Pavel Ruins" x="91280" y="-117152" z="-3936" price="2100" isNoble="false" SkillEffectId="2036"/>
+    <teleport id="495" type="hunt" cat="15" name="Frost Lake" x="107577" y="-122392" z="-3664" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="496" type="hunt" cat="15" name="Crypts of Disgrace" x="44221" y="-114232" z="-2800" price="1000" isNoble="true" SkillEffectId="2036"/>
+    <teleport id="497" type="hunt" cat="15" name="Sky Wagon Relic" x="121618" y="-141554" z="-1504" price="1000" isNoble="true" SkillEffectId="2036"/>
+</list>

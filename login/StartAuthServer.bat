@@ -5,7 +5,7 @@ cd /d "%~dp0"
 rem ---- Java 25 ------------------------------------------------------------
 rem  Se o Java do PATH/JAVA_HOME nao for o 25, coloque aqui a pasta do JDK 25
 rem  (a mesma do seu StartGameServer.bat), ex.: set "JAVA25_HOME=C:\Program Files\Java\jdk-25"
-set "JAVA25_HOME="
+set "JAVA25_HOME=C:\Program Files\Java\jdk-25.0.3"
 rem -------------------------------------------------------------------------
 set "JAVA_EXE=java"
 if defined JAVA_HOME set "JAVA_EXE=%JAVA_HOME%\bin\java"

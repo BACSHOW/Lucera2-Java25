@@ -5,6 +5,7 @@ import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import l2.gameserver.Config;
 import l2.gameserver.ThreadPoolManager;
 import l2.gameserver.geodata.SimdGeoMath;
+import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.model.GameObject;
 import l2.gameserver.model.GameObjectsStorage;
 import l2.gameserver.model.Player;
@@ -326,7 +327,7 @@ public final class NpcSpawnPacer {
                         && (!Config.ENABLE_VISIBLE_OBJECT_RADIUS_FILTER || _player.isInRangeZ(npc, (long) Config.VISIBLE_OBJECT_RADIUS))) {
                     sendImmediate(npc);
                 } else if (npc != null && npc.isVisible()) {
-                    l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.NPC_INFO_DROPPED);
+                    ServerMetrics.count(ServerMetrics.Counter.NPC_INFO_DROPPED);
                 }
             }
         }

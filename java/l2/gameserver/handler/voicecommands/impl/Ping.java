@@ -42,3 +42,4 @@ public class Ping implements IVoicedCommandHandler {
         return COMMANDS;
     }
 }
+

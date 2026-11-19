@@ -67,3 +67,11 @@ pgo/
 *.db-shm
 hexid.txt
 backup/
+
+# Servidor compilado
+Server/
+
+# Logs
+log/
+logs/
+*.log

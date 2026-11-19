@@ -68,7 +68,8 @@ extends ItemTemplate {
         BOLT(14, "Bolt"),
         RUNE(15, "Rune"),
         HERB(16, "Herb"),
-        MERCENARY_TICKET(17, "Mercenary Ticket");
+        MERCENARY_TICKET(17, "Mercenary Ticket"),
+        LIFESTONE(18, "Life Stone");
 
         private final long aqx;
         private final String _name;

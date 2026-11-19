@@ -172,7 +172,7 @@ public final class AutoFarmManager {
     }
 
     private class ClearFarmFreeTime
-    extends RunnableImpl {
+            extends RunnableImpl {
         private ClearFarmFreeTime() {
         }
 
@@ -182,4 +182,3 @@ public final class AutoFarmManager {
         }
     }
 }
-

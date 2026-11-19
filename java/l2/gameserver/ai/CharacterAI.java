@@ -9,15 +9,17 @@ import l2.gameserver.ai.AbstractAI;
 import l2.gameserver.ai.CtrlEvent;
 import l2.gameserver.ai.CtrlIntention;
 import l2.gameserver.ai.NextAction;
+import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.model.Creature;
 import l2.gameserver.model.GameObject;
 import l2.gameserver.model.Player;
 import l2.gameserver.model.Skill;
 import l2.gameserver.network.l2.s2c.Die;
 import l2.gameserver.utils.Location;
+import l2.gameserver.utils.MovementTelemetryLogger;
 
 public class CharacterAI
-extends AbstractAI {
+        extends AbstractAI {
     public CharacterAI(Creature creature) {
         super(creature);
     }
@@ -87,9 +89,9 @@ extends AbstractAI {
             // O cliente informa onde ficou bloqueado (ex.: no corpo de um monstro). Se o ponto for
             // valido, o servidor passa a usa-lo; senao mantem o comportamento original.
             boolean accepted = player.tryAcceptClientPosition(location, true);
-            l2.gameserver.metrics.ServerMetrics.count(l2.gameserver.metrics.ServerMetrics.Counter.ARRIVED_BLOCKED);
-            if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) {
-                l2.gameserver.utils.MovementTelemetryLogger.logEvent(player, "ARRIVED_BLOCKED", String.format("ClientLoc=(%d,%d,%d) accepted=%b", location.x, location.y, location.z, accepted));
+            ServerMetrics.count(ServerMetrics.Counter.ARRIVED_BLOCKED);
+            if (MovementTelemetryLogger.ENABLED) {
+                MovementTelemetryLogger.logEvent(player, "ARRIVED_BLOCKED", String.format("ClientLoc=(%d,%d,%d) accepted=%b", location.x, location.y, location.z, accepted));
             }
             Location location2 = player.getLastServerPosition();
             // Quando o proprio servidor para o movimento (geodata bloqueou), o ponto informado e a posicao
@@ -244,7 +246,7 @@ extends AbstractAI {
     }
 
     protected class Timer
-    extends RunnableImpl {
+            extends RunnableImpl {
         private int tN;
         private Object tO;
         private Object tP;
@@ -261,4 +263,3 @@ extends AbstractAI {
         }
     }
 }
-

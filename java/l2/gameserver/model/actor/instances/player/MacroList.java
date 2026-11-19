@@ -204,4 +204,3 @@ public class MacroList {
         DbUtils.closeQuietly(connection, preparedStatement, resultSet);
     }
 }
-

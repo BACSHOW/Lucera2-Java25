@@ -22,6 +22,8 @@ import l2.commons.listener.ListenerList;
 import l2.commons.net.nio.impl.HaProxySelectorThread;
 import l2.commons.net.nio.impl.SelectorThread;
 import l2.commons.versioning.Version;
+import l2.gameserver.gui.ServerGui;
+import l2.gameserver.network.l2.netty.NettyGameServer;
 import l2.gameserver.network.l2.netty.disruptor.topology.CoreAutoTuner;
 import l2.gameserver.Announcements;
 import l2.gameserver.Config;
@@ -298,7 +300,7 @@ public class GameServer {
         ConnectionQualityMonitor.start();
         if (Config.USE_NETTY) {
             _log.debug("[Netty] Starting Netty game network engine...");
-            l2.gameserver.network.l2.netty.NettyGameServer.getInstance().start(inetAddress, Config.PORTS_GAME, Config.HAPROXY_PORT_GAME, gamePacketHandler);
+            NettyGameServer.getInstance().start(inetAddress, Config.PORTS_GAME, Config.HAPROXY_PORT_GAME, gamePacketHandler);
             this.tr = GameServer.newSelectorArray(0);
         } else {
             this.tr = GameServer.newSelectorArray(Config.HAPROXY_PORT_GAME > 0 ? Config.PORTS_GAME.length + 1 : Config.PORTS_GAME.length);
@@ -411,7 +413,7 @@ public class GameServer {
     public static void main(String[] stringArray) throws Exception {
         initLogging();
         // Janela propria do servidor (console + metricas); sem area de trabalho segue so no console.
-        l2.gameserver.gui.ServerGui.startIfEnabled();
+        ServerGui.startIfEnabled();
         new GameServer();
     }
 

@@ -6,14 +6,17 @@ package l2.authserver.network.l2.c2s;
 import javax.crypto.Cipher;
 import l2.authserver.Config;
 import l2.authserver.IpBanManager;
+import l2.authserver.LoginGuard;
+import l2.authserver.LoginMetrics;
 import l2.authserver.accounts.Account;
 import l2.authserver.accounts.SessionManager;
 import l2.authserver.crypt.PasswordHash;
 import l2.authserver.network.l2.L2LoginClient;
-import l2.authserver.network.l2.c2s.L2LoginClientPacket;
 import l2.authserver.network.l2.s2c.LoginFail;
 import l2.authserver.network.l2.s2c.LoginOk;
 import l2.authserver.utils.Log;
+
+import static org.slf4j.LoggerFactory.getLogger;
 
 public class RequestAuthLogin
 extends L2LoginClientPacket {
@@ -40,8 +43,8 @@ extends L2LoginClientPacket {
         L2LoginClient l2LoginClient = (L2LoginClient)this.getClient();
         String ip = l2LoginClient.getIpAddr();
         // IP bloqueado: so mostra a mensagem (nem decifra a senha, nem conta tentativa)
-        if (l2.authserver.LoginGuard.getInstance().isBanned(ip)) {
-            l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
+        if (LoginGuard.getInstance().isBanned(ip)) {
+            LoginMetrics.LOGINS_FAILED.increment();
             // BlackIpList e permanente: mensagem de acesso negado, sem a contagem de tempo do ban temporario
             RequestAuthLogin.fail(l2LoginClient, Config.BLACK_IPS.contains(ip) ? Config.MSG_ACCOUNT_BANNED : Config.MSG_IP_BANNED);
             return;
@@ -73,7 +76,7 @@ extends L2LoginClientPacket {
                 code = 0;
             }
             if (code >= 1 && code <= 22) {
-                org.slf4j.LoggerFactory.getLogger(RequestAuthLogin.class).info("Teste de mensagem do login: codigo " + code + " enviado para " + ip + ".");
+                getLogger(RequestAuthLogin.class).info("Teste de mensagem do login: codigo " + code + " enviado para " + ip + ".");
                 RequestAuthLogin.fail(l2LoginClient, code);
                 return;
             }
@@ -85,11 +88,11 @@ extends L2LoginClientPacket {
             if (Config.AUTO_CREATE_ACCOUNTS && ((String)object).matches(Config.ANAME_TEMPLATE) && string.matches(Config.APASSWD_TEMPLATE)) {
                 account.setPasswordHash(string2);
                 account.save();
-                l2.authserver.LoginMetrics.ACCOUNTS_CREATED.increment();
+                LoginMetrics.ACCOUNTS_CREATED.increment();
             } else {
                 // Conta inexistente tambem conta como tentativa errada: sem isso, testar nomes
                 // aleatorios nunca levava a ban.
-                l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
+                LoginMetrics.LOGINS_FAILED.increment();
                 if (!IpBanManager.getInstance().tryLogin(ip, false)) {
                     RequestAuthLogin.fail(l2LoginClient, Config.MSG_IP_BANNED); // esta tentativa causou o ban
                     return;
@@ -113,12 +116,12 @@ extends L2LoginClientPacket {
             }
         }
         if (!IpBanManager.getInstance().tryLogin(ip, bl)) {
-            l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
+            LoginMetrics.LOGINS_FAILED.increment();
             RequestAuthLogin.fail(l2LoginClient, Config.MSG_IP_BANNED); // esta tentativa causou o ban
             return;
         }
         if (!bl) {
-            l2.authserver.LoginMetrics.LOGINS_FAILED.increment();
+            LoginMetrics.LOGINS_FAILED.increment();
             RequestAuthLogin.failWrongPassword(l2LoginClient, ip);
             return;
         }
@@ -143,7 +146,7 @@ extends L2LoginClientPacket {
         l2LoginClient.setAccount(account);
         l2LoginClient.setSessionKey(session.getSessionKey());
         l2LoginClient.setState(L2LoginClient.LoginClientState.AUTHED);
-        l2.authserver.LoginMetrics.LOGINS_OK.increment();
+        LoginMetrics.LOGINS_OK.increment();
         l2LoginClient.sendPacket(new LoginOk(l2LoginClient.getSessionKey()));
     }
 
@@ -165,3 +168,4 @@ extends L2LoginClientPacket {
         }
     }
 }
+

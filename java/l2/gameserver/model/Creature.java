@@ -105,8 +105,8 @@ import org.slf4j.LoggerFactory;
 public abstract class Creature extends GameObject {
    @FunctionalInterface
    public interface BulkBuffScope extends AutoCloseable {
-       @Override
-       void close();
+      @Override
+      void close();
    }
 
    private final AtomicInteger _bulkBuffDepth = new AtomicInteger(0);
@@ -510,7 +510,7 @@ public abstract class Creature extends GameObject {
                   for (int var7 = 0; var7 < var6.length; var7++) {
                      if (!this.consumeItem(var1.getItemConsumeId()[var7], var6[var7])) {
                         this.sendPacket(
-                           var1.isHandler() ? SystemMsg.INCORRECT_ITEM_COUNT : new SystemMessage(113).addSkillName(var1.getDisplayId(), var1.getDisplayLevel())
+                                var1.isHandler() ? SystemMsg.INCORRECT_ITEM_COUNT : new SystemMessage(113).addSkillName(var1.getDisplayId(), var1.getDisplayLevel())
                         );
                         return;
                      }
@@ -814,17 +814,17 @@ public abstract class Creature extends GameObject {
                   for (Effect var16 : var5.getEffectList().getAllEffects()) {
                      Skill var17 = var16.getSkill();
                      if (var17.getId() == var1.getNegateSkill()
-                        && var16.isCancelable()
-                        && (var1.getNegatePower() <= 0 || var17.getPower() <= var1.getNegatePower())) {
+                             && var16.isCancelable()
+                             && (var1.getNegatePower() <= 0 || var17.getPower() <= var1.getNegatePower())) {
                         var16.exit();
                      }
                   }
                }
 
                if (var1.getCancelTarget() > 0
-                  && Rnd.chance(var1.getCancelTarget())
-                  && (var5.getCastingSkill() == null || var5.getCastingSkill().getSkillType() != Skill.SkillType.TAKECASTLE)
-                  && !var5.isRaid()) {
+                       && Rnd.chance(var1.getCancelTarget())
+                       && (var5.getCastingSkill() == null || var5.getCastingSkill().getSkillType() != Skill.SkillType.TAKECASTLE)
+                       && !var5.isRaid()) {
                   var5.abortAttack(true, true);
                   var5.abortCast(true, true);
                   var5.setTarget(null);
@@ -949,12 +949,12 @@ public abstract class Creature extends GameObject {
 
    public void doAttack(Creature var1) {
       if (var1 != null
-         && !this.isAMuted()
-         && !this.isAttackingNow()
-         && !this.isAlikeDead()
-         && !var1.isAlikeDead()
-         && this.isInRange(var1, 2048L)
-         && (!this.isPlayer() || !this.getPlayer().isInMountTransform())) {
+              && !this.isAMuted()
+              && !this.isAttackingNow()
+              && !this.isAlikeDead()
+              && !var1.isAlikeDead()
+              && this.isInRange(var1, 2048L)
+              && (!this.isPlayer() || !this.getPlayer().isInMountTransform())) {
          this.getListeners().onAttack(var1);
          if (this.isPlayer()) {
             Player var2 = this.getPlayer();
@@ -966,8 +966,8 @@ public abstract class Creature extends GameObject {
          int var3 = 0;
          int var4 = var8;
          if (this.isNpc()) {
-             if (NpcMovementDebugTracer.isTracking((NpcInstance) this)) NpcMovementDebugTracer.getInstance().traceCombat((NpcInstance) this, "DO_ATTACK_START", var1,
-                 "animDelay=" + var8 + "ms, pAtkSpd=" + this.getPAtkSpd() + ", dist=" + String.format("%.1f", this.getDistance(var1)));
+            if (NpcMovementDebugTracer.isTracking((NpcInstance) this)) NpcMovementDebugTracer.getInstance().traceCombat((NpcInstance) this, "DO_ATTACK_START", var1,
+                    "animDelay=" + var8 + "ms, pAtkSpd=" + this.getPAtkSpd() + ", dist=" + String.format("%.1f", this.getDistance(var1)));
          }
          this._attackEndTime = var8 + System.currentTimeMillis() - Config.ATTACK_END_DELAY;
          this._isAttackAborted = false;
@@ -1276,10 +1276,10 @@ public abstract class Creature extends GameObject {
          int var5 = -((int)(Math.sin(var3) * var2.getFlyRadius()));
          int var6 = (int)(Math.cos(var3) * var2.getFlyRadius());
          return this.isFlying()
-            ? GeoEngine.moveCheckInAir(
-               this.getX(), this.getY(), this.getZ(), this.getX() + var5, this.getY() + var6, this.getZ(), this.getColRadius(), this.getGeoIndex()
-            )
-            : GeoEngine.moveCheck(this.getX(), this.getY(), this.getZ(), this.getX() + var5, this.getY() + var6, this.getGeoIndex());
+                 ? GeoEngine.moveCheckInAir(
+                 this.getX(), this.getY(), this.getZ(), this.getX() + var5, this.getY() + var6, this.getZ(), this.getColRadius(), this.getGeoIndex()
+         )
+                 : GeoEngine.moveCheck(this.getX(), this.getY(), this.getZ(), this.getX() + var5, this.getY() + var6, this.getGeoIndex());
       }
    }
 
@@ -1552,8 +1552,8 @@ public abstract class Creature extends GameObject {
    public int getPhysicalAttackRange() {
       WeaponTemplate var1 = this.getActiveWeaponItem();
       return var1 == null
-         ? (int)this.calcStat(Stats.POWER_ATTACK_RANGE, this.getTemplate().baseAtkRange, null, null)
-         : (int)this.calcStat(Stats.POWER_ATTACK_RANGE, var1.getAttackRange(), null, null);
+              ? (int)this.calcStat(Stats.POWER_ATTACK_RANGE, this.getTemplate().baseAtkRange, null, null)
+              : (int)this.calcStat(Stats.POWER_ATTACK_RANGE, var1.getAttackRange(), null, null);
    }
 
    @Deprecated
@@ -1572,8 +1572,8 @@ public abstract class Creature extends GameObject {
 
    public final int getShldDef() {
       return this.isPlayer()
-         ? (int)this.calcStat(Stats.SHIELD_DEFENCE, 0.0, null, null)
-         : (int)this.calcStat(Stats.SHIELD_DEFENCE, this._template.baseShldDef, null, null);
+              ? (int)this.calcStat(Stats.SHIELD_DEFENCE, 0.0, null, null)
+              : (int)this.calcStat(Stats.SHIELD_DEFENCE, this._template.baseShldDef, null, null);
    }
 
    public final int getSkillDisplayLevel(Integer var1) {
@@ -1727,14 +1727,14 @@ public abstract class Creature extends GameObject {
 
    public Location getDestination() {
       return this.moveAction != null && this.moveAction instanceof Creature.MoveToLocationAction
-         ? ((Creature.MoveToLocationAction)this.moveAction).moveTo().clone()
-         : null;
+              ? ((Creature.MoveToLocationAction)this.moveAction).moveTo().clone()
+              : null;
    }
 
    public Location getFinalDestination() {
       return this.moveAction != null && this.moveAction instanceof Creature.MoveToLocationAction
-         ? ((Creature.MoveToLocationAction)this.moveAction).getFinalDest().clone()
-         : null;
+              ? ((Creature.MoveToLocationAction)this.moveAction).getFinalDest().clone()
+              : null;
    }
 
    public boolean isMoving() {
@@ -1882,7 +1882,7 @@ public abstract class Creature extends GameObject {
       // ataca de longe). Para o dono do personagem vai um CharMoveToLocation ao mesmo destino, que o cliente
       // sempre segue; os outros jogadores continuam recebendo o MoveToPawn.
       if (var1 instanceof MoveToPawn && var2 != null && this.isPlayer()
-         && ((Player)this).getFarmSystem() != null && ((Player)this).getFarmSystem().isAutofarming()) {
+              && ((Player)this).getFarmSystem() != null && ((Player)this).getFarmSystem().isAutofarming()) {
          Location var3 = var2.moveTo();
          if (var3 != null) {
             this.sendPacket(new CharMoveToLocation(this, this.getLoc(), var3.clone()));
@@ -1909,7 +1909,7 @@ public abstract class Creature extends GameObject {
       if (this.isMoving()) {
          if (this.isNpc() && NpcMovementDebugTracer.isTracking((NpcInstance) this)) {
             NpcMovementDebugTracer.getInstance().traceEvent((NpcInstance) this, "STOP_MOVE",
-                "sendStop=" + var1 + ", validate=" + var2 + ", interrupt=" + var3 + ", pos=(" + this.getX() + "," + this.getY() + "," + this.getZ() + ")");
+                    "sendStop=" + var1 + ", validate=" + var2 + ", interrupt=" + var3 + ", pos=(" + this.getX() + "," + this.getY() + "," + this.getZ() + ")");
          }
          this.Ea.lock();
 
@@ -2002,7 +2002,7 @@ public abstract class Creature extends GameObject {
    public Location getRestartPoint() {
       for (Zone var2 : this.getZones()) {
          if (var2.getRestartPoints() != null
-            && var2.isAnyType(Zone.ZoneType.battle_zone, Zone.ZoneType.peace_zone, Zone.ZoneType.offshore, Zone.ZoneType.dummy)) {
+                 && var2.isAnyType(Zone.ZoneType.battle_zone, Zone.ZoneType.peace_zone, Zone.ZoneType.offshore, Zone.ZoneType.dummy)) {
             return var2.getSpawn();
          }
       }
@@ -2013,7 +2013,7 @@ public abstract class Creature extends GameObject {
    public Location getPKRestartPoint() {
       for (Zone var2 : this.getZones()) {
          if (var2.getRestartPoints() != null
-            && var2.isAnyType(Zone.ZoneType.battle_zone, Zone.ZoneType.peace_zone, Zone.ZoneType.offshore, Zone.ZoneType.dummy)) {
+                 && var2.isAnyType(Zone.ZoneType.battle_zone, Zone.ZoneType.peace_zone, Zone.ZoneType.offshore, Zone.ZoneType.dummy)) {
             return var2.getPKSpawn();
          }
       }
@@ -2078,11 +2078,11 @@ public abstract class Creature extends GameObject {
          } else {
             var1.getListeners().onAttackHit(this);
             if (!var4
-               && var1.isPlayer()
-               && (
-                  this.isCursedWeaponEquipped()
-                     || this.getActiveWeaponInstance() != null && this.getActiveWeaponInstance().isHeroWeapon() && var1.isCursedWeaponEquipped()
-               )) {
+                    && var1.isPlayer()
+                    && (
+                    this.isCursedWeaponEquipped()
+                            || this.getActiveWeaponInstance() != null && this.getActiveWeaponInstance().isHeroWeapon() && var1.isCursedWeaponEquipped()
+            )) {
                var1.setCurrentCp(0.0);
             }
 
@@ -2218,7 +2218,7 @@ public abstract class Creature extends GameObject {
    }
 
    public void reduceCurrentHp(
-      double var1, Creature var3, Skill var4, boolean var5, boolean var6, boolean var7, boolean var8, boolean var9, boolean var10, boolean var11
+           double var1, Creature var3, Skill var4, boolean var5, boolean var6, boolean var7, boolean var8, boolean var9, boolean var10, boolean var11
    ) {
       if (var3 != null && !this.isDead() && (!var3.isDead() || var10)) {
          if (!this.isDamageBlocked() || !var9) {
@@ -2679,7 +2679,7 @@ public abstract class Creature extends GameObject {
          }
 
          this.Dr = LazyPrecisionTaskManager.getInstance()
-            .scheduleAtFixedRate(this.Ds == null ? (this.Ds = new Creature.AttackStanceTask()) : this.Ds, 1000L, 1000L);
+                 .scheduleAtFixedRate(this.Ds == null ? (this.Ds = new Creature.AttackStanceTask()) : this.Ds, 1000L, 1000L);
       }
    }
 
@@ -2718,7 +2718,7 @@ public abstract class Creature extends GameObject {
                if (!this.Eh) {
                   this.Eh = true;
                   this.Ej = RegenTaskManager.getInstance()
-                     .scheduleAtFixedRate(this.Ek == null ? (this.Ek = new Creature.RegenTask()) : this.Ek, 0L, this.getRegenTick());
+                          .scheduleAtFixedRate(this.Ek == null ? (this.Ek = new Creature.RegenTask()) : this.Ek, 0L, this.getRegenTick());
                }
             } finally {
                this.Ei.unlock();
@@ -2995,26 +2995,26 @@ public abstract class Creature extends GameObject {
 
    public boolean isMovementDisabled() {
       return this.isBlocked()
-         || this.isRooted()
-         || this.isImmobilized()
-         || this.isAlikeDead()
-         || this.isStunned()
-         || this.isSleeping()
-         || this.isParalyzed()
-         || this.isAttackingNow()
-         || this.isCastingNow()
-         || this.isFrozen();
+              || this.isRooted()
+              || this.isImmobilized()
+              || this.isAlikeDead()
+              || this.isStunned()
+              || this.isSleeping()
+              || this.isParalyzed()
+              || this.isAttackingNow()
+              || this.isCastingNow()
+              || this.isFrozen();
    }
 
    public boolean isActionsDisabled() {
       return this.isBlocked()
-         || this.isAlikeDead()
-         || this.isStunned()
-         || this.isSleeping()
-         || this.isParalyzed()
-         || this.isAttackingNow()
-         || this.isCastingNow()
-         || this.isFrozen();
+              || this.isAlikeDead()
+              || this.isStunned()
+              || this.isSleeping()
+              || this.isParalyzed()
+              || this.isAttackingNow()
+              || this.isCastingNow()
+              || this.isFrozen();
    }
 
    public boolean isPotionsDisabled() {
@@ -3683,8 +3683,8 @@ public abstract class Creature extends GameObject {
 
       public int getNextTickInterval() {
          return !this.isForPlayable()
-            ? Math.min(Config.MOVE_TASK_QUANTUM_NPC, (int)(1000.0 * (this.getMoveLen() - this.getPassDist()) / Math.max(this.getPrevSpeed(), 1)))
-            : Math.min(Config.MOVE_TASK_QUANTUM_PC, (int)(1000.0 * (this.getMoveLen() - this.getPassDist()) / Math.max(this.getPrevSpeed(), 1)));
+                 ? Math.min(Config.MOVE_TASK_QUANTUM_NPC, (int)(1000.0 * (this.getMoveLen() - this.getPassDist()) / Math.max(this.getPrevSpeed(), 1)))
+                 : Math.min(Config.MOVE_TASK_QUANTUM_PC, (int)(1000.0 * (this.getMoveLen() - this.getPassDist()) / Math.max(this.getPrevSpeed(), 1)));
       }
 
       protected boolean onEnd() {
@@ -3852,19 +3852,19 @@ public abstract class Creature extends GameObject {
 
          LinkedList var4 = new LinkedList();
          if (!GeoMove.buildGeoPath(
-            var4,
-            var1.clone().world2geo(),
-            var2.clone().world2geo(),
-            var3.getGeoIndex(),
-            (int)var3.getColRadius(),
-            (int)var3.getColHeight(),
-            this.indent,
-            this.pathFind && !this.ignoreGeo,
-            this.isForPlayable(),
-            var3.isFlying(),
-            var3.isInWater(),
-            var3.getWaterZ(),
-            this.ignoreGeo
+                 var4,
+                 var1.clone().world2geo(),
+                 var2.clone().world2geo(),
+                 var3.getGeoIndex(),
+                 (int)var3.getColRadius(),
+                 (int)var3.getColHeight(),
+                 this.indent,
+                 this.pathFind && !this.ignoreGeo,
+                 this.isForPlayable(),
+                 var3.isFlying(),
+                 var3.isInWater(),
+                 var3.getWaterZ(),
+                 this.ignoreGeo
          )) {
             return false;
          }
@@ -3939,14 +3939,14 @@ public abstract class Creature extends GameObject {
          if (!(var8 < 16.0) && var4 != 0.0 && var6 != 0.0 && !this.currentGeoPathLine.isEmpty()) {
             int var11 = this.currentGeoPathLine.size() - 1;
             var2.set(this.moveFrom)
-               .indent(this.moveTo, (int)(var6 + 0.5), var3)
-               .setZ(this.currentGeoPathLine.get(Math.min(var11, (int)(var11 * var4 + 0.5))).getZ());
+                    .indent(this.moveTo, (int)(var6 + 0.5), var3)
+                    .setZ(this.currentGeoPathLine.get(Math.min(var11, (int)(var11 * var4 + 0.5))).getZ());
             if (var2.equalsGeo(var10) || this.ignoreGeo || !Config.ALLOW_GEODATA) {
                return true;
             } else {
                return var3
-                  ? true
-                  : GeoEngine.canMoveToCoord(var10.getX(), var10.getY(), var10.getZ(), var2.getX(), var2.getY(), var2.getZ(), var1.getGeoIndex());
+                       ? true
+                       : GeoEngine.canMoveToCoord(var10.getX(), var10.getY(), var10.getZ(), var2.getX(), var2.getY(), var2.getZ(), var1.getGeoIndex());
             }
          } else {
             var2.set(var10);
@@ -4380,26 +4380,26 @@ public abstract class Creature extends GameObject {
                      }
                   }
                } else if (Creature.this.isRaid()
-                  && Creature.this.getLevel() >= Config.RATE_MOD_MIN_LEVEL_LIMIT
-                  && Creature.this.getLevel() <= Config.RATE_MOD_MAX_LEVEL_LIMIT) {
+                       && Creature.this.getLevel() >= Config.RATE_MOD_MIN_LEVEL_LIMIT
+                       && Creature.this.getLevel() <= Config.RATE_MOD_MAX_LEVEL_LIMIT) {
                   var6 *= Config.RATE_RAID_REGEN;
                   var8 *= Config.RATE_RAID_REGEN;
                }
 
                Creature.this._currentHp = Creature.this._currentHp
-                  + Math.max(0.0, Math.min(var6, Creature.this.calcStat(Stats.HP_LIMIT, null, null) * var3 / 100.0 - Creature.this._currentHp));
+                       + Math.max(0.0, Math.min(var6, Creature.this.calcStat(Stats.HP_LIMIT, null, null) * var3 / 100.0 - Creature.this._currentHp));
                Creature.this._currentMp = Creature.this._currentMp
-                  + Math.max(0.0, Math.min(var8, Creature.this.calcStat(Stats.MP_LIMIT, null, null) * var4 / 100.0 - Creature.this._currentMp));
+                       + Math.max(0.0, Math.min(var8, Creature.this.calcStat(Stats.MP_LIMIT, null, null) * var4 / 100.0 - Creature.this._currentMp));
                Creature.this._currentHp = Math.min(var3, Creature.this._currentHp);
                Creature.this._currentMp = Math.min(var4, Creature.this._currentMp);
                if (Creature.this.isPlayer()) {
                   Creature.this._currentCp = Creature.this._currentCp
-                     + Math.max(
-                        0.0,
-                        Math.min(
-                           Formulas.calcCpRegen(Creature.this), Creature.this.calcStat(Stats.CP_LIMIT, null, null) * var5 / 100.0 - Creature.this._currentCp
-                        )
-                     );
+                          + Math.max(
+                          0.0,
+                          Math.min(
+                                  Formulas.calcCpRegen(Creature.this), Creature.this.calcStat(Stats.CP_LIMIT, null, null) * var5 / 100.0 - Creature.this._currentCp
+                          )
+                  );
                   Creature.this._currentCp = Math.min(var5, Creature.this._currentCp);
                }
 

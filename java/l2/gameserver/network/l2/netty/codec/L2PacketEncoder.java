@@ -3,6 +3,7 @@ package l2.gameserver.network.l2.netty.codec;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
+import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.network.l2.GameClient;
 import l2.gameserver.network.l2.netty.NettyGameConnection;
 
@@ -24,7 +25,8 @@ public final class L2PacketEncoder extends MessageToByteEncoder<ByteBuf> {
             return;
         }
         int totalLength = size + HEADER_SIZE;
-        l2.gameserver.metrics.ServerMetrics.packetOut(totalLength);
+
+        ServerMetrics.packetOut(totalLength);
 
         byte[] data = new byte[size];
         msg.readBytes(data);
