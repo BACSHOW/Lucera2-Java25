@@ -97,6 +97,8 @@ public class Config {
    public static long NET_PING_INTERVAL_MS;
    /** Tarja na tela quando a conexao do jogador fica ruim e quando volta ao normal. */
    public static boolean CONNECTION_WARNING;
+   /** true = tarja da interface personalizada (TutorialViewerWnd/NET_TOAST); false = mensagem de tela do cliente. */
+   public static boolean CONNECTION_WARNING_INTERFACE;
    public static int CONNECTION_WARNING_PING_MS;
    public static long CONNECTION_WARNING_COOLDOWN_MS;
    public static String CONNECTION_WARNING_BAD_TEXT;
@@ -1457,6 +1459,7 @@ public class Config {
       NETTY_SLOW_CLIENT_SHED_BYTES = Math.max(8192, var0.getProperty("NettySlowClientShedBytes", 65536));
       NET_PING_INTERVAL_MS = Math.max(5, Math.min(60, var0.getProperty("NetPingInterval", 30))) * 1000L;
       CONNECTION_WARNING = var0.getProperty("ConnectionWarning", false);
+      CONNECTION_WARNING_INTERFACE = var0.getProperty("ConnectionWarningInterface", false);
       CONNECTION_WARNING_PING_MS = Math.max(100, var0.getProperty("ConnectionWarningPing", 400));
       CONNECTION_WARNING_COOLDOWN_MS = Math.max(10, var0.getProperty("ConnectionWarningCooldown", 60)) * 1000L;
       CONNECTION_WARNING_BAD_TEXT = var0.getProperty("ConnectionWarningBadText", "Sua conexao esta instavel. Alguns efeitos podem ser pulados.").trim();

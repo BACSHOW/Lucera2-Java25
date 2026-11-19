@@ -7,6 +7,7 @@ import l2.gameserver.model.Player;
 import l2.gameserver.network.l2.netty.NettyGameConnection;
 import l2.gameserver.network.l2.s2c.ExShowScreenMessage;
 import l2.gameserver.network.l2.s2c.ExShowScreenMessage.ScreenMessageAlign;
+import l2.gameserver.network.l2.s2c.TutorialShowHtml;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -137,10 +138,19 @@ public final class ConnectionQualityMonitor {
         }
     }
 
-    /** Mostra a tarja. Ponto unico para trocar pela tarja da interface personalizada. */
+    /**
+     * Mostra a tarja. Com ConnectionWarningInterface = True vai para a interface personalizada (TutorialViewerWnd
+     * repassa "NET_TOAST|STATE=BAD|TEXT=...|" para a OnScreenMessageWnd9, vermelha ou verde); senao usa a
+     * mensagem de tela do proprio cliente, que funciona em qualquer interface.
+     */
     private static void show(Player player, boolean bad) {
         String text = bad ? Config.CONNECTION_WARNING_BAD_TEXT : Config.CONNECTION_WARNING_GOOD_TEXT;
         if (text == null || text.isEmpty()) {
+            return;
+        }
+        if (Config.CONNECTION_WARNING_INTERFACE) {
+            player.sendPacket(new TutorialShowHtml("NET_TOAST|STATE=" + (bad ? "BAD" : "GOOD") + "|TIME=" + (bad ? WARN_SCREEN_MS : RECOVER_SCREEN_MS)
+                    + "|TEXT=" + text.replace('|', '/') + "|"));
             return;
         }
         player.sendPacket(new ExShowScreenMessage(text, bad ? WARN_SCREEN_MS : RECOVER_SCREEN_MS, 0, ScreenMessageAlign.TOP_CENTER, true,
