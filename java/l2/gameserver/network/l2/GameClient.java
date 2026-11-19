@@ -791,7 +791,9 @@ extends MMOClient<MMOConnection<GameClient>> {
         this.pingSentAt = l;
         this.pingAwaiting = true;
         this.sendPacket((L2GameServerPacket)new RequestNetPing(n));
-        this.ZW = null;
+        // a proxima medicao ja fica agendada: se o cliente nao responder esta (tela de carregamento, cliente
+        // minimizado, resposta perdida), as medicoes continuam. Resposta atrasada de uma anterior e ignorada.
+        this.ZW = ThreadPoolManager.getInstance().schedule(new PingTask(this), Config.NET_PING_INTERVAL_MS);
     }
 
     public int getPing() {
@@ -808,6 +810,11 @@ extends MMOClient<MMOConnection<GameClient>> {
             return (int) Math.min(Integer.MAX_VALUE, Math.max(this.ZT, waiting));
         }
         return this.pingAnsweredAt == 0L ? -1 : this.ZT;
+    }
+
+    /** Horario (ms) da ultima resposta de ping (0 = nenhuma ainda). */
+    public long getPingAnsweredAt() {
+        return this.pingAnsweredAt;
     }
 
     /** Ha quantos ms veio a ultima resposta de ping (-1 = nenhuma ainda). */

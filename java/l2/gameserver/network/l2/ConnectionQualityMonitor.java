@@ -12,12 +12,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Aviso de conexao ruim (ConnectionWarning): a cada 2 s olha o ping "ao vivo" e a fila de envio de cada jogador.
+ * Aviso de conexao ruim (ConnectionWarning): a cada 2 s olha as respostas de ping e a fila de envio de cada jogador.
  * Quando a conexao fica ruim, mostra uma tarja na tela; quando volta ao normal, mostra outra.
  *
  * <ul>
- * <li>ruim: ping >= ConnectionWarningPing, ou fila de envio acima de NettySlowClientShedBytes (ou cheia),
- * em 2 verificacoes seguidas (evita aviso por um pico isolado);</li>
+ * <li>ruim: 2 respostas de ping seguidas >= ConnectionWarningPing, ou fila de envio acima de
+ * NettySlowClientShedBytes (ou cheia) em 2 verificacoes seguidas. Ping que ainda nao voltou nao conta: cliente
+ * minimizado ou carregando para de responder sem a rede estar ruim;</li>
  * <li>normal de novo: ping abaixo de 75% do limite e fila em dia por 6 s seguidos;</li>
  * <li>no maximo um aviso de "ruim" a cada ConnectionWarningCooldown segundos por jogador.</li>
  * </ul>
@@ -29,6 +30,8 @@ public final class ConnectionQualityMonitor {
     private static final Logger LOG = LoggerFactory.getLogger(ConnectionQualityMonitor.class);
     private static final long CHECK_MS = 2000L;
     private static final int BAD_CHECKS_TO_WARN = 2;
+    /** Respostas de ping seguidas acima de ConnectionWarningPing para avisar. */
+    private static final int HIGH_PINGS_TO_WARN = 2;
     private static final long GOOD_MS_TO_RECOVER = 6000L;
     private static final int WARN_SCREEN_MS = 6000;
     private static final int RECOVER_SCREEN_MS = 4000;
@@ -39,6 +42,9 @@ public final class ConnectionQualityMonitor {
         int badChecks;
         long goodSince;
         long lastWarnAt;
+        /** Ultima resposta de ping ja contada e quantas respostas seguidas vieram com ping alto. */
+        long lastAnswerSeen;
+        int highPings;
     }
 
     public enum Quality {
@@ -109,10 +115,17 @@ public final class ConnectionQualityMonitor {
 
     private static void check(Player player, GameClient client, long now) {
         State st = client.getConnectionState();
-        int ping = client.getLivePing();
+        // Ping: conta so respostas que chegaram, e so avisa com 2 seguidas acima do limite. Uma resposta
+        // atrasada sozinha costuma ser o cliente parado (minimizado, tela de carregamento), nao a rede.
+        long answeredAt = client.getPingAnsweredAt();
+        if (answeredAt != 0L && answeredAt != st.lastAnswerSeen) {
+            st.lastAnswerSeen = answeredAt;
+            st.highPings = client.getPing() >= Config.CONNECTION_WARNING_PING_MS ? st.highPings + 1 : 0;
+        }
         boolean lagging = lagging(client);
-        boolean bad = lagging || ping >= Config.CONNECTION_WARNING_PING_MS;
-        boolean good = !lagging && ping >= 0 && ping < Config.CONNECTION_WARNING_PING_MS * 3 / 4;
+        boolean bad = lagging || st.highPings >= HIGH_PINGS_TO_WARN;
+        boolean good = !lagging && st.highPings == 0 && answeredAt != 0L
+                && client.getPing() < Config.CONNECTION_WARNING_PING_MS * 3 / 4;
 
         if (!st.warned) {
             st.badChecks = bad ? st.badChecks + 1 : 0;

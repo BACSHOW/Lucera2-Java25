@@ -3,6 +3,7 @@
  */
 package l2.gameserver.network.l2.c2s;
 
+import l2.gameserver.handler.ShiftClickHook;
 import l2.gameserver.model.GameObject;
 import l2.gameserver.model.Player;
 import l2.gameserver.network.l2.GameClient;
@@ -53,6 +54,10 @@ extends L2GameClientPacket {
             return;
         }
         if (l2.gameserver.utils.MovementTelemetryLogger.ENABLED) l2.gameserver.utils.MovementTelemetryLogger.logC2S(player, "Action", String.format("Target=%s [#%d] isShift=%b curTarget=%s dist=%.1f", gameObject.getName(), gameObject.getObjectId(), this.aat == 1, (player.getTarget() != null ? player.getTarget().getName() : "null"), player.getDistance(gameObject)));
+        // Shift + clique: um servico (Monster Data) pode tratar antes da janela original do jogo.
+        if (this.aat == 1 && ShiftClickHook.handle(player, gameObject)) {
+            return;
+        }
         gameObject.onAction(player, this.aat == 1);
     }
 }

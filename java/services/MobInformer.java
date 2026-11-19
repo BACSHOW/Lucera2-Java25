@@ -21,6 +21,7 @@ import java.util.Locale;
 import java.text.Normalizer;
 import java.util.Properties;
 import java.util.Collections;
+import l2.gameserver.handler.ShiftClickHook;
 import l2.gameserver.handler.voicecommands.IVoicedCommandHandler;
 import l2.gameserver.handler.voicecommands.VoicedCommandHandler;
 import java.util.concurrent.ConcurrentHashMap;
@@ -56,6 +57,7 @@ import org.slf4j.LoggerFactory;
  * event rewards or conditions for harvesting/manor. No entities are spawned here.
  */
 public class MobInformer extends Functions implements ScriptFile, IVoicedCommandHandler {
+	private static final ShiftClickHook.Handler SHIFT_HANDLER = MobInformer::handleShiftClick;
 	private static final Logger LOG = LoggerFactory.getLogger(MobInformer.class);
 	public static final String BYPASS = "scripts_services.MobInformer:show";
 	public static final String SEARCH_BYPASS = "scripts_services.MobInformer:search";
@@ -96,6 +98,7 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 		if (!started) 
 		{
 			CharListenerList.addGlobal(ENTER_LISTENER);
+			ShiftClickHook.set(SHIFT_HANDLER);
 			started = true;
 		}
 		// Build the shared catalog in the background so the first player does not wait for it.
@@ -127,7 +130,7 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 
 	@Override public void onShutdown() 
 	{
-		if (started) CharListenerList.removeGlobal(ENTER_LISTENER);
+		if (started) { CharListenerList.removeGlobal(ENTER_LISTENER); ShiftClickHook.clear(SHIFT_HANDLER); }
 		started = false;
 		LAST_REQUEST.clear();
 		LAST_CATALOG_REQUEST.clear(); ACTIVE_CATALOGS.clear(); catalog = null; spawnLocations = null; questTitles = null; QUEST_ROWS_CACHE.clear();
@@ -403,21 +406,24 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 		}
 	}
 
-	/** Called after the original Action checks, at the original object dispatch.
-	 * Normal clicks, other objects, noShift and disabled integration keep the original path.
+	/**
+	 * Shift + clique em NPC/monstro (via ShiftClickHook, registrado no onLoad): com InterfaceShowMobInformer e
+	 * MobInformerShiftClick ligados, abre so o Monster Data no lugar da janela original. false = nao tratou
+	 * (pet, objeto que nao e NPC, variavel noShift, config desligada) e o Action segue o caminho original.
 	 */
-	public static void dispatchAction(GameObject object, Player player, boolean shift) {
-		if (!enabled || !shiftClick || !shift || !(object instanceof NpcInstance)
+	private static boolean handleShiftClick(Player player, GameObject object) {
+		if (!enabled || !shiftClick || !(object instanceof NpcInstance)
 				|| object.isPet() || player.getVarB("noShift") || !((NpcInstance)object).isTargetable()) {
-			object.onAction(player,shift);return;
+			return false;
 		}
 		NpcInstance npc=(NpcInstance)object;
 		if(player.getTarget()!=npc)npc.onAction(player,false);
-		if(player.getTarget()!=npc){player.sendActionFailed();return;}
 		player.sendActionFailed();
-		if(!allowRead(player,"S"))return;
+		if(player.getTarget()!=npc)return true;
+		if(!allowRead(player,"S"))return true;
 		send(player,featurePacket());
 		send(player,"MOB_INFO|TYPE=OPEN|OBJECT="+npc.getObjectId()+"|");
+		return true;
 	}
 
 	private static boolean allowRead(Player player,String operation) 
