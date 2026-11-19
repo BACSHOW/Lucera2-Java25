@@ -68,7 +68,7 @@ public final class NettyNativeTransport {
             return kqueue;
         }
 
-        _log.info("[Netty] Transporte: NIO (padrao do Java; epoll/kqueue so existem no Linux/macOS)");
+        _log.info("[Netty] Native transport: NIO (portable fallback)");
         return new NettyNativeTransport(
             "nio",
             NioServerSocketChannel.class,
