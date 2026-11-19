@@ -117,7 +117,8 @@ public final class NettyGameServer {
                 b.childHandler(new NettyGameChannelInitializer(packetHandler, false, this.disruptorPipeline));
                 Channel ch = b.bind(host, port).sync().channel();
                 this.serverChannels.add(ch);
-                _log.info("[Netty] Bound game port " + host + ":" + port + " (" + this.transport.getName() + " / 120Hz Disruptor Ring " + Config.DISRUPTOR_RING_BUFFER_SIZE + ")");
+                _log.info("[Netty] Bound game port " + host + ":" + port + " (" + this.transport.getName() + " / "
+                        + (this.disruptorPipeline != null ? "Disruptor ring " + Config.DISRUPTOR_RING_BUFFER_SIZE : "sem Disruptor") + ")");
             } catch (Exception e) {
                 _log.error("[Netty] Failed to bind game port " + host + ":" + port, e);
                 throw new RuntimeException("Could not bind Netty game port " + port, e);
