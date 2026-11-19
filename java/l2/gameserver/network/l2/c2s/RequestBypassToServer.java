@@ -3,7 +3,10 @@
  */
 package l2.gameserver.network.l2.c2s;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.StringTokenizer;
 import l2.gameserver.Config;
 import l2.gameserver.data.xml.holder.MultiSellHolder;
@@ -35,6 +38,24 @@ import org.slf4j.LoggerFactory;
 
 public class RequestBypassToServer
 extends L2GameClientPacket {
+    private static final Set<String> BLOCKED_SCRIPT_METHODS = Set.of("onLoad", "onReload", "onShutdown", "onStart");
+
+    /** false = metodo do ciclo de vida ou estatico: nao pode ser chamado pelo cliente. */
+    private static boolean isScriptMethodAllowed(String className, String methodName) {
+        if (BLOCKED_SCRIPT_METHODS.contains(methodName)) {
+            return false;
+        }
+        Class<?> clazz = Scripts.getInstance().getClasses().get(className);
+        if (clazz == null) {
+            return true; // o proprio Scripts avisa que a classe nao existe
+        }
+        for (Method m : clazz.getMethods()) {
+            if (m.getName().equals(methodName) && Modifier.isStatic(m.getModifiers())) {
+                return false;
+            }
+        }
+        return true;
+    }
     private static final Logger _log = LoggerFactory.getLogger(RequestBypassToServer.class);
     private BypassManager.DecodedBypass abr = null;
     private String _bypass;
@@ -76,6 +97,13 @@ extends L2GameClientPacket {
                 String[] stringArray3 = stringArray[0].split(":");
                 if (stringArray3.length != 2) {
                     _log.warn("Bad Script bypass!");
+                    return;
+                }
+                // Metodos que o cliente nunca pode chamar por bypass: o ciclo de vida do script (onLoad / onReload /
+                // onShutdown / onStart: re-registrariam listeners e tarefas ou desligariam o servico) e os estaticos
+                // (helpers internos, como TeleportZones.sendToAll, que reenviaria a lista a todos os jogadores).
+                if (!RequestBypassToServer.isScriptMethodAllowed(stringArray3[0], stringArray3[1])) {
+                    _log.warn("Blocked script bypass: " + this.abr.bypass + " / " + player);
                     return;
                 }
                 HashMap<String, Object> hashMap = null;

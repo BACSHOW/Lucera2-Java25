@@ -342,6 +342,12 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		Player activeChar = this.getSelf();
 		if (activeChar != null) {
 			String _html = html[0];
+			// So paginas comuns: nada de subir pasta (..), caminho absoluto ou paginas de GM (admin/).
+			String path = _html.replace('\\', '/').toLowerCase();
+			if (path.contains("..") || path.startsWith("/") || path.contains(":") || path.startsWith("admin/") || path.contains("/admin/")) {
+				_log.warn("Interface: " + activeChar.getName() + " tentou abrir o html " + _html + " pelo bypass.");
+				return;
+			}
 			NpcHtmlMessage msg = new NpcHtmlMessage(activeChar, null);
 			String char_name = activeChar.getName();
 			msg.setFile(_html);
