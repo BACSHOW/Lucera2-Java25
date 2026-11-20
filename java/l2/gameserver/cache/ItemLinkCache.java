@@ -46,8 +46,8 @@ public final class ItemLinkCache
 	public static final String LINK_REGEX = "\\[#:([0-9a-f]{24})(?::([^\\]]{0,100}))?\\]";
 	/** Qualquer coisa com cara de link, inclusive com o token estragado: vira só o nome, nunca código cru no chat. */
 	private static final Pattern ANY_LINK = Pattern.compile("\\[#:([^:\\]]{1,40})(?::([^\\]]{0,100}))?\\]");
-	/** Máximo de links por mensagem (o cliente também limita a 3). */
-	public static final int MAX_PER_MESSAGE = 3;
+	/** Máximo de links por mensagem: o mesmo do ChatWnd (ITEM_LINK_MAX) e da Interface.dll do cliente. */
+	public static final int MAX_PER_MESSAGE = 10;
 
 	private static final ItemLinkCache INSTANCE = new ItemLinkCache();
 	private static final SecureRandom RANDOM = randomGenerator();
