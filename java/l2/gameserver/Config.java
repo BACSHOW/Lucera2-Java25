@@ -1866,35 +1866,21 @@ public class Config {
          ITEMS_NO_RULES_MARKETPLACE.add(ItemsIDS);
       }
 
-      // ✅ NOVO: Carregar IDs das moedas permitidas
-      String currenciesConfig = var0.getProperty("MarketplaceCurrencies", "57,9511,6392");
-      String[] currencyIds = currenciesConfig.split(",");
-      MARKETPLACE_CURRENCIES = new int[currencyIds.length];
-      for (int i = 0; i < currencyIds.length; i++)
+      // Moedas aceitas no leilão (ids inválidos ficam de fora, com aviso)
+      List<Integer> currencies = new ArrayList<>();
+      for (String id : var0.getProperty("MarketplaceCurrencies", "57,9511,6392").split(","))
       {
          try
          {
-            MARKETPLACE_CURRENCIES[i] = Integer.parseInt(currencyIds[i].trim());
+            if (!id.trim().isEmpty())
+               currencies.add(Integer.parseInt(id.trim()));
          }
          catch (NumberFormatException e)
          {
-            _log.warn("Moeda inválida no marketplace: " + currencyIds[i]);
+            _log.warn("Moeda inválida no marketplace: " + id);
          }
       }
-
-      // ✅ DEBUG: Verificar nomes
-      _log.info("=== CONFIGURAÇÃO DE MOEDAS ===");
-      for (int i = 0; i < MARKETPLACE_CURRENCIES.length; i++) {
-         ItemTemplate item = ItemHolder.getInstance().getTemplate(MARKETPLACE_CURRENCIES[i]);
-         if (item != null) {
-            _log.info("Moeda " + i + ": ID=" + MARKETPLACE_CURRENCIES[i] + ", Nome='" + item.getName() + "'");
-         } else {
-            _log.warn("Moeda " + i + ": ID=" + MARKETPLACE_CURRENCIES[i] + " NÃO ENCONTRADO!");
-         }
-      }
-      _log.info("==============================");
-
-      // ✅ DEBUG: Verificar nomes
+      MARKETPLACE_CURRENCIES = currencies.stream().mapToInt(Integer::intValue).toArray();
       debugCurrencyConfig();
 
       // Carregar ticket (mantido para compatibilidade)
@@ -3482,6 +3468,8 @@ public class Config {
       loadAltSettings();
       loadBossSettings();
       loadServicesSettings();
+      // leilão (auction_house.properties): o load() não chamava, e o leilão rodava só com os valores padrão
+      loadAuctionHouseConfig();
       loadPvPSettings();
       loadAISettings();
       loadGeodataSettings();
@@ -3676,15 +3664,24 @@ public class Config {
       }
    }
 
-   // ===== DEBUG: Verificar moedas =====
+   /**
+    * Lista as moedas do leilão no log. No boot as configs carregam antes dos itens: aí só os ids (procurar o nome
+    * nessa hora gerava "NÃO ENCONTRADO" e pilha de erro para todas). No //reload_config sai com os nomes, e um id
+    * que não existe aparece como aviso.
+    */
    public static void debugCurrencyConfig() {
       _log.info("=== CONFIGURAÇÃO DE MOEDAS ===");
-      for (int i = 0; i < Config.MARKETPLACE_CURRENCIES.length; i++) {
-         ItemTemplate item = ItemHolder.getInstance().getTemplate(Config.MARKETPLACE_CURRENCIES[i]);
-         if (item != null) {
-            _log.info("Moeda " + i + ": ID=" + Config.MARKETPLACE_CURRENCIES[i] + ", Nome='" + item.getName() + "'");
+      boolean itemsLoaded = ItemHolder.getInstance().size() > 0;
+      for (int i = 0; i < MARKETPLACE_CURRENCIES.length; i++) {
+         int id = MARKETPLACE_CURRENCIES[i];
+         ItemTemplate item = itemsLoaded && id > 0 && id < ItemHolder.getInstance().getAllTemplates().length
+               ? ItemHolder.getInstance().getAllTemplates()[id] : null;
+         if (!itemsLoaded) {
+            _log.info("Moeda " + i + ": ID=" + id);
+         } else if (item != null) {
+            _log.info("Moeda " + i + ": ID=" + id + ", Nome='" + item.getName() + "'");
          } else {
-            _log.warn("Moeda " + i + ": ID=" + Config.MARKETPLACE_CURRENCIES[i] + " NÃO ENCONTRADO!");
+            _log.warn("Moeda " + i + ": ID=" + id + " NÃO ENCONTRADO!");
          }
       }
       _log.info("==============================");
