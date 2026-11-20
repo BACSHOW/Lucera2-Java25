@@ -40,10 +40,17 @@ public class RequestBypassToServer
 extends L2GameClientPacket {
     private static final Set<String> BLOCKED_SCRIPT_METHODS = Set.of("onLoad", "onReload", "onShutdown", "onStart");
 
-    /** false = metodo do ciclo de vida ou estatico: nao pode ser chamado pelo cliente. */
-    private static boolean isScriptMethodAllowed(String className, String methodName) {
+    /**
+     * false = metodo do ciclo de vida (sempre) ou estatico vindo de bypass digitado pelo cliente. Bypass codificado
+     * saiu de um HTML do proprio servidor (ex.: botao do painel de GM que chama Halloween:RunEvent) e pode chamar
+     * estatico.
+     */
+    private static boolean isScriptMethodAllowed(String className, String methodName, boolean fromServerHtml) {
         if (BLOCKED_SCRIPT_METHODS.contains(methodName)) {
             return false;
+        }
+        if (fromServerHtml) {
+            return true;
         }
         Class<?> clazz = Scripts.getInstance().getClasses().get(className);
         if (clazz == null) {
@@ -108,7 +115,9 @@ extends L2GameClientPacket {
                 // Metodos que o cliente nunca pode chamar por bypass: o ciclo de vida do script (onLoad / onReload /
                 // onShutdown / onStart: re-registrariam listeners e tarefas ou desligariam o servico) e os estaticos
                 // (helpers internos, como TeleportZones.sendToAll, que reenviaria a lista a todos os jogadores).
-                if (!RequestBypassToServer.isScriptMethodAllowed(stringArray3[0], stringArray3[1])) {
+                boolean fromServerHtml = this.abr.bypassType == BypassManager.BypassType.ENCODED
+                        || this.abr.bypassType == BypassManager.BypassType.ENCODED_BBS;
+                if (!RequestBypassToServer.isScriptMethodAllowed(stringArray3[0], stringArray3[1], fromServerHtml)) {
                     _log.warn("Blocked script bypass: " + this.abr.bypass + " / " + player);
                     return;
                 }
