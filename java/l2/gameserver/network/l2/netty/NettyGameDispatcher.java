@@ -108,6 +108,9 @@ public final class NettyGameDispatcher extends SimpleChannelInboundHandler<ByteB
                     _log.warn("[Netty] Packet readFrom failed: " + packet.getClass().getSimpleName() + " (opcode 0x" + Integer.toHexString(opcode) + ") from " + client);
                     client.onPacketReadFail();
                 }
+            } else if (opcode == 0x9d) {
+                // RequestSkillCoolTime: o nucleo ignora de proposito (o tempo de recarga ja vai no login e ao
+                // usar skills); o cliente manda ao abrir a janela de skills. Nao e erro, nao vai para o log.
             } else {
                 // null = opcode desconhecido OU barrado pelo packetfilter.xml (limite de frequencia). No bypass (0x21)
                 // mostra o texto, para saber qual janela/HTML esta mandando rapido demais.
