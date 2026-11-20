@@ -114,9 +114,14 @@ public final class NettyGameDispatcher extends SimpleChannelInboundHandler<ByteB
             } else {
                 // null = opcode desconhecido OU barrado pelo packetfilter.xml (limite de frequencia). No bypass (0x21)
                 // mostra o texto, para saber qual janela/HTML esta mandando rapido demais.
-                String extra = opcode == 0x21 ? " bypass=\"" + readBypass(payload) + "\"" : "";
-                _log.warn("[Netty] Pacote descartado (desconhecido ou limitado pelo packetfilter) opcode 0x" + Integer.toHexString(opcode)
-                        + " (len=" + payload.length + ")" + extra + " from " + client);
+                // No maximo 1 linha a cada 10 s por conexao; a seguinte diz quantos ficaram sem log.
+                int silenced = conn.dropLogPermit();
+                if (silenced >= 0) {
+                    String extra = opcode == 0x21 ? " bypass=\"" + readBypass(payload) + "\"" : "";
+                    _log.warn("[Netty] Pacote descartado (desconhecido ou limitado pelo packetfilter) opcode 0x" + Integer.toHexString(opcode)
+                            + " (len=" + payload.length + ")" + extra + (silenced > 0 ? " [+" + silenced + " descartados sem log desde a linha anterior]" : "")
+                            + " from " + client);
+                }
             }
         } catch (Exception e) {
             _log.error("Error reading packet from Netty client: " + client, e);

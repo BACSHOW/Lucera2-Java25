@@ -52,6 +52,10 @@ public final class NettyGameConnection {
     private String overrideIp = null;
     private final AtomicInteger batchDepth = new AtomicInteger();
     private final AtomicInteger batchPacketCount = new AtomicInteger();
+    /** Log de pacote descartado: no maximo 1 linha a cada DROP_LOG_INTERVAL_MS por conexao (o resto so conta). */
+    private static final long DROP_LOG_INTERVAL_MS = 10_000L;
+    private long dropLogAt;
+    private int dropsSilenced;
 
     public NettyGameConnection(Channel channel) {
         this(channel, runnable -> ThreadPoolManager.getInstance().execute(runnable));
@@ -149,6 +153,23 @@ public final class NettyGameConnection {
      * Fila de envio acima do limite de descarte (NettySlowClientShedBytes) ou conexao cheia: o cliente esta
      * atrasado e pacotes visuais de outros objetos podem ser pulados.
      */
+    /**
+     * Diz se o descarte atual pode ir para o log. Devolve -1 para calar ou, quando pode logar, quantos descartes
+     * ficaram sem log desde a ultima linha. Evita que um cliente segurando uma tecla (ou mandando flood) encha o
+     * console.
+     */
+    public synchronized int dropLogPermit() {
+        long now = System.currentTimeMillis();
+        if (now - this.dropLogAt < DROP_LOG_INTERVAL_MS) {
+            this.dropsSilenced++;
+            return -1;
+        }
+        this.dropLogAt = now;
+        int silenced = this.dropsSilenced;
+        this.dropsSilenced = 0;
+        return silenced;
+    }
+
     public boolean isLagging() {
         return !this.channel.isWritable() || this.pendingWriteBytes() > Config.NETTY_SLOW_CLIENT_SHED_BYTES;
     }
