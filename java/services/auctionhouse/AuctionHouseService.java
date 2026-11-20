@@ -20,6 +20,7 @@ import l2.gameserver.model.actor.listener.PlayerListenerList;
 import l2.gameserver.model.World;
 import l2.gameserver.model.items.ItemInstance;
 import l2.gameserver.network.l2.s2c.ExShowScreenMessage;
+import l2.gameserver.network.l2.s2c.TutorialShowHtml;
 import l2.gameserver.templates.item.ArmorTemplate;
 import l2.gameserver.templates.item.ItemTemplate;
 import l2.gameserver.templates.item.WeaponTemplate;
@@ -452,7 +453,7 @@ public final class AuctionHouseService
 			{
 				old.sendMessage(itemName + " foi comprado por compra imediata. Seu lance de "
 					+ fmt(prevBid) + " " + currency + " foi devolvido.");
-				old.sendMessage("AUC_OUTBID:" + a.getAuctionId() + "|" + a.getItemId() + "|" + a.getEnchant());
+				ui(old, "AUC_OUTBID", a.getAuctionId() + "|" + a.getItemId() + "|" + a.getEnchant());
 				sendMyBids(old);
 			}
 		}
@@ -642,17 +643,34 @@ public final class AuctionHouseService
 	}
 
 	// ================================================================
+	// Envio para a janela (AuctionHouseWnd)
+	// ================================================================
+
+	/** Canal do leilão no TutorialViewerWnd: "AUC|tipo|dados". */
+	public static final String CHANNEL = "AUC";
+
+	/**
+	 * Manda uma mensagem do leilão para a janela AuctionHouseWnd (pacote, não chat), igual ao correio, Random Craft
+	 * e Hunting Pass. O TutorialViewerWnd entrega tipo e dados para AuctionHouseWnd.ReceiveInterfaceData.
+	 */
+	public static void ui(Player p, String type, String data)
+	{
+		if (p != null && p.isOnline())
+			p.sendPacket(new TutorialShowHtml(CHANNEL + "|" + type + "|" + (data == null ? "" : data)));
+	}
+
+	// ================================================================
 	// Janela "Dar lance" aberta: detalhes e atualizações em tempo real
 	// ================================================================
 
 	/**
-	 * AUC_DETAIL:id|classId|enchant|qtd|lanceAtual|lanceMínimo|compraJá|moeda|lances|tempo|flags|itemType|bodyPart|segundos
+	 * Dados do AUC_DETAIL: id|classId|enchant|qtd|lanceAtual|lanceMínimo|compraJá|moeda|lances|tempo|flags|itemType|bodyPart|segundos
 	 *   |preçoUnidade|qtdAnunciada
 	 * flags: 1 = o leilão é seu, 2 = você tem o maior lance, 4 = só compra imediata (preço fixo),
 	 *        8 = aceita compra parcial
 	 * qtd = o que resta; qtdAnunciada = quantidade do começo (vendidas = a diferença)
 	 */
-	public static String detailMessage(Player player, AuctionHolder a)
+	public static String detailData(Player player, AuctionHolder a)
 	{
 		ItemTemplate t = ItemHolder.getInstance().getTemplate(a.getItemId());
 		int bodyPart = (t != null) ? t.getBodyPart() : 0;
@@ -667,7 +685,7 @@ public final class AuctionHouseService
 		if (a.isPartial())
 			flags |= 8;
 
-		return "AUC_DETAIL:" + a.getAuctionId()
+		return a.getAuctionId()
 			+ "|" + a.getItemId()
 			+ "|" + a.getEnchant()
 			+ "|" + a.getCount()
@@ -729,7 +747,7 @@ public final class AuctionHouseService
 				WATCHING.remove(e.getKey(), e.getValue());
 				continue;
 			}
-			p.sendMessage(detailMessage(p, a));
+			ui(p, "AUC_DETAIL", detailData(p, a));
 		}
 	}
 
@@ -752,7 +770,7 @@ public final class AuctionHouseService
 
 			Player p = World.getPlayer(e.getKey().intValue());
 			if (p != null && p.isOnline())
-				p.sendMessage("AUC_ENDED:" + id + "|" + reason);
+				ui(p, "AUC_ENDED", id + "|" + reason);
 		}
 	}
 
@@ -772,7 +790,7 @@ public final class AuctionHouseService
 		screen(p, "LANCE SUPERADO!\n\n" + itemName + "\nLance atual: " + fmt(newBid) + " " + currency);
 		// a janela do leilão, se aberta, atualiza sozinha; "My Bids (N)" na
 		// árvore muda na hora (sem esperar a lista recarregar)
-		p.sendMessage("AUC_OUTBID:" + a.getAuctionId() + "|" + a.getItemId() + "|" + a.getEnchant());
+		ui(p, "AUC_OUTBID", a.getAuctionId() + "|" + a.getItemId() + "|" + a.getEnchant());
 		sendMyBids(p);
 	}
 
@@ -833,7 +851,7 @@ public final class AuctionHouseService
 	public static void sendMyBids(Player player)
 	{
 		int[] c = countMyBids(player);
-		player.sendMessage("AUC_MYBIDS:" + c[0] + "|" + c[1]);
+		ui(player, "AUC_MYBIDS", c[0] + "|" + c[1]);
 	}
 
 	/**

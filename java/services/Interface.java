@@ -598,11 +598,11 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 		// totalPages: o cliente usa para Anterior/Próxima; itens = total da
 		// busca (0 → o cliente mostra "Nenhum item encontrado...")
-		player.sendMessage("AUC_PAGE:" + page + "|" + totalPages + "|" + list.size());
-		player.sendMessage("AUC_SLOTS_START:");
+		AuctionHouseService.ui(player, "AUC_PAGE", page + "|" + totalPages + "|" + list.size());
+		AuctionHouseService.ui(player, "AUC_SLOTS_START", "");
 
 		for (int i = from; i < to; i++)
-			player.sendMessage("AUC_ROW_" + (i - from) + ":" + buildRowData(list.get(i), player));
+			AuctionHouseService.ui(player, "AUC_ROW_" + (i - from), buildRowData(list.get(i), player));
 	}
 
 	// ── buildRowData ────────────────────────────────────────────────
@@ -676,7 +676,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 		long[] avg  = AuctionPriceStats.average(itemId, enchant, costId, count);
 		long[] last = AuctionPriceStats.lastSale(itemId, enchant, costId);
-		player.sendMessage("AUC_PRICE:" + itemId + "|" + enchant + "|" + costId + "|" + count
+		AuctionHouseService.ui(player, "AUC_PRICE", itemId + "|" + enchant + "|" + costId + "|" + count
 				+ "|" + avg[0] + "|" + avg[1] + "|" + last[0] + "|" + last[1] + "|" + last[2]);
 	}
 
@@ -728,7 +728,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		AuctionHouseService.unwatch(player);
 	}
 
-	// AUC_DETAIL:... (formato no AuctionHouseService.detailMessage)
+	// AUC_DETAIL:... (formato no AuctionHouseService.detailData)
 	// Retorna false se o leilão não está mais aberto (mandou AUC_DETAIL_FAIL).
 	private static boolean sendAuctionDetail(Player player, int auctionId)
 	{
@@ -736,11 +736,11 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 		if (a == null || !a.isActive() || a.getTimeRemaining() <= 0)
 		{
-			player.sendMessage("AUC_DETAIL_FAIL:" + auctionId + "|Este leilão já foi encerrado.");
+			AuctionHouseService.ui(player, "AUC_DETAIL_FAIL", auctionId + "|Este leilão já foi encerrado.");
 			return false;
 		}
 
-		player.sendMessage(AuctionHouseService.detailMessage(player, a));
+		AuctionHouseService.ui(player, "AUC_DETAIL", AuctionHouseService.detailData(player, a));
 		return true;
 	}
 
@@ -753,7 +753,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 		if (params == null || params.length < 2)
 		{
-			player.sendMessage("AUC_BID:FAIL|0|Dados incompletos.");
+			AuctionHouseService.ui(player, "AUC_BID", "FAIL|0|Dados incompletos.");
 			return;
 		}
 
@@ -768,7 +768,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		catch (Exception e)
 		{
 			_log.warn("AuctionHouse: erro no lance de " + player.getName() + " no leilão " + auctionId + ": " + e);
-			player.sendMessage("AUC_BID:FAIL|" + auctionId + "|Erro ao registrar o lance. Tente de novo.");
+			AuctionHouseService.ui(player, "AUC_BID", "FAIL|" + auctionId + "|Erro ao registrar o lance. Tente de novo.");
 			return;
 		}
 
@@ -776,14 +776,14 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		{
 			// o cliente fecha a janela de lance depois do OK
 			AuctionHouseService.unwatch(player);
-			player.sendMessage("AUC_BID:OK|" + auctionId + "|" + amount + "|" + r.extendedMinutes);
+			AuctionHouseService.ui(player, "AUC_BID", "OK|" + auctionId + "|" + amount + "|" + r.extendedMinutes);
 			resendAuctionList(player);   // linha verde e "My Bids (N)" já com o lance novo
 			return;
 		}
 
 		// Valores novos primeiro (o mínimo pode ter subido), depois o motivo
 		boolean open = sendAuctionDetail(player, auctionId);
-		player.sendMessage("AUC_BID:FAIL|" + auctionId + "|" + r.message);
+		AuctionHouseService.ui(player, "AUC_BID", "FAIL|" + auctionId + "|" + r.message);
 		if (!open)
 			resendAuctionList(player);   // o leilão acabou: sai da lista
 	}
@@ -798,7 +798,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 		if (params == null || params.length < 1)
 		{
-			player.sendMessage("AUC_BUY:FAIL|0|Dados incompletos.");
+			AuctionHouseService.ui(player, "AUC_BUY", "FAIL|0|Dados incompletos.");
 			return;
 		}
 
@@ -813,14 +813,14 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		catch (Exception e)
 		{
 			_log.warn("AuctionHouse: erro na compra de " + player.getName() + " no leilão " + auctionId + ": " + e);
-			player.sendMessage("AUC_BUY:FAIL|" + auctionId + "|Erro ao concluir a compra. Avise um GM.");
+			AuctionHouseService.ui(player, "AUC_BUY", "FAIL|" + auctionId + "|Erro ao concluir a compra. Avise um GM.");
 			return;
 		}
 
 		if (r.ok)
-			player.sendMessage("AUC_BUY:OK|" + auctionId);
+			AuctionHouseService.ui(player, "AUC_BUY", "OK|" + auctionId);
 		else
-			player.sendMessage("AUC_BUY:FAIL|" + auctionId + "|" + r.message);
+			AuctionHouseService.ui(player, "AUC_BUY", "FAIL|" + auctionId + "|" + r.message);
 		resendAuctionList(player);   // o item comprado (ou que acabou) sai da lista
 	}
 
@@ -836,7 +836,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 		if (params == null || params.length < 2)
 		{
-			player.sendMessage("AUC_BUY:FAIL|0|Dados incompletos.");
+			AuctionHouseService.ui(player, "AUC_BUY", "FAIL|0|Dados incompletos.");
 			return;
 		}
 
@@ -852,7 +852,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		catch (Exception e)
 		{
 			_log.warn("AuctionHouse: erro na compra parcial de " + player.getName() + " no anúncio " + auctionId + ": " + e);
-			player.sendMessage("AUC_BUY:FAIL|" + auctionId + "|Erro ao concluir a compra. Avise um GM.");
+			AuctionHouseService.ui(player, "AUC_BUY", "FAIL|" + auctionId + "|Erro ao concluir a compra. Avise um GM.");
 			return;
 		}
 
@@ -860,13 +860,13 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		{
 			// o cliente fecha a janela de quantidade depois do OK
 			AuctionHouseService.unwatch(player);
-			player.sendMessage("AUC_BUY:OK|" + auctionId + "|" + qty);
+			AuctionHouseService.ui(player, "AUC_BUY", "OK|" + auctionId + "|" + qty);
 		}
 		else
 		{
 			// valores novos primeiro (pode ter sobrado menos), depois o motivo
 			sendAuctionDetail(player, auctionId);
-			player.sendMessage("AUC_BUY:FAIL|" + auctionId + "|" + r.message);
+			AuctionHouseService.ui(player, "AUC_BUY", "FAIL|" + auctionId + "|" + r.message);
 		}
 		resendAuctionList(player);   // "restam" novo na linha (ou o anúncio esgotado sai)
 	}
@@ -1003,7 +1003,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 	private static void sendAuctionCreateData(Player player, int myPage)
 	{
 		// AUC_CFG:durações|moedas|taxaItem,taxaQtd|taxaVenda|incrementoMínimo%|compraParcial
-		StringBuilder cfg = new StringBuilder("AUC_CFG:");
+		StringBuilder cfg = new StringBuilder();
 
 		for (int i = 0; i < AUC_DURATIONS_HOURS.length; i++)
 		{
@@ -1031,12 +1031,12 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		.append('|')
 		.append(AuctionTableCommunity.getInstance().supportsPartial() ? 1 : 0);
 
-		player.sendMessage(cfg.toString());
+		AuctionHouseService.ui(player, "AUC_CFG", cfg.toString());
 
 		// Inventário elegível
 		List<ItemInstance> eligible = getAuctionableItems(player);
 
-		player.sendMessage("AUC_INV_START:");
+		AuctionHouseService.ui(player, "AUC_INV_START", "");
 
 		// O objectId: o cliente pega o item completo (ícone, enchant,
 		// quantidade, ItemType/SlotBitType, augment) do próprio inventário,
@@ -1045,9 +1045,9 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		// vendas (tooltip do inventário na aba de criação).
 		// AUC_INV_ITEM:objectId[|moeda,médiaUnidade,vendas,últimaVenda,qtdÚltima,segundos;...]
 		for (ItemInstance item : eligible)
-			player.sendMessage("AUC_INV_ITEM:" + item.getObjectId() + invPriceStats(item));
+			AuctionHouseService.ui(player, "AUC_INV_ITEM", item.getObjectId() + invPriceStats(item));
 
-		player.sendMessage("AUC_INV_END:" + eligible.size());
+		AuctionHouseService.ui(player, "AUC_INV_END", String.valueOf(eligible.size()));
 
 		// Itens que o personagem já tem à venda
 		sendMyAuctions(player, myPage);
@@ -1087,13 +1087,13 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		int from = (page - 1) * per;
 		int to   = Math.min(from + per, mine.size());
 
-		player.sendMessage("AUC_MY_START:" + mine.size() + "|" + maxItems
+		AuctionHouseService.ui(player, "AUC_MY_START", mine.size() + "|" + maxItems
 				+ "|" + page + "|" + totalPages);
 
 		for (int i = from; i < to; i++)
-			player.sendMessage("AUC_MY_ROW_" + (i - from) + ":" + buildRowData(mine.get(i), player));
+			AuctionHouseService.ui(player, "AUC_MY_ROW_" + (i - from), buildRowData(mine.get(i), player));
 
-		player.sendMessage("AUC_MY_END:" + (to - from));
+		AuctionHouseService.ui(player, "AUC_MY_END", String.valueOf(to - from));
 	}
 
 	// Leilões ATIVOS do personagem (é o que conta para o limite)
@@ -1182,7 +1182,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 					+ AuctionHouseService.fmt(auction.getOriginalCount()) + ". As " + AuctionHouseService.fmt(auction.getCount())
 					+ " restantes voltaram para você.");
 
-		player.sendMessage("AUC_CANCEL:OK");
+		AuctionHouseService.ui(player, "AUC_CANCEL", "OK");
 
 		// quem estava com este leilão aberto na janela "Dar lance"
 		AuctionHouseService.notifyEnded(auction, "O vendedor cancelou este leilão.", player.getObjectId());
@@ -1193,7 +1193,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 	private static void failCancel(Player player, String reason)
 	{
-		player.sendMessage("AUC_CANCEL:FAIL|" + reason);
+		AuctionHouseService.ui(player, "AUC_CANCEL", "FAIL|" + reason);
 	}
 
 	// Mesmo filtro do showCreateAuctionUnified antigo (+ não equipado)
@@ -1232,7 +1232,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 	private static void failCreate(Player player, String reason)
 	{
-		player.sendMessage("AUC_CREATE:FAIL|" + reason);
+		AuctionHouseService.ui(player, "AUC_CREATE", "FAIL|" + reason);
 	}
 
 	// ── createAuction ───────────────────────────────────────────────
@@ -1535,7 +1535,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		+ " moeda=" + costId + " dur=" + durationHours + "h");
 
 		// id do leilão novo: o cliente acha a linha dele na lista e dá o destaque
-		player.sendMessage("AUC_CREATE:OK|" + auction.getAuctionId());
+		AuctionHouseService.ui(player, "AUC_CREATE", "OK|" + auction.getAuctionId());
 
 		// ── 10. Anúncio (igual ao antigo) ────────────────────────────
 		try
