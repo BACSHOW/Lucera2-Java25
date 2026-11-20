@@ -109,12 +109,29 @@ public final class NettyGameDispatcher extends SimpleChannelInboundHandler<ByteB
                     client.onPacketReadFail();
                 }
             } else {
-                _log.warn("[Netty] Unknown packet opcode 0x" + Integer.toHexString(opcode) + " (len=" + payload.length + ") from " + client);
+                // null = opcode desconhecido OU barrado pelo packetfilter.xml (limite de frequencia). No bypass (0x21)
+                // mostra o texto, para saber qual janela/HTML esta mandando rapido demais.
+                String extra = opcode == 0x21 ? " bypass=\"" + readBypass(payload) + "\"" : "";
+                _log.warn("[Netty] Pacote descartado (desconhecido ou limitado pelo packetfilter) opcode 0x" + Integer.toHexString(opcode)
+                        + " (len=" + payload.length + ")" + extra + " from " + client);
             }
         } catch (Exception e) {
             _log.error("Error reading packet from Netty client: " + client, e);
             client.onPacketReadFail();
         }
+    }
+
+    /** Le a string UTF-16LE logo depois do opcode (no maximo 120 caracteres, para o log). */
+    private static String readBypass(byte[] payload) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i + 1 < payload.length && sb.length() < 120; i += 2) {
+            char c = (char) ((payload[i] & 0xFF) | (payload[i + 1] & 0xFF) << 8);
+            if (c == 0) {
+                break;
+            }
+            sb.append(c);
+        }
+        return sb.toString();
     }
 
     @Override
