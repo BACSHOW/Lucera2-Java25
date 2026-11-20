@@ -80,6 +80,9 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 	private static volatile boolean preview3D = true;
 	private static volatile boolean animation = true;
 	private static volatile boolean shiftClick = true;
+	/** Data de modificacao do monsterdata.properties ja lido (-1 = nunca leu; 0 = arquivo ausente). */
+	private static volatile long settingsStamp = -1L;
+	private static final String SETTINGS_FILE = "config/custom/monsterdata.properties";
 	static final int MAX_CATALOG_NPCS = 65535;
 	/** Global cap on simultaneous full-catalog streams; extra requests are retried by the client. */
 	static final int MAX_ACTIVE_CATALOG_STREAMS = 64;
@@ -87,7 +90,8 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 
 	@Override public void onLoad() 
 	{
-		loadSettings();
+		settingsStamp = -1L;
+		refreshSettings();
 		VoicedCommandHandler.getInstance().registerVoicedCommandHandler(this);
 		// Exact read operations only; no spawning, target changes or item actions.
 		synchronized (Config.class) 
@@ -115,6 +119,7 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 	}
 	@Override public String[] getVoicedCommandList() { return new String[] { "monsterdata", "mobdata" }; }
 	@Override public boolean useVoicedCommand(String command, Player player, String args) {
+		refreshSettings();
 		if (player == null || !enabled) return false;
 		player.sendPacket(new TutorialShowHtml(featurePacket()));
 		player.sendPacket(new TutorialShowHtml("MOB_INFO|TYPE=OPEN_BROWSER"));
@@ -136,19 +141,35 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 		LAST_CATALOG_REQUEST.clear(); ACTIVE_CATALOGS.clear(); catalog = null; spawnLocations = null; questTitles = null; QUEST_ROWS_CACHE.clear();
 	}
 
+	/**
+	 * Rele o monsterdata.properties se ele mudou desde a ultima leitura. Chamado no Shift + clique, no .mobdata e
+	 * nas consultas da janela: mudou o arquivo, vale na proxima acao, sem reiniciar nem recarregar nada.
+	 */
+	private static void refreshSettings() {
+		File file = new File(SETTINGS_FILE);
+		long stamp = file.isFile() ? file.lastModified() : 0L;
+		if (stamp != settingsStamp) {
+			settingsStamp = stamp;
+			loadSettings();
+			if (stamp > 0L) LOG.info("MobInformer: monsterdata.properties lido (Monster Data " + (enabled ? "ligado" : "desligado")
+					+ ", Shift + clique " + (shiftClick ? "ligado" : "desligado") + ").");
+		}
+	}
+
 	private static void loadSettings() {
 		// Configuracao do Monster Data: so config/custom/monsterdata.properties (sem o arquivo, tudo ligado).
 		Properties properties = new Properties();
-		File localSettings = new File("config/custom/monsterdata.properties");
+		File localSettings = new File(SETTINGS_FILE);
 		if (localSettings.isFile()) try (FileInputStream input = new FileInputStream(localSettings)) { properties.load(input); }
 		catch (IOException failure) { LOG.warn("MobInformer: failed to read Monster Data settings", failure); }
 		applySettings(properties);
 	}
 	static void applySettings(Properties properties) {
-		enabled = Boolean.parseBoolean(properties.getProperty("InterfaceShowMobInformer", "true"));
-		preview3D = Boolean.parseBoolean(properties.getProperty("MobInformer3DPreview", "true"));
-		animation = Boolean.parseBoolean(properties.getProperty("MobInformerAnimation", "true"));
-		shiftClick = Boolean.parseBoolean(properties.getProperty("MobInformerShiftClick", "true"));
+		// trim: espaco no fim da linha ("true ") fazia o valor virar false
+		enabled = Boolean.parseBoolean(properties.getProperty("InterfaceShowMobInformer", "true").trim());
+		preview3D = Boolean.parseBoolean(properties.getProperty("MobInformer3DPreview", "true").trim());
+		animation = Boolean.parseBoolean(properties.getProperty("MobInformerAnimation", "true").trim());
+		shiftClick = Boolean.parseBoolean(properties.getProperty("MobInformerShiftClick", "true").trim());
 	}
 	static String featurePacket() {
 		return "MOB_INFO|TYPE=FEATURES|VISIBLE=" + (enabled ? 1 : 0) + "|PREVIEW=" + (preview3D ? 1 : 0)
@@ -417,6 +438,7 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 	 * Action deve seguir tambem para a janela original (GM).
 	 */
 	private static boolean handleShiftClick(Player player, GameObject object) {
+		refreshSettings();
 		if (!enabled || !shiftClick || !(object instanceof NpcInstance)
 				|| object.isPet() || player.getVarB("noShift") || !((NpcInstance)object).isTargetable()) {
 			return false;
@@ -434,6 +456,7 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 
 	private static boolean allowRead(Player player,String operation) 
 	{
+		refreshSettings();
 		long now=System.currentTimeMillis();
 		String key=player.getObjectId()+operation;
 		Long previous=LAST_CATALOG_REQUEST.get(key);
