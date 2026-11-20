@@ -5,11 +5,13 @@ import l2.gameserver.Config;
 import l2.gameserver.ConfigReloadHooks;
 import l2.gameserver.cache.ItemLinkCache;
 import l2.gameserver.cache.ItemLinkCache.Snapshot;
+import l2.gameserver.data.xml.holder.ItemHolder;
 import l2.gameserver.model.Player;
 import l2.gameserver.model.items.ItemInstance;
 import l2.gameserver.network.l2.s2c.TutorialShowHtml;
 import l2.gameserver.scripts.Functions;
 import l2.gameserver.scripts.ScriptFile;
+import l2.gameserver.templates.item.ItemTemplate;
 import l2.gameserver.utils.ServiceLog;
 
 import org.slf4j.Logger;
@@ -180,10 +182,17 @@ public class ItemLink extends Functions implements ScriptFile
 		player.sendPacket(new TutorialShowHtml(CHANNEL + "|" + payload));
 	}
 
+	/**
+	 * ITYPE e SLOT: o tipo do item (0 arma, 1 armadura/escudo, 2 joia, ...) e a parte do corpo, os mesmos valores do
+	 * inventário. O cliente não tem esses dois no UIDATA_ITEM; sem eles o tooltip trata armadura como arma e não mostra
+	 * "Upper Body / Heavy", "Two Handed" nem P. Def.
+	 */
 	private static String payload(Snapshot s)
 	{
+		ItemTemplate t = ItemHolder.getInstance().getTemplate(s.itemId());
 		return "ITEM=" + s.itemId() + "|ENCHANT=" + s.enchant() + "|COUNT=" + s.count() + "|AUG1=" + s.augment1()
-			+ "|AUG2=" + s.augment2() + "|SHADOW=" + s.shadowSeconds() + "|";
+			+ "|AUG2=" + s.augment2() + "|SHADOW=" + s.shadowSeconds()
+			+ "|ITYPE=" + (t != null ? t.getType2ForPackets() : -1) + "|SLOT=" + (t != null ? t.getBodyPart() : 0) + "|";
 	}
 
 	private static int positive(String value)
