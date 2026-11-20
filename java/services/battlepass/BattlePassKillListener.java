@@ -8,7 +8,6 @@ import l2.gameserver.model.instances.MonsterInstance;
 
 /**
  * Pontos do Battle Pass por monstro morto.
- *
  * Global, com ignorePetOrSummon = true: o núcleo chama uma vez por morte, com
  * o jogador dono de quem matou (morte pelo pet / summon conta para o dono).
  * Em party (PartyShare), cada membro vivo perto do monstro (PartyRange) ganha
