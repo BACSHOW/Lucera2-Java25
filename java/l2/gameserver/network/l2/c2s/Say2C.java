@@ -39,6 +39,8 @@ public class Say2C extends L2GameClientPacket {
       "[\b]\tType=[0-9]+[\\s]+\tID=([0-9]+)[\\s]+\tColor=[0-9]+[\\s]+\tUnderline=[0-9]+[\\s]+\tTitle=\u001b(.[^\u001b]*)[^\b]"
    );
    private static final Pattern adc = Pattern.compile("[\b]\tType=[0-9]+(.[^\b]*)[\b]");
+   /** Link de item antigo (adc) ou do ItemLink ([#:token:nome]): o translit não mexe neles. */
+   private static final Pattern NO_TRANSLIT = Pattern.compile(adc.pattern() + "|" + ItemLinkCache.LINK_REGEX);
    private String add;
    private ChatType ade;
    private String abZ;
@@ -135,7 +137,7 @@ public class Say2C extends L2GameClientPacket {
 
                   String var31 = var1.getVar("translit");
                   if (var31 != null) {
-                     var25 = adc.matcher(this.add);
+                     var25 = NO_TRANSLIT.matcher(this.add);
                      StringBuilder var9 = new StringBuilder();
                      int var10 = 0;
 

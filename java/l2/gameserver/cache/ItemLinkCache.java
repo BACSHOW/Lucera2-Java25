@@ -13,7 +13,7 @@ import l2.gameserver.model.items.ItemInstance;
 import l2.gameserver.templates.item.ItemTemplate;
 
 /**
- * Item no chat (shift+clique): guarda uma "foto" imutável do item e devolve um token aleatório de 24 dígitos.
+ * Item no chat (shift+clique): guarda uma "foto" imutável do item e devolve um token aleatório de 24 caracteres.
  * O token vai na mensagem como [#:token:nome]; quem clica pede a foto pelo token (services.ItemLink).
  *
  * O token não é o objectId: não dá para ver itens de ninguém a partir dele. A foto não muda se o item for vendido,
@@ -35,7 +35,9 @@ public final class ItemLinkCache
 	}
 
 	/** [#:token:nome] — o mesmo formato que o ChatWnd monta. */
-	private static final Pattern LINK = Pattern.compile("\\[#:([0-9a-f]{24}):([^\\]]{0,100})\\]");
+	public static final String LINK_REGEX = "\\[#:([0-9a-f]{24}):([^\\]]{0,100})\\]";
+	/** Qualquer coisa com cara de link, inclusive com o token estragado: vira só o nome, nunca código cru no chat. */
+	private static final Pattern ANY_LINK = Pattern.compile("\\[#:([^:\\]]{1,40}):([^\\]]{0,100})\\]");
 	/** Máximo de links por mensagem (o cliente também limita a 3). */
 	public static final int MAX_PER_MESSAGE = 3;
 
@@ -151,26 +153,16 @@ public final class ItemLinkCache
 		while (entries.size() >= capacity)
 			removeOldest(entries);
 
-		// só dígitos: passa intacto pelo translit do chat. 24 dígitos ≈ 80 bits de acaso.
-		char[] digits = new char[24];
-		byte[] entropy = new byte[32];
+		// Dígito e letra (a-f) alternados: "3b9e2a...". Nunca há dois dígitos ou duas letras seguidos, então o filtro
+		// de palavras do cliente (que troca números/palavras proibidas por "-_-") não acha nada para trocar no token.
+		// 12 dígitos x 12 letras de 6 ≈ 72 bits de acaso. O Say2C pula o link no translit.
+		char[] chars = new char[24];
 		String token;
 		do
 		{
-			int at = 0;
-			while (at < digits.length)
-			{
-				RANDOM.nextBytes(entropy);
-				for (byte b : entropy)
-				{
-					int value = b & 255;
-					if (value < 250)
-						digits[at++] = (char) ('0' + value % 10);
-					if (at == digits.length)
-						break;
-				}
-			}
-			token = new String(digits);
+			for (int at = 0; at < chars.length; at++)
+				chars[at] = at % 2 == 0 ? (char) ('0' + RANDOM.nextInt(10)) : (char) ('a' + RANDOM.nextInt(6));
+			token = new String(chars);
 		}
 		while (entries.containsKey(token));
 
@@ -203,12 +195,12 @@ public final class ItemLinkCache
 			return text;
 
 		long now = System.currentTimeMillis();
-		Matcher m = LINK.matcher(text);
+		Matcher m = ANY_LINK.matcher(text);
 		StringBuilder out = new StringBuilder(text.length() + 16);
 		int links = 0;
 		while (m.find())
 		{
-			Snapshot s = links < MAX_PER_MESSAGE ? get(m.group(1), now) : null;
+			Snapshot s = links < MAX_PER_MESSAGE && validToken(m.group(1)) ? get(m.group(1), now) : null;
 			String replacement;
 			if (s != null)
 			{
@@ -223,7 +215,7 @@ public final class ItemLinkCache
 		return out.toString();
 	}
 
-	/** "+12 Augmented Draconic Bow" — o mesmo texto que o ChatWnd monta (ItemLinkWnd.Caption). */
+	/** "+12 Augmented Saint Spear Haste" — o mesmo texto que o ChatWnd monta (ItemLinkWnd.Caption). */
 	public static String caption(Snapshot s)
 	{
 		ItemTemplate t = ItemHolder.getInstance().getTemplate(s.itemId());
@@ -232,6 +224,9 @@ public final class ItemLinkCache
 			name = "Augmented " + name;
 		if (s.enchant() > 0)
 			name = "+" + s.enchant() + " " + name;
+		String add = t != null ? t.getAdditionalName() : null;
+		if (add != null && !add.trim().isEmpty())
+			name = name + " " + add.trim();
 		return clean(name);
 	}
 
