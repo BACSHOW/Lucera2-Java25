@@ -1423,17 +1423,13 @@ public class Config {
 
    /** Variáveis Community */
    public static int[] MARKETPLACE_FEE = new int[2];
-   public static int COR_LOJA_AUCTION_ANUNCIE;
-   public static boolean ENABLE_AUCTION_COMMUNITY;
    public static int TICKET_MARKE_PLACE; // Mantido para compatibilidade
    public static int[] MARKETPLACE_CURRENCIES = {57, 9511, 6392}; // NOVO: Array de moedas
    public static boolean ENABLE_GRADE_ITEMS_MARKETPLACE;
    public static List<ItemTemplate.Grade> GRADE_ITEMS_MARKETPLACE = new ArrayList<>();
-   public static List<Integer> ITEMS_NO_RULES_MARKETPLACE;
-   public static String ITEMS_NO_RULES_MARKETPLACE_ID;
+   public static List<Integer> ITEMS_NO_RULES_MARKETPLACE = new ArrayList<>();
    public static boolean ENABLE_TIME_ZONE_SYSTEM;
    public static double AUCTION_TAX_RATE;
-   public static int AUCTION_TAX_MINIMUM_ITEM_COUNT;
    public static int AUCTION_MAX_PER_PLAYER;   // leilões ativos por personagem (0 = sem limite)
    public static int AUCTION_MY_PER_PAGE;      // linhas por página em "Meus itens a venda"
    public static int AUCTION_MIN_BID_PERCENT;       // NOVO: lance mínimo = atual + X% (0 = só +1)
@@ -1851,20 +1847,40 @@ public class Config {
    public static void loadAuctionHouseConfig() {
       ExProperties var0 = load("config/custom/auction_house.properties");
       // ===== CARREGAR CONFIGURAÇÕES DO MARKETPLACE =====
-      ENABLE_GRADE_ITEMS_MARKETPLACE = Boolean.parseBoolean(var0.getProperty("EnableGradeItemsMarket", "False"));
+      ENABLE_GRADE_ITEMS_MARKETPLACE = Boolean.parseBoolean(var0.getProperty("EnableGradeItemsMarket", "False").trim());
 
-      // Carregar grades permitidas
-      for (String list : var0.getProperty("GradeItemsMarketPlace", "A;S").split(";"))
-         GRADE_ITEMS_MARKETPLACE.add(ItemTemplate.Grade.valueOf(list));
-
-      // Carregar itens sem regras
-      ITEMS_NO_RULES_MARKETPLACE_ID = var0.getProperty("ItemNoBlockMarketPlace", "0,0");
-      ITEMS_NO_RULES_MARKETPLACE = new ArrayList<>();
-      for (String val : ITEMS_NO_RULES_MARKETPLACE_ID.split(","))
+      // Grades permitidas (lista nova a cada carga: no //reload_config não acumula)
+      List<ItemTemplate.Grade> grades = new ArrayList<>();
+      for (String g : var0.getProperty("GradeItemsMarketPlace", "A;S").split(";"))
       {
-         int ItemsIDS = Integer.parseInt(val);
-         ITEMS_NO_RULES_MARKETPLACE.add(ItemsIDS);
+         try
+         {
+            if (!g.trim().isEmpty())
+               grades.add(ItemTemplate.Grade.valueOf(g.trim().toUpperCase()));
+         }
+         catch (IllegalArgumentException e)
+         {
+            _log.warn("Grade inválida em GradeItemsMarketPlace: " + g);
+         }
       }
+      GRADE_ITEMS_MARKETPLACE = grades;
+
+      // Itens liberados da regra de grade
+      List<Integer> noRules = new ArrayList<>();
+      for (String val : var0.getProperty("ItemNoBlockMarketPlace", "0").split(","))
+      {
+         try
+         {
+            int id = Integer.parseInt(val.trim());
+            if (id > 0)
+               noRules.add(id);
+         }
+         catch (NumberFormatException e)
+         {
+            _log.warn("Id inválido em ItemNoBlockMarketPlace: " + val);
+         }
+      }
+      ITEMS_NO_RULES_MARKETPLACE = noRules;
 
       // Moedas aceitas no leilão (ids inválidos ficam de fora, com aviso)
       List<Integer> currencies = new ArrayList<>();
@@ -1883,48 +1899,32 @@ public class Config {
       MARKETPLACE_CURRENCIES = currencies.stream().mapToInt(Integer::intValue).toArray();
       debugCurrencyConfig();
 
-      // Carregar ticket (mantido para compatibilidade)
-      TICKET_MARKE_PLACE = Integer.parseInt(var0.getProperty("TicketMarkePlace", "6392"));
+      // Item que nunca pode ser anunciado
+      TICKET_MARKE_PLACE = Integer.parseInt(var0.getProperty("TicketMarkePlace", "6392").trim());
 
-      // Carregar outras configurações
-      ENABLE_AUCTION_COMMUNITY = var0.getProperty("EnableCommunityAuction", true);
-      COR_LOJA_AUCTION_ANUNCIE = Integer.parseInt(var0.getProperty("ColorChatAnnuncieAuction", "6392"));
-
-      // Carregar taxa do marketplace
-      String[] properSplit = var0.getProperty("CBBMarketPlaceFee", "0,0").split(",");
+      // Taxa para criar o anúncio: id do item, quantidade
+      String[] fee = var0.getProperty("CBBMarketPlaceFee", "0,0").split(",");
       try
       {
-         MARKETPLACE_FEE[0] = Integer.parseInt(properSplit[0]);
-         MARKETPLACE_FEE[1] = Integer.parseInt(properSplit[1]);
+         MARKETPLACE_FEE[0] = Integer.parseInt(fee[0].trim());
+         MARKETPLACE_FEE[1] = fee.length > 1 ? Integer.parseInt(fee[1].trim()) : 0;
       }
       catch (NumberFormatException nfe)
       {
-         if (properSplit.length > 0)
-         {
-            _log.warn("jmods: invalid config property -> MarketPlaceFee");
-         }
+         _log.warn("Valor inválido em CBBMarketPlaceFee, sem taxa de criação.");
+         MARKETPLACE_FEE[0] = 0;
+         MARKETPLACE_FEE[1] = 0;
       }
 
       // Carregar taxa de leilão
       try
       {
-         AUCTION_TAX_RATE = Double.parseDouble(var0.getProperty("AuctionTaxRate", "0.05"));
+         AUCTION_TAX_RATE = Double.parseDouble(var0.getProperty("AuctionTaxRate", "0.05").trim());
       }
       catch (NumberFormatException e)
       {
          _log.warn("Invalid value for AuctionTaxRate, using default 0.05");
          AUCTION_TAX_RATE = 0.05;
-      }
-
-      // Carregar taxa mínima
-      try
-      {
-         AUCTION_TAX_MINIMUM_ITEM_COUNT = Integer.parseInt(var0.getProperty("AuctionTaxMinimumItemCount", "5"));
-      }
-      catch (NumberFormatException e)
-      {
-         _log.warn("Invalid value for AuctionTaxMinimumItemCount, using default 5");
-         AUCTION_TAX_MINIMUM_ITEM_COUNT = 5;
       }
 
       // Limite de leilões ativos por personagem (0 = sem limite)
