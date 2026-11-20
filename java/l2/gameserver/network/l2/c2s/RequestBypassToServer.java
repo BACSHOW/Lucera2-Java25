@@ -49,8 +49,14 @@ extends L2GameClientPacket {
         if (clazz == null) {
             return true; // o proprio Scripts avisa que a classe nao existe
         }
+        // So conta o estatico que o bypass conseguiria chamar: sem parametros ou com (String[]). Estaticos herdados
+        // com outra assinatura (ex.: Functions.show(String, Player, ...)) nao sao chamaveis e nao bloqueiam.
         for (Method m : clazz.getMethods()) {
-            if (m.getName().equals(methodName) && Modifier.isStatic(m.getModifiers())) {
+            if (!m.getName().equals(methodName) || !Modifier.isStatic(m.getModifiers())) {
+                continue;
+            }
+            Class<?>[] params = m.getParameterTypes();
+            if (params.length == 0 || params.length == 1 && params[0] == String[].class) {
                 return false;
             }
         }
