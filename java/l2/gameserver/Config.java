@@ -1433,7 +1433,9 @@ public class Config {
    public static int AUCTION_MAX_PER_PLAYER;   // leilões ativos por personagem (0 = sem limite)
    public static int AUCTION_MY_PER_PAGE;      // linhas por página em "Meus itens a venda"
    public static int AUCTION_MIN_BID_PERCENT;       // NOVO: lance mínimo = atual + X% (0 = só +1)
-   /** Anuncia para o servidor todo cada lance e compra do leilao (AuctionAnnounce). */
+   /** Anuncia para o servidor todo cada leilao criado (AuctionAnnounceCreate). */
+   public static boolean AUCTION_ANNOUNCE_CREATE;
+   /** Anuncia para o servidor todo cada lance e compra do leilao (AuctionAnnounceBids). */
    public static boolean AUCTION_ANNOUNCE;
    public static int AUCTION_SNIPE_MINUTES;         // NOVO: anti-sniping: janela final em minutos (0 = desligado)
    public static int AUCTION_SNIPE_EXTEND_MINUTES;  // NOVO: anti-sniping: o leilão passa a terminar em agora + X min
@@ -1981,7 +1983,9 @@ public class Config {
          AUCTION_SNIPE_EXTEND_MINUTES = 5;
       }
 
-      AUCTION_ANNOUNCE = Boolean.parseBoolean(var0.getProperty("AuctionAnnounce", "True").trim());
+      AUCTION_ANNOUNCE_CREATE = Boolean.parseBoolean(var0.getProperty("AuctionAnnounceCreate", "True").trim());
+      // AuctionAnnounce = nome antigo (antes de separar criacao de lance/compra)
+      AUCTION_ANNOUNCE = Boolean.parseBoolean(var0.getProperty("AuctionAnnounceBids", var0.getProperty("AuctionAnnounce", "True")).trim());
    }
 
    public static void loadCustomConfig() {

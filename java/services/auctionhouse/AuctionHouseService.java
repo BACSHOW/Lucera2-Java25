@@ -917,7 +917,8 @@ public final class AuctionHouseService
 		log.add("Lance mínimo: +" + Math.max(0, Config.AUCTION_MIN_BID_PERCENT) + "% | anti-sniping: "
 			+ (Config.AUCTION_SNIPE_MINUTES > 0 && Config.AUCTION_SNIPE_EXTEND_MINUTES > 0
 				? "últimos " + Config.AUCTION_SNIPE_MINUTES + " min estendem " + Config.AUCTION_SNIPE_EXTEND_MINUTES + " min" : "desligado"));
-		log.add("Compra parcial: " + ServiceLog.onOff(table.supportsPartial()) + " | anúncio no chat: " + ServiceLog.onOff(Config.AUCTION_ANNOUNCE));
+		log.add("Compra parcial: " + ServiceLog.onOff(table.supportsPartial()) + " | anúncio no chat: criação " + ServiceLog.onOff(Config.AUCTION_ANNOUNCE_CREATE)
+			+ ", lance/compra " + ServiceLog.onOff(Config.AUCTION_ANNOUNCE));
 		log.add("Histórico de preços: " + AuctionPriceStats.summary());
 
 		for (String note : table.getBootNotes())

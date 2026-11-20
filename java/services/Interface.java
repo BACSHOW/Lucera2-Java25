@@ -1538,7 +1538,8 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		// id do leilão novo: o cliente acha a linha dele na lista e dá o destaque
 		AuctionHouseService.ui(player, "AUC_CREATE", "OK|" + auction.getAuctionId());
 
-		// ── 10. Anúncio (igual ao antigo) ────────────────────────────
+		// ── 10. Anúncio (AuctionAnnounceCreate) ──────────────────────
+		if (Config.AUCTION_ANNOUNCE_CREATE)
 		try
 		{
 			String currencyName = AuctionUtils.getCurrencyNameById(costId);
