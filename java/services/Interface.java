@@ -192,6 +192,10 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		}
 	}
 
+	/** Ultimo pedido de autoShot "garantir ON/OFF" por jogador: objectId -> {shotId, estado, horario}. */
+	private static final Map<Integer, long[]> AUTO_SHOT_LAST = new ConcurrentHashMap<>();
+	private static final long AUTO_SHOT_REPEAT_MS = 1000L;
+
 	public void autoShot(String[] shotId)
 	{
 		Player activeChar = this.getSelf();
@@ -229,16 +233,29 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 			return;
 		}
 
+		// O mesmo "garantir ON/OFF" repetido em menos de 1 s nao faz nada. A interface reenvia o pedido quando
+		// recebe o ExAutoSoulShot; respondendo de novo, os dois ficavam num ciclo (dezenas de bypass por segundo,
+		// barrados pelo packetfilter).
+		if (requestedState != -1) {
+			long now = System.currentTimeMillis();
+			long[] last = AUTO_SHOT_LAST.get(activeChar.getObjectId());
+			if (last != null && last[0] == _shotId && last[1] == requestedState && now - last[2] < AUTO_SHOT_REPEAT_MS) {
+				return;
+			}
+			AUTO_SHOT_LAST.put(activeChar.getObjectId(), new long[] { _shotId, requestedState, now });
+		}
+
 		boolean isActive = activeChar.getAutoSoulShot().contains(_shotId);
 		ItemInstance item = activeChar.getInventory().getItemByItemId(_shotId);
 
 		if (requestedState == 0) {
+			// ja desligado: a interface ja sabe, nao responde (evita o ciclo de pedido/resposta)
 			if (isActive) {
 				activeChar.removeAutoSoulShot(_shotId);
-			}
-			activeChar.sendPacket(new ExAutoSoulShot(_shotId, false));
-			if (isActive && item != null) {
-				activeChar.sendPacket(new SystemMessage(1434).addString(item.getName()));
+				activeChar.sendPacket(new ExAutoSoulShot(_shotId, false));
+				if (item != null) {
+					activeChar.sendPacket(new SystemMessage(1434).addString(item.getName()));
+				}
 			}
 			return;
 		}
@@ -260,9 +277,8 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 				activeChar.addAutoSoulShot(_shotId);
 				activeChar.sendPacket(new ExAutoSoulShot(_shotId, true));
 				activeChar.sendPacket(new SystemMessage(1433).addString(item.getName()));
-			} else {
-				activeChar.sendPacket(new ExAutoSoulShot(_shotId, true));
 			}
+			// ja ligado: nao reenvia o ExAutoSoulShot (a interface responderia com outro pedido)
 			// sempre tenta carregar: se a arma ja esta carregada o handler apenas retorna
 			IItemHandler handler = item.getTemplate().getHandler();
 			if (handler != null) {
