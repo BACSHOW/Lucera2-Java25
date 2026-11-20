@@ -1,6 +1,7 @@
 package services.auctionhouse;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import l2.gameserver.Announcements;
 import l2.gameserver.ThreadPoolManager;
@@ -10,7 +11,7 @@ import l2.gameserver.data.xml.holder.ItemHolder;
 public class AuctionScheduler
 {
     private static AuctionScheduler _instance;
-    private static Logger log = Logger.getLogger(AuctionScheduler.class.getName());
+    private static Logger log = LoggerFactory.getLogger(AuctionScheduler.class);
     
     public static AuctionScheduler getInstance()
     {
@@ -22,7 +23,6 @@ public class AuctionScheduler
     public AuctionScheduler()
     {
         startAnnouncementTask();
-        log.info("=== AuctionScheduler INICIALIZADO (APENAS ANÚNCIOS) ===");
     }
     
     private static void startAnnouncementTask()
@@ -32,8 +32,7 @@ public class AuctionScheduler
         {
             announceEndingAuctions();
         }, 300000, 300000);
-        
-        log.info("=== Anúncios de leilão iniciados ===");
+
     }
     
     private static void announceEndingAuctions()

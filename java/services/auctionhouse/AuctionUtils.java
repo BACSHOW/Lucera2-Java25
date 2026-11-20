@@ -1,6 +1,7 @@
 package services.auctionhouse;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import l2.gameserver.data.xml.holder.ItemHolder;
 import l2.gameserver.templates.item.ItemTemplate;
@@ -8,7 +9,7 @@ import l2.gameserver.templates.item.ItemTemplate.Grade;
 
 public class AuctionUtils
 {
-	private static final Logger log = Logger.getLogger(AuctionUtils.class.getName());
+	private static final Logger log = LoggerFactory.getLogger(AuctionUtils.class);
 	private static final int MAX_NAME_LENGTH = 25;
 
 	/**
@@ -141,7 +142,7 @@ public class AuctionUtils
 	{
 		if (itemId <= 0)
 		{
-			log.warning("Item ID inválido: " + itemId);
+			log.warn("Item ID inválido: " + itemId);
 			return "Item Desconhecido";
 		}
 
@@ -166,7 +167,7 @@ public class AuctionUtils
 		}
 		catch (Exception e)
 		{
-			log.warning("Erro ao formatar item: " + e.getMessage());
+			log.warn("Erro ao formatar item: " + e.getMessage());
 			return "Item Desconhecido";
 		}
 	}

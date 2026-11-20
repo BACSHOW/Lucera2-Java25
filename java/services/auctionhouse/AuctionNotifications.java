@@ -2,7 +2,8 @@ package services.auctionhouse;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import l2.gameserver.Config;
 import l2.gameserver.data.xml.holder.ItemHolder;
@@ -14,7 +15,7 @@ public class AuctionNotifications
 	private static final AuctionNotifications INSTANCE = new AuctionNotifications();
 
 	private static final ConcurrentHashMap<Integer, Integer> outbidNotifications = new ConcurrentHashMap<>();
-    private static final Logger log = Logger.getLogger(AuctionNotifications.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(AuctionNotifications.class);
 
     public static AuctionNotifications getInstance()
     {
@@ -27,26 +28,26 @@ public class AuctionNotifications
         // ✅ VERIFICAÇÃO DE NULL - CRÍTICO!
         if (player == null || !player.isOnline())
         {
-            log.warning("Player é NULL ou offline em notifyOutbid()");
+            log.warn("Player é NULL ou offline em notifyOutbid()");
             return;
         }
         
         if (auction == null)
         {
-            log.warning("AuctionHolder é NULL em notifyOutbid()");
+            log.warn("AuctionHolder é NULL em notifyOutbid()");
             return;
         }
         
         // ✅ VERIFICAR PROPRIEDADES DO AUCTION
         if (auction.getItemId() <= 0)
         {
-            log.warning("Item ID inválido em auction: " + auction.getAuctionId());
+            log.warn("Item ID inválido em auction: " + auction.getAuctionId());
             return;
         }
         
         if (auction.getCostId() <= 0)
         {
-            log.warning("Cost ID inválido em auction: " + auction.getAuctionId());
+            log.warn("Cost ID inválido em auction: " + auction.getAuctionId());
             return;
         }
         
@@ -79,7 +80,7 @@ public class AuctionNotifications
         }
         catch (Exception e)
         {
-            log.warning("Erro ao enviar ExShowScreenMessage: " + e.getMessage());
+            log.warn("Erro ao enviar ExShowScreenMessage: " + e.getMessage());
         }
         
         // ✅ SALVAR NOTIFICAÇÃO
@@ -93,7 +94,7 @@ public class AuctionNotifications
 
     	if (auction == null)
     	{
-    		log.warning("AuctionHolder NULL em notifyWonAuction()");
+    		log.warn("AuctionHolder NULL em notifyWonAuction()");
     		return;
     	}
 
@@ -129,7 +130,7 @@ public class AuctionNotifications
     	}
     	catch (Exception e)
     	{
-    		log.warning(
+    		log.warn(
     				"Erro ao enviar notificação de vitória: "
     						+ e.getMessage()
     				);
@@ -292,7 +293,7 @@ public class AuctionNotifications
     {
         if (itemId <= 0)
         {
-            log.warning("Item ID inválido: " + itemId);
+            log.warn("Item ID inválido: " + itemId);
             return "Item Desconhecido";
         }
         
@@ -314,7 +315,7 @@ public class AuctionNotifications
         }
         catch (Exception e)
         {
-            log.warning("Erro ao formatar item: " + e.getMessage());
+            log.warn("Erro ao formatar item: " + e.getMessage());
             return "Item Desconhecido";
         }
     }
@@ -348,7 +349,7 @@ public class AuctionNotifications
         }
         catch (Exception e)
         {
-            log.warning("Erro ao obter lance anterior: " + e.getMessage());
+            log.warn("Erro ao obter lance anterior: " + e.getMessage());
             return auction.getStartingPrice();
         }
     }

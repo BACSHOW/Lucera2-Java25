@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import l2.gameserver.ThreadPoolManager;
 import l2.gameserver.database.DatabaseFactory;
@@ -23,7 +24,7 @@ import l2.gameserver.network.l2.s2c.InventoryUpdate;
 
 public class AuctionTableCommunity
 {
-	private static Logger log = Logger.getLogger(AuctionTableCommunity.class.getName());
+	private static final Logger log = LoggerFactory.getLogger(AuctionTableCommunity.class);
 
 	private Map<Integer, AuctionHolder> auctions;
 	private Map<Integer, List<AuctionBid>> bids;
@@ -48,8 +49,6 @@ public class AuctionTableCommunity
 		load();
 		startAuctionExpirationTask();
 
-		log.info("=== AuctionTableCommunity INICIALIZADO ===");
-		log.info("Leilões carregados: " + auctions.size());
 	}
 
 	private void load()
@@ -180,7 +179,7 @@ public class AuctionTableCommunity
 		catch (Exception e)
 		{
 			partialColumns = false;
-			log.warning("AuctionTable: não consegui criar as colunas da venda parcial ("
+			log.warn("AuctionTable: não consegui criar as colunas da venda parcial ("
 				+ e.getMessage() + "). Rode o auction_house_venda_parcial.sql; até lá a compra parcial fica desligada.");
 		}
 
@@ -208,7 +207,7 @@ public class AuctionTableCommunity
 			for (Map.Entry<String, List<String>> e : idx.entrySet())
 			{
 				if (e.getValue().contains("auction_id"))
-					log.warning("AuctionTable: auction_house_history tem chave única com auction_id (" + e.getKey() + ": "
+					log.warn("AuctionTable: auction_house_history tem chave única com auction_id (" + e.getKey() + ": "
 						+ e.getValue() + "). A venda parcial grava uma linha por compra: troque por uma chave própria "
 						+ "(veja o auction_house_venda_parcial.sql).");
 			}
@@ -264,11 +263,10 @@ public class AuctionTableCommunity
 			stm.execute();
 			stm.close();
 
-			log.info("Leilão salvo no banco: ID=" + auction.getAuctionId());
 		}
 		catch (Exception e)
 		{
-			log.warning("Erro ao salvar leilão: " + e.getMessage());
+			log.warn("Erro ao salvar leilão: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -277,7 +275,7 @@ public class AuctionTableCommunity
 	{
 		if (auction == null)
 		{
-			log.warning("Tentativa de atualizar leilão NULL.");
+			log.warn("Tentativa de atualizar leilão NULL.");
 			return false;
 		}
 
@@ -303,7 +301,7 @@ public class AuctionTableCommunity
 
 			if (rows != 1)
 			{
-				log.warning(
+				log.warn(
 						"Falha ao atualizar leilão. "
 								+ "auctionId=" + auction.getAuctionId()
 								+ " | rows=" + rows
@@ -314,19 +312,11 @@ public class AuctionTableCommunity
 
 			auctions.put(auction.getAuctionId(), auction);
 
-			log.info(
-					"Auction atualizado no banco: ID="
-							+ auction.getAuctionId()
-							+ " | rows=" + rows
-							+ " | status=" + auction.getStatus()
-							+ " | endTime=" + auction.getEndTime()
-					);
-
 			return true;
 		}
 		catch (Exception e)
 		{
-			log.warning(
+			log.warn(
 					"Erro ao atualizar leilão "
 							+ auction.getAuctionId()
 							+ ": "
@@ -361,12 +351,12 @@ public class AuctionTableCommunity
 			stm.setInt(5, auction.getAuctionId());
 			int rows = stm.executeUpdate();
 			if (rows != 1)
-				log.warning("Falha ao gravar o restante do anúncio " + auction.getAuctionId() + " | rows=" + rows);
+				log.warn("Falha ao gravar o restante do anúncio " + auction.getAuctionId() + " | rows=" + rows);
 			return rows == 1;
 		}
 		catch (Exception e)
 		{
-			log.warning("Erro ao gravar o restante do anúncio " + auction.getAuctionId() + ": " + e.getMessage());
+			log.warn("Erro ao gravar o restante do anúncio " + auction.getAuctionId() + ": " + e.getMessage());
 			return false;
 		}
 	}
@@ -395,7 +385,7 @@ public class AuctionTableCommunity
 		}
 		catch (Exception e)
 		{
-			log.warning("Erro ao salvar compra parcial no histórico (anúncio " + auction.getAuctionId() + "): " + e.getMessage());
+			log.warn("Erro ao salvar compra parcial no histórico (anúncio " + auction.getAuctionId() + "): " + e.getMessage());
 		}
 
 		// fora do try do banco: a média de preço vale mesmo se o INSERT falhar
@@ -446,7 +436,7 @@ public class AuctionTableCommunity
 			}
 			catch (Exception e)
 			{
-				log.warning("Aviso do leilão falhou: " + e.getMessage());
+				log.warn("Aviso do leilão falhou: " + e.getMessage());
 			}
 		}
 
@@ -471,7 +461,7 @@ public class AuctionTableCommunity
 				}
 				catch (Exception e)
 				{
-					log.warning("Aviso do leilão falhou: " + e.getMessage());
+					log.warn("Aviso do leilão falhou: " + e.getMessage());
 				}
 			}
 		}
@@ -483,20 +473,12 @@ public class AuctionTableCommunity
 		// ✅ REMOVER DO MAPA DE MEMÓRIA (✅ MELHOR PRÁTICA)
 		auctions.remove(auction.getAuctionId());
 
-		log.info("=== LEILÃO CANCELADO ===");
-		log.info("auctionId: " + auction.getAuctionId());
-		log.info("Leilão removido do mapa de memória");
+		log.info("AuctionHouse: leilão " + auction.getAuctionId() + " cancelado.");
 	}
 
 	// ✅ CHAMAR: endAuction() para salvar no histórico!
 	public void endAuction(AuctionHolder auction)
 	{
-		log.info("=== SALVANDO NO HISTÓRICO ===");
-		log.info("auctionId: " + auction.getAuctionId());
-		log.info("status: " + auction.getStatus());
-		log.info("bidderId: " + auction.getBidderId());
-		log.info("currentBid: " + auction.getCurrentBid());
-
 		// ✅ ATUALIZAR STATUS
 		auction.setStatus(AuctionHolder.AuctionStatus.ENDED);
 		updateAuction(auction);
@@ -520,11 +502,10 @@ public class AuctionTableCommunity
 			stm.execute();
 			stm.close();
 
-			log.info("=== SALVO NO HISTÓRICO COM SUCESSO ===");
 		}
 		catch (Exception e)
 		{
-			log.warning("Erro ao salvar no histórico: " + e.getMessage());
+			log.warn("Erro ao salvar no histórico: " + e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -579,8 +560,6 @@ public class AuctionTableCommunity
 	// ===== START AUCTION EXPIRATION TASK =====
 	private void startAuctionExpirationTask()
 	{
-		log.info("=== INICIANDO THREADPOOL DE EXPIRAÇÃO ===");
-
 		// =====================================================
 		// VERIFICA LEILÕES EXPIRADOS A CADA 30 SEGUNDOS
 		// =====================================================
@@ -588,12 +567,6 @@ public class AuctionTableCommunity
 		{
 			try
 			{
-				log.info("=== THREADPOOL DE EXPIRAÇÃO EXECUTANDO ===");
-				log.info("Total de leilões no mapa: " + auctions.size());
-
-				int activeCount = 0;
-				int expiredCount = 0;
-
 				/*
 				 * Usamos uma cópia do mapa para evitar problemas caso
 				 * processAuctionEnd() altere o mapa durante a execução.
@@ -606,64 +579,21 @@ public class AuctionTableCommunity
 					if (!auction.isActive())
 						continue;
 
-					activeCount++;
-
 					if (auction.getTimeRemaining() > 0)
 						continue;
-
-					expiredCount++;
-
-					log.info("==============================================");
-					log.info("=== LEILÃO EXPIRADO ===");
-					log.info("auctionId: " + auction.getAuctionId());
-					log.info("sellerId: " + auction.getSellerId());
-					log.info("itemId: " + auction.getItemId());
-					log.info("currentBid: " + auction.getCurrentBid());
-					log.info("bidderId: " + auction.getBidderId());
-					log.info("status ANTES: " + auction.getStatus());
-					log.info("==============================================");
 
 					try
 				    {
 				        // encerra (mesmo cadeado do cancelar / lance / compra) e avisa
 				        // quem está com a janela "Dar lance" aberta
-				        if (!endIfExpired(auction))
-				            continue;
-
-				        log.info(
-								"=== PROCESSAMENTO FINALIZADO === auctionId="
-										+ auction.getAuctionId()
-								);
-
-						log.info(
-								"Status DEPOIS: "
-										+ auction.getStatus()
-								);
+				        endIfExpired(auction);
 					}
 					catch (Exception e)
 					{
-						log.warning(
-								"=== ERRO AO PROCESSAR LEILÃO ==="
-								);
-
-						log.warning(
-								"auctionId="
-										+ auction.getAuctionId()
-								);
-
-						log.warning(
-								"Erro="
-										+ e.getMessage()
-								);
-
-						e.printStackTrace();
+						log.warn("AuctionHouse: erro ao encerrar o leilão " + auction.getAuctionId(), e);
 					}
 				}
 
-				log.info("==============================================");
-				log.info("Total leilões ativos: " + activeCount);
-				log.info("Total leilões expirados: " + expiredCount);
-				log.info("==============================================");
 			}
 			catch (Exception e)
 			{
@@ -672,15 +602,7 @@ public class AuctionTableCommunity
 				 * Se algo inesperado acontecer fora do processamento
 				 * individual do leilão, a thread não ficará perdida.
 				 */
-				log.warning(
-						"=== ERRO NA THREAD DE EXPIRAÇÃO ==="
-						);
-
-				log.warning(
-						"Erro: " + e.getMessage()
-						);
-
-				e.printStackTrace();
+				log.warn("AuctionHouse: erro na verificação de leilões expirados", e);
 			}
 
 		}, 30000, 30000);
@@ -717,35 +639,15 @@ public class AuctionTableCommunity
 				{
 					auctions.remove(id);
 					bids.remove(id);
-
-					log.info(
-							"Leilão removido da memória: auctionId="
-									+ id
-							);
 				}
-
-				log.info(
-						"=== LEILÕES ENDED REMOVIDOS DO MAPA: "
-								+ expiredIds.size()
-								+ " ==="
-						);
 			}
 			catch (Exception e)
 			{
-				log.warning(
-						"=== ERRO NA TASK DE LIMPEZA DOS LEILÕES ==="
-						);
-
-				log.warning(
-						"Erro: " + e.getMessage()
-						);
-
-				e.printStackTrace();
+				log.warn("AuctionHouse: erro na limpeza de leilões encerrados", e);
 			}
 
 		}, 60000, 60000);
 
-		log.info("=== THREADPOOL DE LEILÕES INICIADO COM SUCESSO ===");
 	}
 
 	/**
@@ -777,14 +679,6 @@ public class AuctionTableCommunity
 		if (auction == null)
 			return;
 
-		log.info("=== PROCESSING AUCTION END ===");
-		log.info("auctionId: " + auction.getAuctionId());
-		log.info("currentBid: " + auction.getCurrentBid());
-		log.info("bidderId: " + auction.getBidderId());
-		log.info("sellerId: " + auction.getSellerId());
-
-		log.info("=== MÉTODO CHAMADO COM SUCESSO ===");
-
 		// ✅ Obter nome do vencedor (online ou offline)
 		String winnerName = "Desconhecido";
 		Player winner = World.getPlayer(auction.getBidderId());
@@ -800,18 +694,14 @@ public class AuctionTableCommunity
 
 		if (auction.getCurrentBid() > 0 && auction.getBidderId() > 0)
 		{
-			log.info("=== LEILÃO VENDIDO ===");
-			log.info("Vencedor: " + winnerName);
-			log.info("Vendedor: " + auction.getSellerId());
-			log.info("Valor: " + auction.getCurrentBid());
-
 			// ✅ VENDEDOR RECEBE PAGAMENTO (USAR currentBid, NÃO buyNowPrice)
 			long sellerAmount = auction.getCurrentBid();
 			long tax = AuctionHouseService.taxFor(sellerAmount);   // mesma pasta, sem import
 			sellerAmount = Math.max(0, sellerAmount - tax);
 
-			log.info("Valor líquido: " + sellerAmount);
-			log.info("Taxa: " + tax);
+			log.info("AuctionHouse: leilão " + auction.getAuctionId() + " vendido para " + winnerName + " por " + auction.getCurrentBid()
+					+ " (item " + auction.getItemId() + " x" + auction.getCount() + ", vendedor " + auction.getSellerId()
+					+ " recebe " + sellerAmount + ", taxa " + tax + ").");
 
 			// ✅ ENTREGAR ITEM AO VENCEDOR (online no inventário, offline pelo DelayedItems)
 			AuctionDelivery.deliverItem(AuctionDelivery.K_WON, auction.getBidderId(), auction.getItemId(), auction.getCount(),
@@ -822,7 +712,6 @@ public class AuctionTableCommunity
 
 			if (winner != null && winner.isOnline())
 			{
-				log.info("=== ITEM ENTREGUE AO VENCEDOR (ONLINE) ===");
 				winner.sendMessage("Parabéns! Você venceu o leilão!");
 
 				try
@@ -831,13 +720,8 @@ public class AuctionTableCommunity
 				}
 				catch (Exception e)
 				{
-					log.warning("Aviso do leilão falhou: " + e.getMessage());
+					log.warn("Aviso do leilão falhou: " + e.getMessage());
 				}
-			}
-			else
-			{
-				log.info("Item enviado para vencedor offline: " + auction.getBidderId() +
-						", Enchant: " + auction.getEnchant());
 			}
 
 			// ✅ PAGAR VENDEDOR (online no inventário, offline pelo DelayedItems)
@@ -851,7 +735,6 @@ public class AuctionTableCommunity
 			Player seller = World.getPlayer(auction.getSellerId());
 			if (seller != null && seller.isOnline())
 			{
-				log.info("=== VENDEDOR PAGO (ONLINE) ===");
 				seller.sendPacket(new InventoryUpdate());
 
 				seller.sendMessage("Seu item foi vendido por " + String.valueOf(auction.getCurrentBid()) + "!");
@@ -865,12 +748,8 @@ public class AuctionTableCommunity
 				}
 				catch (Exception e)
 				{
-					log.warning("Aviso do leilão falhou: " + e.getMessage());
+					log.warn("Aviso do leilão falhou: " + e.getMessage());
 				}
-			}
-			else
-			{
-				log.info("Moeda enviada para vendedor offline: " + auction.getSellerId());
 			}
 
 			// ✅ ANÚNCIO
@@ -881,7 +760,8 @@ public class AuctionTableCommunity
 		}
 		else
 		{
-			log.info("=== LEILÃO SEM LANCE ===");
+			log.info("AuctionHouse: leilão " + auction.getAuctionId() + " acabou sem venda (item " + auction.getItemId() + " x"
+					+ auction.getCount() + " devolvido ao vendedor " + auction.getSellerId() + ").");
 
 			// ✅ SEM LANCE / SEM VENDA - DEVOLVER AO VENDEDOR (venda parcial: o que restou)
 			AuctionDelivery.deliverItem(AuctionDelivery.K_NO_SALE, auction.getSellerId(), auction.getItemId(), auction.getCount(),
@@ -892,7 +772,6 @@ public class AuctionTableCommunity
 			Player seller = World.getPlayer(auction.getSellerId());
 			if (seller != null && seller.isOnline())
 			{
-				log.info("=== ITEM DEVOLVIDO AO VENDEDOR (ONLINE) ===");
 				seller.sendMessage(returnedMessage(auction));
 
 				//Notificar vendedor item voltou
@@ -902,21 +781,13 @@ public class AuctionTableCommunity
 				}
 				catch (Exception e)
 				{
-					log.warning("Aviso do leilão falhou: " + e.getMessage());
+					log.warn("Aviso do leilão falhou: " + e.getMessage());
 				}
-			}
-			else
-			{
-				log.info("Item devolvido para vendedor offline: " + auction.getSellerId() +
-						", Enchant: " + auction.getEnchant());
 			}
 		}
 
 		// ✅ CHAMAR: endAuction() para salvar no histórico!
-		log.info("=== CHAMANDO endAuction() PARA SALVAR NO HISTÓRICO ===");
 		endAuction(auction);
-
-		log.info("=== AUCTION END COMPLETE ===");
 	}
 
 	/** Aviso ao vendedor quando o anúncio acaba sem vender tudo. */
