@@ -7,6 +7,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -564,7 +565,7 @@ public class AuctionTableCommunity
 	public List<AuctionBid> getBids(int auctionId)
 	{
 		List<AuctionBid> list = bids.get(auctionId);
-		return list != null ? list : java.util.Collections.emptyList();
+		return list != null ? list : Collections.emptyList();
 	}
 
 	public int getNextAuctionId()

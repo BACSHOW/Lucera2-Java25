@@ -3,6 +3,7 @@ package services.battlepass;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -696,7 +697,7 @@ public final class BattlePassService
 			// confere o espaço somando as recompensas (cada uma ocupa o que a anterior deixou)
 			long weight = 0L;
 			int slots = 0;
-			Set<Integer> stacked = new java.util.HashSet<>();
+			Set<Integer> stacked = new HashSet<>();
 			PcInventory inv = p.getInventory();
 			for (Reward r : list)
 			{

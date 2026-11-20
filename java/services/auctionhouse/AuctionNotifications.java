@@ -1,5 +1,6 @@
 package services.auctionhouse;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import org.slf4j.Logger;
@@ -326,7 +327,7 @@ public class AuctionNotifications
         try
         {
             // cópia: ordenar a lista compartilhada mexeria na ordem para todo mundo
-            List<AuctionBid> bids = new java.util.ArrayList<>(AuctionTableCommunity.getInstance().getBids(auction.getAuctionId()));
+            List<AuctionBid> bids = new ArrayList<>(AuctionTableCommunity.getInstance().getBids(auction.getAuctionId()));
             
             if (bids.isEmpty())
             {
