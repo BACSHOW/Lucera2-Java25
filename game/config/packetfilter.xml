@@ -172,7 +172,10 @@
         </limit>
     </packetByName>
     <packetByName name="RequestBypassToServer">
-        <limit count="1" perMs="100">
+        <!-- Mesma media de antes (10 por segundo), mas aceita ate 4 de uma vez: a interface manda
+             pedidos em sequencia no mesmo instante (ex.: desligar o shot da grade antiga e ligar o
+             da nova), e com 1 a cada 100 ms o segundo era descartado. -->
+        <limit count="4" perMs="400">
             <log format="Player %user_name%/%account_name%[%ip%/%hwid%] limit RequestBypassToServer"/>
             <actionFailed/>
             <!-- <drop/> -->
