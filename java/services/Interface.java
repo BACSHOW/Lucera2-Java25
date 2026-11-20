@@ -1255,7 +1255,8 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		Player player = this.getSelf();
 		if (player == null) return;
 
-		if (params == null || params.length < 6)
+		// OBJ QTD INICIAL COMPRA HORAS MOEDA TIPO PARCIAL (INICIAL / COMPRA por unidade; TIPO 0 leilão, 1 preço fixo)
+		if (params == null || params.length < 8)
 		{
 			failCreate(player, "Dados incompletos.");
 			return;
@@ -1268,9 +1269,8 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		int  durationHours = aucInt(params[4], 0);
 		int  costId        = aucInt(params[5], 0);
 
-		boolean unitPrices = params.length >= 8;                       // cliente novo: preço por unidade
-		int     saleMode   = unitPrices ? aucInt(params[6], -1) : -1;  // 0 leilão, 1 preço fixo
-		boolean partial    = unitPrices && "1".equals(params[7].trim());
+		int     saleMode   = aucInt(params[6], -1);   // 0 leilão, 1 preço fixo
+		boolean partial    = "1".equals(params[7].trim());
 
 		String busy = AuctionHouseService.busyReason(player);
 		if (busy != null)
@@ -1337,80 +1337,61 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 			return;
 		}
 
-		// (preço fixo do cliente novo ignora COMPRA: não precisa conferir)
-		if (buyNowPrice < 0 && !(unitPrices && saleMode == 1))
+		// (preço fixo ignora COMPRA: não precisa conferir)
+		if (buyNowPrice < 0 && saleMode != 1)
 		{
 			failCreate(player, "O preço de compra imediata deve ser maior ou igual a 0.");
 			return;
 		}
 
-		if (unitPrices)
+		// ── 3b. Tipo de venda e preço por unidade ──
+		if (saleMode != 0 && saleMode != 1)
 		{
-			// ── 3b. Tipo de venda e preço por unidade (cliente novo) ──
-			if (saleMode != 0 && saleMode != 1)
+			failCreate(player, "Tipo de venda inválido.");
+			return;
+		}
+
+		long unitStart = startingPrice;
+		long unitBuy   = (saleMode == 1) ? unitStart : buyNowPrice;   // preço fixo: compra = preço
+
+		// Teto: o total (unidade x quantidade) segue o limite de sempre
+		if (unitStart > Integer.MAX_VALUE / amount || unitBuy > Integer.MAX_VALUE / amount)
+		{
+			failCreate(player, "O total passa do valor máximo (" + AuctionHouseService.fmt(Integer.MAX_VALUE) + ").");
+			return;
+		}
+		startingPrice = unitStart * amount;
+		buyNowPrice   = unitBuy * amount;
+
+		if (saleMode == 0)
+		{
+			if (partial)
 			{
-				failCreate(player, "Tipo de venda inválido.");
+				failCreate(player, "Compra parcial só existe no preço fixo. No leilão o lote vai inteiro.");
 				return;
 			}
 
-			long unitStart = startingPrice;
-			long unitBuy   = (saleMode == 1) ? unitStart : buyNowPrice;   // preço fixo: compra = preço
-
-			// Teto: o total (unidade x quantidade) segue o limite de sempre
-			if (unitStart > Integer.MAX_VALUE / amount || unitBuy > Integer.MAX_VALUE / amount)
+			// Compra imediata: 0 (sem limite) ou pelo menos o inicial + o
+			// incremento mínimo (senão o primeiro lance já a alcançaria)
+			long minBuy = AuctionHouseService.minBuyNow(startingPrice);
+			if (buyNowPrice > 0 && buyNowPrice < minBuy)
 			{
-				failCreate(player, "O total passa do valor máximo (" + AuctionHouseService.fmt(Integer.MAX_VALUE) + ").");
+				long minUnit = (minBuy + amount - 1) / amount;
+				failCreate(player, "A compra imediata deve ser pelo menos "
+						+ (amount > 1 ? AuctionHouseService.fmt(minUnit) + " cada." : AuctionHouseService.fmt(minBuy) + "."));
 				return;
-			}
-			startingPrice = unitStart * amount;
-			buyNowPrice   = unitBuy * amount;
-
-			if (saleMode == 0)
-			{
-				if (partial)
-				{
-					failCreate(player, "Compra parcial só existe no preço fixo. No leilão o lote vai inteiro.");
-					return;
-				}
-
-				// Compra imediata: 0 (sem limite) ou pelo menos o inicial + o
-				// incremento mínimo (senão o primeiro lance já a alcançaria)
-				long minBuy = AuctionHouseService.minBuyNow(startingPrice);
-				if (buyNowPrice > 0 && buyNowPrice < minBuy)
-				{
-					long minUnit = (minBuy + amount - 1) / amount;
-					failCreate(player, "A compra imediata deve ser pelo menos "
-							+ (amount > 1 ? AuctionHouseService.fmt(minUnit) + " cada." : AuctionHouseService.fmt(minBuy) + "."));
-					return;
-				}
-			}
-			else if (partial)
-			{
-				if (!item.isStackable() || amount < 2)
-				{
-					failCreate(player, "Compra parcial só para itens empilháveis com mais de 1 unidade.");
-					return;
-				}
-				if (!AuctionTableCommunity.getInstance().supportsPartial())
-				{
-					failCreate(player, "Compra parcial indisponível: o banco do leilão precisa ser atualizado.");
-					return;
-				}
 			}
 		}
-		else
+		else if (partial)
 		{
-			// ── 3b. Cliente antigo: INICIAL e COMPRA já são o total ──
-			// Teto: o código de lance/compra/devolução faz (int) nos preços
-			if (startingPrice > Integer.MAX_VALUE || buyNowPrice > Integer.MAX_VALUE)
+			if (!item.isStackable() || amount < 2)
 			{
-				failCreate(player, "Valor máximo: " + AuctionHouseService.fmt(Integer.MAX_VALUE) + ".");
+				failCreate(player, "Compra parcial só para itens empilháveis com mais de 1 unidade.");
 				return;
 			}
-
-			if (buyNowPrice > 0 && buyNowPrice < startingPrice)
+			if (!AuctionTableCommunity.getInstance().supportsPartial())
 			{
-				failCreate(player, "A compra imediata deve ser maior ou igual ao preço inicial.");
+				failCreate(player, "Compra parcial indisponível: o banco do leilão precisa ser atualizado.");
 				return;
 			}
 		}
