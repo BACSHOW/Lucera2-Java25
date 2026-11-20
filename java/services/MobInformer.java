@@ -407,9 +407,14 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 	}
 
 	/**
-	 * Shift + clique em NPC/monstro (via ShiftClickHook, registrado no onLoad): com InterfaceShowMobInformer e
-	 * MobInformerShiftClick ligados, abre so o Monster Data no lugar da janela original. false = nao tratou
-	 * (pet, objeto que nao e NPC, variavel noShift, config desligada) e o Action segue o caminho original.
+	 * Shift + clique em NPC/monstro (via ShiftClickHook, registrado no onLoad), com InterfaceShowMobInformer e
+	 * MobInformerShiftClick ligados:
+	 * <ul>
+	 * <li>jogador: abre so o Monster Data (a janela original nao abre, mesmo com AllowShiftClick/AltShowDroplist);</li>
+	 * <li>GM: abre o Monster Data e tambem a janela original de admin do NPC.</li>
+	 * </ul>
+	 * Retorna false quando nao trata (config desligada, pet, objeto que nao e NPC, variavel noShift) ou quando o
+	 * Action deve seguir tambem para a janela original (GM).
 	 */
 	private static boolean handleShiftClick(Player player, GameObject object) {
 		if (!enabled || !shiftClick || !(object instanceof NpcInstance)
@@ -418,11 +423,12 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 		}
 		NpcInstance npc=(NpcInstance)object;
 		if(player.getTarget()!=npc)npc.onAction(player,false);
+		if(player.getTarget()==npc && allowRead(player,"S")) {
+			send(player,featurePacket());
+			send(player,"MOB_INFO|TYPE=OPEN|OBJECT="+npc.getObjectId()+"|");
+		}
+		if(player.isGM())return false; // GM: segue tambem para a janela original de admin
 		player.sendActionFailed();
-		if(player.getTarget()!=npc)return true;
-		if(!allowRead(player,"S"))return true;
-		send(player,featurePacket());
-		send(player,"MOB_INFO|TYPE=OPEN|OBJECT="+npc.getObjectId()+"|");
 		return true;
 	}
 
