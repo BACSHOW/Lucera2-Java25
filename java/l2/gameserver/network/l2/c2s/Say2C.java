@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import l2.commons.lang.ArrayUtils;
 import l2.gameserver.Config;
 import l2.gameserver.cache.ItemInfoCache;
+import l2.gameserver.cache.ItemLinkCache;
 import l2.gameserver.cache.Msg;
 import l2.gameserver.handler.voicecommands.IVoicedCommandHandler;
 import l2.gameserver.handler.voicecommands.VoicedCommandHandler;
@@ -147,6 +148,8 @@ public class Say2C extends L2GameClientPacket {
                      this.add = var9.append(Strings.fromTranslit(this.add.substring(var10, this.add.length()), var31.equals("tl") ? 1 : 2)).toString();
                   }
 
+                  // Item no chat: o nome de cada [#:token:nome] passa a ser o do item real (o cliente pode mentir)
+                  this.add = ItemLinkCache.getInstance().rewriteChat(this.add);
                   Say2 var32 = new Say2(var1.getObjectId(), this.ade, var1.getName(), this.add);
                   if (this.ade != ChatType.ALL || !Config.ENABLE_WORLD_CHAT || this.add.isEmpty() || this.add.charAt(0) != Config.WORLD_CHAT_MESSAGE_HANDLER) {
                      switch (this.ade) {
