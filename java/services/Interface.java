@@ -22,6 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import l2.gameserver.ConfigReloadHooks;
 import l2.gameserver.Announcements;
 import l2.gameserver.Config;
+import l2.gameserver.cache.ItemLinkCache;
 import l2.gameserver.GameServer;
 import l2.gameserver.ThreadPoolManager;
 import l2.gameserver.data.xml.holder.ItemHolder;
@@ -1541,7 +1542,8 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		try
 		{
 			String currencyName = AuctionUtils.getCurrencyNameById(costId);
-			String itemName     = AuctionUtils.formatItemName(itemId, enchant);
+			// nome com o ícone do item no chat (ItemLink): quem clica vê o tooltip completo
+			String itemName     = ItemLinkCache.getInstance().linkText(itemId, enchant, amount, AuctionUtils.formatItemName(itemId, enchant));
 
 			String qtyText = amount > 1 ? AuctionHouseService.fmt(amount) + " " : "";
 			String announcement;

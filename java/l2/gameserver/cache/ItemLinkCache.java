@@ -193,6 +193,18 @@ public final class ItemLinkCache
 	}
 
 	/**
+	 * Link pronto para um texto que o servidor manda (ex.: anúncio do leilão): "[#:token:nome]", que o ChatWnd mostra com
+	 * o ícone. Com o sistema desligado (ou item inválido) devolve só o nome.
+	 */
+	public String linkText(int itemId, int enchant, long count, String fallback)
+	{
+		if (!enabled || itemId <= 0 || count <= 0)
+			return fallback;
+		Snapshot s = new Snapshot(itemId, Math.max(0, Math.min(65535, enchant)), count, 0, 0, -1);
+		return "[#:" + put(s, System.currentTimeMillis()) + ":" + caption(s) + "]";
+	}
+
+	/**
 	 * Mensagem do chat: em cada [#:token:nome] o nome passa a ser o do item real da foto. Token inexistente ou vencido
 	 * vira só o texto (sem link); a partir do 4º link também.
 	 */
