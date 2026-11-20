@@ -134,6 +134,7 @@ public final class ConnectionQualityMonitor {
                 st.lastWarnAt = now;
                 st.goodSince = 0L;
                 st.badChecks = 0;
+                LOG.info("ConnectionWarning: " + player.getName() + " conexao ruim (" + reason(client, lagging, st) + ").");
                 show(player, true);
             }
             return;
@@ -147,8 +148,28 @@ public final class ConnectionQualityMonitor {
         } else if (now - st.goodSince >= GOOD_MS_TO_RECOVER) {
             st.warned = false;
             st.goodSince = 0L;
+            LOG.info("ConnectionWarning: " + player.getName() + " conexao normal de novo (ping " + client.getPing() + " ms, ruim por "
+                    + (now - st.lastWarnAt) / 1000L + " s).");
             show(player, false);
         }
+    }
+
+    /** Motivo do aviso, para o log: ajuda a separar rede ruim de cliente parado (minimizado, carregando). */
+    private static String reason(GameClient client, boolean lagging, State st) {
+        StringBuilder sb = new StringBuilder();
+        if (st.highPings >= HIGH_PINGS_TO_WARN) {
+            sb.append(st.highPings).append(" pings altos seguidos, ultimo ").append(client.getPing()).append(" ms");
+        }
+        if (lagging) {
+            NettyGameConnection conn = client.getNettyConnection();
+            if (sb.length() > 0) {
+                sb.append("; ");
+            }
+            sb.append("fila de envio ").append(conn == null ? 0L : conn.pendingWriteBytes() / 1024L).append(" KB");
+        }
+        long age = client.getPingAgeMs();
+        sb.append("; ultima resposta de ping ha ").append(age < 0L ? "-" : String.valueOf(age / 1000L)).append(" s");
+        return sb.toString();
     }
 
     /**
