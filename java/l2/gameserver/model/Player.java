@@ -4919,7 +4919,57 @@ public class Player extends Playable implements PlayerGroup {
       return true;
    }
 
+   /** Soulshot, Spiritshot e Blessed Spiritshot por grade: [familia][grade 0..5]; NG tem duas opcoes (iniciante primeiro). */
+   private static final int[][][] AUTO_SHOT_BY_GRADE = {
+      {{5789, 1835}, {1463}, {1464}, {1465}, {1466}, {1467}},
+      {{5790, 2509}, {2510}, {2511}, {2512}, {2513}, {2514}},
+      {{3947}, {3948}, {3949}, {3950}, {3951}, {3952}}
+   };
+
+   /**
+    * Troca de arma: o auto shot ligado da grade antiga passa na hora para o da grade da arma nova (se tiver no
+    * inventario), e o autoShot() logo abaixo ja carrega a arma. Antes isso dependia da interface mandar
+    * "desligar antigo" e "ligar novo"; o segundo pedido, no mesmo instante, era barrado pelo packetfilter e os
+    * primeiros ataques com a arma nova saiam sem shot.
+    */
+   private void syncAutoShotsToWeapon() {
+      WeaponTemplate weapon = this.getActiveWeaponItem();
+      if (weapon == null || this.IA.isEmpty()) {
+         return;
+      }
+      int grade = Math.min(5, Math.max(0, weapon.getCrystalType().gradeOrd()));
+      for (Integer shotId : this.IA) {
+         for (int[][] family : AUTO_SHOT_BY_GRADE) {
+            int shotGrade = -1;
+            for (int g = 0; g < family.length && shotGrade < 0; g++) {
+               for (int id : family[g]) {
+                  if (id == shotId) {
+                     shotGrade = g;
+                     break;
+                  }
+               }
+            }
+            if (shotGrade < 0) {
+               continue;
+            }
+            if (shotGrade != grade) {
+               for (int newId : family[grade]) {
+                  ItemInstance newShot = this.getInventory().getItemByItemId(newId);
+                  if (newShot != null && newShot.getCount() > 0) {
+                     this.removeAutoSoulShot(shotId);
+                     this.addAutoSoulShot(newId);
+                     this.sendPacket(new ExAutoSoulShot(shotId, false), new ExAutoSoulShot(newId, true));
+                     break;
+                  }
+               }
+            }
+            break;
+         }
+      }
+   }
+
    public void autoShot() {
+      this.syncAutoShotsToWeapon();
       for (Integer var2 : this.IA) {
          ItemInstance var3 = this.getInventory().getItemByItemId(var2);
          if (var3 == null) {
