@@ -225,6 +225,17 @@ public final class ServerMetrics {
     }
 
     /** Liga a amostragem de 1 segundo (idempotente). */
+    /**
+     * So conta jogadores depois do Config.load(): a janela liga as metricas antes dele, e tocar no
+     * GameObjectsStorage cedo cria as listas com os valores de config ainda zerados (NPCS e PLAYERS com
+     * capacidade 0, crescendo aos poucos com "Object array [...] resized").
+     */
+    private static volatile boolean countPlayers;
+
+    public static void enablePlayerCount() {
+        countPlayers = true;
+    }
+
     public static void start() {
         synchronized (LOCK) {
             if (sampler != null) {
@@ -353,7 +364,7 @@ public final class ServerMetrics {
         prevGcTime = gcTime;
 
         int all = 0, offline = 0;
-        try {
+        if (countPlayers) try {
             all = GameObjectsStorage.getAllPlayersCount();
             offline = GameObjectsStorage.getAllOfflineCount();
         } catch (Throwable ignored) {

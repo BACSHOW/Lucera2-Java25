@@ -63,6 +63,7 @@ import l2.gameserver.instancemanager.sepulchers.FourSepulchers;
 import l2.gameserver.listener.GameListener;
 import l2.gameserver.listener.game.OnShutdownListener;
 import l2.gameserver.listener.game.OnStartListener;
+import l2.gameserver.metrics.ServerMetrics;
 import l2.gameserver.model.GameObjectsStorage;
 import l2.gameserver.model.World;
 import l2.gameserver.model.entity.MonsterRace;
@@ -197,6 +198,7 @@ public class GameServer {
         _log.info("Build date: .............. " + this.ts.getBuildDate());
         _log.info("=================================================");
         Config.load();
+        ServerMetrics.enablePlayerCount();
         JvmOptimizer.applyOptimizations();
         CoreAutoTuner.resolve();
         GameServer.checkFreePorts();
