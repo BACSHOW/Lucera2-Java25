@@ -13,7 +13,7 @@ import l2.gameserver.model.items.ItemInstance;
 import l2.gameserver.templates.item.ItemTemplate;
 
 /**
- * Item no chat (shift+clique): guarda uma "foto" imutável do item e devolve um token aleatório de 16 caracteres.
+ * Item no chat (shift+clique): guarda uma "foto" imutável do item e devolve um token aleatório de 24 caracteres.
  * O token vai na mensagem como [#:token]; o servidor põe o nome e quem clica pede a foto pelo token (services.ItemLink).
  *
  * O token não é o objectId: não dá para ver itens de ninguém a partir dele. A foto não muda se o item for vendido,
@@ -34,13 +34,16 @@ public final class ItemLinkCache
 	{
 	}
 
-	/** Tamanho do token (o ChatWnd usa o mesmo: ITEM_LINK_TOKEN_LEN). */
-	public static final int TOKEN_LEN = 16;
+	/**
+	 * Tamanho do token. Tem que ser 24: a Interface.dll do cliente (ícone na caixa de texto, link no balão sobre a
+	 * cabeça) só reconhece token de 24. O ChatWnd usa o mesmo (ITEM_LINK_TOKEN_LEN).
+	 */
+	public static final int TOKEN_LEN = 24;
 	/**
 	 * Link no chat. Quem envia manda só [#:token] (ocupa menos que o nome na caixa de texto); o servidor devolve
 	 * [#:token:nome] para quem recebe.
 	 */
-	public static final String LINK_REGEX = "\\[#:([0-9a-f]{16})(?::([^\\]]{0,100}))?\\]";
+	public static final String LINK_REGEX = "\\[#:([0-9a-f]{24})(?::([^\\]]{0,100}))?\\]";
 	/** Qualquer coisa com cara de link, inclusive com o token estragado: vira só o nome, nunca código cru no chat. */
 	private static final Pattern ANY_LINK = Pattern.compile("\\[#:([^:\\]]{1,40})(?::([^\\]]{0,100}))?\\]");
 	/** Máximo de links por mensagem (o cliente também limita a 3). */
@@ -160,9 +163,7 @@ public final class ItemLinkCache
 
 		// Dígito e letra (a-f) alternados: "3b9e2a...". Nunca há dois dígitos ou duas letras seguidos, então o filtro
 		// de palavras do cliente (que troca números/palavras proibidas por "-_-") não acha nada para trocar no token.
-		// 8 dígitos x 8 letras de 6 ≈ 47 bits de acaso: com o anti-spam (10 aberturas/s) e a validade de 1 h, achar
-		// um token por tentativa é ~1 em 1 milhão por jogador/hora, e só mostraria um tooltip. O Say2C pula o link no
-		// translit.
+		// 12 dígitos x 12 letras de 6 ≈ 72 bits de acaso. O Say2C pula o link no translit.
 		char[] chars = new char[TOKEN_LEN];
 		String token;
 		do
