@@ -35,7 +35,7 @@ public class NoblesController {
     private static final NobleRecordCmp RT;
     private static final NobleRecordCmpCurr RU;
 
-    public static final NoblesController getInstance() {
+    public static synchronized NoblesController getInstance() {
         if (RO == null) {
             RO = new NoblesController();
         }

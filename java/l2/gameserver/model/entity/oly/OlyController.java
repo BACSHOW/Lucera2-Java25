@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 public class OlyController {
 	private static final Logger _log = LoggerFactory.getLogger(OlyController.class);
 	private static final SimpleDateFormat RV = new SimpleDateFormat("HH:mm:ss dd.MM.yyyy");
-	private static OlyController RW = null;
+	private static volatile OlyController RW = null;
 	private int RX;
 	private boolean RY = false;
 	private boolean RZ = false;
@@ -53,12 +53,24 @@ public class OlyController {
 	private static final String Ss = "oly_chero_season";
 	private int St = -1;
 
-	public static final OlyController getInstance() {
-		if (RW == null) {
-			RW = new OlyController();
+	/**
+	 * Cria uma instancia so. O schedule() roda depois de publicar a instancia: ligando o servidor dentro do
+	 * horario de competicao, a CompetitionStartTask sai na hora em outra thread e chama getInstance(); antes
+	 * ela achava RW ainda nulo e montava uma segunda Olimpiada (temporada, tarefas e estadios em dobro).
+	 */
+	public static OlyController getInstance() {
+		OlyController inst = RW;
+		if (inst != null) {
+			return inst;
 		}
-
-		return RW;
+		synchronized (OlyController.class) {
+			if (RW == null) {
+				OlyController created = new OlyController();
+				RW = created;
+				created.schedule();
+			}
+			return RW;
+		}
 	}
 
 	private OlyController() {
@@ -67,7 +79,6 @@ public class OlyController {
 		this.Sd = new ScheduledFuture[this.Sk.length][];
 		this.Se = new ScheduledFuture[this.Si.length];
 		this.load();
-		this.schedule();
 	}
 
 	public synchronized void load() {

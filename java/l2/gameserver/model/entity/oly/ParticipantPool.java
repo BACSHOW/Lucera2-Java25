@@ -19,7 +19,7 @@ public class ParticipantPool {
    private static ParticipantPool Sz;
    private Map<CompetitionType, ArrayList<ParticipantPool.EntryRec>> SA;
 
-   public static final ParticipantPool getInstance() {
+   public static synchronized ParticipantPool getInstance() {
       if (Sz == null) {
          Sz = new ParticipantPool();
       }

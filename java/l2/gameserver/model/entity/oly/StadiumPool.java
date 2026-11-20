@@ -16,7 +16,7 @@ public class StadiumPool {
     private ArrayDeque<Stadium> SG;
     private Stadium[] SH = new Stadium[22];
 
-    public static final StadiumPool getInstance() {
+    public static synchronized StadiumPool getInstance() {
         if (SE == null) {
             SE = new StadiumPool();
         }

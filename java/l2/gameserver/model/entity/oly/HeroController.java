@@ -64,7 +64,7 @@ public class HeroController {
     private static Map<Integer, List<HeroDiary>> RM;
     private static Map<Integer, String> RN;
 
-    public static HeroController getInstance() {
+    public static synchronized HeroController getInstance() {
         if (RJ == null) {
             RJ = new HeroController();
         }
