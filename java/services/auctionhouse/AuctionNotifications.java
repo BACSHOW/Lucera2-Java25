@@ -325,7 +325,8 @@ public class AuctionNotifications
     {
         try
         {
-            List<AuctionBid> bids = AuctionTableCommunity.getInstance().getBids(auction.getAuctionId());
+            // cópia: ordenar a lista compartilhada mexeria na ordem para todo mundo
+            List<AuctionBid> bids = new java.util.ArrayList<>(AuctionTableCommunity.getInstance().getBids(auction.getAuctionId()));
             
             if (bids.isEmpty())
             {
