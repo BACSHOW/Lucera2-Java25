@@ -172,6 +172,22 @@ public final class AuctionHouseService
 		return null;
 	}
 
+	/**
+	 * O jogador esta numa situacao em que nao deve mexer em item/moeda (loja privada, troca aberta ou pedida,
+	 * encantando)? null = pode; senao o motivo. Cobrar ou tirar item do inventario no meio de uma troca ou de uma
+	 * loja aberta pode deixar a lista da troca/loja apontando para item que nao existe mais.
+	 */
+	public static String busyReason(Player player)
+	{
+		if (player.isInStoreMode())
+			return "Feche a sua loja privada antes de usar o leilão.";
+		if (player.isInTrade() || player.isProcessingRequest())
+			return "Termine a troca em andamento antes de usar o leilão.";
+		if (player.getEnchantScroll() != null)
+			return "Termine o encantamento antes de usar o leilão.";
+		return null;
+	}
+
 	/** Leilão ainda pode receber lance/compra (ativo, no mapa e com tempo). */
 	private static boolean isOpen(AuctionTableCommunity table, AuctionHolder a)
 	{
@@ -186,6 +202,9 @@ public final class AuctionHouseService
 	{
 		if (!throttle(player))
 			return Result.fail("Aguarde um instante e tente de novo.");
+		String busy = busyReason(player);
+		if (busy != null)
+			return Result.fail(busy);
 
 		AuctionTableCommunity table = AuctionTableCommunity.getInstance();
 		AuctionHolder a = table.getAuction(auctionId);
@@ -241,18 +260,11 @@ public final class AuctionHouseService
 				return Result.fail("Não foi possível cobrar o lance.");
 			}
 
-			// 2) devolve o lance anterior (de outro jogador), online ou offline
-			if (!wasTop && prevBid > 0 && prevBidder > 0)
-				AuctionDelivery.deliverCurrency(AuctionDelivery.K_BID_BACK, prevBidder, a.getCostId(), prevBid,
-					AuctionDelivery.label(a, a.getCount()),
-					"Seu lance de " + AuctionDelivery.money(prevBid, a.getCostId()) + " foi superado e voltou para você.",
-					"Auction House: lance superado, leilão " + auctionId);
-
-			// 3) atualiza o leilão
+			// 2) atualiza o leilão (com o anti-sniping)
+			Date oldEnd = a.getEndTime();
 			a.setCurrentBid(amount);
 			a.setBidderId(player.getObjectId());
 
-			// 4) anti-sniping
 			if (Config.AUCTION_SNIPE_MINUTES > 0 && Config.AUCTION_SNIPE_EXTEND_MINUTES > 0
 				&& a.getTimeRemaining() <= Config.AUCTION_SNIPE_MINUTES * 60000L)
 			{
@@ -264,7 +276,25 @@ public final class AuctionHouseService
 				}
 			}
 
-			table.updateAuction(a);
+			// 3) grava ANTES de devolver o lance anterior. Se o banco nao gravar, desfaz e devolve a cobranca:
+			//    sem isso, no reinicio o lance anterior voltava a valer com o dinheiro ja devolvido.
+			if (!table.updateAuction(a))
+			{
+				a.setCurrentBid(prevBid);
+				a.setBidderId(prevBidder);
+				a.setEndTime(oldEnd);
+				ItemFunctions.addItem(player, a.getCostId(), charge, true);
+				_log.warn("AuctionHouse: lance de " + player.getName() + " no leilão " + auctionId + " desfeito (banco não gravou)");
+				return Result.fail("Não foi possível registrar o lance agora. Nada foi cobrado; tente de novo.");
+			}
+
+			// 4) devolve o lance anterior (de outro jogador), online ou offline
+			if (!wasTop && prevBid > 0 && prevBidder > 0)
+				AuctionDelivery.deliverCurrency(AuctionDelivery.K_BID_BACK, prevBidder, a.getCostId(), prevBid,
+					AuctionDelivery.label(a, a.getCount()),
+					"Seu lance de " + AuctionDelivery.money(prevBid, a.getCostId()) + " foi superado e voltou para você.",
+					"Auction House: lance superado, leilão " + auctionId);
+
 			table.addBid(new AuctionBid(auctionId, player.getObjectId(), amount, new Date()));
 		}
 
@@ -298,6 +328,9 @@ public final class AuctionHouseService
 	{
 		if (!throttle(player))
 			return Result.fail("Aguarde um instante e tente de novo.");
+		String busy = busyReason(player);
+		if (busy != null)
+			return Result.fail(busy);
 
 		AuctionTableCommunity table = AuctionTableCommunity.getInstance();
 		AuctionHolder a = table.getAuction(auctionId);
@@ -362,12 +395,20 @@ public final class AuctionHouseService
 				}
 			}
 
-			// 2) já pago: marca como encerrado na memória ANTES de entregar.
-			//    Se alguma entrega abaixo der erro, nada (tarefa de expiração,
-			//    cancelar, outro lance) entrega este leilão de novo.
+			// 2) já pago: grava ENDED (com o comprador) ANTES de entregar. Se alguma entrega abaixo der erro, nada
+			//    (tarefa de expiração, cancelar, outro lance, reinício) entrega este leilão de novo. Se o banco não
+			//    gravar, desfaz e devolve a cobrança.
 			a.setBidderId(player.getObjectId());
 			a.setCurrentBid(price);
-			a.setStatus(AuctionHolder.AuctionStatus.ENDED);
+			if (!table.markEnded(a))
+			{
+				a.setBidderId(prevBidder);
+				a.setCurrentBid(prevBid);
+				if (charge > 0)
+					ItemFunctions.addItem(player, a.getCostId(), charge, true);
+				_log.warn("AuctionHouse: compra de " + player.getName() + " no leilão " + auctionId + " desfeita (banco não gravou)");
+				return Result.fail("Não foi possível concluir a compra agora. Nada foi cobrado; tente de novo.");
+			}
 
 			// 3) devolve o lance de quem estava ganhando (outro jogador)
 			if (!wasTop && prevBid > 0 && prevBidder > 0)
@@ -394,8 +435,8 @@ public final class AuctionHouseService
 						+ ". Você recebe " + AuctionDelivery.money(net, a.getCostId()) + ".",
 					"Auction House: venda do leilão " + auctionId);
 
-			// 6) grava ENDED no banco + histórico
-			table.endAuction(a);
+			// 6) histórico (o ENDED já foi gravado no passo 2)
+			table.saveHistory(a);
 		}
 
 		// ── fora do cadeado: avisos ─────────────────────────────────
@@ -448,6 +489,9 @@ public final class AuctionHouseService
 	{
 		if (!throttle(player))
 			return Result.fail("Aguarde um instante e tente de novo.");
+		String busy = busyReason(player);
+		if (busy != null)
+			return Result.fail(busy);
 
 		AuctionTableCommunity table = AuctionTableCommunity.getInstance();
 		AuctionHolder a = table.getAuction(auctionId);

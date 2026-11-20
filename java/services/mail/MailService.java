@@ -145,7 +145,7 @@ public final class MailService
 	{
 		if (p.isInStoreMode())
 			return "Feche a loja particular primeiro.";
-		if (p.isInTrade())
+		if (p.isInTrade() || p.isProcessingRequest())
 			return "Termine a troca primeiro.";
 		if (p.getEnchantScroll() != null)
 			return "Termine o encantamento primeiro.";

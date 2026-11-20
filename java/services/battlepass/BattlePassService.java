@@ -445,7 +445,7 @@ public final class BattlePassService
 	{
 		if (p.isInStoreMode())
 			return "Feche a loja particular primeiro.";
-		if (p.isInTrade())
+		if (p.isInTrade() || p.isProcessingRequest())
 			return "Termine a troca primeiro.";
 		if (p.getEnchantScroll() != null)
 			return "Termine o encantamento primeiro.";
@@ -609,37 +609,44 @@ public final class BattlePassService
 			{
 				Reward r = new Reward(step, premium, id, count);
 				String room = fit(p.getInventory(), id, count);
-				if (room == null)
+				if (room != null && !BattlePassConfig.MAIL_WHEN_FULL)
+					why = room;
+				else
 				{
+					// grava o "já pegou" ANTES de entregar: se o banco não gravar, nada é entregue. Na ordem
+					// antiga, uma queda do servidor antes da gravação deixava pegar a mesma recompensa de novo.
 					mark(d, r);
-					give(p, r);
-					done = "Recompensa do " + r.label() + " recebida.";
-				}
-				else if (BattlePassConfig.MAIL_WHEN_FULL)
-				{
-					mark(d, r);
-					List<Reward> one = new ArrayList<>();
-					one.add(r);
-					if (mail(p, one))
+					if (!save(d))
 					{
-						byMail = true;
-						done = room + " A recompensa do " + r.label() + " foi pelo correio.";
+						unmark(d, r);
+						why = "Não foi possível registrar agora. Tente de novo.";
+					}
+					else if (room == null)
+					{
+						give(p, r);
+						done = "Recompensa do " + r.label() + " recebida.";
 					}
 					else
 					{
-						unmark(d, r);
-						why = "Não foi possível entregar agora. Tente de novo.";
+						List<Reward> one = new ArrayList<>();
+						one.add(r);
+						if (mail(p, one))
+						{
+							byMail = true;
+							done = room + " A recompensa do " + r.label() + " foi pelo correio.";
+						}
+						else
+						{
+							unmark(d, r);
+							save(d);
+							why = "Não foi possível entregar agora. Tente de novo.";
+						}
 					}
 				}
-				else
-					why = room;
 			}
 		}
 		if (done != null)
-		{
-			save(d);
 			ok(p, byMail ? "mail" : "claim", done);
-		}
 		else
 			fail(p, "claim", why);
 		sendPage(p, d, page);
@@ -685,14 +692,27 @@ public final class BattlePassService
 				return;
 			}
 			List<Reward> toMail = new ArrayList<>();
+			List<Reward> toGive = new ArrayList<>();
+			// confere o espaço somando as recompensas (cada uma ocupa o que a anterior deixou)
+			long weight = 0L;
+			int slots = 0;
+			Set<Integer> stacked = new java.util.HashSet<>();
+			PcInventory inv = p.getInventory();
 			for (Reward r : list)
 			{
-				String room = fit(p.getInventory(), r.id, r.count);
+				String room = fit(inv, r.id, r.count);
+				ItemTemplate t = ItemHolder.getInstance().getTemplate(r.id);
+				long w = t == null ? 0L : r.count * (long) t.getWeight();
+				int sl = t == null ? 0 : t.isStackable() ? (inv.getItemByItemId(r.id) == null && !stacked.contains(r.id) ? 1 : 0) : (int) Math.min(r.count, Integer.MAX_VALUE);
+				if (room == null && (!inv.validateWeight(weight + w) || !inv.validateCapacity(slots + sl)))
+					room = "Inventário sem espaço para todas as recompensas.";
 				if (room == null)
 				{
-					mark(d, r);
-					give(p, r);
-					got++;
+					toGive.add(r);
+					weight += w;
+					slots += sl;
+					if (t != null && t.isStackable())
+						stacked.add(r.id);
 				}
 				else
 				{
@@ -700,6 +720,24 @@ public final class BattlePassService
 						full = room;
 					if (BattlePassConfig.MAIL_WHEN_FULL)
 						toMail.add(r);
+				}
+			}
+			// grava o "já pegou" das que vão para o inventário ANTES de entregar (ver claim)
+			if (!toGive.isEmpty())
+			{
+				for (Reward r : toGive)
+					mark(d, r);
+				if (save(d))
+				{
+					for (Reward r : toGive)
+						give(p, r);
+					got = toGive.size();
+				}
+				else
+				{
+					for (Reward r : toGive)
+						unmark(d, r);
+					mailFail = true;
 				}
 			}
 			// correio em grupos de até 8 unidades: cada grupo é uma mensagem (tudo ou nada)
@@ -718,12 +756,19 @@ public final class BattlePassService
 				{
 					for (Reward g : group)
 						mark(d, g);
-					if (mail(p, group))
+					if (!save(d))
+					{
+						for (Reward g : group)
+							unmark(d, g);
+						mailFail = true;
+					}
+					else if (mail(p, group))
 						mailed += group.size();
 					else
 					{
 						for (Reward g : group)
 							unmark(d, g);
+						save(d);
 						mailFail = true;
 					}
 				}
@@ -736,8 +781,6 @@ public final class BattlePassService
 				}
 			}
 		}
-		if (got > 0 || mailed > 0)
-			save(d);
 		if (got > 0 || mailed > 0)
 		{
 			StringBuilder t = new StringBuilder();
@@ -794,12 +837,21 @@ public final class BattlePassService
 				Log.LogItem(p, Log.ItemLog.Delete, id, count);
 				d.premium = true;
 				d.changed();
-				done = true;
+				// grava já: se o banco não gravar, desfaz e devolve o pagamento (antes o premium sumia no
+				// reinício com a moeda já cobrada)
+				if (save(d))
+					done = true;
+				else
+				{
+					d.premium = false;
+					d.changed();
+					p.getInventory().addItem(id, count);
+					why = "Não foi possível ativar agora. Nada foi cobrado; tente de novo.";
+				}
 			}
 		}
 		if (done)
 		{
-			save(d);
 			p.sendPacket((IStaticPacket) SystemMessage2.removeItems(id, count));
 			screen(p, "Battle Pass Premium ativado!");
 			ok(p, "premium", "Premium ativado até o fim da temporada.");

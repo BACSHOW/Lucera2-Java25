@@ -21,8 +21,8 @@ public class AuctionHolder
 	private long buyNowPrice;
 	private int bidderId;
 	private Date startTime;
-	private Date endTime;
-	private AuctionStatus status;
+	private volatile Date endTime;
+	private volatile AuctionStatus status;
 	private int auctionHouseId;
 
 	// Venda parcial (etapa 17). O modo do anúncio não tem coluna própria:

@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -120,7 +121,7 @@ public class AuctionTableCommunity
 				AuctionBid bid = new AuctionBid(auctionId, bidderId, bidAmount, bidTime);
 
 				if (!bids.containsKey(auctionId))
-					bids.put(auctionId, new ArrayList<>());
+					bids.put(auctionId, new CopyOnWriteArrayList<>());
 				bids.get(auctionId).add(bid);
 			}
 
@@ -226,11 +227,12 @@ public class AuctionTableCommunity
 		return s;
 	}
 
-	public void addAuction(AuctionHolder auction)
+	/**
+	 * Grava o anuncio novo e so entao o coloca na lista. false = o banco nao gravou: o anuncio nao existe (quem
+	 * chamou devolve o item e a taxa); antes ficava so na memoria e sumia, com o item, no proximo reinicio.
+	 */
+	public boolean addAuction(AuctionHolder auction)
 	{
-		auctions.put(auction.getAuctionId(), auction);
-		bids.put(auction.getAuctionId(), new ArrayList<>());
-
 		try (Connection con = DatabaseFactory.getInstance().getConnection())
 		{
 			boolean partial = partialColumns;
@@ -262,13 +264,16 @@ public class AuctionTableCommunity
 
 			stm.execute();
 			stm.close();
-
 		}
 		catch (Exception e)
 		{
-			log.warn("Erro ao salvar leilão: " + e.getMessage());
-			e.printStackTrace();
+			log.warn("AuctionHouse: erro ao gravar o anúncio " + auction.getAuctionId(), e);
+			return false;
 		}
+
+		bids.put(auction.getAuctionId(), new CopyOnWriteArrayList<>());
+		auctions.put(auction.getAuctionId(), auction);
+		return true;
 	}
 
 	public boolean updateAuction(AuctionHolder auction)
@@ -394,9 +399,8 @@ public class AuctionTableCommunity
 
 	public void addBid(AuctionBid bid)
 	{
-		if (!bids.containsKey(bid.getAuctionId()))
-			bids.put(bid.getAuctionId(), new ArrayList<>());
-		bids.get(bid.getAuctionId()).add(bid);
+		// CopyOnWriteArrayList: a lista e lida (My Bids, lista, detalhes) enquanto outro lance entra
+		bids.computeIfAbsent(bid.getAuctionId(), k -> new CopyOnWriteArrayList<>()).add(bid);
 
 		try (Connection con = DatabaseFactory.getInstance().getConnection())
 		{
@@ -418,8 +422,22 @@ public class AuctionTableCommunity
 	}
 
 	// ===== CANCELAR LEILÃO =====
-	public void cancelAuction(AuctionHolder auction)
+	/**
+	 * Grava CANCELLED primeiro e so depois devolve item e lance. false = o banco nao gravou e nada foi devolvido
+	 * (o anuncio continua ativo). Na ordem antiga, se a gravacao falhasse (ou o servidor caisse no meio), o
+	 * anuncio voltava ativo no reinicio com o item ja devolvido: item e lance em dobro.
+	 */
+	public boolean cancelAuction(AuctionHolder auction)
 	{
+		AuctionHolder.AuctionStatus before = auction.getStatus();
+		auction.setStatus(AuctionHolder.AuctionStatus.CANCELLED);
+		if (!updateAuction(auction))
+		{
+			auction.setStatus(before);
+			log.warn("AuctionHouse: cancelamento do leilão " + auction.getAuctionId() + " não gravou no banco; nada foi devolvido.");
+			return false;
+		}
+
 		// ✅ Devolver ao vendedor o que resta (venda parcial: só o que não foi vendido)
 		AuctionDelivery.deliverItem(AuctionDelivery.K_CANCEL_ITEM, auction.getSellerId(), auction.getItemId(), auction.getCount(),
 			auction.getEnchant(), AuctionDelivery.label(auction, auction.getCount()),
@@ -466,23 +484,40 @@ public class AuctionTableCommunity
 			}
 		}
 
-		// ✅ ATUALIZAR STATUS PARA CANCELLED
-		auction.setStatus(AuctionHolder.AuctionStatus.CANCELLED);
-		updateAuction(auction);
-
 		// ✅ REMOVER DO MAPA DE MEMÓRIA (✅ MELHOR PRÁTICA)
 		auctions.remove(auction.getAuctionId());
 
 		log.info("AuctionHouse: leilão " + auction.getAuctionId() + " cancelado.");
+		return true;
 	}
 
-	// ✅ CHAMAR: endAuction() para salvar no histórico!
-	public void endAuction(AuctionHolder auction)
+	/**
+	 * Grava ENDED (com o lance/comprador atuais). Vem ANTES de qualquer entrega: se o banco nao gravar, nada e
+	 * entregue e o anuncio continua ativo (a tarefa tenta de novo). Na ordem antiga uma falha aqui, ou o servidor
+	 * cair entre a entrega e a gravacao, fazia o anuncio voltar ativo no reinicio e ser entregue de novo.
+	 */
+	public boolean markEnded(AuctionHolder auction)
 	{
-		// ✅ ATUALIZAR STATUS
+		AuctionHolder.AuctionStatus before = auction.getStatus();
 		auction.setStatus(AuctionHolder.AuctionStatus.ENDED);
-		updateAuction(auction);
+		if (updateAuction(auction))
+			return true;
+		auction.setStatus(before);
+		return false;
+	}
 
+	/** ENDED no banco + histórico. false = não gravou (ver markEnded). */
+	public boolean endAuction(AuctionHolder auction)
+	{
+		if (!markEnded(auction))
+			return false;
+		saveHistory(auction);
+		return true;
+	}
+
+	/** Linha do histórico e média de preço do anúncio encerrado. */
+	public void saveHistory(AuctionHolder auction)
+	{
 		// ✅ SALVAR NO HISTÓRICO
 		try (Connection con = DatabaseFactory.getInstance().getConnection())
 		{
@@ -528,7 +563,8 @@ public class AuctionTableCommunity
 
 	public List<AuctionBid> getBids(int auctionId)
 	{
-		return bids.getOrDefault(auctionId, new ArrayList<>());
+		List<AuctionBid> list = bids.get(auctionId);
+		return list != null ? list : java.util.Collections.emptyList();
 	}
 
 	public int getNextAuctionId()
@@ -665,7 +701,8 @@ public class AuctionTableCommunity
 		{
 			if (!auction.isActive() || auction.getTimeRemaining() > 0)
 				return false;
-			processAuctionEnd(auction);
+			if (!processAuctionEnd(auction))
+				return false;
 		}
 
 		// quem está com a janela "Dar lance" aberta vê "encerrado" na hora
@@ -674,10 +711,17 @@ public class AuctionTableCommunity
 	}
 
 	// ===== PROCESS AUCTION END (NÃO-ESTÁTICO) =====
-	private void processAuctionEnd(AuctionHolder auction)
+	private boolean processAuctionEnd(AuctionHolder auction)
 	{
 		if (auction == null)
-			return;
+			return false;
+
+		// grava ENDED antes de entregar qualquer coisa (ver markEnded)
+		if (!markEnded(auction))
+		{
+			log.warn("AuctionHouse: leilão " + auction.getAuctionId() + " não gravou ENDED no banco; tento de novo na próxima verificação.");
+			return false;
+		}
 
 		// ✅ Obter nome do vencedor (online ou offline)
 		String winnerName = "Desconhecido";
@@ -786,8 +830,8 @@ public class AuctionTableCommunity
 			}
 		}
 
-		// ✅ CHAMAR: endAuction() para salvar no histórico!
-		endAuction(auction);
+		saveHistory(auction);
+		return true;
 	}
 
 	/** Aviso ao vendedor quando o anúncio acaba sem vender tudo. */

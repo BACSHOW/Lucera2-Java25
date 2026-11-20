@@ -104,7 +104,7 @@ public final class RandomCraftService
 	{
 		if (p.isInStoreMode())
 			return "Feche a loja particular primeiro.";
-		if (p.isInTrade())
+		if (p.isInTrade() || p.isProcessingRequest())
 			return "Termine a troca primeiro.";
 		if (p.getEnchantScroll() != null)
 			return "Termine o encantamento primeiro.";
@@ -570,22 +570,47 @@ public final class RandomCraftService
 						why = room;
 					else if (!pay(p, d, pts, itemId, itemCount))
 						why = "Não foi possível cobrar. Tente de novo.";
-					else if (room == null)
-					{
-						give(p, won);
-						d.clearSlots();
-						result = won.id + "|" + won.count + "|" + won.grade + "|" + won.enchant;
-					}
-					else if (mail(p, won, room))
-					{
-						byMail = true;
-						d.clearSlots();
-						result = won.id + "|" + won.count + "|" + won.grade + "|" + won.enchant;
-					}
 					else
 					{
-						refund(p, d, pts, itemId, itemCount);
-						why = "Não foi possível entregar agora. Tente de novo.";
+						// Grava a lista limpa (e os pontos já descontados) ANTES de entregar: se o banco não
+						// gravar, nada é entregue e tudo volta. Na ordem antiga, uma queda do servidor entre a
+						// entrega e a gravação deixava a mesma lista no banco para criar de novo.
+						String before = d.encodeSlots();
+						d.clearSlots();
+						boolean stored;
+						try
+						{
+							STORE.save(d);
+							stored = true;
+						}
+						catch (Exception e)
+						{
+							_log.warn("RandomCraft: não consegui gravar a criação de " + p.getName() + ": " + e.getMessage());
+							stored = false;
+						}
+						if (!stored)
+						{
+							d.decodeSlots(before);
+							refund(p, d, pts, itemId, itemCount);
+							why = "Não foi possível concluir agora. Nada foi cobrado; tente de novo.";
+						}
+						else if (room == null)
+						{
+							give(p, won);
+							result = won.id + "|" + won.count + "|" + won.grade + "|" + won.enchant;
+						}
+						else if (mail(p, won, room))
+						{
+							byMail = true;
+							result = won.id + "|" + won.count + "|" + won.grade + "|" + won.enchant;
+						}
+						else
+						{
+							d.decodeSlots(before);
+							refund(p, d, pts, itemId, itemCount);
+							save(d);
+							why = "Não foi possível entregar agora. Tente de novo.";
+						}
 					}
 				}
 			}
@@ -596,7 +621,6 @@ public final class RandomCraftService
 			state(p);
 			return;
 		}
-		save(d);
 		if (won.grade >= 3)
 			screen(p, "Random Craft: " + name(won.id) + "!");
 		if (byMail)
@@ -705,7 +729,7 @@ public final class RandomCraftService
 		// 6º campo: 1 = ainda cabe experiência; 0 = barra no limite (item "apagado" na lista)
 		for (Extract e : RandomCraftConfig.EXTRACT.values())
 		{
-			long n = have(p, e.id);
+			long n = extractable(e.id) ? have(p, e.id) : 0L;
 			if (n > 0)
 				rows.add(e.id + "," + n + ",0," + e.exp + "," + e.adena + "," + (room > 0 ? 1 : 0));
 		}
@@ -766,7 +790,7 @@ public final class RandomCraftService
 				}
 				if (n <= 0)
 					continue;
-				if (!RandomCraftConfig.EXTRACT.containsKey(id))
+				if (!RandomCraftConfig.EXTRACT.containsKey(id) || !extractable(id))
 				{
 					c.error = "Esse item não pode ser extraído.";
 					return c;
@@ -824,6 +848,16 @@ public final class RandomCraftService
 		c.newPoints = (int) (total / RandomCraftConfig.MAX_EXP);
 		c.newExp = total % RandomCraftConfig.MAX_EXP;
 		return c;
+	}
+
+	/**
+	 * Só item empilhável entra na extração: a retirada é por id (destroyItemByItemId), que num item não
+	 * empilhável pegaria uma instância qualquer (podendo ser a equipada ou a encantada) e falharia com mais de 1.
+	 */
+	static boolean extractable(int id)
+	{
+		ItemTemplate t = ItemHolder.getInstance().getTemplate(id);
+		return t != null && t.isStackable();
 	}
 
 	/** Seleção já cortada pelo teto ("id:qtd id:qtd"), para o cliente acertar a lista. */
@@ -894,6 +928,7 @@ public final class RandomCraftService
 			else
 			{
 				boolean okAll = true;
+				List<long[]> taken = new ArrayList<>();
 				for (Map.Entry<Integer, Long> e : c.take.entrySet())
 				{
 					if (!p.getInventory().destroyItemByItemId(e.getKey(), e.getValue()))
@@ -901,13 +936,26 @@ public final class RandomCraftService
 						okAll = false;
 						break;
 					}
+					taken.add(new long[] { e.getKey(), e.getValue() });
 					Log.LogItem(p, Log.ItemLog.Delete, e.getKey(), e.getValue());
 					p.sendPacket((IStaticPacket) SystemMessage2.removeItems(e.getKey(), e.getValue()));
 				}
-				if (!okAll)
-					why = "Não foi possível tirar os itens. Tente de novo.";
-				else if (c.fee > 0 && !p.reduceAdena(c.fee, true))
+				if (okAll && c.fee > 0 && !p.reduceAdena(c.fee, true))
+				{
+					okAll = false;
 					why = "Não foi possível cobrar a Adena.";
+				}
+				if (!okAll)
+				{
+					// devolve o que já tinha saído (antes os itens ficavam perdidos sem virar pontos)
+					for (long[] t : taken)
+					{
+						p.getInventory().addItem((int) t[0], t[1]);
+						p.sendPacket((IStaticPacket) SystemMessage2.obtainItems((int) t[0], t[1], 0));
+					}
+					if (why == null)
+						why = "Não foi possível tirar os itens. Tente de novo.";
+				}
 				else
 				{
 					d.points = c.newPoints;

@@ -1164,7 +1164,11 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 				return;
 			}
 
-			table.cancelAuction(auction);
+			if (!table.cancelAuction(auction))
+			{
+				failCancel(player, "Não foi possível cancelar agora. Tente de novo em instantes.");
+				return;
+			}
 		}
 
 		_log.info("AuctionHouse: " + player.getName() + " cancelou o leilão id=" + auctionId
@@ -1218,6 +1222,9 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 	private static boolean isAuctionable(Player player, ItemInstance item)
 	{
 		if (item.getItemId() == Config.TICKET_MARKE_PLACE) return false;
+		// O anúncio guarda só id, quantidade e enchant: augment, item de sombra e item temporário não
+		// sobreviveriam à venda (o comprador receberia outro item). Vale também para GM (CanTradeAnyItem).
+		if (item.isAugmented() || item.isShadowItem() || item.isTemporalItem()) return false;
 		if (!item.canBeTraded(player)) return false;
 		return AuctionUtils.checkItem(item);
 	}
@@ -1263,6 +1270,13 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		boolean unitPrices = params.length >= 8;                       // cliente novo: preço por unidade
 		int     saleMode   = unitPrices ? aucInt(params[6], -1) : -1;  // 0 leilão, 1 preço fixo
 		boolean partial    = unitPrices && "1".equals(params[7].trim());
+
+		String busy = AuctionHouseService.busyReason(player);
+		if (busy != null)
+		{
+			failCreate(player, busy);
+			return;
+		}
 
 		// ── 0. Limite de leilões ativos por personagem ───────────────
 		int maxItems = Config.AUCTION_MAX_PER_PLAYER;
@@ -1508,7 +1522,26 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 					);
 			auction.setAllowPartial(partial);   // só chega aqui em preço fixo empilhável
 
-			table.addAuction(auction);
+			if (!table.addAuction(auction))
+				auction = null;
+		}
+
+		if (auction == null)
+		{
+			// o banco não gravou: o anúncio não existe. Devolve o item (mesmo id, quantidade e enchant; augment,
+			// sombra e temporário não chegam aqui) e a taxa.
+			ItemInstance back = ItemFunctions.createItem(itemId);
+			back.setCount(amount);
+			back.setEnchantLevel(enchant);
+			player.getInventory().addItem(back);
+			if (feeAmount > 0)
+				ItemFunctions.addItem(player, feeId, feeAmount, true);
+			player.sendPacket(new InventoryUpdate());
+			_log.warn("AuctionHouse: anúncio de " + player.getName() + " não gravou no banco; item " + itemId + " x" + amount
+					+ " +" + enchant + " e taxa devolvidos.");
+			failCreate(player, "Não foi possível criar o anúncio agora. O item e a taxa foram devolvidos.");
+			sendAuctionCreateData(player, 1);
+			return;
 		}
 
 		_log.info("AuctionHouse: " + player.getName()
