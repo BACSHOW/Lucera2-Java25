@@ -195,6 +195,12 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 	/** Ultimo pedido de autoShot "garantir ON/OFF" por jogador: objectId -> {shotId, estado, horario}. */
 	private static final Map<Integer, long[]> AUTO_SHOT_LAST = new ConcurrentHashMap<>();
 	private static final long AUTO_SHOT_REPEAT_MS = 1000L;
+	/**
+	 * Shot que o servidor acabou de desligar sozinho (arma que nao usa esse shot, por exemplo): objectId ->
+	 * {shotId, objectId da arma}. Enquanto for a mesma arma, novos "garantir ON" desse shot sao ignorados em
+	 * silencio; sem isso a interface religava, o servidor desligava de novo e os dois ficavam em ciclo.
+	 */
+	private static final Map<Integer, long[]> AUTO_SHOT_REFUSED = new ConcurrentHashMap<>();
 
 	public void autoShot(String[] shotId)
 	{
@@ -247,6 +253,14 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 		boolean isActive = activeChar.getAutoSoulShot().contains(_shotId);
 		ItemInstance item = activeChar.getInventory().getItemByItemId(_shotId);
+		ItemInstance weapon = activeChar.getActiveWeaponInstance();
+		long weaponId = weapon == null ? 0L : weapon.getObjectId();
+		if (requestedState == 1 && !isActive) {
+			long[] refused = AUTO_SHOT_REFUSED.get(activeChar.getObjectId());
+			if (refused != null && refused[0] == _shotId && refused[1] == weaponId) {
+				return;
+			}
+		}
 
 		if (requestedState == 0) {
 			// ja desligado: a interface ja sabe, nao responde (evita o ciclo de pedido/resposta)
@@ -283,6 +297,12 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 			IItemHandler handler = item.getTemplate().getHandler();
 			if (handler != null) {
 				handler.useItem(activeChar, item, false);
+			}
+			if (!activeChar.getAutoSoulShot().contains(_shotId)) {
+				// o handler desligou na hora: lembra para nao entrar em ciclo com a interface
+				AUTO_SHOT_REFUSED.put(activeChar.getObjectId(), new long[] { _shotId, weaponId });
+			} else {
+				AUTO_SHOT_REFUSED.remove(activeChar.getObjectId());
 			}
 		} else {
 			activeChar.removeAutoSoulShot(_shotId);
