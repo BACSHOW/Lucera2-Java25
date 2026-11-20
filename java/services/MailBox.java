@@ -3,6 +3,7 @@ package services;
 import java.util.ArrayList;
 import java.util.List;
 
+import l2.gameserver.ConfigReloadHooks;
 import l2.gameserver.handler.voicecommands.IVoicedCommandHandler;
 import l2.gameserver.handler.voicecommands.VoicedCommandHandler;
 import l2.gameserver.model.Player;
@@ -45,6 +46,8 @@ public class MailBox extends Functions implements ScriptFile, IVoicedCommandHand
 	public void onLoad()
 	{
 		MailConfig.load();
+		// recarrega com //reload_config (Reload All Configs) e com o "Salvar e recarregar" da janela
+		ConfigReloadHooks.register("Mail", MailConfig::load);
 		VoicedCommandHandler.getInstance().registerVoicedCommandHandler(this);
 		MailService.registerLoginNotice();
 		_log.info("Loaded Service: Mail (correio)");

@@ -14,14 +14,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Configuração do Random Craft: game/config/randomcraft.properties.
+ * Configuração do Random Craft: game/config/custom/randomcraft.properties (recarrega com //reload_config).
  * Arquivo ausente = valores padrão (um pool de exemplo).
  */
 public final class RandomCraftConfig
 {
 	private static final Logger _log = LoggerFactory.getLogger(RandomCraftConfig.class);
 
-	public static final String FILE = "config/randomcraft.properties";
+	public static final String FILE = "config/custom/randomcraft.properties";
 
 	/** Casas da janela (RandomSlotGroup00..04). */
 	public static final int SLOTS = 5;

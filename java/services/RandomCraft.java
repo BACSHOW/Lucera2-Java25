@@ -1,5 +1,6 @@
 package services;
 
+import l2.gameserver.ConfigReloadHooks;
 import l2.gameserver.handler.voicecommands.IVoicedCommandHandler;
 import l2.gameserver.handler.voicecommands.VoicedCommandHandler;
 import l2.gameserver.listener.actor.player.OnPlayerExitListener;
@@ -54,6 +55,8 @@ public class RandomCraft extends Functions implements ScriptFile, IVoicedCommand
 	public void onLoad()
 	{
 		RandomCraftConfig.load();
+		// recarrega com //reload_config (Reload All Configs) e com o "Salvar e recarregar" da janela
+		ConfigReloadHooks.register("RandomCraft", RandomCraftConfig::load);
 		RandomCraftStore.Jdbc.createTable();
 		PlayerListenerList.addGlobal(EXIT);
 		VoicedCommandHandler.getInstance().registerVoicedCommandHandler(this);

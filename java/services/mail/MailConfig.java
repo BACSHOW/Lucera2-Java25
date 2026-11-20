@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Configuração do correio: game/config/mail.properties.
+ * Configuração do correio: game/config/custom/mail.properties (recarrega com //reload_config).
  *
  * Fica nos scripts (não no Config.java do núcleo): recarrega junto com os
  * scripts ou com o comando de GM ".correioreload". Arquivo ausente = todos os
@@ -18,7 +18,7 @@ public final class MailConfig
 {
 	private static final Logger _log = LoggerFactory.getLogger(MailConfig.class);
 
-	public static final String FILE = "config/mail.properties";
+	public static final String FILE = "config/custom/mail.properties";
 
 	/** Ativar Mail */
 	public static boolean ALLOW_MAIL = true;

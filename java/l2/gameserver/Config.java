@@ -78,7 +78,7 @@ public class Config {
    public static final String OLYMPIAD = "config/olympiad.properties";
    public static final String QUEST_RATE_FILE = "config/quest_rates.properties";
    public static final String CUSTOM_CONFIG_FILE = "config/custom.properties";
-   public static final String AUTO_FARM_FILE = "config/auto_farm.properties";
+   public static final String AUTO_FARM_FILE = "config/custom/auto_farm.properties";
    public static final String CHATFILTERS_CONFIG_FILE = "config/chatfilters.xml";
    public static final String PACKET_FILTER_CONFIG_FILE = "config/packetfilter.xml";
    public static final String GM_PERSONAL_ACCESS_FILE = "config/GMAccess.xml";
@@ -1847,7 +1847,7 @@ public class Config {
    }
 
    public static void loadAuctionHouseConfig() {
-      ExProperties var0 = load("config/auction_house.properties");
+      ExProperties var0 = load("config/custom/auction_house.properties");
       // ===== CARREGAR CONFIGURAÇÕES DO MARKETPLACE =====
       ENABLE_GRADE_ITEMS_MARKETPLACE = Boolean.parseBoolean(var0.getProperty("EnableGradeItemsMarket", "False"));
 
@@ -2547,7 +2547,7 @@ public class Config {
    }
 
    public static void loadFarmConfig() {
-      ExProperties var0 = load("config/auto_farm.properties");
+      ExProperties var0 = load(AUTO_FARM_FILE);
       ALLOW_AUTO_FARM = var0.getProperty("AllowAutoFarm", false);
       FARM_ONLINE_TYPE = var0.getProperty("AutoFarmOnlineType", false);
       AUTO_FARM_FOR_PREMIUM = var0.getProperty("AutoFarmOnlyForPremium", false);
@@ -3487,6 +3487,8 @@ public class Config {
       loadChatFilters();
       loadGMAccess();
       loadFarmConfig();
+      // configs dos scripts (Monster Data, Correio, Random Craft, Battle Pass, AutoFarm Plus)
+      ConfigReloadHooks.runAll();
    }
 
    private Config() {

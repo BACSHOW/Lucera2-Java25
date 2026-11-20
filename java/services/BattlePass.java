@@ -1,5 +1,6 @@
 package services;
 
+import l2.gameserver.ConfigReloadHooks;
 import l2.gameserver.handler.voicecommands.IVoicedCommandHandler;
 import l2.gameserver.handler.voicecommands.VoicedCommandHandler;
 import l2.gameserver.listener.actor.player.OnPlayerExitListener;
@@ -51,6 +52,9 @@ public class BattlePass extends Functions implements ScriptFile, IVoicedCommandH
 	public void onLoad()
 	{
 		BattlePassConfig.load();
+		// recarrega com //reload_config (Reload All Configs) e com o "Salvar e recarregar" da janela;
+		// a gravacao periodica recomeca com o SaveInterval novo
+		ConfigReloadHooks.register("BattlePass", () -> { BattlePassConfig.load(); BattlePassService.startSaveTask(); });
 		BattlePassStore.Jdbc.createTable();
 		CharListenerList.addGlobal(KILL);
 		PlayerListenerList.addGlobal(EXIT);

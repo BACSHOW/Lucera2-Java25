@@ -758,12 +758,12 @@ public final class ServerGui {
     }
 
     private void reloadConfigs() {
-        if (JOptionPane.showConfirmDialog(this.frame, "Recarregar todos os arquivos de config/*.properties?",
+        if (JOptionPane.showConfirmDialog(this.frame, "Recarregar todos os arquivos de config/*.properties e config/custom/*.properties?",
                 "Recarregar configs", JOptionPane.OK_CANCEL_OPTION) != JOptionPane.OK_OPTION) {
             return;
         }
         this.runInBackground("recarregar configs", () -> {
-            l2.gameserver.Config.load();
+            Config.load();
             LOG.info("Configs recarregadas pela janela do servidor.");
         });
     }

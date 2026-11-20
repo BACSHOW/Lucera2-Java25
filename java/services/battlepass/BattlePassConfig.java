@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Configuração do Battle Pass: game/config/battlepass.properties.
+ * Configuração do Battle Pass: game/config/custom/battlepass.properties (recarrega com //reload_config).
  *
  * Fica nos scripts: recarrega junto com os scripts ou com ".passreload" (GM).
  * Arquivo ausente = valores padrão abaixo (10 degraus de exemplo).
@@ -22,7 +22,7 @@ public final class BattlePassConfig
 {
 	private static final Logger _log = LoggerFactory.getLogger(BattlePassConfig.class);
 
-	public static final String FILE = "config/battlepass.properties";
+	public static final String FILE = "config/custom/battlepass.properties";
 
 	/** Degraus por página na janela (as 10 colunas do L2PassWnd). */
 	public static final int PAGE_SIZE = 10;

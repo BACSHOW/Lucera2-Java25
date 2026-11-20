@@ -15,6 +15,7 @@ import java.util.function.Consumer;
 
 import l2.commons.listener.Listener;
 import l2.gameserver.Config;
+import l2.gameserver.ConfigReloadHooks;
 import l2.gameserver.GameServer;
 import l2.gameserver.ai.CtrlIntention;
 import l2.gameserver.geodata.GeoEngine;
@@ -52,7 +53,7 @@ import org.slf4j.LoggerFactory;
  * server.jar is not patched or replaced.
  *
  * Config:
- *   config/autofarm_plus.properties
+ *   config/custom/autofarm_plus.properties (recarrega com //reload_config)
  */
 /**
  * AutoFarm Plus: Counter Attack, Respect Hunt, tipos de farm e Keep Location.
@@ -67,8 +68,7 @@ public class AutoFarmPlus
     private static final Logger _log = LoggerFactory.getLogger(AutoFarmPlus.class);
 
     private static final String[] CONFIG_PATHS = {
-            "config/autofarm_plus.properties",
-            "gameserver/config/autofarm_plus.properties"
+            "config/custom/autofarm_plus.properties"
     };
 
     // false = nao envia pacotes TutorialShowHtml (AUTOFARM_OPTIONS, FARM_TYPE_UI, AUTOFARM_TOAST,
@@ -123,6 +123,7 @@ public class AutoFarmPlus
             return;
 
         loadConfig();
+        ConfigReloadHooks.register("AutoFarmPlus", AutoFarmPlus::loadConfig);
         OfflineHuntingService.start(loadRawProps());
 
         CharListenerList.addGlobal((Listener<Creature>) (Listener<?>) ENTER_LISTENER);

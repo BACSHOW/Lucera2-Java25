@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.CharacterCodingException;
@@ -192,16 +193,38 @@ public final class ConfigEditorPanel extends JPanel {
 
     // ------------------------------------------------------------------ arquivos
 
-    /** Os .properties da pasta: server/authserver primeiro, o resto em ordem alfabetica. */
+    /** Subpasta com as configs dos servicos (Monster Data, Correio, Leilao, AutoFarm, Random Craft, Battle Pass). */
+    private File customDir() {
+        return new File(this.dir, "custom");
+    }
+
+    /** Nome mostrado na lista: os da subpasta custom aparecem como "custom/arquivo.properties". */
+    private static String label(File f) {
+        File parent = f.getParentFile();
+        return parent != null && parent.getName().equalsIgnoreCase("custom") ? "custom/" + f.getName() : f.getName();
+    }
+
+    /** Os .properties da pasta e da subpasta custom: server/authserver primeiro, o resto em ordem alfabetica. */
     private File[] listPropertyFiles() {
-        File[] list = this.dir.listFiles((d, n) -> n.toLowerCase(Locale.ROOT).endsWith(".properties"));
-        if (list == null) {
+        FileFilter props = f -> f.isFile() && f.getName().toLowerCase(Locale.ROOT).endsWith(".properties");
+        File[] top = this.dir.listFiles(props);
+        File[] custom = this.customDir().listFiles(props);
+        int nTop = top == null ? 0 : top.length;
+        int nCustom = custom == null ? 0 : custom.length;
+        if (nTop + nCustom == 0) {
             return new File[0];
+        }
+        File[] list = new File[nTop + nCustom];
+        if (nTop > 0) {
+            System.arraycopy(top, 0, list, 0, nTop);
+        }
+        if (nCustom > 0) {
+            System.arraycopy(custom, 0, list, nTop, nCustom);
         }
         Arrays.sort(list, (a, b) -> {
             int pa = a.getName().matches("(?i)(server|authserver)\\.properties") ? 0 : 1;
             int pb = b.getName().matches("(?i)(server|authserver)\\.properties") ? 0 : 1;
-            return pa != pb ? pa - pb : a.getName().compareToIgnoreCase(b.getName());
+            return pa != pb ? pa - pb : label(a).compareToIgnoreCase(label(b));
         });
         return list;
     }
@@ -228,6 +251,10 @@ public final class ConfigEditorPanel extends JPanel {
             try (WatchService ws = FileSystems.getDefault().newWatchService()) {
                 this.dir.toPath().register(ws, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_MODIFY,
                         StandardWatchEventKinds.ENTRY_DELETE);
+                if (this.customDir().isDirectory()) {
+                    this.customDir().toPath().register(ws, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_MODIFY,
+                            StandardWatchEventKinds.ENTRY_DELETE);
+                }
                 while (true) {
                     WatchKey key = ws.take();
                     boolean relevant = false;
@@ -673,7 +700,7 @@ public final class ConfigEditorPanel extends JPanel {
             super.getListCellRendererComponent(list, value, index, selected, focus);
             PropFile pf = (PropFile) value;
             int ch = pf.changes();
-            this.setText(pf.file.getName() + (pf.matches >= 0 ? "  (" + pf.matches + ")" : "") + (ch > 0 ? "  *" + ch : ""));
+            this.setText(label(pf.file) + (pf.matches >= 0 ? "  (" + pf.matches + ")" : "") + (ch > 0 ? "  *" + ch : ""));
             this.setBorder(BorderFactory.createEmptyBorder(3, 6, 3, 6));
             if (!selected) {
                 this.setBackground(Theme.PANEL);
