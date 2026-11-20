@@ -1897,7 +1897,7 @@ public class Config {
          }
       }
       MARKETPLACE_CURRENCIES = currencies.stream().mapToInt(Integer::intValue).toArray();
-      debugCurrencyConfig();
+      // as moedas aparecem no bloco "=== AUCTION HOUSE ===" do console (boot e //reload_config)
 
       // Item que nunca pode ser anunciado
       TICKET_MARKE_PLACE = Integer.parseInt(var0.getProperty("TicketMarkePlace", "6392").trim());
@@ -3664,26 +3664,4 @@ public class Config {
       }
    }
 
-   /**
-    * Lista as moedas do leilão no log. No boot as configs carregam antes dos itens: aí só os ids (procurar o nome
-    * nessa hora gerava "NÃO ENCONTRADO" e pilha de erro para todas). No //reload_config sai com os nomes, e um id
-    * que não existe aparece como aviso.
-    */
-   public static void debugCurrencyConfig() {
-      _log.info("=== CONFIGURAÇÃO DE MOEDAS ===");
-      boolean itemsLoaded = ItemHolder.getInstance().size() > 0;
-      for (int i = 0; i < MARKETPLACE_CURRENCIES.length; i++) {
-         int id = MARKETPLACE_CURRENCIES[i];
-         ItemTemplate item = itemsLoaded && id > 0 && id < ItemHolder.getInstance().getAllTemplates().length
-               ? ItemHolder.getInstance().getAllTemplates()[id] : null;
-         if (!itemsLoaded) {
-            _log.info("Moeda " + i + ": ID=" + id);
-         } else if (item != null) {
-            _log.info("Moeda " + i + ": ID=" + id + ", Nome='" + item.getName() + "'");
-         } else {
-            _log.warn("Moeda " + i + ": ID=" + id + " NÃO ENCONTRADO!");
-         }
-      }
-      _log.info("==============================");
-   }
 }

@@ -8,6 +8,7 @@ import l2.gameserver.model.Player;
 import l2.gameserver.model.actor.listener.PlayerListenerList;
 import l2.gameserver.scripts.Functions;
 import l2.gameserver.scripts.ScriptFile;
+import l2.gameserver.utils.ServiceLog;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,12 +57,22 @@ public class RandomCraft extends Functions implements ScriptFile, IVoicedCommand
 	{
 		RandomCraftConfig.load();
 		// recarrega com //reload_config (Reload All Configs) e com o "Salvar e recarregar" da janela
-		ConfigReloadHooks.register("RandomCraft", RandomCraftConfig::load);
+		ConfigReloadHooks.register("RandomCraft", () -> { RandomCraftConfig.load(); logSection(); });
 		RandomCraftStore.Jdbc.createTable();
 		PlayerListenerList.addGlobal(EXIT);
 		VoicedCommandHandler.getInstance().registerVoicedCommandHandler(this);
-		_log.info("Loaded Service: Random Craft (" + RandomCraftConfig.POOL.size() + " recompensas, " + RandomCraftConfig.EXTRACT.size() + " itens de extração, "
-			+ (RandomCraftConfig.ENABLED ? "ligado" : "desligado") + ")");
+		logSection();
+	}
+
+	/** Bloco "=== RANDOM CRAFT ===" do console (boot e //reload_config). */
+	private static void logSection()
+	{
+		ServiceLog.section("RANDOM CRAFT")
+			.add("Random Craft: " + ServiceLog.onOff(RandomCraftConfig.ENABLED) + " | " + RandomCraftConfig.POOL.size() + " recompensas | "
+				+ RandomCraftConfig.EXTRACT.size() + " itens de extração")
+			.add("Pontos: até " + RandomCraftConfig.MAX_POINTS + " (" + RandomCraftConfig.MAX_EXP + " de exp = 1 ponto) | até "
+				+ RandomCraftConfig.MAX_LOCKED_SLOTS + " casas travadas")
+			.print();
 	}
 
 	@Override

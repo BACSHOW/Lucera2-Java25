@@ -48,7 +48,6 @@ public final class OfflineHuntingService
 		showButton = Boolean.parseBoolean(p.getProperty("InterfaceShowOfflineHunting", "true"));
 		if (watcher == null)
 			watcher = ThreadPoolManager.getInstance().scheduleAtFixedRate(OfflineHuntingService::watch, 500L, 500L);
-		LOG.info("OfflineHunting: enabled={} button={}", enabled, showButton);
 	}
 
 	public static synchronized void stop()

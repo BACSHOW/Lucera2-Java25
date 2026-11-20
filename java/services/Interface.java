@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import l2.gameserver.ConfigReloadHooks;
 import l2.gameserver.Announcements;
 import l2.gameserver.Config;
 import l2.gameserver.GameServer;
@@ -44,6 +45,7 @@ import l2.gameserver.scripts.ScriptFile;
 import l2.gameserver.templates.item.ItemTemplate;
 import l2.gameserver.utils.ItemFunctions;
 import l2.gameserver.utils.Log;
+import l2.gameserver.utils.ServiceLog;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,14 +64,24 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 	public void onLoad() 
 	{
 		GameServer.getInstance().addListener(this);
-		TeleportLocationData2.getInstance().reload();
-		AllowedConfigs.init();
 		AdminCommandHandler.getInstance().registerAdminCommandHandler(new AdminReloadTeleports());
+		int multisells = AllowedConfigs.init();
+		ServiceLog interfaceLog = ServiceLog.section("INTERFACE").add("Comandos da interface L2Better carregados.");
+		if (multisells > 0)
+			interfaceLog.add("Multisells liberados (l2jreturn.properties): " + multisells);
+		else
+			interfaceLog.warn("AllowedMultisells vazio (l2jreturn.properties): nenhum multisell abre pela interface.");
+		interfaceLog.print();
+
+		TeleportLocationData2.getInstance().reload();
+
 		AuctionTableCommunity.getInstance();
 		AuctionPriceStats.ensureLoaded();             // histórico de preço do leilão
 		AuctionHouseService.registerLoginNotice();    // "vendido enquanto estava offline"
+		AuctionHouseService.logSection();
+		ConfigReloadHooks.register("AuctionHouse", AuctionHouseService::logSection);
+
 		AutoFarmPlus.start();                         // Counter Attack, Respect Hunt, tipos de farm, Keep Location
-		_log.info("Loaded Service: Interface Commands L2Better");
 	}
 
 	public void onReload() 

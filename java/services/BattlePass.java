@@ -9,10 +9,12 @@ import l2.gameserver.model.actor.listener.CharListenerList;
 import l2.gameserver.model.actor.listener.PlayerListenerList;
 import l2.gameserver.scripts.Functions;
 import l2.gameserver.scripts.ScriptFile;
+import l2.gameserver.utils.ServiceLog;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import services.auctionhouse.AuctionUtils;
 import services.battlepass.BattlePassConfig;
 import services.battlepass.BattlePassKillListener;
 import services.battlepass.BattlePassService;
@@ -54,13 +56,26 @@ public class BattlePass extends Functions implements ScriptFile, IVoicedCommandH
 		BattlePassConfig.load();
 		// recarrega com //reload_config (Reload All Configs) e com o "Salvar e recarregar" da janela;
 		// a gravacao periodica recomeca com o SaveInterval novo
-		ConfigReloadHooks.register("BattlePass", () -> { BattlePassConfig.load(); BattlePassService.startSaveTask(); });
+		ConfigReloadHooks.register("BattlePass", () -> { BattlePassConfig.load(); BattlePassService.startSaveTask(); logSection(); });
 		BattlePassStore.Jdbc.createTable();
 		CharListenerList.addGlobal(KILL);
 		PlayerListenerList.addGlobal(EXIT);
 		VoicedCommandHandler.getInstance().registerVoicedCommandHandler(this);
 		BattlePassService.startSaveTask();
-		_log.info("Loaded Service: Battle Pass (" + BattlePassConfig.STEPS.size() + " degraus, " + (BattlePassConfig.ENABLED ? "ligado" : "desligado") + ")");
+		logSection();
+	}
+
+	/** Bloco "=== HUNTING PASS ===" do console (boot e //reload_config). */
+	private static void logSection()
+	{
+		ServiceLog.section("HUNTING PASS")
+			.add("Battle Pass: " + ServiceLog.onOff(BattlePassConfig.ENABLED) + " | " + BattlePassConfig.STEPS.size() + " degraus | temporada: "
+				+ (BattlePassConfig.SEASON_DAYS > 0 ? BattlePassConfig.SEASON_DAYS + " dias" : "sem fim"))
+			.add("Pontos: monstro " + BattlePassConfig.POINTS_MONSTER + ", campeão " + BattlePassConfig.POINTS_CHAMPION + ", raid "
+				+ BattlePassConfig.POINTS_RAID + ", boss " + BattlePassConfig.POINTS_BOSS + " | grupo também ganha: " + ServiceLog.onOff(BattlePassConfig.PARTY_SHARE))
+			.add("Premium: " + BattlePassConfig.PREMIUM_ITEM_COUNT + " x " + AuctionUtils.getCurrencyNameById(BattlePassConfig.PREMIUM_ITEM_ID)
+				+ " | inventário cheio vai pelo correio: " + ServiceLog.onOff(BattlePassConfig.MAIL_WHEN_FULL))
+			.print();
 	}
 
 	@Override

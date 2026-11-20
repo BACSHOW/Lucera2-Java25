@@ -42,6 +42,8 @@ public final class AuctionPriceStats
 	private static final Map<String, long[]> LAST = new ConcurrentHashMap<>();
 	private static final Object LOAD_LOCK = new Object();
 	private static volatile boolean _loaded = false;
+	/** Vendas lidas do histórico no carregamento (para o bloco do console). */
+	private static volatile int _loadedRows;
 
 	private AuctionPriceStats()
 	{
@@ -65,6 +67,12 @@ public final class AuctionPriceStats
 			load();
 			_loaded = true;
 		}
+	}
+
+	/** "120 vendas, 35 itens diferentes" (o que foi lido do histórico). */
+	public static String summary()
+	{
+		return _loadedRows + " vendas, " + SALES.size() + " itens diferentes";
 	}
 
 	private static void load()
@@ -103,8 +111,7 @@ public final class AuctionPriceStats
 			_log.warn("AuctionHouse: não foi possível ler o histórico de preços: " + e.getMessage());
 		}
 
-		_log.info("AuctionHouse: histórico de preços carregado (" + rows + " vendas, "
-			+ SALES.size() + " itens diferentes).");
+		_loadedRows = rows;
 	}
 
 	/**

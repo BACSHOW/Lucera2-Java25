@@ -43,6 +43,7 @@ import l2.gameserver.network.l2.s2c.MyTargetSelected;
 import l2.gameserver.network.l2.s2c.ExShowScreenMessage;
 import l2.gameserver.network.l2.s2c.ExShowScreenMessage.ScreenMessageAlign;
 import l2.gameserver.network.l2.s2c.TutorialShowHtml;
+import l2.gameserver.utils.ServiceLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -117,13 +118,26 @@ public class AutoFarmPlus
     private static volatile boolean STARTED = false;
 
     @SuppressWarnings({"rawtypes", "unchecked"})
+    /** Bloco "=== AUTOFARM ===" do console (boot e //reload_config). */
+    public static void logSection()
+    {
+        ServiceLog.section("AUTOFARM")
+                .add("Janela AutoFarm: " + ServiceLog.onOff(INTERFACE_SHOW_AUTOFARM) + " | Teleport: " + ServiceLog.onOff(INTERFACE_SHOW_TELEPORT)
+                        + " | barra lateral: " + ServiceLog.onOff(INTERFACE_SHOW_SIDEBAR))
+                .add("Counter Attack: " + ServiceLog.onOff(INTERFACE_SHOW_COUNTER_ATTACK) + " | Respect Hunt: "
+                        + ServiceLog.onOff(INTERFACE_SHOW_RESPECT_HUNT) + " | Auto Skill: " + ServiceLog.onOff(INTERFACE_SHOW_AUTO_SKILL))
+                .add("Offline Hunting: " + ServiceLog.onOff(OfflineHuntingService.isEnabled()) + " | botão: "
+                        + ServiceLog.onOff(OfflineHuntingService.isButtonVisible()))
+                .print();
+    }
+
     public static synchronized void start()
     {
         if (STARTED)
             return;
 
         loadConfig();
-        ConfigReloadHooks.register("AutoFarmPlus", AutoFarmPlus::loadConfig);
+        ConfigReloadHooks.register("AutoFarmPlus", () -> { loadConfig(); logSection(); });
         OfflineHuntingService.start(loadRawProps());
 
         CharListenerList.addGlobal((Listener<Creature>) (Listener<?>) ENTER_LISTENER);
@@ -136,13 +150,7 @@ public class AutoFarmPlus
 
         STARTED = true;
 
-        _log.info("AutoFarmPlus: STARTED [AutoFarm={} Teleport={} SideBar={} Counter={} Respect={} AutoSkill={}]",
-                INTERFACE_SHOW_AUTOFARM,
-                INTERFACE_SHOW_TELEPORT,
-                INTERFACE_SHOW_SIDEBAR,
-                INTERFACE_SHOW_COUNTER_ATTACK,
-                INTERFACE_SHOW_RESPECT_HUNT,
-                INTERFACE_SHOW_AUTO_SKILL);
+        logSection();
 
         ThreadPoolManager.getInstance().schedule(() -> {
             for (Player player : GameObjectsStorage.getAllPlayers())

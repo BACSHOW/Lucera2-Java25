@@ -24,6 +24,7 @@ import l2.gameserver.templates.item.ArmorTemplate;
 import l2.gameserver.templates.item.ItemTemplate;
 import l2.gameserver.templates.item.WeaponTemplate;
 import l2.gameserver.utils.ItemFunctions;
+import l2.gameserver.utils.ServiceLog;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -861,6 +862,57 @@ public final class AuctionHouseService
 	 * vendidos"). Chamado no Interface.onLoad; registra uma vez só, mesmo
 	 * se os scripts forem recarregados.
 	 */
+	/**
+	 * Bloco "=== AUCTION HOUSE ===" do console: no boot (Interface.onLoad, já com os itens carregados, então com o
+	 * nome das moedas) e a cada //reload_config.
+	 */
+	public static void logSection()
+	{
+		ServiceLog log = ServiceLog.section("AUCTION HOUSE");
+
+		StringBuilder cur = new StringBuilder();
+		for (int id : Config.MARKETPLACE_CURRENCIES)
+		{
+			ItemTemplate t = id > 0 && id < ItemHolder.getInstance().getAllTemplates().length ? ItemHolder.getInstance().getAllTemplates()[id] : null;
+			if (t == null)
+			{
+				log.warn("Moeda " + id + " (MarketplaceCurrencies) não existe nos itens.");
+				continue;
+			}
+			if (cur.length() > 0)
+				cur.append(", ");
+			cur.append(t.getName()).append(" (").append(id).append(')');
+		}
+		if (cur.length() == 0)
+			log.warn("Nenhuma moeda válida em MarketplaceCurrencies: ninguém consegue criar anúncio.");
+		else
+			log.add("Moedas aceitas: " + cur);
+
+		String fee = Config.MARKETPLACE_FEE[1] > 0
+			? fmt(Config.MARKETPLACE_FEE[1]) + " " + AuctionUtils.getCurrencyNameById(Config.MARKETPLACE_FEE[0]) : "nenhuma";
+		log.add("Taxa de criação: " + fee + " | taxa sobre a venda: " + (taxBasisPoints() / 100.0) + "%");
+
+		AuctionTableCommunity table = AuctionTableCommunity.getInstance();
+		long active = table.getAuctions().values().stream().filter(AuctionHolder::isActive).count();
+		log.add("Anúncios ativos: " + active + " (até " + (Config.AUCTION_MAX_PER_PLAYER > 0 ? Config.AUCTION_MAX_PER_PLAYER : "sem limite")
+			+ " por personagem)");
+		log.add("Lance mínimo: +" + Math.max(0, Config.AUCTION_MIN_BID_PERCENT) + "% | anti-sniping: "
+			+ (Config.AUCTION_SNIPE_MINUTES > 0 && Config.AUCTION_SNIPE_EXTEND_MINUTES > 0
+				? "últimos " + Config.AUCTION_SNIPE_MINUTES + " min estendem " + Config.AUCTION_SNIPE_EXTEND_MINUTES + " min" : "desligado"));
+		log.add("Compra parcial: " + ServiceLog.onOff(table.supportsPartial()) + " | anúncio no chat: " + ServiceLog.onOff(Config.AUCTION_ANNOUNCE));
+		log.add("Histórico de preços: " + AuctionPriceStats.summary());
+
+		for (String note : table.getBootNotes())
+		{
+			if (note.startsWith("!"))
+				log.warn(note.substring(1));
+			else
+				log.add(note);
+		}
+		table.getBootNotes().clear();
+		log.print();
+	}
+
 	public static void registerLoginNotice()
 	{
 		if (System.getProperties().putIfAbsent("l2.auctionhouse.loginNotice", "1") != null)

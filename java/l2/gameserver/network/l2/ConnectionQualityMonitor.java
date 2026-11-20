@@ -8,6 +8,7 @@ import l2.gameserver.network.l2.netty.NettyGameConnection;
 import l2.gameserver.network.l2.s2c.ExShowScreenMessage;
 import l2.gameserver.network.l2.s2c.ExShowScreenMessage.ScreenMessageAlign;
 import l2.gameserver.network.l2.s2c.TutorialShowHtml;
+import l2.gameserver.utils.ServiceLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -74,8 +75,12 @@ public final class ConnectionQualityMonitor {
         }
         started = true;
         ThreadPoolManager.getInstance().scheduleAtFixedRate(ConnectionQualityMonitor::checkAll, CHECK_MS, CHECK_MS);
-        LOG.info("ConnectionWarning: aviso de conexao ruim ligado (ping >= " + Config.CONNECTION_WARNING_PING_MS + " ms ou fila de envio > "
-                + Config.NETTY_SLOW_CLIENT_SHED_BYTES / 1024 + " KB).");
+        ServiceLog.section("AVISO DE CONEXÃO")
+                .add("Tarja de conexão ruim: ligada (" + (Config.CONNECTION_WARNING_INTERFACE ? "pela interface" : "mensagem do cliente") + ")")
+                .add("Dispara com ping >= " + Config.CONNECTION_WARNING_PING_MS + " ms ou fila de envio > "
+                        + Config.NETTY_SLOW_CLIENT_SHED_BYTES / 1024 + " KB | no máximo 1 aviso a cada "
+                        + Config.CONNECTION_WARNING_COOLDOWN_MS / 1000 + " s")
+                .print();
     }
 
     /** Qualidade atual, usada tambem pelo .ping. */

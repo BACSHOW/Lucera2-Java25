@@ -34,6 +34,7 @@ import l2.gameserver.data.xml.holder.SpawnHolder;
 import l2.gameserver.templates.spawn.SpawnTemplate;
 import l2.gameserver.templates.spawn.SpawnNpcInfo;
 import l2.gameserver.utils.Location;
+import l2.gameserver.utils.ServiceLog;
 import l2.gameserver.templates.item.ItemTemplate;
 import l2.gameserver.templates.npc.NpcTemplate;
 import l2.gameserver.model.instances.MonsterInstance;
@@ -90,7 +91,7 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 	@Override public void onLoad() 
 	{
 		loadSettings();
-		ConfigReloadHooks.register("MobInformer", MobInformer::loadSettings);
+		ConfigReloadHooks.register("MobInformer", () -> { loadSettings(); logSection(catalog, null); });
 		VoicedCommandHandler.getInstance().registerVoicedCommandHandler(this);
 		// Exact read operations only; no spawning, target changes or item actions.
 		synchronized (Config.class) 
@@ -105,9 +106,11 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 			started = true;
 		}
 		// Build the shared catalog in the background so the first player does not wait for it.
+		// O bloco "=== MONSTER DATA ===" sai quando o catálogo fica pronto (ou já, se estiver desligado).
+		if (!enabled) logSection(null, null);
 		ThreadPoolManager.getInstance().schedule(() -> {
-			try { if (enabled) getCatalog(); }
-			catch (RuntimeException failure) { LOG.warn("MobInformer catalog warm-up failed", failure); }
+			try { if (enabled) logSection(getCatalog(), null); }
+			catch (RuntimeException failure) { logSection(null, "Catálogo não montou: " + failure); LOG.warn("MobInformer catalog warm-up failed", failure); }
 		}, 5000);
 		// Spawn locations and quest titles are also lazy; warm them later, once spawns have been loaded.
 		ThreadPoolManager.getInstance().schedule(() -> {
@@ -147,8 +150,16 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 		if (localSettings.isFile()) try (FileInputStream input = new FileInputStream(localSettings)) { properties.load(input); }
 		catch (IOException failure) { LOG.warn("MobInformer: failed to read Monster Data settings", failure); }
 		applySettings(properties);
-		LOG.info("MobInformer: monsterdata.properties lido (Monster Data " + (enabled ? "ligado" : "desligado")
-				+ ", Shift + clique " + (shiftClick ? "ligado" : "desligado") + ").");
+	}
+
+	/** Bloco "=== MONSTER DATA ===" do console (boot, quando o catálogo fica pronto, e //reload_config). */
+	private static void logSection(Catalog built, String problem) {
+		ServiceLog log = ServiceLog.section("MONSTER DATA")
+				.add("Monster Data: " + ServiceLog.onOff(enabled) + " | Shift + clique: " + ServiceLog.onOff(shiftClick)
+						+ " | prévia 3D: " + ServiceLog.onOff(preview3D) + " | animação: " + ServiceLog.onOff(animation));
+		if (built != null) log.add("Catálogo: " + built.items.size() + " itens, " + built.sources.size() + " itens com drop/spoil");
+		if (problem != null) log.warn(problem);
+		log.print();
 	}
 	static void applySettings(Properties properties) {
 		// trim: espaco no fim da linha ("true ") fazia o valor virar false
@@ -607,7 +618,6 @@ public class MobInformer extends Functions implements ScriptFile, IVoicedCommand
 			if (result == null) {
 				result = buildCatalog(ItemHolder.getInstance().getAllTemplates(), NpcHolder.getInstance().getAll());
 				catalog = result;
-				LOG.info("MobInformer catalog ready: {} items, {} reward item IDs.", result.items.size(), result.sources.size());
 			}
 		}
 		return result;

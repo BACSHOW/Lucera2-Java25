@@ -9,6 +9,7 @@ import l2.gameserver.handler.voicecommands.VoicedCommandHandler;
 import l2.gameserver.model.Player;
 import l2.gameserver.scripts.Functions;
 import l2.gameserver.scripts.ScriptFile;
+import l2.gameserver.utils.ServiceLog;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,10 +48,23 @@ public class MailBox extends Functions implements ScriptFile, IVoicedCommandHand
 	{
 		MailConfig.load();
 		// recarrega com //reload_config (Reload All Configs) e com o "Salvar e recarregar" da janela
-		ConfigReloadHooks.register("Mail", MailConfig::load);
+		ConfigReloadHooks.register("Mail", () -> { MailConfig.load(); logSection(); });
 		VoicedCommandHandler.getInstance().registerVoicedCommandHandler(this);
 		MailService.registerLoginNotice();
-		_log.info("Loaded Service: Mail (correio)");
+		logSection();
+	}
+
+	/** Bloco "=== MAIL ===" do console (boot e //reload_config). */
+	private static void logSection()
+	{
+		ServiceLog.section("MAIL")
+			.add("Correio: " + ServiceLog.onOff(MailConfig.ALLOW_MAIL) + " | nível mínimo " + MailConfig.MIN_LEVEL
+				+ (MailConfig.PEACE_ZONE ? " | só em zona de paz" : ""))
+			.add("Taxa: " + MailConfig.FEE_BASE + " Adena + " + MailConfig.FEE_PER_ITEM + " por anexo | até "
+				+ MailConfig.MAX_ATTACHMENTS + " anexos | caixa até " + MailConfig.INBOX_LIMIT + " cartas")
+			.add("Validade: " + MailConfig.EXPIRE_HOURS + " h (cobrança na entrega " + MailConfig.COD_EXPIRE_HOURS + " h, sistema "
+				+ MailConfig.SYSTEM_EXPIRE_HOURS + " h) | entrega do leilão pelo correio: " + ServiceLog.onOff(MailConfig.AUCTION_DELIVERY))
+			.print();
 	}
 
 	@Override

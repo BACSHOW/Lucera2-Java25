@@ -10,6 +10,7 @@ import java.util.Map;
 import l2.commons.data.xml.helpers.XmlReaderHelper;
 import l2.gameserver.Config;
 import l2.gameserver.templates.StatsSet;
+import l2.gameserver.utils.ServiceLog;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -109,8 +110,10 @@ public class TeleportLocationData2 {
         this._categories = categories;
         this._version++;
         this._payloads = buildPayloads(this._version, categories, teleports);
-        LOG.info("Loaded interface teleport locations: " + teleports.size() + " in " + categories.size()
-                + " categories (" + this._payloads.size() + " client packets)");
+        ServiceLog.section("TELEPORT")
+                .add("Locais: " + teleports.size() + " em " + categories.size() + " categorias ("
+                        + this._payloads.size() + " pacotes para o cliente)")
+                .print();
     }
 
     /** Remove os separadores do protocolo do texto. */

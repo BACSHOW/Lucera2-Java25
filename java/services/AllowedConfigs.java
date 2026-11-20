@@ -11,10 +11,11 @@ public class AllowedConfigs {
     private static final String CONFIG_FILE = "config/custom/l2jreturn.properties";
     public static int[] ALLOWED_MULTISELLS = new int[0];
 
-    public static void init() {
+    /** Lê o AllowedMultisells; devolve quantos multisells ficaram liberados (vai para o bloco INTERFACE do console). */
+    public static int init() {
         ExProperties config = initProperties(CONFIG_FILE);
         ALLOWED_MULTISELLS = config.getProperty("AllowedMultisells", new int[0]);
-        _log.info("Allowed Multisells config loaded.");
+        return ALLOWED_MULTISELLS.length;
     }
 
     public static ExProperties initProperties(String filename) {

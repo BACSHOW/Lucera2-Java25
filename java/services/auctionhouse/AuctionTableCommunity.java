@@ -50,6 +50,8 @@ public class AuctionTableCommunity
 	// Colunas da venda parcial (allow_partial, original_count) existem no banco? Criadas sozinhas no load; se o
 	// ALTER falhar (sem permissão), o leilão continua funcionando, só sem compra parcial.
 	private volatile boolean partialColumns;
+	/** Avisos da carga (colunas criadas...) para o bloco "=== AUCTION HOUSE ===" do console; "!" no início = aviso. */
+	private final List<String> bootNotes = new CopyOnWriteArrayList<>();
 
 	public static AuctionTableCommunity getInstance()
 	{
@@ -117,8 +119,12 @@ public class AuctionTableCommunity
 		{
 			log.error("AuctionTable: erro ao carregar os leilões do banco", e);
 		}
+	}
 
-		log.info("AuctionTable: Loaded " + auctions.size() + " auctions.");
+	/** Avisos da carga, para o bloco do console. */
+	public List<String> getBootNotes()
+	{
+		return bootNotes;
 	}
 
 	/** Status gravado; um valor desconhecido vira ACTIVE (antes um valor estranho parava a carga inteira). */
@@ -162,12 +168,12 @@ public class AuctionTableCommunity
 				if (!cols.contains("allow_partial"))
 				{
 					st.executeUpdate("ALTER TABLE auction_house_table ADD COLUMN allow_partial TINYINT NOT NULL DEFAULT 0");
-					log.info("AuctionTable: coluna allow_partial criada.");
+					bootNotes.add("Coluna allow_partial criada no banco.");
 				}
 				if (!cols.contains("original_count"))
 				{
 					st.executeUpdate("ALTER TABLE auction_house_table ADD COLUMN original_count INT NOT NULL DEFAULT 0");
-					log.info("AuctionTable: coluna original_count criada.");
+					bootNotes.add("Coluna original_count criada no banco.");
 				}
 			}
 			partialColumns = true;
@@ -175,7 +181,7 @@ public class AuctionTableCommunity
 		catch (Exception e)
 		{
 			partialColumns = false;
-			log.warn("AuctionTable: não consegui criar as colunas da venda parcial (" + e.getMessage()
+			bootNotes.add("!Não consegui criar as colunas da venda parcial (" + e.getMessage()
 					+ "). Rode o auction_house_venda_parcial.sql; até lá a compra parcial fica desligada.");
 		}
 
@@ -200,7 +206,7 @@ public class AuctionTableCommunity
 			}
 			for (Map.Entry<String, List<String>> e : idx.entrySet())
 				if (e.getValue().contains("auction_id"))
-					log.warn("AuctionTable: auction_house_history tem chave única com auction_id (" + e.getKey() + ": "
+					bootNotes.add("!auction_house_history tem chave única com auction_id (" + e.getKey() + ": "
 							+ e.getValue() + "). A venda parcial grava uma linha por compra: troque por uma chave própria "
 							+ "(veja o auction_house_venda_parcial.sql).");
 		}
