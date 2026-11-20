@@ -4934,7 +4934,8 @@ public class Player extends Playable implements PlayerGroup {
     */
    private void syncAutoShotsToWeapon() {
       WeaponTemplate weapon = this.getActiveWeaponItem();
-      if (weapon == null || this.IA.isEmpty()) {
+      // arma que nao gasta shot (vara de pesca, por exemplo): nao troca nada, o handler desliga como sempre
+      if (weapon == null || this.IA.isEmpty() || weapon.getSoulShotCount() <= 0 && weapon.getSpiritShotCount() <= 0) {
          return;
       }
       int grade = Math.min(5, Math.max(0, weapon.getCrystalType().gradeOrd()));
