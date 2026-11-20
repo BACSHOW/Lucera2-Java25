@@ -13,8 +13,8 @@ import l2.gameserver.model.items.ItemInstance;
 import l2.gameserver.templates.item.ItemTemplate;
 
 /**
- * Item no chat (shift+clique): guarda uma "foto" imutável do item e devolve um token aleatório de 24 caracteres.
- * O token vai na mensagem como [#:token:nome]; quem clica pede a foto pelo token (services.ItemLink).
+ * Item no chat (shift+clique): guarda uma "foto" imutável do item e devolve um token aleatório de 16 caracteres.
+ * O token vai na mensagem como [#:token]; o servidor põe o nome e quem clica pede a foto pelo token (services.ItemLink).
  *
  * O token não é o objectId: não dá para ver itens de ninguém a partir dele. A foto não muda se o item for vendido,
  * encantado ou destruído depois. Lotada a capacidade, sai a mais antiga; cada foto vale por um tempo (config).
@@ -34,10 +34,15 @@ public final class ItemLinkCache
 	{
 	}
 
-	/** [#:token:nome] — o mesmo formato que o ChatWnd monta. */
-	public static final String LINK_REGEX = "\\[#:([0-9a-f]{24}):([^\\]]{0,100})\\]";
+	/** Tamanho do token (o ChatWnd usa o mesmo: ITEM_LINK_TOKEN_LEN). */
+	public static final int TOKEN_LEN = 16;
+	/**
+	 * Link no chat. Quem envia manda só [#:token] (ocupa menos que o nome na caixa de texto); o servidor devolve
+	 * [#:token:nome] para quem recebe.
+	 */
+	public static final String LINK_REGEX = "\\[#:([0-9a-f]{16})(?::([^\\]]{0,100}))?\\]";
 	/** Qualquer coisa com cara de link, inclusive com o token estragado: vira só o nome, nunca código cru no chat. */
-	private static final Pattern ANY_LINK = Pattern.compile("\\[#:([^:\\]]{1,40}):([^\\]]{0,100})\\]");
+	private static final Pattern ANY_LINK = Pattern.compile("\\[#:([^:\\]]{1,40})(?::([^\\]]{0,100}))?\\]");
 	/** Máximo de links por mensagem (o cliente também limita a 3). */
 	public static final int MAX_PER_MESSAGE = 3;
 
@@ -104,9 +109,9 @@ public final class ItemLinkCache
 
 	public static boolean validToken(String token)
 	{
-		if (token == null || token.length() != 24)
+		if (token == null || token.length() != TOKEN_LEN)
 			return false;
-		for (int i = 0; i < 24; i++)
+		for (int i = 0; i < TOKEN_LEN; i++)
 		{
 			char c = token.charAt(i);
 			if (!(c >= '0' && c <= '9' || c >= 'a' && c <= 'f'))
@@ -155,8 +160,10 @@ public final class ItemLinkCache
 
 		// Dígito e letra (a-f) alternados: "3b9e2a...". Nunca há dois dígitos ou duas letras seguidos, então o filtro
 		// de palavras do cliente (que troca números/palavras proibidas por "-_-") não acha nada para trocar no token.
-		// 12 dígitos x 12 letras de 6 ≈ 72 bits de acaso. O Say2C pula o link no translit.
-		char[] chars = new char[24];
+		// 8 dígitos x 8 letras de 6 ≈ 47 bits de acaso: com o anti-spam (10 aberturas/s) e a validade de 1 h, achar
+		// um token por tentativa é ~1 em 1 milhão por jogador/hora, e só mostraria um tooltip. O Say2C pula o link no
+		// translit.
+		char[] chars = new char[TOKEN_LEN];
 		String token;
 		do
 		{
@@ -208,7 +215,7 @@ public final class ItemLinkCache
 				links++;
 			}
 			else
-				replacement = "(" + clean(m.group(2)) + ")";
+				replacement = "(" + (m.group(2) != null && !m.group(2).isBlank() ? clean(m.group(2)) : "item") + ")";
 			m.appendReplacement(out, Matcher.quoteReplacement(replacement));
 		}
 		m.appendTail(out);
