@@ -31,8 +31,8 @@ import services.mail.MailService;
  * o que não couber, ou quem estiver offline, chega como correio da "Casa de
  * Leilões". Se o correio falhar, entrega como antes (nada se perde).
  *
- * Os métodos "safe" nunca lançam erro: uma entrega que falha vira log
- * ("entregar manualmente") e o resto da operação continua (o dinheiro já
+ * deliverItem / deliverCurrency nunca lançam erro: uma entrega que falha vira
+ * log ("entregar manualmente") e o resto da operação continua (o dinheiro já
  * foi cobrado, então parar no meio seria pior).
  */
 public final class AuctionDelivery
@@ -183,32 +183,6 @@ public final class AuctionDelivery
 			return;
 		}
 		delayed(ownerId, itemId, count, 0, reason);
-	}
-
-	public static void safeGiveItem(int ownerId, int itemId, long count, int enchant, String reason)
-	{
-		try
-		{
-			giveItem(ownerId, itemId, count, enchant, reason);
-		}
-		catch (Exception e)
-		{
-			_log.error("AuctionHouse: ERRO ao entregar o item " + itemId + " x" + count + " +" + enchant
-				+ " ao objId " + ownerId + " (" + reason + ") — entregar manualmente. " + e);
-		}
-	}
-
-	public static void safeGiveCurrency(int ownerId, int itemId, long count, String reason)
-	{
-		try
-		{
-			giveCurrency(ownerId, itemId, count, reason);
-		}
-		catch (Exception e)
-		{
-			_log.error("AuctionHouse: ERRO ao entregar " + count + " do item " + itemId + " ao objId "
-				+ ownerId + " (" + reason + ") — entregar manualmente. " + e);
-		}
 	}
 
 	// O DelayedItems guarda a quantidade como int: acima disso vai em partes

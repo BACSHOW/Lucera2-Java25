@@ -39,5 +39,4 @@ public class AuctionBid
     public long getBidAmount() { return bidAmount; }
     public Date getBidTime() { return bidTime; }
     public boolean isCancelled() { return cancelled; }
-    public void setCancelled(boolean cancelled) { this.cancelled = cancelled; }
 }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -30,9 +31,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Lance e compra imediata da interface nativa do leilão (aba 0).
  *
- * Arquivo NOVO, na mesma pasta do AuctionHolder / AuctionTableCommunity
- * (scripts: services/community/auctionhouse/AuctionHouseService.java).
- * O Interface.java só chama placeBid / buyNow e manda o resultado ao cliente.
+ * O Interface.java só chama placeBid / buyNow / buyPartial e manda o resultado ao cliente.
  *
  * Regras (as do MarketplaceCBBypasses antigo, com estas mudanças):
  *  - tudo dentro de synchronized (auction): o mesmo cadeado do cancelar e da
@@ -760,12 +759,6 @@ public final class AuctionHouseService
 	// Auxiliares
 	// ================================================================
 
-	/** Moeda para um jogador (AuctionDelivery); um erro vira log e não interrompe o resto. */
-	private static void safeGiveCurrency(int ownerId, int itemId, long count, String reason)
-	{
-		AuctionDelivery.safeGiveCurrency(ownerId, itemId, count, reason);
-	}
-
 	private static void notifyOutbid(int bidderId, AuctionHolder a, String itemName,
 		long oldBid, long newBid, String currency)
 	{
@@ -963,6 +956,8 @@ public final class AuctionHouseService
 
 	private static void announce(String text)
 	{
+		if (!Config.AUCTION_ANNOUNCE)
+			return;
 		try
 		{
 			Announcements.getInstance().announceToAll(text);
@@ -983,6 +978,6 @@ public final class AuctionHouseService
 	/** 1234567 → "1,234,567" (vírgula, igual aos números do cliente). */
 	public static String fmt(long v)
 	{
-		return String.format(java.util.Locale.US, "%,d", v);
+		return String.format(Locale.US, "%,d", v);
 	}
 }

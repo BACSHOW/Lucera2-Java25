@@ -11,8 +11,10 @@ import services.auctionhouse.AuctionTableCommunity;
 import services.auctionhouse.AuctionUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -146,7 +148,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		if ("offlineHunting".equalsIgnoreCase(args[0]))
 			OfflineHuntingService.request(activeChar);
 		else if ("confirmOfflineHunting".equalsIgnoreCase(args[0]))
-			OfflineHuntingService.confirm(activeChar, java.util.Arrays.copyOfRange(args, 1, args.length));
+			OfflineHuntingService.confirm(activeChar, Arrays.copyOfRange(args, 1, args.length));
 	}
 
 	public void autoFarm() 
@@ -562,7 +564,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 	private static void sendAuctionList(Player player, String[] params)
 	{
-		int    page   = params.length > 0 ? safeInt(params[0], 1) : 1;
+		int    page   = params.length > 0 ? aucInt(params[0], 1) : 1;
 		String cat    = params.length > 1 ? params[1] : "ALL";
 		String search = params.length > 2 ? params[2] : "";
 		String grade  = params.length > 3 ? params[3] : "ALL";
@@ -621,25 +623,25 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 		return a.getItemId()
 				+ "|" + a.getEnchant()
-				+ "|" + fmtNum(price)
+				+ "|" + AuctionHouseService.fmt(price)
 				+ "|" + a.getTimeRemainingFormatted()
 				+ "|" + itemType
 				+ "|" + bodyPart
 				+ "|" + a.getAuctionId()
 				+ "|" + (a.getTimeRemaining() / 1000L)    // segundos: cor do tempo na lista
 				+ "|" + avg[0]
-						+ "|" + avg[1]
-								+ "|" + a.getCostId()
-								+ "|" + myBid
-								+ "|" + last[0]
-										+ "|" + last[1]
-												+ "|" + last[2]
-														+ "|" + a.getCount()           // quantidade: " (1,110)" no tooltip
-														+ "|" + (a.isFixedPrice() ? 1 : 0)
-														+ "|" + (a.isPartial() ? 1 : 0)
-														+ "|" + a.getUnitPrice()
-														+ "|" + a.getOriginalCount()
-														+ "|" + AuctionTableCommunity.getInstance().getBids(a.getAuctionId()).size();
+				+ "|" + avg[1]
+				+ "|" + a.getCostId()
+				+ "|" + myBid
+				+ "|" + last[0]
+				+ "|" + last[1]
+				+ "|" + last[2]
+				+ "|" + a.getCount()           // quantidade: " (1,110)" no tooltip
+				+ "|" + (a.isFixedPrice() ? 1 : 0)
+				+ "|" + (a.isPartial() ? 1 : 0)
+				+ "|" + a.getUnitPrice()
+				+ "|" + a.getOriginalCount()
+				+ "|" + AuctionTableCommunity.getInstance().getBids(a.getAuctionId()).size();
 	}
 
 	// ── auctionPriceInfo ────────────────────────────────────────────
@@ -928,7 +930,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		// na ordem certa juntos (para item único é o mesmo valor). As chaves
 		// são lidas antes de ordenar: um lance ou compra no meio da ordenação
 		// não pode mudar o valor (o sort do Java reclama se a ordem mudar).
-		Map<AuctionHolder, Long> key = new java.util.IdentityHashMap<>();
+		Map<AuctionHolder, Long> key = new IdentityHashMap<>();
 		switch (order == null ? "TIME" : order.toUpperCase())
 		{
 		case "PRICE_ASC":
@@ -957,19 +959,6 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 	{
 		if (t == null || cat == null) return false;
 		return t.searchItemByType(cat);
-	}
-
-	// 1234567 → "1,234,567" (vírgula, igual aos campos do cliente)
-	private static String fmtNum(long v)
-	{
-		return String.format(java.util.Locale.US, "%,d", v);
-	}
-
-	// ── Helpers de parse seguro ─────────────────────────────────────
-	private static int safeInt(String s, int def)
-	{
-		try { return Integer.parseInt(s.trim()); }
-		catch (Exception e) { return def; }
 	}
 
 	// Durações oferecidas no combo (em horas). O antigo aceitava até 72h
@@ -1177,8 +1166,8 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 
 		// venda parcial: as vendidas continuam vendidas, só o resto volta
 		if (auction.getSoldCount() > 0)
-			player.sendMessage("Anúncio cancelado: vendidas " + aucFmt(auction.getSoldCount()) + " de "
-					+ aucFmt(auction.getOriginalCount()) + ". As " + aucFmt(auction.getCount())
+			player.sendMessage("Anúncio cancelado: vendidas " + AuctionHouseService.fmt(auction.getSoldCount()) + " de "
+					+ AuctionHouseService.fmt(auction.getOriginalCount()) + ". As " + AuctionHouseService.fmt(auction.getCount())
 					+ " restantes voltaram para você.");
 
 		player.sendMessage("AUC_CANCEL:OK");
@@ -1358,7 +1347,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 			// Teto: o total (unidade x quantidade) segue o limite de sempre
 			if (unitStart > Integer.MAX_VALUE / amount || unitBuy > Integer.MAX_VALUE / amount)
 			{
-				failCreate(player, "O total passa do valor máximo (" + aucFmt(Integer.MAX_VALUE) + ").");
+				failCreate(player, "O total passa do valor máximo (" + AuctionHouseService.fmt(Integer.MAX_VALUE) + ").");
 				return;
 			}
 			startingPrice = unitStart * amount;
@@ -1379,7 +1368,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 				{
 					long minUnit = (minBuy + amount - 1) / amount;
 					failCreate(player, "A compra imediata deve ser pelo menos "
-							+ (amount > 1 ? aucFmt(minUnit) + " cada." : aucFmt(minBuy) + "."));
+							+ (amount > 1 ? AuctionHouseService.fmt(minUnit) + " cada." : AuctionHouseService.fmt(minBuy) + "."));
 					return;
 				}
 			}
@@ -1403,7 +1392,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 			// Teto: o código de lance/compra/devolução faz (int) nos preços
 			if (startingPrice > Integer.MAX_VALUE || buyNowPrice > Integer.MAX_VALUE)
 			{
-				failCreate(player, "Valor máximo: " + aucFmt(Integer.MAX_VALUE) + ".");
+				failCreate(player, "Valor máximo: " + AuctionHouseService.fmt(Integer.MAX_VALUE) + ".");
 				return;
 			}
 
@@ -1436,7 +1425,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		{
 			ItemTemplate feeTpl = ItemHolder.getInstance().getTemplate(feeId);
 			String feeName = feeTpl != null ? feeTpl.getName() : ("item " + feeId);
-			failCreate(player, "Você não tem " + aucFmt(feeAmount) + " " + feeName + " para pagar a taxa.");
+			failCreate(player, "Você não tem " + AuctionHouseService.fmt(feeAmount) + " " + feeName + " para pagar a taxa.");
 			return;
 		}
 
@@ -1561,18 +1550,18 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 			String currencyName = AuctionUtils.getCurrencyNameById(costId);
 			String itemName     = AuctionUtils.formatItemName(itemId, enchant);
 
-			String qtyText = amount > 1 ? aucFmt(amount) + " " : "";
+			String qtyText = amount > 1 ? AuctionHouseService.fmt(amount) + " " : "";
 			String announcement;
 			if (auction.isFixedPrice() && partial)
 				announcement = player.getName() + " colocou " + qtyText + itemName + " à venda por "
-						+ aucFmt(auction.getUnitPrice()) + " " + currencyName + " cada (compre a quantidade que quiser).";
+						+ AuctionHouseService.fmt(auction.getUnitPrice()) + " " + currencyName + " cada (compre a quantidade que quiser).";
 			else if (auction.isFixedPrice())
 				announcement = player.getName() + " colocou " + qtyText + itemName + " à venda por "
-						+ aucFmt(startingPrice) + " " + currencyName + (amount > 1 ? " (o lote inteiro)" : "") + ".";
+						+ AuctionHouseService.fmt(startingPrice) + " " + currencyName + (amount > 1 ? " (o lote inteiro)" : "") + ".";
 			else
 				announcement = player.getName() + " adicionou " + qtyText + itemName + " no leilão. "
-						+ "Lance inicial: " + aucFmt(startingPrice) + " " + currencyName
-						+ (buyNowPrice > 0 ? " | Compra imediata: " + aucFmt(buyNowPrice) + " " + currencyName : "");
+						+ "Lance inicial: " + AuctionHouseService.fmt(startingPrice) + " " + currencyName
+						+ (buyNowPrice > 0 ? " | Compra imediata: " + AuctionHouseService.fmt(buyNowPrice) + " " + currencyName : "");
 
 			Announcements.getInstance().announceToAll(announcement);
 		}
@@ -1601,8 +1590,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		return 1;
 	}
 
-	// Helpers próprios deste bloco (nomes únicos para não colidir com
-	// safeInt/safeLong/fmtNum que já existam no Interface.java)
+	// Leitura segura dos parâmetros do bypass
 	private static int aucInt(String s, int def)
 	{
 		try { return Integer.parseInt(s.trim()); }
@@ -1613,11 +1601,6 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 	{
 		try { return Long.parseLong(s.trim()); }
 		catch (Exception e) { return def; }
-	}
-
-	private static String aucFmt(long v)
-	{
-		return String.format(java.util.Locale.US, "%,d", v);
 	}
 
 	public void onStart() 

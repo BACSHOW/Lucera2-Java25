@@ -1437,6 +1437,8 @@ public class Config {
    public static int AUCTION_MAX_PER_PLAYER;   // leilões ativos por personagem (0 = sem limite)
    public static int AUCTION_MY_PER_PAGE;      // linhas por página em "Meus itens a venda"
    public static int AUCTION_MIN_BID_PERCENT;       // NOVO: lance mínimo = atual + X% (0 = só +1)
+   /** Anuncia para o servidor todo cada lance e compra do leilao (AuctionAnnounce). */
+   public static boolean AUCTION_ANNOUNCE;
    public static int AUCTION_SNIPE_MINUTES;         // NOVO: anti-sniping: janela final em minutos (0 = desligado)
    public static int AUCTION_SNIPE_EXTEND_MINUTES;  // NOVO: anti-sniping: o leilão passa a terminar em agora + X min
 
@@ -1992,6 +1994,8 @@ public class Config {
          _log.warn("Invalid value for AntiSnipeExtendMinutes, using default 5");
          AUCTION_SNIPE_EXTEND_MINUTES = 5;
       }
+
+      AUCTION_ANNOUNCE = Boolean.parseBoolean(var0.getProperty("AuctionAnnounce", "True").trim());
    }
 
    public static void loadCustomConfig() {

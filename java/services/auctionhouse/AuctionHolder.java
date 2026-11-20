@@ -2,9 +2,7 @@ package services.auctionhouse;
 
 import java.util.Date;
 
-import l2.gameserver.data.xml.holder.ItemHolder;
-import l2.gameserver.templates.item.ItemTemplate;
-
+/** Um anúncio do leilão. Mudanças de estado acontecem dentro de synchronized (this). */
 public class AuctionHolder
 {
 	private int auctionId;
@@ -23,7 +21,6 @@ public class AuctionHolder
 	private Date startTime;
 	private volatile Date endTime;
 	private volatile AuctionStatus status;
-	private int auctionHouseId;
 
 	// Venda parcial (etapa 17). O modo do anúncio não tem coluna própria:
 	//   preço fixo = compra imediata igual ao preço inicial (isFixedPrice);
@@ -59,7 +56,6 @@ public class AuctionHolder
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.status = AuctionStatus.ACTIVE;
-		this.auctionHouseId = 1;
 		this.originalCount = count;
 	}
 	
@@ -86,7 +82,6 @@ public class AuctionHolder
 	public void setBidderId(int bidderId) { this.bidderId = bidderId; }
 	
 	public Date getStartTime() { return startTime; }
-	public void setStartTime(Date startTime) { this.startTime = startTime; }
 	
 	public Date getEndTime() { return endTime; }
 	public void setEndTime(Date endTime) { this.endTime = endTime; }
@@ -94,13 +89,8 @@ public class AuctionHolder
 	public AuctionStatus getStatus() { return status; }
 	public void setStatus(AuctionStatus status) { this.status = status; }
 	
-	public int getAuctionHouseId() { return auctionHouseId; }
-	public void setAuctionHouseId(int auctionHouseId) { this.auctionHouseId = auctionHouseId; }
-	
 	// ===== MÉTODOS UTILITÁRIOS =====
-	public boolean isActive() { 
-		return status == AuctionStatus.ACTIVE;  // ✅ CORRETO: Verifica apenas status
-	}
+	public boolean isActive() { return status == AuctionStatus.ACTIVE; }
 	
 	public boolean isEnded() { return status == AuctionStatus.ENDED; }
 	public boolean isCancelled() { return status == AuctionStatus.CANCELLED; }
@@ -163,24 +153,5 @@ public class AuctionHolder
 		if (allowPartial && isFixedPrice())
 			return total / count;
 		return (total + count / 2) / count;
-	}
-	
-	public boolean canBid(long bidAmount)
-	{
-		if (!isActive()) return false;
-		if (bidAmount < startingPrice) return false;
-		if (bidAmount <= currentBid) return false;
-		if (hasBuyNow() && bidAmount >= buyNowPrice) return false;
-		return true;
-	}
-	
-	public String getCostName()
-	{
-		ItemTemplate item = ItemHolder.getInstance().getTemplate(costId);
-		
-		if (item == null)
-			return "Unknown";
-		
-		return item.getName();
 	}
 }
