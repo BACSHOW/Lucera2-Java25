@@ -214,6 +214,14 @@ public class OlyController {
 		}
 
 		_log.info("OlyController: Season " + var3 + " competitions schedule at [" + var10.toString() + "]");
+		if (var10.length() == 0 && var6 > 0L) {
+			_log.warn("OlyController: Season " + var3 + " sem nenhuma competicao ate o fim da temporada. Confira CompetitionEndTime"
+					+ " (precisa do \"+1\", ex.: +1 00:00) em olympiad.properties; a temporada atual so e montada de novo na proxima.");
+		}
+		if (this.Sh > 0L && this.Sh < this.Sg) {
+			_log.warn("OlyController: Season " + var3 + " com nomeacao antes do fim da temporada (NominateTime antes de SeasonEndTime):"
+					+ " ela vai encerrar a temporada sem calcular herois.");
+		}
 		var10.delete(0, var10.length());
 
 		for (int var13 = this.Sj; var13 < this.Si.length; var13++) {
