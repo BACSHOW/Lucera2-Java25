@@ -69,7 +69,7 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 		AuctionPriceStats.ensureLoaded();             // histórico de preço do leilão
 		AuctionHouseService.registerLoginNotice();    // "vendido enquanto estava offline"
 		AutoFarmPlus.start();                         // Counter Attack, Respect Hunt, tipos de farm, Keep Location
-		_log.info("Loaded Service: Interface Commands L2ACDC");
+		_log.info("Loaded Service: Interface Commands L2Better");
 	}
 
 	public void onReload() 
