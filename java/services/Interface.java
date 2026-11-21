@@ -1549,13 +1549,14 @@ public class Interface extends Functions implements ScriptFile, OnStartListener 
 			String qtyText = amount > 1 ? AuctionHouseService.fmt(amount) + " " : "";
 			String announcement;
 			if (auction.isFixedPrice() && partial)
-				announcement = player.getName() + " colocou " + qtyText + itemName + " à venda por "
+				announcement = player.getName() + " colocou " + qtyText + itemName + " a venda por "
 						+ AuctionHouseService.fmt(auction.getUnitPrice()) + " " + currencyName + " cada (compre a quantidade que quiser).";
 			else if (auction.isFixedPrice())
-				announcement = player.getName() + " colocou " + qtyText + itemName + " à venda por "
+				announcement = player.getName() + " colocou " + qtyText + itemName + " a venda por "
 						+ AuctionHouseService.fmt(startingPrice) + " " + currencyName + (amount > 1 ? " (o lote inteiro)" : "") + ".";
 			else
-				announcement = player.getName() + " adicionou " + qtyText + itemName + " no leilão. "
+				// sem acento: o chat do cliente não mostra ("leilão" saía "leilro")
+				announcement = player.getName() + " adicionou " + qtyText + itemName + " no leilao. "
 						+ "Lance inicial: " + AuctionHouseService.fmt(startingPrice) + " " + currencyName
 						+ (buyNowPrice > 0 ? " | Compra imediata: " + AuctionHouseService.fmt(buyNowPrice) + " " + currencyName : "");
 

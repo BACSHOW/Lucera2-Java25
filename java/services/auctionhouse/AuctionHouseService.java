@@ -12,6 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import l2.gameserver.Announcements;
 import l2.gameserver.Config;
 import l2.gameserver.ThreadPoolManager;
+import l2.gameserver.cache.ItemLinkCache;
 import l2.gameserver.data.xml.holder.ItemHolder;
 import l2.gameserver.database.DatabaseFactory;
 import l2.gameserver.listener.actor.player.OnPlayerEnterListener;
@@ -309,7 +310,7 @@ public final class AuctionHouseService
 		if (!wasTop && prevBid > 0 && prevBidder > 0)
 			notifyOutbid(prevBidder, a, itemName, prevBid, amount, currency);
 
-		announce(player.getName() + " deu lance de " + fmt(amount) + " " + currency + " em " + itemName + ".");
+		announce(player.getName() + " deu lance de " + fmt(amount) + " " + currency + " em " + chatItem(a) + ".");
 
 		// quem está com este leilão aberto vê o lance novo na hora
 		notifyChanged(a, player.getObjectId());
@@ -466,7 +467,7 @@ public final class AuctionHouseService
 			screen(seller, "ITEM VENDIDO!\n\n" + itemName + "\n" + fmt(price) + " " + currency);
 		}
 
-		announce(player.getName() + " comprou " + (a.getCount() > 1 ? fmt(a.getCount()) + " " : "") + itemName
+		announce(player.getName() + " comprou " + (a.getCount() > 1 ? fmt(a.getCount()) + " " : "") + chatItem(a)
 			+ " por " + fmt(price) + " " + currency + ".");
 
 		notifyEnded(a, "Este item foi vendido por compra imediata.", player.getObjectId());
@@ -1025,6 +1026,15 @@ public final class AuctionHouseService
 		return sb.toString();
 	}
 
+	/** Nome do item para os anúncios no chat, com o ícone do ItemLink (quem clica vê o tooltip). */
+	private static String chatItem(AuctionHolder a)
+	{
+		String name = AuctionUtils.formatItemName(a.getItemId(), a.getEnchant());
+		// anúncio desligado: não gasta um link (o announce não vai mostrar)
+		return Config.AUCTION_ANNOUNCE ? ItemLinkCache.getInstance().linkText(a.getItemId(), a.getEnchant(), a.getCount(), name) : name;
+	}
+
+	/** Anúncio para todos (AuctionAnnounceBids). Sem acento: o chat do cliente não mostra. */
 	private static void announce(String text)
 	{
 		if (!Config.AUCTION_ANNOUNCE)
